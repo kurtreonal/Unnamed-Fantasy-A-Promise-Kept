@@ -1,0 +1,419 @@
+[gd_scene format=3 uid="uid://bmcy48vcxicyo"]
+
+[ext_resource type="Script" uid="uid://cfwf5d8exox4f" path="res://addons/dialogic/Modules/LayeredPortrait/custom_layered_portrait.gd" id="1_uubi5"]
+[ext_resource type="Texture2D" uid="uid://c7esql34lkk4w" path="res://Characters/Asami/blacksb1.png" id="2_dat8x"]
+[ext_resource type="Texture2D" uid="uid://pkw3hf44jec0" path="res://Characters/Asami/pinksb1.png" id="3_0aps3"]
+[ext_resource type="Texture2D" uid="uid://csiuf2b1m1l57" path="res://Characters/Asami/silversb1.png" id="4_euu3a"]
+[ext_resource type="Texture2D" uid="uid://cggqeef60dacj" path="res://Characters/Asami/brownsb1.png" id="5_f7kuw"]
+[ext_resource type="Texture2D" uid="uid://b6b3ihywqai3c" path="res://Characters/Asami/blondesb1.png" id="6_v44mc"]
+[ext_resource type="Texture2D" uid="uid://bobby6a4mcs3h" path="res://Characters/Asami/blacksb2.png" id="7_08qdi"]
+[ext_resource type="Texture2D" uid="uid://dluemkvgj3e5q" path="res://Characters/Asami/pinksb2.png" id="8_7b2r6"]
+[ext_resource type="Texture2D" uid="uid://bj4oqaowglioa" path="res://Characters/Asami/silversb2.png" id="9_65gh7"]
+[ext_resource type="Texture2D" uid="uid://b6ilihaujot8m" path="res://Characters/Asami/brownsb2.png" id="10_ij8nu"]
+[ext_resource type="Texture2D" uid="uid://btkv03whpvyp2" path="res://Characters/Asami/blondesb2.png" id="11_01dkl"]
+[ext_resource type="Texture2D" uid="uid://d0bq47m0714xj" path="res://Characters/Asami/blacksb3.png" id="12_t18rx"]
+[ext_resource type="Texture2D" uid="uid://cdoq3naou6ngj" path="res://Characters/Asami/pinksb3.png" id="13_ao2jx"]
+[ext_resource type="Texture2D" uid="uid://dd2h6pw5eewra" path="res://Characters/Asami/silversb3.png" id="14_x6wwu"]
+[ext_resource type="Texture2D" uid="uid://d23aqp2ieqpd1" path="res://Characters/Asami/brownsb3.png" id="15_mdr7f"]
+[ext_resource type="Texture2D" uid="uid://evbkbkov3vp0" path="res://Characters/Asami/blondesb3.png" id="16_l5lps"]
+[ext_resource type="Texture2D" uid="uid://dgxmbvhiccyxg" path="res://Characters/Asami/blacksb4.png" id="17_30tfq"]
+[ext_resource type="Texture2D" uid="uid://c27g6adxbjnxn" path="res://Characters/Asami/pinksb4.png" id="18_5ain1"]
+[ext_resource type="Texture2D" uid="uid://cun80kricdf34" path="res://Characters/Asami/silversb4.png" id="19_3rh38"]
+[ext_resource type="Texture2D" uid="uid://de5md6cctojoq" path="res://Characters/Asami/brownsb4.png" id="20_5au2q"]
+[ext_resource type="Texture2D" uid="uid://oma0xqda4ame" path="res://Characters/Asami/blondesb4.png" id="21_w0iwh"]
+[ext_resource type="Texture2D" uid="uid://dbw7fg3e0tcqw" path="res://Characters/Asami/base.png" id="22_ob5jy"]
+[ext_resource type="Texture2D" uid="uid://blxrrjdv723q3" path="res://Characters/Asami/towel 1.png" id="23_ffy4u"]
+[ext_resource type="Texture2D" uid="uid://bi27fal0lr2wk" path="res://Characters/Asami/towel 2.png" id="24_rfm8k"]
+[ext_resource type="Texture2D" uid="uid://y1qdsql1p1gv" path="res://Characters/Asami/PE uniform 1.png" id="25_5up6v"]
+[ext_resource type="Texture2D" uid="uid://48krcqba11uj" path="res://Characters/Asami/PE uniform 2.png" id="26_kxpvu"]
+[ext_resource type="Texture2D" uid="uid://cq2c0tey2bxc7" path="res://Characters/Asami/jacket.png" id="27_qumxc"]
+[ext_resource type="Texture2D" uid="uid://ruw2rclmvyl5" path="res://Characters/Asami/pajamas 1.png" id="28_5tlt0"]
+[ext_resource type="Texture2D" uid="uid://co188vo3ni8fv" path="res://Characters/Asami/pajamas 2.png" id="29_6kp5p"]
+[ext_resource type="Texture2D" uid="uid://b3mkuas184nyv" path="res://Characters/Asami/winter 1.png" id="30_ygyme"]
+[ext_resource type="Texture2D" uid="uid://do7li7l7idxkx" path="res://Characters/Asami/winter 2.png" id="31_g7gph"]
+[ext_resource type="Texture2D" uid="uid://pphvl8bkxso1" path="res://Characters/Asami/t-shirt 1.png" id="32_3avi7"]
+[ext_resource type="Texture2D" uid="uid://dmt01s0qmaau2" path="res://Characters/Asami/t-shirt 2.png" id="33_0kxug"]
+[ext_resource type="Texture2D" uid="uid://5k4lujb6054" path="res://Characters/Asami/swimsuit.png" id="34_ifohi"]
+[ext_resource type="Texture2D" uid="uid://d3f0k7kudhumc" path="res://Characters/Asami/summer dress.png" id="35_x5l6u"]
+[ext_resource type="Texture2D" uid="uid://fwrdjvfet5cf" path="res://Characters/Asami/seifuku 1.png" id="36_utqjc"]
+[ext_resource type="Texture2D" uid="uid://blcesry1bjhdm" path="res://Characters/Asami/seifuku 2.png" id="37_tdva8"]
+[ext_resource type="Texture2D" uid="uid://r7impbggoovt" path="res://Characters/Asami/blacksf1.png" id="38_ytehg"]
+[ext_resource type="Texture2D" uid="uid://csla7qah0pmn" path="res://Characters/Asami/pinksf1.png" id="39_0sgqa"]
+[ext_resource type="Texture2D" uid="uid://4ts3lgacnsku" path="res://Characters/Asami/silversf1.png" id="40_dhtpk"]
+[ext_resource type="Texture2D" uid="uid://djrtkgv70qkpd" path="res://Characters/Asami/brownsf1.png" id="41_syoqg"]
+[ext_resource type="Texture2D" uid="uid://rdlffupyr7gy" path="res://Characters/Asami/blondesf1.png" id="42_ismss"]
+[ext_resource type="Texture2D" uid="uid://lejqqofios3p" path="res://Characters/Asami/blacksf2.png" id="43_kp8cr"]
+[ext_resource type="Texture2D" uid="uid://biilhycwcrg62" path="res://Characters/Asami/pinksf2.png" id="44_fmq8f"]
+[ext_resource type="Texture2D" uid="uid://5yhol65axq0s" path="res://Characters/Asami/silversf2.png" id="45_yebub"]
+[ext_resource type="Texture2D" uid="uid://cd0erymvfhvdy" path="res://Characters/Asami/brownsf2.png" id="46_mvr2i"]
+[ext_resource type="Texture2D" uid="uid://daqdq70deu53j" path="res://Characters/Asami/blondesf2.png" id="47_vi6y7"]
+[ext_resource type="Texture2D" uid="uid://dni1ti06tbiid" path="res://Characters/Asami/blacksf3.png" id="48_k5qso"]
+[ext_resource type="Texture2D" uid="uid://di2vi7o800446" path="res://Characters/Asami/pinksf3.png" id="49_5fqjl"]
+[ext_resource type="Texture2D" uid="uid://jsiqw7nrh6kc" path="res://Characters/Asami/silversf3.png" id="50_5qxma"]
+[ext_resource type="Texture2D" uid="uid://cne27jwthh4o8" path="res://Characters/Asami/brownsf3.png" id="51_jnpme"]
+[ext_resource type="Texture2D" uid="uid://dxu3tw4u347ij" path="res://Characters/Asami/blondesf3.png" id="52_q0v8d"]
+[ext_resource type="Texture2D" uid="uid://burtcybebmyo6" path="res://Characters/Asami/blacksf4.png" id="53_de6il"]
+[ext_resource type="Texture2D" uid="uid://7ugkpl4vl5lx" path="res://Characters/Asami/pinksf4.png" id="54_72jgk"]
+[ext_resource type="Texture2D" uid="uid://bnnhqqexq2p6q" path="res://Characters/Asami/silversf4.png" id="55_0hvbv"]
+[ext_resource type="Texture2D" uid="uid://dvr3bwx0wcha2" path="res://Characters/Asami/brownsf4.png" id="56_iqy4g"]
+[ext_resource type="Texture2D" uid="uid://ce84jtfpjsmb5" path="res://Characters/Asami/blondesf4.png" id="57_4m53k"]
+[ext_resource type="Texture2D" uid="uid://sosivyx67wdb" path="res://Characters/Asami/Blackfs5.png" id="58_esyo8"]
+[ext_resource type="Texture2D" uid="uid://g53drnthplxh" path="res://Characters/Asami/pinkfs5.png" id="59_71vma"]
+[ext_resource type="Texture2D" uid="uid://c6l03ya7vt6dj" path="res://Characters/Asami/silverfs5.png" id="60_yr0xg"]
+[ext_resource type="Texture2D" uid="uid://ly82v4x6jmxh" path="res://Characters/Asami/brownfs5.png" id="61_uj0mo"]
+[ext_resource type="Texture2D" uid="uid://c7tko1ci43lxe" path="res://Characters/Asami/blondefs5.png" id="62_nsxoh"]
+[ext_resource type="Texture2D" uid="uid://ba6jx4ri31i6p" path="res://Characters/Asami/scared.png" id="63_28pnc"]
+[ext_resource type="Texture2D" uid="uid://b1yc55uh1cg6h" path="res://Characters/Asami/angry.png" id="64_hgssm"]
+[ext_resource type="Texture2D" uid="uid://cc0rkhe5qlh5j" path="res://Characters/Asami/surpised.png" id="65_7i3um"]
+[ext_resource type="Texture2D" uid="uid://ckknbdivf5q5q" path="res://Characters/Asami/surpised 2.png" id="66_obfjs"]
+[ext_resource type="Texture2D" uid="uid://byehar81q1iiq" path="res://Characters/Asami/annoyed.png" id="67_qed3i"]
+[ext_resource type="Texture2D" uid="uid://bbl4x2nex71bw" path="res://Characters/Asami/annoyed 2.png" id="68_skwwe"]
+[ext_resource type="Texture2D" uid="uid://bsba437kv64e" path="res://Characters/Asami/sad.png" id="69_fx26q"]
+[ext_resource type="Texture2D" uid="uid://c8wv3hn58vh5r" path="res://Characters/Asami/sad 2.png" id="70_w0q5k"]
+[ext_resource type="Texture2D" uid="uid://dwwsbc8uaqxqk" path="res://Characters/Asami/smug.png" id="71_c6acn"]
+[ext_resource type="Texture2D" uid="uid://bb03yvfy5cqr4" path="res://Characters/Asami/awkward.png" id="72_lvjos"]
+[ext_resource type="Texture2D" uid="uid://qbp7s5awx7xs" path="res://Characters/Asami/happy.png" id="73_hi15u"]
+[ext_resource type="Texture2D" uid="uid://c4nnyrqsdsh7b" path="res://Characters/Asami/happy 2.png" id="74_rd3re"]
+[ext_resource type="Texture2D" uid="uid://dclntjs7vqt4x" path="res://Characters/Asami/smile 1.png" id="75_2b7bu"]
+[ext_resource type="Texture2D" uid="uid://bnq4m7iwc7xcp" path="res://Characters/Asami/smile 2.png" id="76_p4yew"]
+[ext_resource type="Texture2D" uid="uid://p6fe0xovmfg1" path="res://Characters/Asami/smile 3.png" id="77_pn3as"]
+[ext_resource type="Texture2D" uid="uid://b4ebde1av8chg" path="res://Characters/Asami/glasses.png" id="78_5vxhp"]
+
+[node name="LayeredPortrait" type="CanvasGroup" unique_id=2120967875]
+script = ExtResource("1_uubi5")
+
+[node name="Hair Behind" type="Node2D" parent="." unique_id=1209816223]
+
+[node name="Style 1" type="Node2D" parent="Hair Behind" unique_id=835779797]
+
+[node name="Black" type="Sprite2D" parent="Hair Behind/Style 1" unique_id=721911112]
+visible = false
+texture = ExtResource("2_dat8x")
+
+[node name="Pink" type="Sprite2D" parent="Hair Behind/Style 1" unique_id=1643402686]
+visible = false
+texture = ExtResource("3_0aps3")
+
+[node name="Silver" type="Sprite2D" parent="Hair Behind/Style 1" unique_id=1750752053]
+visible = false
+texture = ExtResource("4_euu3a")
+
+[node name="Brown" type="Sprite2D" parent="Hair Behind/Style 1" unique_id=1959459805]
+visible = false
+texture = ExtResource("5_f7kuw")
+
+[node name="Blonde" type="Sprite2D" parent="Hair Behind/Style 1" unique_id=818880405]
+visible = false
+texture = ExtResource("6_v44mc")
+
+[node name="Style 2" type="Node2D" parent="Hair Behind" unique_id=858870339]
+
+[node name="Black" type="Sprite2D" parent="Hair Behind/Style 2" unique_id=623060237]
+visible = false
+texture = ExtResource("7_08qdi")
+
+[node name="Pink" type="Sprite2D" parent="Hair Behind/Style 2" unique_id=600315902]
+visible = false
+texture = ExtResource("8_7b2r6")
+
+[node name="Silver" type="Sprite2D" parent="Hair Behind/Style 2" unique_id=621785005]
+visible = false
+texture = ExtResource("9_65gh7")
+
+[node name="Brown" type="Sprite2D" parent="Hair Behind/Style 2" unique_id=2004929171]
+visible = false
+texture = ExtResource("10_ij8nu")
+
+[node name="Blonde" type="Sprite2D" parent="Hair Behind/Style 2" unique_id=833005559]
+visible = false
+texture = ExtResource("11_01dkl")
+
+[node name="Style 3" type="Node2D" parent="Hair Behind" unique_id=775254060]
+
+[node name="Black" type="Sprite2D" parent="Hair Behind/Style 3" unique_id=408112248]
+visible = false
+texture = ExtResource("12_t18rx")
+
+[node name="Pink" type="Sprite2D" parent="Hair Behind/Style 3" unique_id=418512850]
+visible = false
+texture = ExtResource("13_ao2jx")
+
+[node name="Silver" type="Sprite2D" parent="Hair Behind/Style 3" unique_id=975665522]
+visible = false
+texture = ExtResource("14_x6wwu")
+
+[node name="Brown" type="Sprite2D" parent="Hair Behind/Style 3" unique_id=1648427055]
+visible = false
+texture = ExtResource("15_mdr7f")
+
+[node name="Blonde" type="Sprite2D" parent="Hair Behind/Style 3" unique_id=1923708660]
+visible = false
+texture = ExtResource("16_l5lps")
+
+[node name="Style 4" type="Node2D" parent="Hair Behind" unique_id=1222615766]
+
+[node name="Black" type="Sprite2D" parent="Hair Behind/Style 4" unique_id=1448182490]
+texture = ExtResource("17_30tfq")
+
+[node name="Pink" type="Sprite2D" parent="Hair Behind/Style 4" unique_id=1890225205]
+visible = false
+texture = ExtResource("18_5ain1")
+
+[node name="Silver" type="Sprite2D" parent="Hair Behind/Style 4" unique_id=426736566]
+visible = false
+texture = ExtResource("19_3rh38")
+
+[node name="Brown" type="Sprite2D" parent="Hair Behind/Style 4" unique_id=280483719]
+visible = false
+texture = ExtResource("20_5au2q")
+
+[node name="Blonde" type="Sprite2D" parent="Hair Behind/Style 4" unique_id=208605683]
+visible = false
+texture = ExtResource("21_w0iwh")
+
+[node name="Base" type="Sprite2D" parent="." unique_id=1728559742]
+texture = ExtResource("22_ob5jy")
+
+[node name="Blush" type="Node2D" parent="." unique_id=1752892128]
+
+[node name="Blush 1" type="Sprite2D" parent="Blush" unique_id=545505172]
+
+[node name="Blush 2" type="Sprite2D" parent="Blush" unique_id=172455747]
+
+[node name="Costume" type="Node2D" parent="." unique_id=1750165494]
+
+[node name="Towel 1" type="Sprite2D" parent="Costume" unique_id=1851486145]
+visible = false
+texture = ExtResource("23_ffy4u")
+
+[node name="Towel 2" type="Sprite2D" parent="Costume" unique_id=1546965429]
+visible = false
+texture = ExtResource("24_rfm8k")
+
+[node name="PE uniform 1" type="Sprite2D" parent="Costume" unique_id=855924454]
+visible = false
+texture = ExtResource("25_5up6v")
+
+[node name="PE uniform 2" type="Sprite2D" parent="Costume" unique_id=877799833]
+visible = false
+texture = ExtResource("26_kxpvu")
+
+[node name="Jacket" type="Sprite2D" parent="Costume" unique_id=679349348]
+visible = false
+texture = ExtResource("27_qumxc")
+
+[node name="Pajamas 1" type="Sprite2D" parent="Costume" unique_id=2092959769]
+visible = false
+texture = ExtResource("28_5tlt0")
+
+[node name="Pajamas 2" type="Sprite2D" parent="Costume" unique_id=1867957323]
+visible = false
+texture = ExtResource("29_6kp5p")
+
+[node name="Winter 1" type="Sprite2D" parent="Costume" unique_id=1162361127]
+visible = false
+texture = ExtResource("30_ygyme")
+
+[node name="Winter 2" type="Sprite2D" parent="Costume" unique_id=1871017961]
+visible = false
+texture = ExtResource("31_g7gph")
+
+[node name="T-shirt 1" type="Sprite2D" parent="Costume" unique_id=1557557866]
+visible = false
+texture = ExtResource("32_3avi7")
+
+[node name="T-shirt 2" type="Sprite2D" parent="Costume" unique_id=1231370839]
+visible = false
+texture = ExtResource("33_0kxug")
+
+[node name="Swimsuit" type="Sprite2D" parent="Costume" unique_id=1497913606]
+visible = false
+texture = ExtResource("34_ifohi")
+
+[node name="Summer Dress" type="Sprite2D" parent="Costume" unique_id=1118825903]
+visible = false
+texture = ExtResource("35_x5l6u")
+
+[node name="Seifuku 1" type="Sprite2D" parent="Costume" unique_id=826218023]
+visible = false
+texture = ExtResource("36_utqjc")
+
+[node name="Seifuku 2" type="Sprite2D" parent="Costume" unique_id=689086498]
+texture = ExtResource("37_tdva8")
+
+[node name="Hair Front" type="Node2D" parent="." unique_id=2145459387]
+
+[node name="Style 1" type="Node2D" parent="Hair Front" unique_id=771943918]
+
+[node name="Black" type="Sprite2D" parent="Hair Front/Style 1" unique_id=643122922]
+visible = false
+texture = ExtResource("38_ytehg")
+
+[node name="Pink" type="Sprite2D" parent="Hair Front/Style 1" unique_id=1774189589]
+visible = false
+texture = ExtResource("39_0sgqa")
+
+[node name="Silver" type="Sprite2D" parent="Hair Front/Style 1" unique_id=237147788]
+visible = false
+texture = ExtResource("40_dhtpk")
+
+[node name="Brown" type="Sprite2D" parent="Hair Front/Style 1" unique_id=305866342]
+visible = false
+texture = ExtResource("41_syoqg")
+
+[node name="Blonde" type="Sprite2D" parent="Hair Front/Style 1" unique_id=1438178099]
+visible = false
+texture = ExtResource("42_ismss")
+
+[node name="Style 2" type="Node2D" parent="Hair Front" unique_id=1417206524]
+
+[node name="Black" type="Sprite2D" parent="Hair Front/Style 2" unique_id=654322516]
+texture = ExtResource("43_kp8cr")
+
+[node name="Pink" type="Sprite2D" parent="Hair Front/Style 2" unique_id=1125560205]
+visible = false
+texture = ExtResource("44_fmq8f")
+
+[node name="Silver" type="Sprite2D" parent="Hair Front/Style 2" unique_id=70050105]
+visible = false
+texture = ExtResource("45_yebub")
+
+[node name="Brown" type="Sprite2D" parent="Hair Front/Style 2" unique_id=749467024]
+visible = false
+texture = ExtResource("46_mvr2i")
+
+[node name="Blonde" type="Sprite2D" parent="Hair Front/Style 2" unique_id=1721652481]
+visible = false
+texture = ExtResource("47_vi6y7")
+
+[node name="Style 3" type="Node2D" parent="Hair Front" unique_id=2010311934]
+
+[node name="Black" type="Sprite2D" parent="Hair Front/Style 3" unique_id=1542026633]
+visible = false
+texture = ExtResource("48_k5qso")
+
+[node name="Pink" type="Sprite2D" parent="Hair Front/Style 3" unique_id=109947229]
+visible = false
+texture = ExtResource("49_5fqjl")
+
+[node name="Silver" type="Sprite2D" parent="Hair Front/Style 3" unique_id=1655932170]
+visible = false
+texture = ExtResource("50_5qxma")
+
+[node name="Brown" type="Sprite2D" parent="Hair Front/Style 3" unique_id=1379337240]
+visible = false
+texture = ExtResource("51_jnpme")
+
+[node name="Blonde" type="Sprite2D" parent="Hair Front/Style 3" unique_id=692881430]
+visible = false
+texture = ExtResource("52_q0v8d")
+
+[node name="Style 4" type="Node2D" parent="Hair Front" unique_id=1872473486]
+visible = false
+
+[node name="Black" type="Sprite2D" parent="Hair Front/Style 4" unique_id=1984068371]
+texture = ExtResource("53_de6il")
+
+[node name="Pink" type="Sprite2D" parent="Hair Front/Style 4" unique_id=268068352]
+visible = false
+texture = ExtResource("54_72jgk")
+
+[node name="Silver" type="Sprite2D" parent="Hair Front/Style 4" unique_id=351391803]
+visible = false
+texture = ExtResource("55_0hvbv")
+
+[node name="Brown" type="Sprite2D" parent="Hair Front/Style 4" unique_id=2065159749]
+visible = false
+texture = ExtResource("56_iqy4g")
+
+[node name="Blonde" type="Sprite2D" parent="Hair Front/Style 4" unique_id=512339538]
+visible = false
+texture = ExtResource("57_4m53k")
+
+[node name="Style 5" type="Node2D" parent="Hair Front" unique_id=236660059]
+
+[node name="Black" type="Sprite2D" parent="Hair Front/Style 5" unique_id=1919768794]
+visible = false
+texture = ExtResource("58_esyo8")
+
+[node name="Pink" type="Sprite2D" parent="Hair Front/Style 5" unique_id=155878488]
+visible = false
+texture = ExtResource("59_71vma")
+
+[node name="Silver" type="Sprite2D" parent="Hair Front/Style 5" unique_id=1948156473]
+visible = false
+texture = ExtResource("60_yr0xg")
+
+[node name="Brown" type="Sprite2D" parent="Hair Front/Style 5" unique_id=162419102]
+visible = false
+texture = ExtResource("61_uj0mo")
+
+[node name="Blonde" type="Sprite2D" parent="Hair Front/Style 5" unique_id=626453051]
+visible = false
+texture = ExtResource("62_nsxoh")
+
+[node name="Expressions" type="Node2D" parent="." unique_id=448217041]
+
+[node name="Scared" type="Sprite2D" parent="Expressions" unique_id=225246774]
+visible = false
+texture = ExtResource("63_28pnc")
+
+[node name="Angry" type="Sprite2D" parent="Expressions" unique_id=1980744630]
+visible = false
+texture = ExtResource("64_hgssm")
+
+[node name="Surprised 1" type="Sprite2D" parent="Expressions" unique_id=1324210517]
+visible = false
+texture = ExtResource("65_7i3um")
+
+[node name="Surprised 2" type="Sprite2D" parent="Expressions" unique_id=1072843866]
+visible = false
+texture = ExtResource("66_obfjs")
+
+[node name="Annoyed 1" type="Sprite2D" parent="Expressions" unique_id=1013905424]
+visible = false
+texture = ExtResource("67_qed3i")
+
+[node name="Annoyed 2" type="Sprite2D" parent="Expressions" unique_id=1168003983]
+visible = false
+texture = ExtResource("68_skwwe")
+
+[node name="Sad 1" type="Sprite2D" parent="Expressions" unique_id=1154044205]
+visible = false
+texture = ExtResource("69_fx26q")
+
+[node name="Sad 2" type="Sprite2D" parent="Expressions" unique_id=1869020652]
+visible = false
+texture = ExtResource("70_w0q5k")
+
+[node name="Smug" type="Sprite2D" parent="Expressions" unique_id=1187864014]
+visible = false
+texture = ExtResource("71_c6acn")
+
+[node name="Awkward" type="Sprite2D" parent="Expressions" unique_id=716322690]
+visible = false
+texture = ExtResource("72_lvjos")
+
+[node name="Happy 1" type="Sprite2D" parent="Expressions" unique_id=92697152]
+visible = false
+texture = ExtResource("73_hi15u")
+
+[node name="Happy 2" type="Sprite2D" parent="Expressions" unique_id=294843112]
+visible = false
+texture = ExtResource("74_rd3re")
+
+[node name="Smile 1" type="Sprite2D" parent="Expressions" unique_id=190500334]
+texture = ExtResource("75_2b7bu")
+
+[node name="Smile 2" type="Sprite2D" parent="Expressions" unique_id=973265228]
+visible = false
+texture = ExtResource("76_p4yew")
+
+[node name="Smile 3" type="Sprite2D" parent="Expressions" unique_id=1187740500]
+visible = false
+texture = ExtResource("77_pn3as")
+
+[node name="Accessories" type="Node2D" parent="." unique_id=629868134]
+
+[node name="Glasses" type="Sprite2D" parent="Accessories" unique_id=1190633289]
+texture = ExtResource("78_5vxhp")

@@ -1,0 +1,10 @@
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://cd0ppq21ihjaw"]
+
+[ext_resource type="Texture2D" uid="uid://cpywv8f0t6swd" path="res://Assets/nine patch.png" id="1_dsiay"]
+
+[resource]
+texture = ExtResource("1_dsiay")
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
