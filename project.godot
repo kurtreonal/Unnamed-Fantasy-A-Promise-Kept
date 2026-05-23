@@ -10,9 +10,31 @@ config_version=5
 
 [application]
 
-config/name="Test"
-run/main_scene="uid://bdpd2nj7lujdr"
-config/features=PackedStringArray("4.6", "Forward Plus")
+config/name="Living Together with my Childhood Friend: Fantasy Monochrome"
+config/features=PackedStringArray("4.6", "GL Compatibility")
+config/icon="res://icon.svg"
+
+[autoload]
+
+Dialogic="*uid://ds2q0uclmolvu"
+
+[dialogic]
+
+directories/dch_directory={
+"Asami": "res://Characters/Asami.dch",
+"bckup/Asami": "res://Characters/bckup/Asami.dch"
+}
+directories/dtl_directory={
+"timeline1": "res://Timelines/timeline1.dtl"
+}
+layout/style_directory={}
+glossary/default_case_sensitive=true
+layout/style_list=[]
+layout/default_style=""
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
 
 [input]
 
