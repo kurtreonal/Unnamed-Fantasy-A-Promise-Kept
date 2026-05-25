@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://epijapcxneuv"
-path="res://.godot/imported/free_pixel_16_woods.png-3b7758afbde53ad527bb8351bdc492ee.ctex"
+uid="uid://cj6hcieu5u574"
+path="res://.godot/imported/TileSet.png-314db21a82529268d2f4d80430c91330.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assest/free_pixel_16_woods.png"
-dest_files=["res://.godot/imported/free_pixel_16_woods.png-3b7758afbde53ad527bb8351bdc492ee.ctex"]
+source_file="res://Sprite Assest/Map/TileMaps/TileSet.png"
+dest_files=["res://.godot/imported/TileSet.png-314db21a82529268d2f4d80430c91330.ctex"]
 
 [params]
 

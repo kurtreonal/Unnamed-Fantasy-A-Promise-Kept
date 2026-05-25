@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cddtu43iavr4j"
-path="res://.godot/imported/Plant.png-c0a0dc4b0c539f3564239615ebf57931.ctex"
+uid="uid://dybj40tyav3v2"
+path="res://.godot/imported/wasp animation sprite sheet.png-b350f40c6b57389c67e2cfb023c5841d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assest/Plant.png"
-dest_files=["res://.godot/imported/Plant.png-c0a0dc4b0c539f3564239615ebf57931.ctex"]
+source_file="res://Sprite Assest/Character Sheet/Mobs/wasp animation sprite sheet.png"
+dest_files=["res://.godot/imported/wasp animation sprite sheet.png-b350f40c6b57389c67e2cfb023c5841d.ctex"]
 
 [params]
 

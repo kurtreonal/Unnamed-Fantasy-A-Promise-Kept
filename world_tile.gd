@@ -1,6 +1,6 @@
 extends TileMapLayer
 
-@onready var display_layer: TileMapLayer = $"../DisplayLayer"
+@onready var display_layer: TileMapLayer = $"WorldTile"
 
 # Define your atlas coordinates for the 16 core combinations
 # Order follows binary lookup flags: [TopLeft, TopRight, BottomLeft, BottomRight]

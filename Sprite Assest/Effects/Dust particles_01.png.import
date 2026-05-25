@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://30thumypjeoi"
-path="res://.godot/imported/SandTiles.png-11e81ee90ebbf0b850abc200fe9e18eb.ctex"
+uid="uid://b1w3e5ugmaxxp"
+path="res://.godot/imported/Dust particles_01.png-faa9368ab7b41c80e4adf5f96a51b624.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assest/SandTiles.png"
-dest_files=["res://.godot/imported/SandTiles.png-11e81ee90ebbf0b850abc200fe9e18eb.ctex"]
+source_file="res://Sprite Assest/Effects/Dust particles_01.png"
+dest_files=["res://.godot/imported/Dust particles_01.png-faa9368ab7b41c80e4adf5f96a51b624.ctex"]
 
 [params]
 

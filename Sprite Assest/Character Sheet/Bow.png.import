@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwahcqdsvthgw"
-path="res://.godot/imported/DirtTiles.png-49f11ad3c27891b2be3d0a3b3191095f.ctex"
+uid="uid://6h1fxjua0u3x"
+path="res://.godot/imported/Bow.png-61ed9ad55fa9fd0ec364c554968159b7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assest/DirtTiles.png"
-dest_files=["res://.godot/imported/DirtTiles.png-49f11ad3c27891b2be3d0a3b3191095f.ctex"]
+source_file="res://Sprite Assest/Character Sheet/Bow.png"
+dest_files=["res://.godot/imported/Bow.png-61ed9ad55fa9fd0ec364c554968159b7.ctex"]
 
 [params]
 

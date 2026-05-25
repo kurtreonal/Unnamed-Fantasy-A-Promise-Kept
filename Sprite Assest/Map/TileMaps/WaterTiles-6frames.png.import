@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgg0546mhdbln"
-path="res://.godot/imported/GrassTiles.png-a134bb04c3d802498b56021fc2b1beab.ctex"
+uid="uid://bnenb6l600xs2"
+path="res://.godot/imported/WaterTiles-6frames.png-71444bfcde275601ac03876a8918b9a3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assest/GrassTiles.png"
-dest_files=["res://.godot/imported/GrassTiles.png-a134bb04c3d802498b56021fc2b1beab.ctex"]
+source_file="res://Sprite Assest/Map/TileMaps/WaterTiles-6frames.png"
+dest_files=["res://.godot/imported/WaterTiles-6frames.png-71444bfcde275601ac03876a8918b9a3.ctex"]
 
 [params]
 
