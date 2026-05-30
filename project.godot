@@ -11,13 +11,16 @@ config_version=5
 [application]
 
 config/name="Living Together with my Childhood Friend: Fantasy Monochrome"
-run/main_scene="uid://bdpd2nj7lujdr"
+run/main_scene="uid://7ok118iwmjmb"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Dialogic="*uid://ds2q0uclmolvu"
+Affection_System="*uid://c1wj7dvsxywk2"
+Health_System="*uid://kbq5try170rc"
+Meal_System="*uid://qy52v6toqagx"
 
 [dialogic]
 
@@ -26,6 +29,9 @@ directories/dch_directory={
 "bckup/Asami": "res://Characters/bckup/Asami.dch"
 }
 directories/dtl_directory={
+"scene_01_morning_wakeup": "res://Timelines/scene_01_morning_wakeup.dtl",
+"scene_02_evening_return": "res://Timelines/scene_02_evening_return.dtl",
+"scene_03_moment_of_doubt": "res://Timelines/scene_03_moment_of_doubt.dtl",
 "timeline1": "res://Timelines/timeline1.dtl"
 }
 layout/style_directory={}
@@ -44,12 +50,34 @@ animations/leave_default_length=0.5
 animations/leave_default_wait=true
 animations/cross_fade_default_length=0.5
 choices/autofocus_first=true
-choices/delay=0.2
+choices/delay=0.5
 choices/reveal_delay=0
 choices/reveal_by_input=false
 save/autosave_delay=60.0
 save/encryption_on_exports_only=true
 text/input_action="Next Dialogue"
+text/autopauses={}
+audio/channel_defaults={
+"": {
+"audio_bus": "",
+"fade_length": 0.0,
+"loop": false,
+"volume": 0.0
+},
+"music": {
+"audio_bus": "",
+"fade_length": 0.0,
+"loop": true,
+"volume": 0.0
+}
+}
+variables={
+"affection": 0,
+"coins": 5000,
+"meal": "",
+"mood": "calm",
+"rin_health": 50
+}
 
 [editor_plugins]
 
