@@ -1,93 +1,188 @@
-extends Node
+extends Control
 
 class_name HomeScene
 
 # Scene management
-@onready var dialogic = $Dialogic
-@onready var ui = $UI
+var dialogic: Node
 
 # Systems
-var affection_system: AffectionSystem
-var meal_system: MealSystem
-var health_system: HealthSystem
+var affection_system: Affection_System
+var meal_system: Meal_System
+var health_system: Health_System
+
+# HUD reference — used to push stat updates instead of HUD polling every frame
+var hud: HUD
 
 # Current time (8:00 AM = 8, 6:00 PM = 18, etc.)
 var current_time: int = 8
 var current_scene: String = "morning"
 
+# Guard flag — ensures _ready() only runs once even if the node is re-parented
+var _initialized: bool = false
+
 func _ready() -> void:
-	# Initialize systems
-	affection_system = get_node("/root/Game/AffectionSystem")
-	meal_system = get_node("/root/Game/MealSystem")
-	health_system = get_node("/root/Game/HealthSystem")
-	
-	# Start morning scene
+	# BUGFIX: Prevent double/triple initialization if scene is instanced more than once.
+	# If you still see this warning, check Project Settings > Autoload and your main
+	# scene — HomeScene must appear in exactly ONE place.
+	if _initialized:
+		print("[HomeScene] WARNING: _ready() called again — skipping duplicate init.")
+		return
+	_initialized = true
+
+	# Get system references (autoloaded)
+	affection_system = get_node("/root/Affection_System")
+	meal_system      = get_node("/root/Meal_System")
+	health_system    = get_node("/root/Health_System")
+	dialogic         = get_node("/root/Dialogic")
+
+	# HUD lives inside this scene's CanvasLayer — get_node_or_null so missing HUD
+	# doesn't crash the whole game
+	hud = get_node_or_null("CanvasLayer/HUD")
+	if not hud:
+		push_warning("[HomeScene] HUD not found at CanvasLayer/HUD — stat display will not update.")
+
+	if not affection_system:
+		print("[HomeScene] ERROR: AffectionSystem not found in autoload!")
+		return
+
+	if not dialogic:
+		print("[HomeScene] ERROR: Dialogic not found in autoload!")
+		return
+
+	print("[HomeScene] Systems loaded successfully.")
+	print("  - AffectionSystem: affection = %d" % affection_system.current_affection)
+	print("  - MealSystem: coins = %d" % meal_system.coins)
+	print("  - HealthSystem: rin_health = %d" % health_system.rin_health)
+
+	# Connect signals — guard prevents duplicates within this instance
+	if not dialogic.timeline_ended.is_connected(_on_dialogue_finished):
+		dialogic.timeline_ended.connect(_on_dialogue_finished)
+
+	if not dialogic.signal_event.is_connected(_on_dialogic_signal):
+		dialogic.signal_event.connect(_on_dialogic_signal)
+
+	# Start the morning scene
 	load_morning_scene()
 
 func load_morning_scene() -> void:
 	current_scene = "morning"
-	current_time = 8
-	dialogic.start("res://Timelines/scene_01_morning_wakeup.dtl")
-	dialogic.dialogic_signal.connect(_on_dialogue_finished)
+	current_time  = 8
+	if hud:
+		hud.set_time(8)
+		hud.stop_time()
+	if dialogic:
+		print("[HomeScene] Loading morning scene...")
+		dialogic.start("res://Timelines/scene_01_morning_wakeup.dtl")
 
 func load_evening_scene() -> void:
 	current_scene = "evening"
-	current_time = 18
-	dialogic.start("res://Timelines/scene_02_evening_return.dtl")
-	dialogic.dialogic_signal.connect(_on_dialogue_finished)
+	current_time  = 18
+	if hud:
+		hud.set_time(18)
+	if dialogic:
+		print("[HomeScene] Loading evening scene...")
+		dialogic.start("res://Timelines/scene_02_evening_return.dtl")
 
 func load_doubt_scene() -> void:
-	# Check affection threshold
-	if affection_system.affection_check(5):
-		current_scene = "doubt"
-		current_time = 17
+	if not affection_system.affection_check(5):
+		print("[HomeScene] Affection too low for doubt scene (need >= 5, have %d)" % affection_system.current_affection)
+		return
+	current_scene = "doubt"
+	current_time  = 17
+	if hud:
+		hud.set_time(17)
+	if dialogic:
+		print("[HomeScene] Loading doubt scene...")
 		dialogic.start("res://Timelines/scene_03_moment_of_doubt.dtl")
-		dialogic.dialogic_signal.connect(_on_dialogue_finished)
-	else:
-		print("Affection too low for doubt scene. Skipping.")
 
-func _on_dialogue_finished(state: String) -> void:
-	match state:
-		"ready_for_dungeon":
-			# Transition to dungeon exploration
-			get_tree().change_scene_to_file("res://scenes/dungeon_scene.tscn")
-		
-		"ready_for_next_day":
-			# Transition to next day's morning
-			await get_tree().create_timer(1.0).timeout
-			load_morning_scene()
-		
-		"new_direction_unlocked":
-			# Scholar quest is now available
-			print("Scholar quest unlocked!")
-			load_evening_scene()
+func _on_dialogue_finished() -> void:
+	print("[HomeScene] Dialogue finished.")
 
-# Handle Dialogic variable changes
+	match current_scene:
+		"morning":
+			print("[HomeScene] Morning scene complete. (TODO: transition to next scene)")
+		"evening":
+			print("[HomeScene] Evening scene complete. (TODO: transition to next scene)")
+		"doubt":
+			print("[HomeScene] Doubt scene complete. (TODO: transition to next scene)")
+		_:
+			print("[HomeScene] Unknown scene: %s" % current_scene)
+
+# Fires every time Dialogic hits a [signal arg="key:value"] line in a .dtl file
+func _on_dialogic_signal(argument: String) -> void:
+	print("[HomeScene] Dialogic signal received: %s" % argument)
+
+	var parts := argument.split(":")
+	if parts.size() < 2:
+		print("[HomeScene] WARNING: Malformed signal argument: %s" % argument)
+		return
+
+	var event_name := parts[0].strip_edges()
+	var value      := parts[1].strip_edges()
+
+	match event_name:
+		"affection":
+			set_affection(int(value))
+			print("[HomeScene] Affection changed by %s → now %d" % [value, affection_system.get_affection()])
+
+		"meal":
+			# meal handler applies affection + health internally via meal_system.
+			# Never send separate affection/rin_health signals alongside meal: in .dtl.
+			set_meal(value)
+
+		"mood":
+			print("[HomeScene] Mood set to: %s" % value)
+
+		"coins":
+			if meal_system:
+				meal_system.add_coins(int(value))
+				print("[HomeScene] Coins changed by %s → now %d" % [value, meal_system.get_coins()])
+				if hud:
+					hud.notify_coins_changed()
+
+		"rin_health":
+			if health_system:
+				health_system.modify_health(int(value))
+				print("[HomeScene] Rin health changed by %s → now %d" % [value, health_system.get_health()])
+				if hud:
+					hud.notify_health_changed()
+
+		_:
+			print("[HomeScene] WARNING: Unknown signal event '%s' with value '%s'" % [event_name, value])
+
+# ============ SYSTEM CALL FUNCTIONS ============
+
 func set_affection(amount: int) -> void:
-	affection_system.modify_affection(amount)
+	if affection_system:
+		affection_system.modify_affection(amount)
+		if hud:
+			hud.notify_affection_changed()
 
-func set_mood(mood_name: String) -> void:
-	var mood_map = {
-		"happy": affection_system.MoodState.HAPPY,
-		"content": affection_system.MoodState.CONTENT,
-		"sad": affection_system.MoodState.SAD,
-		"worried": affection_system.MoodState.WORRIED,
-		"touched": affection_system.MoodState.TOUCHED,
-	}
-	affection_system.set_mood(mood_map.get(mood_name, affection_system.MoodState.CALM))
+func set_meal(meal_type: String) -> void:
+	if not meal_system or not affection_system or not health_system:
+		return
 
-func set_meal(meal_type: String, coins: int) -> void:
 	if meal_system.purchase_meal(meal_type):
-		var affection_change = meal_system.get_affection_impact(meal_type)
-		var health_change = meal_system.get_health_impact(meal_type)
-		
-		affection_system.modify_affection(affection_change)
-		health_system.modify_health(health_change)
-		print("Meal: %s | Affection: %+d | Health: %+d" % [meal_type, affection_change, health_change])
+		var aff    = meal_system.get_affection_impact(meal_type)
+		var health = meal_system.get_health_impact(meal_type)
 
-# Update UI with current state
-func update_ui() -> void:
-	ui.set_affection(affection_system.get_affection())
-	ui.set_health(health_system.get_health())
-	ui.set_coins(meal_system.get_coins())
-	ui.set_time(current_time)
+		affection_system.modify_affection(aff)
+		health_system.modify_health(health)
+
+		# Notify HUD once after all stats are updated
+		if hud:
+			hud.notify_affection_changed()
+			hud.notify_health_changed()
+			hud.notify_coins_changed()
+
+		print("[HomeScene] Meal processed: %s | Affection: %+d | Health: %+d" % [meal_type, aff, health])
+	else:
+		print("[HomeScene] Meal purchase failed: %s (not enough coins or invalid type)" % meal_type)
+
+func set_mood(_mood_name: String) -> void:
+	pass
+
+func check_affection(required: int) -> bool:
+	if affection_system:
+		return affection_system.affection_check(required)
+	return false

@@ -79,6 +79,7 @@
 [ext_resource type="Texture2D" uid="uid://bnq4m7iwc7xcp" path="res://Characters/Asami/smile 2.png" id="77_bhlhp"]
 [ext_resource type="Texture2D" uid="uid://p6fe0xovmfg1" path="res://Characters/Asami/smile 3.png" id="78_a7ng4"]
 [ext_resource type="Texture2D" uid="uid://b4ebde1av8chg" path="res://Characters/Asami/glasses.png" id="79_heke3"]
+[ext_resource type="PackedScene" uid="uid://7ok118iwmjmb" path="res://Scenes/home_scene.tscn" id="80_jlcia"]
 
 [node name="LayeredPortrait" type="CanvasGroup" unique_id=2120967875]
 script = ExtResource("1_uubi5")
@@ -501,3 +502,5 @@ offset = Vector2(0, 750)
 [node name="Glasses" type="Sprite2D" parent="Pajama(Smile 1)/Accessories" unique_id=1694501218]
 texture = ExtResource("79_heke3")
 offset = Vector2(0, 750)
+
+[node name="HomeScene" parent="." unique_id=1623879696 instance=ExtResource("80_jlcia")]

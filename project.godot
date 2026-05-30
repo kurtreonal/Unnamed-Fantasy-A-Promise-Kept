@@ -11,12 +11,16 @@ config_version=5
 [application]
 
 config/name="Living Together with my Childhood Friend: Fantasy Monochrome"
+run/main_scene="uid://7ok118iwmjmb"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Dialogic="*uid://ds2q0uclmolvu"
+Affection_System="*uid://c1wj7dvsxywk2"
+Health_System="*uid://kbq5try170rc"
+Meal_System="*uid://qy52v6toqagx"
 
 [dialogic]
 
