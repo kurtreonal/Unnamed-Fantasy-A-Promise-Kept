@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var speed = 200
 
-func _physics_process(delta):
+func _physics_process(_delta):
 
 	velocity = Vector2.ZERO
 
@@ -42,3 +42,5 @@ func _physics_process(delta):
 		$AnimatedSprite2D.stop()
 
 	move_and_slide()
+	
+	
