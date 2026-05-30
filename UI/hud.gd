@@ -14,23 +14,28 @@ var day_of_week:    int = 4  # 0=Mon … 6=Sun, default Friday
 
 const DAY_NAMES: Array[String] = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 
+# Real-time tick (only used when time_running = true for passive ticking)
 const TICK_RATE: float = 1.0
 var _tick_accumulator: float = 0.0
 var time_running: bool = false
+
+# ─── Smooth advance state ─────────────────────────────────────────
+# When advance_hours() is called, we tick forward quickly at
+# ADVANCE_TICK_RATE seconds per in-game minute until target is reached.
+const ADVANCE_TICK_RATE: float = 0.03   # seconds per minute tick during fast-forward
+var _advance_minutes_remaining: int = 0
+var _advance_accumulator:       float = 0.0
+var _is_advancing:              bool  = false
 
 # ─── Cached values — only redraw when something actually changed ─
 var _last_affection: int = -999
 var _last_health:    int = -999
 var _last_coins:     int = -999
 
-# ─── Shake guard — one shake tween at a time ─────────────────────
+# ─── Shake guard ─────────────────────────────────────────────────
 var _is_shaking: bool = false
 
-# ─── BUG 3 FIX: Intro animation guard ───────────────────────────
-# If the HUD's _ready() somehow fires more than once (e.g. because the
-# parent scene was re-instanced), _animate_intro() would re-run and
-# leave ghost panels behind. This flag ensures intro plays exactly once
-# per HUD lifetime.
+# ─── Intro animation guard ────────────────────────────────────────
 var _intro_played: bool = false
 
 # ─── Cached StyleBox ─────────────────────────────────────────────
@@ -64,8 +69,6 @@ func _ready() -> void:
 	if not meal_system:
 		push_warning("[HUD] MealSystem autoload not found.")
 
-	# Reset cache so _refresh_all() forces a full redraw on first call,
-	# even if stat values happen to be the same as a previous run.
 	_last_affection = -999
 	_last_health    = -999
 	_last_coins     = -999
@@ -77,13 +80,25 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if time_running:
+	# ── Smooth hour advance ───────────────────────────────────────
+	if _is_advancing:
+		_advance_accumulator += delta
+		while _advance_accumulator >= ADVANCE_TICK_RATE and _advance_minutes_remaining > 0:
+			_advance_accumulator      -= ADVANCE_TICK_RATE
+			_advance_minutes_remaining -= 1
+			_tick_one_minute()
+		if _advance_minutes_remaining <= 0:
+			_is_advancing        = false
+			_advance_accumulator = 0.0
+			time_advance_finished.emit()
+
+	# ── Passive real-time tick ────────────────────────────────────
+	elif time_running:
 		_tick_accumulator += delta
 		if _tick_accumulator >= TICK_RATE:
 			_tick_accumulator -= TICK_RATE
-			_advance_minute()
+			_tick_one_minute()
 
-	# Time label is cheap to update every frame; stats are change-driven.
 	_update_time()
 
 
@@ -92,7 +107,6 @@ func _process(delta: float) -> void:
 # ─────────────────────────────────────────────────────────────────
 
 func _animate_intro() -> void:
-	# BUG 3 FIX: Skip if already played to prevent ghost panels on re-entry.
 	if _intro_played:
 		return
 	_intro_played = true
@@ -174,10 +188,10 @@ func _apply_bar_styles() -> void:
 
 
 # ─────────────────────────────────────────────────────────────────
-# Time Logic
+# Time — Internal
 # ─────────────────────────────────────────────────────────────────
 
-func _advance_minute() -> void:
+func _tick_one_minute() -> void:
 	current_minute += 1
 	if current_minute >= 60:
 		current_minute = 0
@@ -188,27 +202,43 @@ func _advance_minute() -> void:
 	time_changed.emit(current_hour, current_minute)
 
 
+# ─────────────────────────────────────────────────────────────────
+# Time — Public API
+# ─────────────────────────────────────────────────────────────────
+
 func start_time() -> void:
 	time_running = true
-
 
 func stop_time() -> void:
 	time_running = false
 
-
 func set_time(hour: int, minute: int = 0) -> void:
-	current_hour   = clamp(hour, 0, 23)
+	current_hour   = clamp(hour,   0, 23)
 	current_minute = clamp(minute, 0, 59)
 	_update_time()
-
 
 func set_day(day_index: int) -> void:
 	day_of_week = clamp(day_index, 0, 6)
 	_update_time()
 
+# Smoothly tick the clock forward by `hours` in-game hours.
+# Emits time_advance_finished when done.
+# If an advance is already in progress this extends it.
+func advance_hours(hours: int) -> void:
+	_advance_minutes_remaining += hours * 60
+	_is_advancing               = true
+
+# Same but for partial minutes (useful for fine control).
+func advance_minutes(minutes: int) -> void:
+	_advance_minutes_remaining += minutes
+	_is_advancing               = true
+
+func is_advancing() -> bool:
+	return _is_advancing
+
 
 # ─────────────────────────────────────────────────────────────────
-# Refresh — called ONLY when a stat actually changes
+# Stat Refresh — called only when a value changes
 # ─────────────────────────────────────────────────────────────────
 
 func _refresh_all() -> void:
@@ -217,8 +247,6 @@ func _refresh_all() -> void:
 	_update_health()
 	_update_coins()
 
-
-# Call these from HomeScene after modifying a system value.
 func notify_affection_changed() -> void:
 	_update_affection()
 
@@ -250,8 +278,7 @@ func _update_affection() -> void:
 	var val: int = affection_system.get_affection()
 	if val == _last_affection:
 		return
-	_last_affection = val
-
+	_last_affection         = val
 	affection_bar.max_value = affection_system.affection_max
 	affection_bar.min_value = affection_system.affection_min
 	affection_label.text    = str(val)
@@ -265,14 +292,12 @@ func _update_health() -> void:
 	var val: int = health_system.get_health()
 	if val == _last_health:
 		return
-	_last_health = val
-
+	_last_health         = val
 	health_bar.max_value = health_system.rin_health_max
 	health_label.text    = str(val)
 	_tween_bar(health_bar, val)
 	_pulse_label(health_label)
 
-	# Smoothly shift fill colour green → yellow → red as health drops.
 	var ratio    := float(val) / float(health_system.rin_health_max)
 	var fill_col := Color()
 	if ratio > 0.5:
@@ -321,11 +346,9 @@ func _pulse_label(label: Label) -> void:
 
 
 func _shake(node: Control) -> void:
-	# Guard: only one shake tween at a time.
 	if _is_shaking:
 		return
 	_is_shaking = true
-
 	var origin := node.position.x
 	var t      := create_tween()
 	t.set_trans(Tween.TRANS_SINE)
@@ -338,6 +361,7 @@ func _shake(node: Control) -> void:
 
 
 # ─────────────────────────────────────────────────────────────────
-# Signal
+# Signals
 # ─────────────────────────────────────────────────────────────────
 signal time_changed(hour: int, minute: int)
+signal time_advance_finished()

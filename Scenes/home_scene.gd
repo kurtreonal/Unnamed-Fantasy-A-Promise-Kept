@@ -11,44 +11,43 @@ var health_system:    Health_System
 var dialogic: Node
 
 # ─── HUD reference ───────────────────────────────────────────────
-# Lives at CanvasLayer/HUD inside this scene.
 var hud: HUD
 
 # ─── Scene state ─────────────────────────────────────────────────
 var current_time:  int    = 8
 var current_scene: String = "morning"
 
-# ─── BUG 1 FIX: Static flag shared across ALL instances ──────────
-# Because Dialogic re-triggers the scene tree and can cause _ready()
-# to fire on multiple HomeScene instances, a per-instance bool is not
-# enough. A static var lives on the CLASS, so even if Godot creates a
-# second instance mid-frame the guard still holds.
+# ─── Duplicate-instance guard (static = shared across all instances) ─
 static var _scene_started: bool = false
 
-# ─── BUG 2 FIX: Deferred start flag ─────────────────────────────
-# dialogic.start() called directly inside _ready() can cause a freeze
-# when Dialogic's layout node isn't fully in the tree yet. We queue
-# the start to the next safe frame via call_deferred / a flag checked
-# in _process().
+# ─── Deferred timeline start ─────────────────────────────────────
 var _pending_timeline: String = ""
 var _start_deferred:   bool   = false
+
+# ─── Signal connection guard ─────────────────────────────────────
+# Tracks whether THIS instance has connected its signal handlers.
+# Fixes double-firing: Dialogic autoload persists across scene reloads,
+# so without per-instance tracking, connecting on every _ready() piles
+# up duplicate connections to the same autoload signals.
+var _signals_connected: bool = false
 
 # ─────────────────────────────────────────────────────────────────
 # Lifecycle
 # ─────────────────────────────────────────────────────────────────
-
-func _ready() -> void:
-	# BUG 1 FIX: If another HomeScene instance already ran init, bail out
-	# immediately and also remove this duplicate node from the tree so it
-	# doesn't render a second overlapping HUD (Bug 3).
+func _init() -> void:
 	if _scene_started:
-		push_warning("[HomeScene] Duplicate instance detected — freeing self to prevent overlapping HUD.")
+		# Kill it before it ever enters the tree — no flash, no _ready() side effects
+		set_process(false)
+		set_physics_process(false)
+		return
+		
+func _ready() -> void:
+	if _scene_started:
+		hide()
 		queue_free()
 		return
-
 	_scene_started = true
 
-	# ── Grab autoloads ───────────────────────────────────────────
 	affection_system = get_node_or_null("/root/Affection_System")
 	meal_system      = get_node_or_null("/root/Meal_System")
 	health_system    = get_node_or_null("/root/Health_System")
@@ -67,83 +66,104 @@ func _ready() -> void:
 		push_error("[HomeScene] Dialogic not found in autoload!")
 		return
 
-	# ── HUD ──────────────────────────────────────────────────────
 	hud = get_node_or_null("CanvasLayer/HUD")
 	if not hud:
-		push_warning("[HomeScene] HUD not found at CanvasLayer/HUD — stat display will not update.")
+		push_warning("[HomeScene] HUD not found at CanvasLayer/HUD.")
 
-	# ── Log initial state ─────────────────────────────────────────
 	print("[HomeScene] Systems loaded successfully.")
 	print("  - AffectionSystem: affection = %d" % affection_system.current_affection)
 	print("  - MealSystem: coins = %d"           % meal_system.coins)
 	print("  - HealthSystem: rin_health = %d"    % health_system.rin_health)
 
-	# ── Connect Dialogic signals (guarded against duplicates) ─────
-	if not dialogic.timeline_ended.is_connected(_on_dialogue_finished):
-		dialogic.timeline_ended.connect(_on_dialogue_finished)
+	_connect_dialogic_signals()
 
-	if not dialogic.signal_event.is_connected(_on_dialogic_signal):
-		dialogic.signal_event.connect(_on_dialogic_signal)
-
-	# ── BUG 2 FIX: Schedule timeline start for next frame ────────
-	# Calling dialogic.start() synchronously in _ready() can deadlock
-	# when Dialogic's internal VisualNovelLayout node isn't fully
-	# initialised yet. Deferring one frame gives every node in the
-	# tree time to finish their own _ready() calls first.
-	_request_scene("morning")
+	if dialogic.current_timeline == null:
+		_request_scene("morning")
 
 
 func _process(_delta: float) -> void:
-	# BUG 2 FIX: Execute the deferred start exactly once, then clear the flag.
 	if _start_deferred and _pending_timeline != "":
-		_start_deferred    = false
-		var tl             := _pending_timeline
-		_pending_timeline   = ""
+		if dialogic.current_timeline != null:
+			return
+		_start_deferred   = false
+		var tl            := _pending_timeline
+		_pending_timeline  = ""
 		print("[HomeScene] Starting timeline: %s" % tl)
 		dialogic.start(tl)
 
 
 func _notification(what: int) -> void:
-	# BUG 1 FIX: Reset the static guard when this scene is cleanly removed
-	# (e.g. returning to a main menu and coming back), so the next legitimate
-	# load works correctly.
 	if what == NOTIFICATION_PREDELETE:
+		# Disconnect our handlers before freeing so Dialogic's autoload
+		# doesn't hold stale references that would cause double-firing
+		# if a new HomeScene is created later in the same session.
+		_disconnect_dialogic_signals()
 		_scene_started = false
 
 
 # ─────────────────────────────────────────────────────────────────
-# Internal helper — request a scene change safely
+# Signal Connection Management
+# ─────────────────────────────────────────────────────────────────
+
+func _connect_dialogic_signals() -> void:
+	if _signals_connected:
+		return
+	_signals_connected = true
+
+	# Always disconnect first in case a previous run left orphan connections
+	# on the persistent Dialogic autoload node.
+	if dialogic.timeline_ended.is_connected(_on_dialogue_finished):
+		dialogic.timeline_ended.disconnect(_on_dialogue_finished)
+	if dialogic.signal_event.is_connected(_on_dialogic_signal):
+		dialogic.signal_event.disconnect(_on_dialogic_signal)
+
+	dialogic.timeline_ended.connect(_on_dialogue_finished)
+	dialogic.signal_event.connect(_on_dialogic_signal)
+	print("[HomeScene] Dialogic signals connected.")
+
+
+func _disconnect_dialogic_signals() -> void:
+	if not _signals_connected or not dialogic:
+		return
+	_signals_connected = false
+
+	if dialogic.timeline_ended.is_connected(_on_dialogue_finished):
+		dialogic.timeline_ended.disconnect(_on_dialogue_finished)
+	if dialogic.signal_event.is_connected(_on_dialogic_signal):
+		dialogic.signal_event.disconnect(_on_dialogic_signal)
+	print("[HomeScene] Dialogic signals disconnected.")
+
+
+# ─────────────────────────────────────────────────────────────────
+# Scene Request
 # ─────────────────────────────────────────────────────────────────
 
 func _request_scene(scene_key: String) -> void:
-	# BUG 3 FIX: If Dialogic is already playing, end it cleanly before
-	# starting a new timeline. This prevents the layout node from being
-	# added a second time on top of the existing one.
 	if dialogic.current_timeline != null:
-		push_warning("[HomeScene] Dialogic already running — ending current timeline before starting '%s'." % scene_key)
+		push_warning("[HomeScene] Ending current timeline before starting '%s'." % scene_key)
 		dialogic.end_timeline()
 
 	match scene_key:
 		"morning":
-			current_scene      = "morning"
-			current_time       = 8
-			_pending_timeline  = "res://Timelines/scene_01_morning_wakeup.dtl"
+			current_scene     = "morning"
+			current_time      = 8
+			_pending_timeline = "res://Timelines/scene_01_morning_wakeup.dtl"
 			if hud:
 				hud.set_time(8)
 				hud.stop_time()
 		"evening":
-			current_scene      = "evening"
-			current_time       = 18
-			_pending_timeline  = "res://Timelines/scene_02_evening_return.dtl"
+			current_scene     = "evening"
+			current_time      = 18
+			_pending_timeline = "res://Timelines/scene_02_evening_return.dtl"
 			if hud:
 				hud.set_time(18)
 		"doubt":
 			if not affection_system.affection_check(5):
 				print("[HomeScene] Affection too low for doubt scene (need >= 5, have %d)" % affection_system.current_affection)
 				return
-			current_scene      = "doubt"
-			current_time       = 17
-			_pending_timeline  = "res://Timelines/scene_03_moment_of_doubt.dtl"
+			current_scene     = "doubt"
+			current_time      = 17
+			_pending_timeline = "res://Timelines/scene_03_moment_of_doubt.dtl"
 			if hud:
 				hud.set_time(17)
 		_:
@@ -154,7 +174,7 @@ func _request_scene(scene_key: String) -> void:
 
 
 # ─────────────────────────────────────────────────────────────────
-# Public scene-load API (call these from other scripts / UI buttons)
+# Public Scene API
 # ─────────────────────────────────────────────────────────────────
 
 func load_morning_scene() -> void:
@@ -168,69 +188,130 @@ func load_doubt_scene() -> void:
 
 
 # ─────────────────────────────────────────────────────────────────
-# Dialogic signal handlers
+# Coin Gate
+# Push affordability flags into Dialogic VAR subsystem so the .dtl
+# can condition choices on them.
+# Triggered by [signal arg="check_coins"] in the timeline.
+# ─────────────────────────────────────────────────────────────────
+
+func _push_coin_vars() -> void:
+	var coins: int = meal_system.get_coins()
+
+	# Set to true/false — .dtl conditions use "if variable_name" (truthy check)
+	Dialogic.VAR.set("grand_affordable",   coins >= meal_system.MEAL_COSTS["grand"])
+	Dialogic.VAR.set("simple_affordable",  coins >= meal_system.MEAL_COSTS["simple"])
+	Dialogic.VAR.set("takeout_affordable", coins >= meal_system.MEAL_COSTS["takeout"])
+
+	print("[HomeScene] Coin gate — coins: %d | grand:%s simple:%s takeout:%s" % [
+		coins,
+		"✓" if coins >= meal_system.MEAL_COSTS["grand"]   else "✗",
+		"✓" if coins >= meal_system.MEAL_COSTS["simple"]  else "✗",
+		"✓" if coins >= meal_system.MEAL_COSTS["takeout"] else "✗",
+	])
+
+
+# ─────────────────────────────────────────────────────────────────
+# Time Advance
+# Smoothly ticks the HUD clock forward by `hours`, pausing Dialogic
+# input during the animation so the player can't skip ahead.
+# ─────────────────────────────────────────────────────────────────
+
+func _advance_time(hours: int) -> void:
+	if not hud:
+		return
+	current_time   += hours
+	dialogic.paused = true
+	hud.advance_hours(hours)
+
+	# CONNECT_ONE_SHOT ensures this fires exactly once per advance call,
+	# even if _advance_time() is called multiple times in a row.
+	if not hud.time_advance_finished.is_connected(_on_time_advance_finished):
+		hud.time_advance_finished.connect(_on_time_advance_finished, CONNECT_ONE_SHOT)
+
+
+func _on_time_advance_finished() -> void:
+	dialogic.paused = false
+	print("[HomeScene] Clock advanced → now %02d:00" % current_time)
+
+
+# ─────────────────────────────────────────────────────────────────
+# Dialogic Signal Handlers
 # ─────────────────────────────────────────────────────────────────
 
 func _on_dialogue_finished() -> void:
 	print("[HomeScene] Dialogue finished.")
 	match current_scene:
 		"morning":
-			print("[HomeScene] Morning scene complete. (TODO: transition to next scene)")
+			print("[HomeScene] Morning scene complete.")
 		"evening":
-			print("[HomeScene] Evening scene complete. (TODO: transition to next scene)")
+			print("[HomeScene] Evening scene complete.")
 		"doubt":
-			print("[HomeScene] Doubt scene complete. (TODO: transition to next scene)")
+			print("[HomeScene] Doubt scene complete.")
 		_:
 			print("[HomeScene] Unknown scene finished: %s" % current_scene)
 
 
-# Fires every time Dialogic hits a [signal arg="key:value"] line in a .dtl file.
 func _on_dialogic_signal(argument: String) -> void:
 	print("[HomeScene] Dialogic signal received: %s" % argument)
 
-	# BUG 1 FIX: Values like "+2" come through as "affection:+2".
-	# Split on the FIRST colon only so values that contain colons are safe.
 	var colon_idx := argument.find(":")
+
+	# ── Signals with no value (e.g. "check_coins") ───────────────
 	if colon_idx == -1:
-		push_warning("[HomeScene] Malformed signal (no colon): %s" % argument)
+		match argument.strip_edges():
+			"check_coins":
+				_push_coin_vars()
+			_:
+				push_warning("[HomeScene] Unknown no-value signal: %s" % argument)
 		return
 
 	var event_name := argument.left(colon_idx).strip_edges()
 	var value      := argument.right(argument.length() - colon_idx - 1).strip_edges()
 
 	match event_name:
+
+		# ── Time advance ──────────────────────────────────────────
+		"time":
+			var hours: int = int(value)
+			if hours != 0:
+				_advance_time(hours)
+				print("[HomeScene] Time advance queued: %+d hour(s)" % hours)
+
+		# ── Affection ─────────────────────────────────────────────
 		"affection":
 			set_affection(int(value))
-			print("[HomeScene] Affection changed by %s → now %d" % [value, affection_system.get_affection()])
+			print("[HomeScene] Affection %s → now %d" % [value, affection_system.get_affection()])
 
+		# ── Meal (deducts coins + applies affection & health) ─────
 		"meal":
-			# meal handler applies affection + health internally via meal_system.
-			# Never send separate affection/rin_health signals alongside meal: in .dtl.
 			set_meal(value)
 
+		# ── Mood ──────────────────────────────────────────────────
 		"mood":
 			set_mood(value)
 
+		# ── Direct coin grant (e.g. dungeon loot reward) ──────────
 		"coins":
 			if meal_system:
 				meal_system.add_coins(int(value))
-				print("[HomeScene] Coins changed by %s → now %d" % [value, meal_system.get_coins()])
+				print("[HomeScene] Coins %s → now %d" % [value, meal_system.get_coins()])
 				if hud:
 					hud.notify_coins_changed()
 
+		# ── Direct health change ──────────────────────────────────
 		"rin_health":
 			if health_system:
 				health_system.modify_health(int(value))
-				print("[HomeScene] Rin health changed by %s → now %d" % [value, health_system.get_health()])
+				print("[HomeScene] Rin health %s → now %d" % [value, health_system.get_health()])
 				if hud:
 					hud.notify_health_changed()
 
 		_:
-			push_warning("[HomeScene] Unknown signal event '%s' with value '%s'" % [event_name, value])
+			push_warning("[HomeScene] Unknown signal '%s' with value '%s'" % [event_name, value])
 
 
 # ─────────────────────────────────────────────────────────────────
-# System call functions
+# System Call Functions
 # ─────────────────────────────────────────────────────────────────
 
 func set_affection(amount: int) -> void:
@@ -251,19 +332,17 @@ func set_meal(meal_type: String) -> void:
 		affection_system.modify_affection(aff)
 		health_system.modify_health(health)
 
-		# Notify HUD once after all stats are updated.
 		if hud:
 			hud.notify_affection_changed()
 			hud.notify_health_changed()
 			hud.notify_coins_changed()
 
-		print("[HomeScene] Meal processed: %s | Affection: %+d | Health: %+d" % [meal_type, aff, health])
+		print("[HomeScene] Meal '%s' | Affection: %+d | Health: %+d" % [meal_type, aff, health])
 	else:
-		print("[HomeScene] Meal purchase failed: %s (not enough coins or invalid type)" % meal_type)
+		print("[HomeScene] Meal purchase failed: '%s' (not enough coins)" % meal_type)
 
 
 func set_mood(mood_name: String) -> void:
-	# Extend this when mood system is implemented.
 	print("[HomeScene] Mood set to: %s" % mood_name)
 
 
