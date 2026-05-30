@@ -17,7 +17,7 @@ narrator: Her face looks peaceful. She's still asleep.
 	[signal arg="affection:+2"]
 	[signal arg="mood:calm"]
 	leave Asami [animation="Fade Out" length="0.3"]
-	jump breakfast_choice
+	jump scene_01_morning_wakeup/breakfast_choice:
 
 - "Gently call her name"
 	player: Rin... good morning.
@@ -32,7 +32,7 @@ narrator: Her face looks peaceful. She's still asleep.
 	[signal arg="affection:+3"]
 	[signal arg="mood:calm"]
 	leave Asami [animation="Fade Out" length="0.3"]
-	jump breakfast_choice
+	jump scene_01_morning_wakeup/
 
 - "Check her health first"
 	player: Let me check how you're feeling first.
@@ -52,7 +52,7 @@ narrator: Her face looks peaceful. She's still asleep.
 	[signal arg="affection:+5"]
 	[signal arg="mood:touched"]
 	leave Asami [animation="Fade Out" length="0.3"]
-	jump breakfast_choice
+	jump scene_01_morning_wakeup/
 
 label breakfast_choice:
 

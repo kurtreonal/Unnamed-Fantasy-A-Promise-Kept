@@ -4,28 +4,36 @@ class_name HUD
 
 # ─── System References ───────────────────────────────────────────
 var affection_system: Affection_System
-var health_system: Health_System
-var meal_system: Meal_System
+var health_system:    Health_System
+var meal_system:      Meal_System
 
 # ─── Time State ──────────────────────────────────────────────────
 var current_hour:   int = 8
 var current_minute: int = 0
 var day_of_week:    int = 4  # 0=Mon … 6=Sun, default Friday
+
 const DAY_NAMES: Array[String] = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 
 const TICK_RATE: float = 1.0
 var _tick_accumulator: float = 0.0
 var time_running: bool = false
 
-# ─── Cached values to detect changes ────────────────────────────
+# ─── Cached values — only redraw when something actually changed ─
 var _last_affection: int = -999
 var _last_health:    int = -999
 var _last_coins:     int = -999
 
-# ─── Shake guard — prevents spawning a new shake tween every frame ──
+# ─── Shake guard — one shake tween at a time ─────────────────────
 var _is_shaking: bool = false
 
-# ─── Cached StyleBox objects ────────────────────────────────────
+# ─── BUG 3 FIX: Intro animation guard ───────────────────────────
+# If the HUD's _ready() somehow fires more than once (e.g. because the
+# parent scene was re-instanced), _animate_intro() would re-run and
+# leave ghost panels behind. This flag ensures intro plays exactly once
+# per HUD lifetime.
+var _intro_played: bool = false
+
+# ─── Cached StyleBox ─────────────────────────────────────────────
 var _health_fill_style: StyleBoxFlat = null
 
 # ─── UI Node References ──────────────────────────────────────────
@@ -40,7 +48,9 @@ var _health_fill_style: StyleBoxFlat = null
 @onready var stats_panel:     PanelContainer = $HUDContainer/StatsPanel
 @onready var hud_container:   Control        = $HUDContainer
 
-# ─── Lifecycle ───────────────────────────────────────────────────
+# ─────────────────────────────────────────────────────────────────
+# Lifecycle
+# ─────────────────────────────────────────────────────────────────
 
 func _ready() -> void:
 	affection_system = get_node_or_null("/root/Affection_System")
@@ -54,10 +64,17 @@ func _ready() -> void:
 	if not meal_system:
 		push_warning("[HUD] MealSystem autoload not found.")
 
+	# Reset cache so _refresh_all() forces a full redraw on first call,
+	# even if stat values happen to be the same as a previous run.
+	_last_affection = -999
+	_last_health    = -999
+	_last_coins     = -999
+
 	_apply_panel_styles()
 	_apply_bar_styles()
 	_refresh_all()
 	_animate_intro()
+
 
 func _process(delta: float) -> void:
 	if time_running:
@@ -66,14 +83,20 @@ func _process(delta: float) -> void:
 			_tick_accumulator -= TICK_RATE
 			_advance_minute()
 
-	# BUGFIX: Only update time every frame (cheap).
-	# Stats are only refreshed when values actually change — NOT every frame.
-	# Previously _refresh_all() here called _shake() 60x/sec when health was critical.
+	# Time label is cheap to update every frame; stats are change-driven.
 	_update_time()
 
-# ─── Intro Animation ─────────────────────────────────────────────
+
+# ─────────────────────────────────────────────────────────────────
+# Intro Animation
+# ─────────────────────────────────────────────────────────────────
 
 func _animate_intro() -> void:
+	# BUG 3 FIX: Skip if already played to prevent ghost panels on re-entry.
+	if _intro_played:
+		return
+	_intro_played = true
+
 	if not top_bar or not stats_panel:
 		return
 
@@ -90,12 +113,15 @@ func _animate_intro() -> void:
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_BACK)
 
-	tween.tween_property(top_bar,     "position",    original_top_pos,   0.55).set_delay(0.1)
-	tween.tween_property(top_bar,     "modulate:a",  1.0,                0.35).set_delay(0.1)
-	tween.tween_property(stats_panel, "position",    original_stats_pos, 0.55).set_delay(0.22)
-	tween.tween_property(stats_panel, "modulate:a",  1.0,                0.35).set_delay(0.22)
+	tween.tween_property(top_bar,     "position",   original_top_pos,   0.55).set_delay(0.1)
+	tween.tween_property(top_bar,     "modulate:a", 1.0,                0.35).set_delay(0.1)
+	tween.tween_property(stats_panel, "position",   original_stats_pos, 0.55).set_delay(0.22)
+	tween.tween_property(stats_panel, "modulate:a", 1.0,                0.35).set_delay(0.22)
 
-# ─── Styling ─────────────────────────────────────────────────────
+
+# ─────────────────────────────────────────────────────────────────
+# Styling
+# ─────────────────────────────────────────────────────────────────
 
 func _apply_panel_styles() -> void:
 	var panel_style := StyleBoxFlat.new()
@@ -118,6 +144,7 @@ func _apply_panel_styles() -> void:
 		top_bar.add_theme_stylebox_override("panel", panel_style)
 	if stats_panel:
 		stats_panel.add_theme_stylebox_override("panel", panel_style.duplicate())
+
 
 func _apply_bar_styles() -> void:
 	var bg_style := StyleBoxFlat.new()
@@ -145,7 +172,10 @@ func _apply_bar_styles() -> void:
 		health_bar.add_theme_stylebox_override("background", bg_style.duplicate())
 		health_bar.add_theme_stylebox_override("fill", hp_fill)
 
-# ─── Time Logic ──────────────────────────────────────────────────
+
+# ─────────────────────────────────────────────────────────────────
+# Time Logic
+# ─────────────────────────────────────────────────────────────────
 
 func _advance_minute() -> void:
 	current_minute += 1
@@ -157,24 +187,29 @@ func _advance_minute() -> void:
 			day_of_week  = (day_of_week + 1) % 7
 	time_changed.emit(current_hour, current_minute)
 
+
 func start_time() -> void:
 	time_running = true
 
+
 func stop_time() -> void:
 	time_running = false
+
 
 func set_time(hour: int, minute: int = 0) -> void:
 	current_hour   = clamp(hour, 0, 23)
 	current_minute = clamp(minute, 0, 59)
 	_update_time()
 
+
 func set_day(day_index: int) -> void:
 	day_of_week = clamp(day_index, 0, 6)
 	_update_time()
 
-# ─── Refresh — called ONLY when a stat actually changes ──────────
-# Call these from outside (e.g. HomeScene) after modifying a system,
-# OR connect each system's changed signal to the matching update fn.
+
+# ─────────────────────────────────────────────────────────────────
+# Refresh — called ONLY when a stat actually changes
+# ─────────────────────────────────────────────────────────────────
 
 func _refresh_all() -> void:
 	_update_time()
@@ -182,6 +217,8 @@ func _refresh_all() -> void:
 	_update_health()
 	_update_coins()
 
+
+# Call these from HomeScene after modifying a system value.
 func notify_affection_changed() -> void:
 	_update_affection()
 
@@ -191,7 +228,10 @@ func notify_health_changed() -> void:
 func notify_coins_changed() -> void:
 	_update_coins()
 
-# ─── Individual Update Functions ─────────────────────────────────
+
+# ─────────────────────────────────────────────────────────────────
+# Individual Update Functions
+# ─────────────────────────────────────────────────────────────────
 
 func _update_time() -> void:
 	if not time_label or not day_label:
@@ -202,6 +242,7 @@ func _update_time() -> void:
 		display_hour = 12
 	time_label.text = "%02d:%02d %s" % [display_hour, current_minute, suffix]
 	day_label.text  = DAY_NAMES[day_of_week]
+
 
 func _update_affection() -> void:
 	if not affection_system or not affection_bar or not affection_label:
@@ -217,6 +258,7 @@ func _update_affection() -> void:
 	_tween_bar(affection_bar, val)
 	_pulse_label(affection_label)
 
+
 func _update_health() -> void:
 	if not health_system or not health_bar or not health_label:
 		return
@@ -230,7 +272,7 @@ func _update_health() -> void:
 	_tween_bar(health_bar, val)
 	_pulse_label(health_label)
 
-	# Update fill color based on health ratio
+	# Smoothly shift fill colour green → yellow → red as health drops.
 	var ratio    := float(val) / float(health_system.rin_health_max)
 	var fill_col := Color()
 	if ratio > 0.5:
@@ -239,15 +281,14 @@ func _update_health() -> void:
 		fill_col = Color(0.95, 0.88, 0.35).lerp(Color(0.85, 0.20, 0.20), 1.0 - (ratio * 2.0))
 
 	if _health_fill_style == null or _health_fill_style.bg_color != fill_col:
-		_health_fill_style = StyleBoxFlat.new()
+		_health_fill_style          = StyleBoxFlat.new()
 		_health_fill_style.bg_color = fill_col
 		_health_fill_style.set_corner_radius_all(2)
 		health_bar.add_theme_stylebox_override("fill", _health_fill_style)
 
-	# BUGFIX: _shake() is now guarded by _is_shaking so it only fires once per
-	# critical event, not 60 times per second in _process().
 	if health_system.is_critical():
 		_shake(health_bar)
+
 
 func _update_coins() -> void:
 	if not meal_system or not coins_label:
@@ -255,17 +296,21 @@ func _update_coins() -> void:
 	var val: int = meal_system.get_coins()
 	if val == _last_coins:
 		return
-	_last_coins = val
+	_last_coins      = val
 	coins_label.text = "%d g" % val
 	_pulse_label(coins_label)
 
-# ─── Animation Helpers ───────────────────────────────────────────
+
+# ─────────────────────────────────────────────────────────────────
+# Animation Helpers
+# ─────────────────────────────────────────────────────────────────
 
 func _tween_bar(bar: ProgressBar, target: float) -> void:
 	var t := create_tween()
 	t.set_ease(Tween.EASE_OUT)
 	t.set_trans(Tween.TRANS_QUART)
 	t.tween_property(bar, "value", target, 0.4)
+
 
 func _pulse_label(label: Label) -> void:
 	var t := create_tween()
@@ -274,10 +319,9 @@ func _pulse_label(label: Label) -> void:
 	t.tween_property(label, "scale", Vector2(1.25, 1.25), 0.10)
 	t.tween_property(label, "scale", Vector2(1.0,  1.0),  0.18)
 
-# BUGFIX: _is_shaking flag ensures only ONE shake tween runs at a time.
-# Previously this was called every frame from _process() when health was
-# critical — spawning ~60 competing tweens per second, causing jitter and crash.
+
 func _shake(node: Control) -> void:
+	# Guard: only one shake tween at a time.
 	if _is_shaking:
 		return
 	_is_shaking = true
@@ -289,9 +333,11 @@ func _shake(node: Control) -> void:
 	t.tween_property(node, "position:x", origin - 5.0, 0.05)
 	t.tween_property(node, "position:x", origin + 3.0, 0.05)
 	t.tween_property(node, "position:x", origin - 3.0, 0.05)
-	t.tween_property(node, "position:x", origin,        0.05)
-	# Release the guard once the shake animation finishes
+	t.tween_property(node, "position:x", origin,       0.05)
 	t.tween_callback(func(): _is_shaking = false)
 
-# ─── Signal ──────────────────────────────────────────────────────
+
+# ─────────────────────────────────────────────────────────────────
+# Signal
+# ─────────────────────────────────────────────────────────────────
 signal time_changed(hour: int, minute: int)
