@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://tqacjyq1ekph"
+path="res://.godot/imported/ARROW SOUND EFFECT - FREE.mp3-988897551656d95d77bb16b92e2b0bca.mp3str"
+
+[deps]
+
+source_file="res://Sprite Assest/ARROW SOUND EFFECT - FREE.mp3"
+dest_files=["res://.godot/imported/ARROW SOUND EFFECT - FREE.mp3-988897551656d95d77bb16b92e2b0bca.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
