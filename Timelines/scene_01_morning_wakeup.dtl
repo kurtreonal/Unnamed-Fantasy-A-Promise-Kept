@@ -6,11 +6,11 @@
 narrator: The morning light filters through the curtains.
 narrator: Her face looks peaceful. She's still asleep.
 
-- "Let her sleep a bit longer"
+- Let her sleep a bit longer
 	narrator: You quietly leave the room, letting her rest.
 	narrator: Time passes. You return at 9\:00 AM.
 	[signal arg="time:+1"]
-	join Asami center [animation="Slide From Left" length="3.0" wait="true"]
+	join Asami center [animation="Slide From Left" length="2.0" wait="true"]
 	Asami: Oh... I slept longer than I meant to.
 	Asami: I'm sorry. I know you wanted to have breakfast together...
 	player: Don't apologize. Your health comes first.
@@ -21,7 +21,7 @@ narrator: Her face looks peaceful. She's still asleep.
 	leave Asami [animation="Fade Out" length="0.3"]
 	jump scene_01_morning_wakeup/breakfast_choice:
 
-- "Gently call her name"
+- Gently call her name
 	player: Rin... good morning.
 	[signal arg="time:+1"]
 	join Asami center [animation="Fade In"]
@@ -37,7 +37,7 @@ narrator: Her face looks peaceful. She's still asleep.
 	leave Asami [animation="Fade Out" length="0.3"]
 	jump scene_01_morning_wakeup/breakfast_choice:
 
-- "Check her health first"
+- Check her health first
 	player: Let me check how you're feeling first.
 	narrator: You gently place a hand on her forehead.
 	narrator: She stirs slightly.
@@ -64,9 +64,9 @@ label breakfast_choice:
 narrator: Rin's stomach reminds you both that breakfast is needed.
 narrator: What will you prepare?
 
-[signal arg="check_coins"]
-
-- "Cook her favorite — a grand meal (3000g)" if grand_affordable
+- Cook her favorite — a grand meal (3000g)
+	[signal arg="mood:very_happy"]
+	[signal arg="meal:grand"]
 	narrator: You spend an hour preparing Rin's favorite meal.
 	narrator: Roasted vegetables, fresh bread, herbal tea infused with honey.
 	[signal arg="time:+1"]
@@ -77,22 +77,23 @@ narrator: What will you prepare?
 	Asami: Thank you.
 	narrator: She eats slowly but genuinely enjoys every bite.
 	narrator: For a moment, she forgets her pain.
-	[signal arg="mood:very_happy"]
-	[signal arg="meal:grand"]
 	jump scene_01_morning_wakeup/end_breakfast:
 
-- "Make something simple and warm (1000g)" if simple_affordable
+- Make something simple and warm (1000g)
+	[signal arg="mood:content"]
+	[signal arg="meal:simple"]
 	narrator: You prepare a simple breakfast — warm bread, cheese, and mild broth.
 	[signal arg="time:+1"]
-	join Asami (Asami Pajama(Smile)) center [animation="Fade In"]
+	join Asami center [animation="Fade In"]
 	Asami: This is nice. Thank you.
 	player: Just eat at your own pace.
 	Asami: I will. It's warm and comforting.
-	[signal arg="mood:content"]
-	[signal arg="meal:simple"]
 	jump scene_01_morning_wakeup/end_breakfast:
 
-- "Order takeout from town (1500g)" if takeout_affordable
+- Order takeout from town (1500g)
+	[signal arg="affection:-2"]
+	[signal arg="mood:sad"]
+	[signal arg="meal:takeout"]
 	narrator: You order food from the local shop in town.
 	narrator: It arrives warm, but store-bought.
 	[signal arg="time:+1"]
@@ -104,25 +105,22 @@ narrator: What will you prepare?
 	Asami: It makes me feel like I'm still useful.
 	player: You're always useful to me, Rin.
 	Asami: ...Thanks.
-	[signal arg="affection:-2"]
-	[signal arg="mood:sad"]
-	[signal arg="meal:takeout"]
 	jump scene_01_morning_wakeup/end_breakfast:
 
-- "Skip breakfast and go explore"
+- Skip breakfast and go explore
+	[signal arg="affection:-3"]
+	[signal arg="mood:worried"]
+	[signal arg="meal:skip"]
+	[signal arg="rin_health:-5"]
 	narrator: You're eager to get to the dungeons.
 	narrator: Every day counts toward finding the cure.
-	join Asami (Asami T-shirt(Smile 1)) center [animation="Fade In"]
+	join Asami center [animation="Fade In"]
 	Asami: You're leaving already?
 	Asami: You haven't eaten...
 	player: I'll grab something in town. You should rest.
 	Asami: Please be careful out there.
 	Asami: Come home safe.
 	player: I will. I promise.
-	[signal arg="affection:-3"]
-	[signal arg="mood:worried"]
-	[signal arg="meal:skip"]
-	[signal arg="rin_health:-5"]
 	jump scene_01_morning_wakeup/end_breakfast:
 
 label end_breakfast:

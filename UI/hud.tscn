@@ -1,12 +1,13 @@
-[gd_scene format=3 uid="uid://hud_overlay_001"]
+[gd_scene format=3 uid="uid://cmrytrmso1len"]
 
-[ext_resource type="Script" path="res://UI/hud.gd" id="1_hud"]
+[ext_resource type="Script" uid="uid://br2quk36vtxqw" path="res://UI/hud.gd" id="1_hud"]
+[ext_resource type="Texture2D" uid="uid://dqkh4odcn51ad" path="res://Assets/kenney_fantasy-ui-borders/PNG/Default/Panel/panel-005.png" id="2_bytes"]
 
-[node name="HUD" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer" unique_id=208553937]
 layer = 10
 script = ExtResource("1_hud")
 
-[node name="HUDContainer" type="Control" parent="."]
+[node name="HUDContainer" type="Control" parent="." unique_id=699147646]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,111 +15,173 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TopBar" type="PanelContainer" parent="HUDContainer"]
+[node name="TopBar" type="Control" parent="HUDContainer" unique_id=1066130811]
 layout_mode = 1
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 8
-offset_top = 8
-offset_right = 210
-offset_bottom = 44
+anchors_preset = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 210.0
+offset_bottom = 44.0
 
-[node name="TopBarHBox" type="HBoxContainer" parent="HUDContainer/TopBar"]
+[node name="TopBarBG" type="NinePatchRect" parent="HUDContainer/TopBar" unique_id=910000010]
+modulate = Color(0, 0, 0.07545638, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_bytes")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="TopBarMargin" type="MarginContainer" parent="HUDContainer/TopBar" unique_id=910000001]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 4
+
+[node name="TopBarHBox" type="HBoxContainer" parent="HUDContainer/TopBar/TopBarMargin" unique_id=15916203]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="DayLabel" type="Label" parent="HUDContainer/TopBar/TopBarHBox"]
+[node name="DayLabel" type="Label" parent="HUDContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=1047261456]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 15
 text = "Fri"
-theme_override_font_sizes/font_size = 15
-theme_override_colors/font_color = Color(1, 1, 1, 1)
 
-[node name="TimeLabel" type="Label" parent="HUDContainer/TopBar/TopBarHBox"]
+[node name="TimeLabel" type="Label" parent="HUDContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=67435786]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 15
 text = "08:00 AM"
-theme_override_font_sizes/font_size = 15
-theme_override_colors/font_color = Color(1, 1, 1, 1)
 
-[node name="StatsPanel" type="PanelContainer" parent="HUDContainer"]
+[node name="StatsPanel" type="Control" parent="HUDContainer" unique_id=604452030]
 layout_mode = 1
+anchors_preset = 1
 anchor_left = 1.0
-anchor_top = 0.0
 anchor_right = 1.0
-anchor_bottom = 0.0
-offset_left = -240
-offset_top = 8
-offset_right = -8
-offset_bottom = 112
+offset_left = -291.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 129.0
+grow_horizontal = 0
 
-[node name="StatsVBox" type="VBoxContainer" parent="HUDContainer/StatsPanel"]
+[node name="StatsPanelBG" type="NinePatchRect" parent="HUDContainer/StatsPanel" unique_id=910000020]
+modulate = Color(0, 0, 0.11054552, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_bytes")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="StatsPanelMargin" type="MarginContainer" parent="HUDContainer/StatsPanel" unique_id=910000002]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 6
+
+[node name="StatsVBox" type="VBoxContainer" parent="HUDContainer/StatsPanel/StatsPanelMargin" unique_id=1408409070]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="AffectionRow" type="HBoxContainer" parent="HUDContainer/StatsPanel/StatsVBox"]
+[node name="AffectionRow" type="HBoxContainer" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox" unique_id=1841131369]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="AffectionIcon" type="Label" parent="HUDContainer/StatsPanel/StatsVBox/AffectionRow"]
-layout_mode = 2
+[node name="AffectionIcon" type="Label" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox/AffectionRow" unique_id=1864911167]
 custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 12
 text = "Affection"
-theme_override_font_sizes/font_size = 12
-theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
 
-[node name="AffectionBar" type="ProgressBar" parent="HUDContainer/StatsPanel/StatsVBox/AffectionRow"]
-layout_mode = 2
+[node name="AffectionBar" type="ProgressBar" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox/AffectionRow" unique_id=2146152329]
 custom_minimum_size = Vector2(80, 12)
-max_value = 100
-value = 0
+layout_mode = 2
 show_percentage = false
 
-[node name="AffectionValue" type="Label" parent="HUDContainer/StatsPanel/StatsVBox/AffectionRow"]
-layout_mode = 2
+[node name="AffectionValue" type="Label" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox/AffectionRow" unique_id=1928383674]
 custom_minimum_size = Vector2(28, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 12
 text = "0"
-theme_override_font_sizes/font_size = 12
-theme_override_colors/font_color = Color(1, 1, 1, 1)
 
-[node name="HealthRow" type="HBoxContainer" parent="HUDContainer/StatsPanel/StatsVBox"]
+[node name="HealthRow" type="HBoxContainer" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox" unique_id=1738814324]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="HealthIcon" type="Label" parent="HUDContainer/StatsPanel/StatsVBox/HealthRow"]
-layout_mode = 2
+[node name="HealthIcon" type="Label" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox/HealthRow" unique_id=1783413168]
 custom_minimum_size = Vector2(90, 0)
-text = "Rin Health"
-theme_override_font_sizes/font_size = 12
-theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
-
-[node name="HealthBar" type="ProgressBar" parent="HUDContainer/StatsPanel/StatsVBox/HealthRow"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 12
+text = "Rin Health"
+
+[node name="HealthBar" type="ProgressBar" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox/HealthRow" unique_id=589409133]
 custom_minimum_size = Vector2(80, 12)
-max_value = 100
-value = 50
+layout_mode = 2
+value = 50.0
 show_percentage = false
 
-[node name="HealthValue" type="Label" parent="HUDContainer/StatsPanel/StatsVBox/HealthRow"]
-layout_mode = 2
+[node name="HealthValue" type="Label" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox/HealthRow" unique_id=208733644]
 custom_minimum_size = Vector2(28, 0)
-text = "50"
-theme_override_font_sizes/font_size = 12
+layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 12
+text = "50"
 
-[node name="CoinsRow" type="HBoxContainer" parent="HUDContainer/StatsPanel/StatsVBox"]
+[node name="CoinsRow" type="HBoxContainer" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox" unique_id=321970788]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="CoinsIcon" type="Label" parent="HUDContainer/StatsPanel/StatsVBox/CoinsRow"]
-layout_mode = 2
+[node name="CoinsIcon" type="Label" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox/CoinsRow" unique_id=392558089]
 custom_minimum_size = Vector2(90, 0)
-text = "Coins"
-theme_override_font_sizes/font_size = 12
-theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
-
-[node name="CoinsValue" type="Label" parent="HUDContainer/StatsPanel/StatsVBox/CoinsRow"]
 layout_mode = 2
-text = "5000 g"
-theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 12
+text = "Coins"
+
+[node name="CoinsValue" type="Label" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox/CoinsRow" unique_id=1097505241]
+layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 13
+text = "5000 g"
+
+[node name="PopupLayer" type="Control" parent="HUDContainer" unique_id=910000030]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

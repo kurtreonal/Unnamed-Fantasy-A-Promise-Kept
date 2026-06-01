@@ -1,7 +1,5 @@
 extends Control
 
-class_name HomeScene
-
 # ─── Systems ─────────────────────────────────────────────────────
 var affection_system: Affection_System
 var meal_system:      Meal_System
@@ -17,36 +15,44 @@ var hud: HUD
 var current_time:  int    = 8
 var current_scene: String = "morning"
 
-# ─── Duplicate-instance guard (static = shared across all instances) ─
-static var _scene_started: bool = false
+# ─── Singleton guard ─────────────────────────────────────────────
+# Instead of a static bool that races with PREDELETE, we store the
+# ONE living instance here. Any second instance finds the slot taken
+# and kills itself immediately — no race condition possible.
+static var _instance: Control = null
 
 # ─── Deferred timeline start ─────────────────────────────────────
 var _pending_timeline: String = ""
 var _start_deferred:   bool   = false
 
 # ─── Signal connection guard ─────────────────────────────────────
-# Tracks whether THIS instance has connected its signal handlers.
-# Fixes double-firing: Dialogic autoload persists across scene reloads,
-# so without per-instance tracking, connecting on every _ready() piles
-# up duplicate connections to the same autoload signals.
 var _signals_connected: bool = false
+
+# ─── Per-scene meal guard ─────────────────────────────────────────
+# Flipped to true the moment a meal signal is processed.
+# Reset when a new scene is requested.
+# Guarantees meal:X only ever fires once per scene, even if Dialogic
+# somehow emits the signal twice (e.g. due to a stale second listener).
+var _meal_purchased_this_scene: bool = false
+
+# ─── Meal keywords → cost key mapping ────────────────────────────
+const MEAL_CHOICE_MAP: Dictionary = {
+	"3000g": "grand",
+	"1000g": "simple",
+	"1500g": "takeout",
+}
 
 # ─────────────────────────────────────────────────────────────────
 # Lifecycle
 # ─────────────────────────────────────────────────────────────────
-func _init() -> void:
-	if _scene_started:
-		# Kill it before it ever enters the tree — no flash, no _ready() side effects
-		set_process(false)
-		set_physics_process(false)
-		return
-		
+
 func _ready() -> void:
-	if _scene_started:
-		hide()
+	# ── Singleton enforcement ─────────────────────────────────────
+	if _instance != null and _instance != self:
+		push_warning("[HomeScene] Duplicate instance detected — destroying self.")
 		queue_free()
 		return
-	_scene_started = true
+	_instance = self
 
 	affection_system = get_node_or_null("/root/Affection_System")
 	meal_system      = get_node_or_null("/root/Meal_System")
@@ -94,11 +100,10 @@ func _process(_delta: float) -> void:
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_PREDELETE:
-		# Disconnect our handlers before freeing so Dialogic's autoload
-		# doesn't hold stale references that would cause double-firing
-		# if a new HomeScene is created later in the same session.
 		_disconnect_dialogic_signals()
-		_scene_started = false
+		# Only clear the singleton slot if WE are the current instance.
+		if _instance == self:
+			_instance = null
 
 
 # ─────────────────────────────────────────────────────────────────
@@ -110,8 +115,7 @@ func _connect_dialogic_signals() -> void:
 		return
 	_signals_connected = true
 
-	# Always disconnect first in case a previous run left orphan connections
-	# on the persistent Dialogic autoload node.
+	# Always clean slate first — Dialogic autoload persists across scenes.
 	if dialogic.timeline_ended.is_connected(_on_dialogue_finished):
 		dialogic.timeline_ended.disconnect(_on_dialogue_finished)
 	if dialogic.signal_event.is_connected(_on_dialogic_signal):
@@ -119,6 +123,13 @@ func _connect_dialogic_signals() -> void:
 
 	dialogic.timeline_ended.connect(_on_dialogue_finished)
 	dialogic.signal_event.connect(_on_dialogic_signal)
+
+	if dialogic.has_signal("choice_buttons_shown"):
+		if not dialogic.choice_buttons_shown.is_connected(_on_choice_buttons_shown):
+			dialogic.choice_buttons_shown.connect(_on_choice_buttons_shown)
+	else:
+		push_warning("[HomeScene] Dialogic has no 'choice_buttons_shown' signal — grey-out unavailable.")
+
 	print("[HomeScene] Dialogic signals connected.")
 
 
@@ -131,6 +142,10 @@ func _disconnect_dialogic_signals() -> void:
 		dialogic.timeline_ended.disconnect(_on_dialogue_finished)
 	if dialogic.signal_event.is_connected(_on_dialogic_signal):
 		dialogic.signal_event.disconnect(_on_dialogic_signal)
+	if dialogic.has_signal("choice_buttons_shown"):
+		if dialogic.choice_buttons_shown.is_connected(_on_choice_buttons_shown):
+			dialogic.choice_buttons_shown.disconnect(_on_choice_buttons_shown)
+
 	print("[HomeScene] Dialogic signals disconnected.")
 
 
@@ -139,6 +154,9 @@ func _disconnect_dialogic_signals() -> void:
 # ─────────────────────────────────────────────────────────────────
 
 func _request_scene(scene_key: String) -> void:
+	# Reset the meal guard for every new scene.
+	_meal_purchased_this_scene = false
+
 	if dialogic.current_timeline != null:
 		push_warning("[HomeScene] Ending current timeline before starting '%s'." % scene_key)
 		dialogic.end_timeline()
@@ -188,32 +206,85 @@ func load_doubt_scene() -> void:
 
 
 # ─────────────────────────────────────────────────────────────────
-# Coin Gate
-# Push affordability flags into Dialogic VAR subsystem so the .dtl
-# can condition choices on them.
-# Triggered by [signal arg="check_coins"] in the timeline.
+# Choice Grey-Out
 # ─────────────────────────────────────────────────────────────────
 
-func _push_coin_vars() -> void:
-	var coins: int = meal_system.get_coins()
+func _on_choice_buttons_shown() -> void:
+	await get_tree().process_frame
+	_apply_choice_greying()
 
-	# Set to true/false — .dtl conditions use "if variable_name" (truthy check)
-	Dialogic.VAR.set("grand_affordable",   coins >= meal_system.MEAL_COSTS["grand"])
-	Dialogic.VAR.set("simple_affordable",  coins >= meal_system.MEAL_COSTS["simple"])
-	Dialogic.VAR.set("takeout_affordable", coins >= meal_system.MEAL_COSTS["takeout"])
 
-	print("[HomeScene] Coin gate — coins: %d | grand:%s simple:%s takeout:%s" % [
-		coins,
-		"✓" if coins >= meal_system.MEAL_COSTS["grand"]   else "✗",
-		"✓" if coins >= meal_system.MEAL_COSTS["simple"]  else "✗",
-		"✓" if coins >= meal_system.MEAL_COSTS["takeout"] else "✗",
-	])
+func _apply_choice_greying() -> void:
+	if not meal_system:
+		return
+
+	var coins: int       = meal_system.get_coins()
+	var all_buttons      := _find_dialogic_choice_buttons()
+
+	if all_buttons.is_empty():
+		push_warning("[HomeScene] _apply_choice_greying: no choice buttons found.")
+		return
+
+	for btn in all_buttons:
+		var cost_key: String = _get_meal_cost_key(btn.text)
+
+		if cost_key == "":
+			continue  # Not a meal choice — always enabled.
+
+		var can_afford: bool = coins >= meal_system.MEAL_COSTS[cost_key]
+		btn.disabled = not can_afford
+		btn.modulate = Color.WHITE if can_afford else Color(0.55, 0.55, 0.55, 0.65)
+
+	print("[HomeScene] Choice greying applied — coins: %d" % coins)
+
+
+func _find_dialogic_choice_buttons() -> Array:
+	var result: Array = []
+
+	var grouped := get_tree().get_nodes_in_group("dialogic_choice")
+	if not grouped.is_empty():
+		for n in grouped:
+			if n is Button and n.visible:
+				result.append(n)
+		return result
+
+	var container := _find_node_by_name(get_tree().root, "ChoiceContainer")
+	if container:
+		for child in container.get_children():
+			if child is Button:
+				result.append(child)
+		return result
+
+	_collect_visible_buttons(get_tree().root, result)
+	return result
+
+
+func _find_node_by_name(node: Node, target_name: String) -> Node:
+	if node.name == target_name:
+		return node
+	for child in node.get_children():
+		var found := _find_node_by_name(child, target_name)
+		if found:
+			return found
+	return null
+
+
+func _collect_visible_buttons(node: Node, result: Array) -> void:
+	if node is Button and node.visible:
+		result.append(node)
+	for child in node.get_children():
+		_collect_visible_buttons(child, result)
+
+
+func _get_meal_cost_key(label: String) -> String:
+	for marker in MEAL_CHOICE_MAP.keys():
+		if label.contains(marker):
+			return MEAL_CHOICE_MAP[marker]
+	return ""
 
 
 # ─────────────────────────────────────────────────────────────────
 # Time Advance
-# Smoothly ticks the HUD clock forward by `hours`, pausing Dialogic
-# input during the animation so the player can't skip ahead.
 # ─────────────────────────────────────────────────────────────────
 
 func _advance_time(hours: int) -> void:
@@ -223,8 +294,6 @@ func _advance_time(hours: int) -> void:
 	dialogic.paused = true
 	hud.advance_hours(hours)
 
-	# CONNECT_ONE_SHOT ensures this fires exactly once per advance call,
-	# even if _advance_time() is called multiple times in a row.
 	if not hud.time_advance_finished.is_connected(_on_time_advance_finished):
 		hud.time_advance_finished.connect(_on_time_advance_finished, CONNECT_ONE_SHOT)
 
@@ -256,13 +325,8 @@ func _on_dialogic_signal(argument: String) -> void:
 
 	var colon_idx := argument.find(":")
 
-	# ── Signals with no value (e.g. "check_coins") ───────────────
 	if colon_idx == -1:
-		match argument.strip_edges():
-			"check_coins":
-				_push_coin_vars()
-			_:
-				push_warning("[HomeScene] Unknown no-value signal: %s" % argument)
+		push_warning("[HomeScene] Unknown no-value signal: %s" % argument)
 		return
 
 	var event_name := argument.left(colon_idx).strip_edges()
@@ -270,27 +334,27 @@ func _on_dialogic_signal(argument: String) -> void:
 
 	match event_name:
 
-		# ── Time advance ──────────────────────────────────────────
 		"time":
 			var hours: int = int(value)
 			if hours != 0:
 				_advance_time(hours)
 				print("[HomeScene] Time advance queued: %+d hour(s)" % hours)
 
-		# ── Affection ─────────────────────────────────────────────
 		"affection":
 			set_affection(int(value))
 			print("[HomeScene] Affection %s → now %d" % [value, affection_system.get_affection()])
 
-		# ── Meal (deducts coins + applies affection & health) ─────
 		"meal":
+			# ── Meal guard: only process once per scene ───────────
+			if _meal_purchased_this_scene:
+				push_warning("[HomeScene] Duplicate meal signal '%s' ignored." % value)
+				return
+			_meal_purchased_this_scene = true
 			set_meal(value)
 
-		# ── Mood ──────────────────────────────────────────────────
 		"mood":
 			set_mood(value)
 
-		# ── Direct coin grant (e.g. dungeon loot reward) ──────────
 		"coins":
 			if meal_system:
 				meal_system.add_coins(int(value))
@@ -298,7 +362,6 @@ func _on_dialogic_signal(argument: String) -> void:
 				if hud:
 					hud.notify_coins_changed()
 
-		# ── Direct health change ──────────────────────────────────
 		"rin_health":
 			if health_system:
 				health_system.modify_health(int(value))

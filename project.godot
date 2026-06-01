@@ -34,10 +34,13 @@ directories/dtl_directory={
 "scene_03_moment_of_doubt": "res://Timelines/scene_03_moment_of_doubt.dtl",
 "timeline1": "res://Timelines/timeline1.dtl"
 }
-layout/style_directory={}
+layout/style_directory={
+"": "res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/text_box.tres",
+"text_box": "res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/text_box.tres"
+}
 glossary/default_case_sensitive=true
-layout/style_list=[]
-layout/default_style=""
+layout/style_list=["res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/text_box.tres"]
+layout/default_style="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/text_box.tres"
 text/letter_speed=0.01
 text/initial_text_reveal_skippable=true
 text/text_reveal_skip_delay=0.5
