@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://7ok118iwmjmb"]
+
+[ext_resource type="Script" uid="uid://biffwmfa26ubp" path="res://Scenes/home_scene.gd" id="1_ueg2s"]
+[ext_resource type="PackedScene" path="res://UI/hud.tscn" id="2_1bo2b"]
+
+[node name="HomeScene" type="Control" unique_id=1687653914]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ueg2s")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=631849945]
+
+[node name="HUD" parent="CanvasLayer" unique_id=707098182 instance=ExtResource("2_1bo2b")]

@@ -83,420 +83,421 @@
 [node name="LayeredPortrait" type="CanvasGroup" unique_id=2120967875]
 script = ExtResource("1_uubi5")
 
-[node name="CharacterOffset" type="Node2D" parent="." unique_id=973512357]
+[node name="Pajama(Smile 1)" type="Node2D" parent="." unique_id=973512357]
 
-[node name="Hair Behind" type="Node2D" parent="CharacterOffset" unique_id=263020835]
+[node name="Hair Behind" type="Node2D" parent="Pajama(Smile 1)" unique_id=263020835]
 
-[node name="Style 1" type="Node2D" parent="CharacterOffset/Hair Behind" unique_id=1864787952]
+[node name="Style 1" type="Node2D" parent="Pajama(Smile 1)/Hair Behind" unique_id=1864787952]
 
-[node name="Black" type="Sprite2D" parent="CharacterOffset/Hair Behind/Style 1" unique_id=1394480376]
+[node name="Black" type="Sprite2D" parent="Pajama(Smile 1)/Hair Behind/Style 1" unique_id=1394480376]
 visible = false
 texture = ExtResource("2_0aps3")
 offset = Vector2(0, 750)
 
-[node name="Pink" type="Sprite2D" parent="CharacterOffset/Hair Behind/Style 1" unique_id=666025623]
+[node name="Pink" type="Sprite2D" parent="Pajama(Smile 1)/Hair Behind/Style 1" unique_id=666025623]
 visible = false
 texture = ExtResource("3_euu3a")
 offset = Vector2(0, 750)
 
-[node name="Silver" type="Sprite2D" parent="CharacterOffset/Hair Behind/Style 1" unique_id=750334969]
+[node name="Silver" type="Sprite2D" parent="Pajama(Smile 1)/Hair Behind/Style 1" unique_id=750334969]
 visible = false
 texture = ExtResource("4_f7kuw")
 offset = Vector2(0, 750)
 
-[node name="Brown" type="Sprite2D" parent="CharacterOffset/Hair Behind/Style 1" unique_id=1686215248]
+[node name="Brown" type="Sprite2D" parent="Pajama(Smile 1)/Hair Behind/Style 1" unique_id=1686215248]
 visible = false
 texture = ExtResource("5_v44mc")
 offset = Vector2(0, 750)
 
-[node name="Blonde" type="Sprite2D" parent="CharacterOffset/Hair Behind/Style 1" unique_id=1526078538]
+[node name="Blonde" type="Sprite2D" parent="Pajama(Smile 1)/Hair Behind/Style 1" unique_id=1526078538]
 visible = false
 texture = ExtResource("6_08qdi")
 offset = Vector2(0, 750)
 
-[node name="Style 2" type="Node2D" parent="CharacterOffset/Hair Behind" unique_id=578525992]
+[node name="Style 2" type="Node2D" parent="Pajama(Smile 1)/Hair Behind" unique_id=578525992]
 
-[node name="Black" type="Sprite2D" parent="CharacterOffset/Hair Behind/Style 2" unique_id=2081159950]
+[node name="Black" type="Sprite2D" parent="Pajama(Smile 1)/Hair Behind/Style 2" unique_id=2081159950]
 visible = false
 texture = ExtResource("7_7b2r6")
 offset = Vector2(0, 750)
 
-[node name="Pink" type="Sprite2D" parent="CharacterOffset/Hair Behind/Style 2" unique_id=1362795989]
+[node name="Pink" type="Sprite2D" parent="Pajama(Smile 1)/Hair Behind/Style 2" unique_id=1362795989]
 visible = false
 texture = ExtResource("8_65gh7")
 offset = Vector2(0, 750)
 
-[node name="Silver" type="Sprite2D" parent="CharacterOffset/Hair Behind/Style 2" unique_id=857002696]
+[node name="Silver" type="Sprite2D" parent="Pajama(Smile 1)/Hair Behind/Style 2" unique_id=857002696]
 visible = false
 texture = ExtResource("9_ij8nu")
 offset = Vector2(0, 750)
 
-[node name="Brown" type="Sprite2D" parent="CharacterOffset/Hair Behind/Style 2" unique_id=165951647]
+[node name="Brown" type="Sprite2D" parent="Pajama(Smile 1)/Hair Behind/Style 2" unique_id=165951647]
 visible = false
 texture = ExtResource("10_01dkl")
 offset = Vector2(0, 750)
 
-[node name="Blonde" type="Sprite2D" parent="CharacterOffset/Hair Behind/Style 2" unique_id=565058548]
+[node name="Blonde" type="Sprite2D" parent="Pajama(Smile 1)/Hair Behind/Style 2" unique_id=565058548]
 visible = false
 texture = ExtResource("11_t18rx")
 offset = Vector2(0, 750)
 
-[node name="Style 3" type="Node2D" parent="CharacterOffset/Hair Behind" unique_id=61663651]
+[node name="Style 3" type="Node2D" parent="Pajama(Smile 1)/Hair Behind" unique_id=61663651]
+visible = false
 
-[node name="Black" type="Sprite2D" parent="CharacterOffset/Hair Behind/Style 3" unique_id=1773552552]
+[node name="Black" type="Sprite2D" parent="Pajama(Smile 1)/Hair Behind/Style 3" unique_id=1773552552]
 visible = false
 texture = ExtResource("12_ao2jx")
 offset = Vector2(0, 750)
 
-[node name="Pink" type="Sprite2D" parent="CharacterOffset/Hair Behind/Style 3" unique_id=148508712]
+[node name="Pink" type="Sprite2D" parent="Pajama(Smile 1)/Hair Behind/Style 3" unique_id=148508712]
 visible = false
 texture = ExtResource("13_x6wwu")
 offset = Vector2(0, 750)
 
-[node name="Silver" type="Sprite2D" parent="CharacterOffset/Hair Behind/Style 3" unique_id=634372034]
+[node name="Silver" type="Sprite2D" parent="Pajama(Smile 1)/Hair Behind/Style 3" unique_id=634372034]
 visible = false
 texture = ExtResource("14_mdr7f")
 offset = Vector2(0, 750)
 
-[node name="Brown" type="Sprite2D" parent="CharacterOffset/Hair Behind/Style 3" unique_id=389047037]
+[node name="Brown" type="Sprite2D" parent="Pajama(Smile 1)/Hair Behind/Style 3" unique_id=389047037]
 visible = false
 texture = ExtResource("15_l5lps")
 offset = Vector2(0, 750)
 
-[node name="Blonde" type="Sprite2D" parent="CharacterOffset/Hair Behind/Style 3" unique_id=209010052]
+[node name="Blonde" type="Sprite2D" parent="Pajama(Smile 1)/Hair Behind/Style 3" unique_id=209010052]
 visible = false
 texture = ExtResource("16_30tfq")
 offset = Vector2(0, 750)
 
-[node name="Style 4" type="Node2D" parent="CharacterOffset/Hair Behind" unique_id=1083974451]
+[node name="Style 4" type="Node2D" parent="Pajama(Smile 1)/Hair Behind" unique_id=1083974451]
 
-[node name="Black" type="Sprite2D" parent="CharacterOffset/Hair Behind/Style 4" unique_id=1687041355]
+[node name="Black" type="Sprite2D" parent="Pajama(Smile 1)/Hair Behind/Style 4" unique_id=1687041355]
+visible = false
 texture = ExtResource("17_5ain1")
 offset = Vector2(0, 750)
 
-[node name="Pink" type="Sprite2D" parent="CharacterOffset/Hair Behind/Style 4" unique_id=832899644]
+[node name="Pink" type="Sprite2D" parent="Pajama(Smile 1)/Hair Behind/Style 4" unique_id=832899644]
 visible = false
 texture = ExtResource("18_3rh38")
 offset = Vector2(0, 750)
 
-[node name="Silver" type="Sprite2D" parent="CharacterOffset/Hair Behind/Style 4" unique_id=288955407]
+[node name="Silver" type="Sprite2D" parent="Pajama(Smile 1)/Hair Behind/Style 4" unique_id=288955407]
 visible = false
 texture = ExtResource("19_5au2q")
 offset = Vector2(0, 750)
 
-[node name="Brown" type="Sprite2D" parent="CharacterOffset/Hair Behind/Style 4" unique_id=1293359298]
+[node name="Brown" type="Sprite2D" parent="Pajama(Smile 1)/Hair Behind/Style 4" unique_id=1293359298]
 visible = false
 texture = ExtResource("20_w0iwh")
 offset = Vector2(0, 750)
 
-[node name="Blonde" type="Sprite2D" parent="CharacterOffset/Hair Behind/Style 4" unique_id=536632891]
-visible = false
+[node name="Blonde" type="Sprite2D" parent="Pajama(Smile 1)/Hair Behind/Style 4" unique_id=536632891]
 texture = ExtResource("21_ob5jy")
 offset = Vector2(0, 750)
 
-[node name="Base" type="Sprite2D" parent="CharacterOffset" unique_id=447085882]
+[node name="Base" type="Sprite2D" parent="Pajama(Smile 1)" unique_id=447085882]
 texture = ExtResource("22_ffy4u")
 offset = Vector2(0, 750)
 
-[node name="Blush" type="Node2D" parent="CharacterOffset" unique_id=693079171]
+[node name="Blush" type="Node2D" parent="Pajama(Smile 1)" unique_id=693079171]
 
-[node name="Blush 1" type="Sprite2D" parent="CharacterOffset/Blush" unique_id=419512749]
+[node name="Blush 1" type="Sprite2D" parent="Pajama(Smile 1)/Blush" unique_id=419512749]
 texture = ExtResource("23_rfm8k")
 offset = Vector2(0, 750)
 
-[node name="Blush 2" type="Sprite2D" parent="CharacterOffset/Blush" unique_id=1993301012]
+[node name="Blush 2" type="Sprite2D" parent="Pajama(Smile 1)/Blush" unique_id=1993301012]
 offset = Vector2(0, 750)
 
-[node name="Costume" type="Node2D" parent="CharacterOffset" unique_id=1472398494]
+[node name="Costume" type="Node2D" parent="Pajama(Smile 1)" unique_id=1472398494]
 
-[node name="Towel 1" type="Sprite2D" parent="CharacterOffset/Costume" unique_id=707509440]
+[node name="Towel 1" type="Sprite2D" parent="Pajama(Smile 1)/Costume" unique_id=707509440]
 visible = false
 texture = ExtResource("24_5up6v")
 offset = Vector2(0, 750)
 
-[node name="Towel 2" type="Sprite2D" parent="CharacterOffset/Costume" unique_id=1349751600]
+[node name="Towel 2" type="Sprite2D" parent="Pajama(Smile 1)/Costume" unique_id=1349751600]
 visible = false
 texture = ExtResource("25_kxpvu")
 offset = Vector2(0, 750)
 
-[node name="PE uniform 1" type="Sprite2D" parent="CharacterOffset/Costume" unique_id=94454581]
+[node name="PE uniform 1" type="Sprite2D" parent="Pajama(Smile 1)/Costume" unique_id=94454581]
 visible = false
 texture = ExtResource("26_qumxc")
 offset = Vector2(0, 750)
 
-[node name="PE uniform 2" type="Sprite2D" parent="CharacterOffset/Costume" unique_id=1752876741]
+[node name="PE uniform 2" type="Sprite2D" parent="Pajama(Smile 1)/Costume" unique_id=1752876741]
 visible = false
 texture = ExtResource("27_5tlt0")
 offset = Vector2(0, 750)
 
-[node name="Jacket" type="Sprite2D" parent="CharacterOffset/Costume" unique_id=1658201735]
+[node name="Jacket" type="Sprite2D" parent="Pajama(Smile 1)/Costume" unique_id=1658201735]
 visible = false
 texture = ExtResource("28_6kp5p")
 offset = Vector2(0, 750)
 
-[node name="Pajamas 1" type="Sprite2D" parent="CharacterOffset/Costume" unique_id=537154046]
+[node name="Pajamas 1" type="Sprite2D" parent="Pajama(Smile 1)/Costume" unique_id=537154046]
 visible = false
 texture = ExtResource("29_ygyme")
 offset = Vector2(0, 750)
 
-[node name="Pajamas 2" type="Sprite2D" parent="CharacterOffset/Costume" unique_id=996268299]
+[node name="Pajamas 2" type="Sprite2D" parent="Pajama(Smile 1)/Costume" unique_id=996268299]
 visible = false
 texture = ExtResource("30_g7gph")
 offset = Vector2(0, 750)
 
-[node name="Winter 1" type="Sprite2D" parent="CharacterOffset/Costume" unique_id=582361755]
+[node name="Winter 1" type="Sprite2D" parent="Pajama(Smile 1)/Costume" unique_id=582361755]
 visible = false
 texture = ExtResource("31_3avi7")
 offset = Vector2(0, 750)
 
-[node name="Winter 2" type="Sprite2D" parent="CharacterOffset/Costume" unique_id=120371083]
+[node name="Winter 2" type="Sprite2D" parent="Pajama(Smile 1)/Costume" unique_id=120371083]
 visible = false
 texture = ExtResource("32_0kxug")
 offset = Vector2(0, 750)
 
-[node name="T-shirt 1" type="Sprite2D" parent="CharacterOffset/Costume" unique_id=2081628542]
-visible = false
+[node name="T-shirt 1" type="Sprite2D" parent="Pajama(Smile 1)/Costume" unique_id=2081628542]
 texture = ExtResource("33_ifohi")
 offset = Vector2(0, 750)
 
-[node name="T-shirt 2" type="Sprite2D" parent="CharacterOffset/Costume" unique_id=1415225361]
+[node name="T-shirt 2" type="Sprite2D" parent="Pajama(Smile 1)/Costume" unique_id=1415225361]
 visible = false
 texture = ExtResource("34_x5l6u")
 offset = Vector2(0, 750)
 
-[node name="Swimsuit" type="Sprite2D" parent="CharacterOffset/Costume" unique_id=1371542245]
+[node name="Swimsuit" type="Sprite2D" parent="Pajama(Smile 1)/Costume" unique_id=1371542245]
 visible = false
 texture = ExtResource("35_utqjc")
 offset = Vector2(0, 750)
 
-[node name="Summer Dress" type="Sprite2D" parent="CharacterOffset/Costume" unique_id=990904018]
+[node name="Summer Dress" type="Sprite2D" parent="Pajama(Smile 1)/Costume" unique_id=990904018]
 visible = false
 texture = ExtResource("36_tdva8")
 offset = Vector2(0, 750)
 
-[node name="Seifuku 1" type="Sprite2D" parent="CharacterOffset/Costume" unique_id=388974872]
+[node name="Seifuku 1" type="Sprite2D" parent="Pajama(Smile 1)/Costume" unique_id=388974872]
 visible = false
 texture = ExtResource("37_ytehg")
 offset = Vector2(0, 750)
 
-[node name="Seifuku 2" type="Sprite2D" parent="CharacterOffset/Costume" unique_id=1631713207]
+[node name="Seifuku 2" type="Sprite2D" parent="Pajama(Smile 1)/Costume" unique_id=1631713207]
+visible = false
 texture = ExtResource("38_0sgqa")
 offset = Vector2(0, 750)
 
-[node name="Hair Front" type="Node2D" parent="CharacterOffset" unique_id=1751022201]
+[node name="Hair Front" type="Node2D" parent="Pajama(Smile 1)" unique_id=1751022201]
 
-[node name="Style 1" type="Node2D" parent="CharacterOffset/Hair Front" unique_id=43896805]
+[node name="Style 1" type="Node2D" parent="Pajama(Smile 1)/Hair Front" unique_id=43896805]
 
-[node name="Black" type="Sprite2D" parent="CharacterOffset/Hair Front/Style 1" unique_id=266051923]
+[node name="Black" type="Sprite2D" parent="Pajama(Smile 1)/Hair Front/Style 1" unique_id=266051923]
 visible = false
 texture = ExtResource("39_dhtpk")
 offset = Vector2(0, 750)
 
-[node name="Pink" type="Sprite2D" parent="CharacterOffset/Hair Front/Style 1" unique_id=2101247055]
+[node name="Pink" type="Sprite2D" parent="Pajama(Smile 1)/Hair Front/Style 1" unique_id=2101247055]
 visible = false
 texture = ExtResource("40_syoqg")
 offset = Vector2(0, 750)
 
-[node name="Silver" type="Sprite2D" parent="CharacterOffset/Hair Front/Style 1" unique_id=712362497]
+[node name="Silver" type="Sprite2D" parent="Pajama(Smile 1)/Hair Front/Style 1" unique_id=712362497]
 visible = false
 texture = ExtResource("41_ismss")
 offset = Vector2(0, 750)
 
-[node name="Brown" type="Sprite2D" parent="CharacterOffset/Hair Front/Style 1" unique_id=292195986]
+[node name="Brown" type="Sprite2D" parent="Pajama(Smile 1)/Hair Front/Style 1" unique_id=292195986]
 visible = false
 texture = ExtResource("42_kp8cr")
 offset = Vector2(0, 750)
 
-[node name="Blonde" type="Sprite2D" parent="CharacterOffset/Hair Front/Style 1" unique_id=1468992492]
+[node name="Blonde" type="Sprite2D" parent="Pajama(Smile 1)/Hair Front/Style 1" unique_id=1468992492]
 visible = false
 texture = ExtResource("43_fmq8f")
 offset = Vector2(0, 750)
 
-[node name="Style 2" type="Node2D" parent="CharacterOffset/Hair Front" unique_id=1754372835]
+[node name="Style 2" type="Node2D" parent="Pajama(Smile 1)/Hair Front" unique_id=1754372835]
 
-[node name="Black" type="Sprite2D" parent="CharacterOffset/Hair Front/Style 2" unique_id=1780145011]
+[node name="Black" type="Sprite2D" parent="Pajama(Smile 1)/Hair Front/Style 2" unique_id=1780145011]
+visible = false
 texture = ExtResource("44_yebub")
 offset = Vector2(0, 750)
 
-[node name="Pink" type="Sprite2D" parent="CharacterOffset/Hair Front/Style 2" unique_id=1563665328]
+[node name="Pink" type="Sprite2D" parent="Pajama(Smile 1)/Hair Front/Style 2" unique_id=1563665328]
 visible = false
 texture = ExtResource("45_mvr2i")
 offset = Vector2(0, 750)
 
-[node name="Silver" type="Sprite2D" parent="CharacterOffset/Hair Front/Style 2" unique_id=963724940]
+[node name="Silver" type="Sprite2D" parent="Pajama(Smile 1)/Hair Front/Style 2" unique_id=963724940]
 visible = false
 texture = ExtResource("46_vi6y7")
 offset = Vector2(0, 750)
 
-[node name="Brown" type="Sprite2D" parent="CharacterOffset/Hair Front/Style 2" unique_id=1961990777]
+[node name="Brown" type="Sprite2D" parent="Pajama(Smile 1)/Hair Front/Style 2" unique_id=1961990777]
 visible = false
 texture = ExtResource("47_k5qso")
 offset = Vector2(0, 750)
 
-[node name="Blonde" type="Sprite2D" parent="CharacterOffset/Hair Front/Style 2" unique_id=486751388]
-visible = false
+[node name="Blonde" type="Sprite2D" parent="Pajama(Smile 1)/Hair Front/Style 2" unique_id=486751388]
 texture = ExtResource("48_5fqjl")
 offset = Vector2(0, 750)
 
-[node name="Style 3" type="Node2D" parent="CharacterOffset/Hair Front" unique_id=845320531]
+[node name="Style 3" type="Node2D" parent="Pajama(Smile 1)/Hair Front" unique_id=845320531]
 
-[node name="Black" type="Sprite2D" parent="CharacterOffset/Hair Front/Style 3" unique_id=755438899]
+[node name="Black" type="Sprite2D" parent="Pajama(Smile 1)/Hair Front/Style 3" unique_id=755438899]
 visible = false
 texture = ExtResource("49_5qxma")
 offset = Vector2(0, 750)
 
-[node name="Pink" type="Sprite2D" parent="CharacterOffset/Hair Front/Style 3" unique_id=2146834085]
+[node name="Pink" type="Sprite2D" parent="Pajama(Smile 1)/Hair Front/Style 3" unique_id=2146834085]
 visible = false
 texture = ExtResource("50_jnpme")
 offset = Vector2(0, 750)
 
-[node name="Silver" type="Sprite2D" parent="CharacterOffset/Hair Front/Style 3" unique_id=1757498852]
+[node name="Silver" type="Sprite2D" parent="Pajama(Smile 1)/Hair Front/Style 3" unique_id=1757498852]
 visible = false
 texture = ExtResource("51_q0v8d")
 offset = Vector2(0, 750)
 
-[node name="Brown" type="Sprite2D" parent="CharacterOffset/Hair Front/Style 3" unique_id=363455371]
+[node name="Brown" type="Sprite2D" parent="Pajama(Smile 1)/Hair Front/Style 3" unique_id=363455371]
 visible = false
 texture = ExtResource("52_de6il")
 offset = Vector2(0, 750)
 
-[node name="Blonde" type="Sprite2D" parent="CharacterOffset/Hair Front/Style 3" unique_id=191890164]
+[node name="Blonde" type="Sprite2D" parent="Pajama(Smile 1)/Hair Front/Style 3" unique_id=191890164]
 visible = false
 texture = ExtResource("53_72jgk")
 offset = Vector2(0, 750)
 
-[node name="Style 4" type="Node2D" parent="CharacterOffset/Hair Front" unique_id=1301769430]
-visible = false
+[node name="Style 4" type="Node2D" parent="Pajama(Smile 1)/Hair Front" unique_id=1301769430]
 
-[node name="Black" type="Sprite2D" parent="CharacterOffset/Hair Front/Style 4" unique_id=1426055073]
+[node name="Black" type="Sprite2D" parent="Pajama(Smile 1)/Hair Front/Style 4" unique_id=1426055073]
+visible = false
 texture = ExtResource("54_0hvbv")
 offset = Vector2(0, 750)
 
-[node name="Pink" type="Sprite2D" parent="CharacterOffset/Hair Front/Style 4" unique_id=101836219]
+[node name="Pink" type="Sprite2D" parent="Pajama(Smile 1)/Hair Front/Style 4" unique_id=101836219]
 visible = false
 texture = ExtResource("55_iqy4g")
 offset = Vector2(0, 750)
 
-[node name="Silver" type="Sprite2D" parent="CharacterOffset/Hair Front/Style 4" unique_id=1874969810]
+[node name="Silver" type="Sprite2D" parent="Pajama(Smile 1)/Hair Front/Style 4" unique_id=1874969810]
 visible = false
 texture = ExtResource("56_4m53k")
 offset = Vector2(0, 750)
 
-[node name="Brown" type="Sprite2D" parent="CharacterOffset/Hair Front/Style 4" unique_id=937033009]
+[node name="Brown" type="Sprite2D" parent="Pajama(Smile 1)/Hair Front/Style 4" unique_id=937033009]
 visible = false
 texture = ExtResource("57_esyo8")
 offset = Vector2(0, 750)
 
-[node name="Blonde" type="Sprite2D" parent="CharacterOffset/Hair Front/Style 4" unique_id=857432387]
+[node name="Blonde" type="Sprite2D" parent="Pajama(Smile 1)/Hair Front/Style 4" unique_id=857432387]
 visible = false
 texture = ExtResource("58_71vma")
 offset = Vector2(0, 750)
 
-[node name="Style 5" type="Node2D" parent="CharacterOffset/Hair Front" unique_id=613290958]
+[node name="Style 5" type="Node2D" parent="Pajama(Smile 1)/Hair Front" unique_id=613290958]
 
-[node name="Black" type="Sprite2D" parent="CharacterOffset/Hair Front/Style 5" unique_id=1829506490]
+[node name="Black" type="Sprite2D" parent="Pajama(Smile 1)/Hair Front/Style 5" unique_id=1829506490]
 visible = false
 texture = ExtResource("59_yr0xg")
 offset = Vector2(0, 750)
 
-[node name="Pink" type="Sprite2D" parent="CharacterOffset/Hair Front/Style 5" unique_id=2078272515]
+[node name="Pink" type="Sprite2D" parent="Pajama(Smile 1)/Hair Front/Style 5" unique_id=2078272515]
 visible = false
 texture = ExtResource("60_uj0mo")
 offset = Vector2(0, 750)
 
-[node name="Silver" type="Sprite2D" parent="CharacterOffset/Hair Front/Style 5" unique_id=1376156887]
+[node name="Silver" type="Sprite2D" parent="Pajama(Smile 1)/Hair Front/Style 5" unique_id=1376156887]
 visible = false
 texture = ExtResource("61_nsxoh")
 offset = Vector2(0, 750)
 
-[node name="Brown" type="Sprite2D" parent="CharacterOffset/Hair Front/Style 5" unique_id=1791200633]
+[node name="Brown" type="Sprite2D" parent="Pajama(Smile 1)/Hair Front/Style 5" unique_id=1791200633]
 visible = false
 texture = ExtResource("62_28pnc")
 offset = Vector2(0, 750)
 
-[node name="Blonde" type="Sprite2D" parent="CharacterOffset/Hair Front/Style 5" unique_id=1028250044]
+[node name="Blonde" type="Sprite2D" parent="Pajama(Smile 1)/Hair Front/Style 5" unique_id=1028250044]
 visible = false
 texture = ExtResource("63_hgssm")
 offset = Vector2(0, 750)
 
-[node name="Expressions" type="Node2D" parent="CharacterOffset" unique_id=547038118]
+[node name="Expressions" type="Node2D" parent="Pajama(Smile 1)" unique_id=547038118]
 
-[node name="Scared" type="Sprite2D" parent="CharacterOffset/Expressions" unique_id=302888696]
+[node name="Scared" type="Sprite2D" parent="Pajama(Smile 1)/Expressions" unique_id=302888696]
 visible = false
 texture = ExtResource("64_7i3um")
 offset = Vector2(0, 750)
 
-[node name="Angry" type="Sprite2D" parent="CharacterOffset/Expressions" unique_id=371412885]
+[node name="Angry" type="Sprite2D" parent="Pajama(Smile 1)/Expressions" unique_id=371412885]
 visible = false
 texture = ExtResource("65_obfjs")
 offset = Vector2(0, 750)
 
-[node name="Surprised 1" type="Sprite2D" parent="CharacterOffset/Expressions" unique_id=1064683016]
+[node name="Surprised 1" type="Sprite2D" parent="Pajama(Smile 1)/Expressions" unique_id=1064683016]
 visible = false
 texture = ExtResource("66_qed3i")
 offset = Vector2(0, 750)
 
-[node name="Surprised 2" type="Sprite2D" parent="CharacterOffset/Expressions" unique_id=252074074]
+[node name="Surprised 2" type="Sprite2D" parent="Pajama(Smile 1)/Expressions" unique_id=252074074]
 visible = false
 texture = ExtResource("67_skwwe")
 offset = Vector2(0, 750)
 
-[node name="Annoyed 1" type="Sprite2D" parent="CharacterOffset/Expressions" unique_id=1287640300]
+[node name="Annoyed 1" type="Sprite2D" parent="Pajama(Smile 1)/Expressions" unique_id=1287640300]
 visible = false
 texture = ExtResource("68_fx26q")
 offset = Vector2(0, 750)
 
-[node name="Annoyed 2" type="Sprite2D" parent="CharacterOffset/Expressions" unique_id=1366078036]
+[node name="Annoyed 2" type="Sprite2D" parent="Pajama(Smile 1)/Expressions" unique_id=1366078036]
 visible = false
 texture = ExtResource("69_w0q5k")
 offset = Vector2(0, 750)
 
-[node name="Sad 1" type="Sprite2D" parent="CharacterOffset/Expressions" unique_id=1609127918]
+[node name="Sad 1" type="Sprite2D" parent="Pajama(Smile 1)/Expressions" unique_id=1609127918]
 visible = false
 texture = ExtResource("70_c6acn")
 offset = Vector2(0, 750)
 
-[node name="Sad 2" type="Sprite2D" parent="CharacterOffset/Expressions" unique_id=409880090]
+[node name="Sad 2" type="Sprite2D" parent="Pajama(Smile 1)/Expressions" unique_id=409880090]
 visible = false
 texture = ExtResource("71_lvjos")
 offset = Vector2(0, 750)
 
-[node name="Smug" type="Sprite2D" parent="CharacterOffset/Expressions" unique_id=1295117100]
+[node name="Smug" type="Sprite2D" parent="Pajama(Smile 1)/Expressions" unique_id=1295117100]
 visible = false
 texture = ExtResource("72_hi15u")
 offset = Vector2(0, 750)
 
-[node name="Awkward" type="Sprite2D" parent="CharacterOffset/Expressions" unique_id=832664146]
+[node name="Awkward" type="Sprite2D" parent="Pajama(Smile 1)/Expressions" unique_id=832664146]
 visible = false
 texture = ExtResource("73_rd3re")
 offset = Vector2(0, 750)
 
-[node name="Happy 1" type="Sprite2D" parent="CharacterOffset/Expressions" unique_id=1350345483]
+[node name="Happy 1" type="Sprite2D" parent="Pajama(Smile 1)/Expressions" unique_id=1350345483]
 visible = false
 texture = ExtResource("74_2b7bu")
 offset = Vector2(0, 750)
 
-[node name="Happy 2" type="Sprite2D" parent="CharacterOffset/Expressions" unique_id=2089297765]
+[node name="Happy 2" type="Sprite2D" parent="Pajama(Smile 1)/Expressions" unique_id=2089297765]
 visible = false
 texture = ExtResource("75_p4yew")
 offset = Vector2(0, 750)
 
-[node name="Smile 1" type="Sprite2D" parent="CharacterOffset/Expressions" unique_id=197605780]
+[node name="Smile 1" type="Sprite2D" parent="Pajama(Smile 1)/Expressions" unique_id=197605780]
 texture = ExtResource("76_pn3as")
 offset = Vector2(0, 750)
 
-[node name="Smile 2" type="Sprite2D" parent="CharacterOffset/Expressions" unique_id=581174390]
+[node name="Smile 2" type="Sprite2D" parent="Pajama(Smile 1)/Expressions" unique_id=581174390]
 visible = false
 texture = ExtResource("77_5vxhp")
 offset = Vector2(0, 750)
 
-[node name="Smile 3" type="Sprite2D" parent="CharacterOffset/Expressions" unique_id=964301755]
+[node name="Smile 3" type="Sprite2D" parent="Pajama(Smile 1)/Expressions" unique_id=964301755]
 visible = false
 texture = ExtResource("78_ot3vw")
 offset = Vector2(0, 750)
 
-[node name="Accessories" type="Node2D" parent="CharacterOffset" unique_id=2126489534]
+[node name="Accessories" type="Node2D" parent="Pajama(Smile 1)" unique_id=2126489534]
 
-[node name="Glasses" type="Sprite2D" parent="CharacterOffset/Accessories" unique_id=1694501218]
+[node name="Glasses" type="Sprite2D" parent="Pajama(Smile 1)/Accessories" unique_id=1694501218]
 texture = ExtResource("79_nmnh8")
 offset = Vector2(0, 750)

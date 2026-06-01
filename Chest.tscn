@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://dlm7ok1vnef24"]
+
+[ext_resource type="Script" uid="uid://da5scvtrgjygb" path="res://chest.gd" id="1_5udua"]
+[ext_resource type="Texture2D" uid="uid://ccw0lgbqe53aj" path="res://Sprite Assest/Map/World Object/Chest _01.png" id="2_hkml5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g6mye"]
+size = Vector2(12, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mehiu"]
+atlas = ExtResource("2_hkml5")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lt4yx"]
+atlas = ExtResource("2_hkml5")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hkml5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mehiu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lt4yx")
+}],
+"loop": false,
+"name": &"Chest_Animation",
+"speed": 5.0
+}]
+
+[node name="Chest" type="Area2D" unique_id=1814988311]
+z_index = 5
+script = ExtResource("1_5udua")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=400926361]
+position = Vector2(-7, 7)
+scale = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_g6mye")
+debug_color = Color(0, 0.53802127, 0.9663536, 0.41960785)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=580529858]
+z_index = 5
+position = Vector2(-7, 1)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_hkml5")
+animation = &"Chest_Animation"
+speed_scale = 0.5
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1306997979]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1811241466]
+position = Vector2(-7, -6)
+scale = Vector2(4, 5)
+shape = SubResource("RectangleShape2D_g6mye")
+debug_color = Color(0, 0.53802127, 0.9663536, 0.41960785)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
