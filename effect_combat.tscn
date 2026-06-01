@@ -881,7 +881,7 @@ stream = ExtResource("6_cdufu")
 [node name="Staff_Magic" type="AnimatedSprite2D" parent="." unique_id=745503215]
 visible = false
 sprite_frames = SubResource("SpriteFrames_gk1vn")
-animation = &"Shoot_Lightning"
+animation = &"Casting_FireBall"
 
 [node name="ProjectileHitBox" type="Area2D" parent="Staff_Magic" unique_id=585730007]
 

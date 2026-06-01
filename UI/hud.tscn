@@ -1,12 +1,12 @@
-[gd_scene format=3 uid="uid://hud_overlay_001"]
+[gd_scene format=3 uid="uid://cmrytrmso1len"]
 
-[ext_resource type="Script" path="res://UI/hud.gd" id="1_hud"]
+[ext_resource type="Script" uid="uid://br2quk36vtxqw" path="res://UI/hud.gd" id="1_hud"]
 
-[node name="HUD" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer" unique_id=1211356135]
 layer = 10
 script = ExtResource("1_hud")
 
-[node name="HUDContainer" type="Control" parent="."]
+[node name="HUDContainer" type="Control" parent="." unique_id=94121050]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,111 +14,103 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TopBar" type="PanelContainer" parent="HUDContainer"]
+[node name="TopBar" type="PanelContainer" parent="HUDContainer" unique_id=1700542962]
 layout_mode = 1
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 8
-offset_top = 8
-offset_right = 210
-offset_bottom = 44
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 210.0
+offset_bottom = 44.0
 
-[node name="TopBarHBox" type="HBoxContainer" parent="HUDContainer/TopBar"]
+[node name="TopBarHBox" type="HBoxContainer" parent="HUDContainer/TopBar" unique_id=2089810542]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="DayLabel" type="Label" parent="HUDContainer/TopBar/TopBarHBox"]
+[node name="DayLabel" type="Label" parent="HUDContainer/TopBar/TopBarHBox" unique_id=1000764000]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 15
 text = "Fri"
-theme_override_font_sizes/font_size = 15
-theme_override_colors/font_color = Color(1, 1, 1, 1)
 
-[node name="TimeLabel" type="Label" parent="HUDContainer/TopBar/TopBarHBox"]
+[node name="TimeLabel" type="Label" parent="HUDContainer/TopBar/TopBarHBox" unique_id=1729327391]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 15
 text = "08:00 AM"
-theme_override_font_sizes/font_size = 15
-theme_override_colors/font_color = Color(1, 1, 1, 1)
 
-[node name="StatsPanel" type="PanelContainer" parent="HUDContainer"]
+[node name="StatsPanel" type="PanelContainer" parent="HUDContainer" unique_id=2050920922]
 layout_mode = 1
+anchors_preset = 1
 anchor_left = 1.0
-anchor_top = 0.0
 anchor_right = 1.0
-anchor_bottom = 0.0
-offset_left = -240
-offset_top = 8
-offset_right = -8
-offset_bottom = 112
+offset_left = -240.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 112.0
 
-[node name="StatsVBox" type="VBoxContainer" parent="HUDContainer/StatsPanel"]
+[node name="StatsVBox" type="VBoxContainer" parent="HUDContainer/StatsPanel" unique_id=659772171]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="AffectionRow" type="HBoxContainer" parent="HUDContainer/StatsPanel/StatsVBox"]
+[node name="AffectionRow" type="HBoxContainer" parent="HUDContainer/StatsPanel/StatsVBox" unique_id=463611412]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="AffectionIcon" type="Label" parent="HUDContainer/StatsPanel/StatsVBox/AffectionRow"]
-layout_mode = 2
+[node name="AffectionIcon" type="Label" parent="HUDContainer/StatsPanel/StatsVBox/AffectionRow" unique_id=664963379]
 custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 12
 text = "Affection"
-theme_override_font_sizes/font_size = 12
-theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
 
-[node name="AffectionBar" type="ProgressBar" parent="HUDContainer/StatsPanel/StatsVBox/AffectionRow"]
-layout_mode = 2
+[node name="AffectionBar" type="ProgressBar" parent="HUDContainer/StatsPanel/StatsVBox/AffectionRow" unique_id=822717940]
 custom_minimum_size = Vector2(80, 12)
-max_value = 100
-value = 0
+layout_mode = 2
 show_percentage = false
 
-[node name="AffectionValue" type="Label" parent="HUDContainer/StatsPanel/StatsVBox/AffectionRow"]
-layout_mode = 2
+[node name="AffectionValue" type="Label" parent="HUDContainer/StatsPanel/StatsVBox/AffectionRow" unique_id=1143015139]
 custom_minimum_size = Vector2(28, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 12
 text = "0"
-theme_override_font_sizes/font_size = 12
-theme_override_colors/font_color = Color(1, 1, 1, 1)
 
-[node name="HealthRow" type="HBoxContainer" parent="HUDContainer/StatsPanel/StatsVBox"]
+[node name="HealthRow" type="HBoxContainer" parent="HUDContainer/StatsPanel/StatsVBox" unique_id=1679097660]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="HealthIcon" type="Label" parent="HUDContainer/StatsPanel/StatsVBox/HealthRow"]
-layout_mode = 2
+[node name="HealthIcon" type="Label" parent="HUDContainer/StatsPanel/StatsVBox/HealthRow" unique_id=1053445708]
 custom_minimum_size = Vector2(90, 0)
-text = "Rin Health"
-theme_override_font_sizes/font_size = 12
-theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
-
-[node name="HealthBar" type="ProgressBar" parent="HUDContainer/StatsPanel/StatsVBox/HealthRow"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 12
+text = "Rin Health"
+
+[node name="HealthBar" type="ProgressBar" parent="HUDContainer/StatsPanel/StatsVBox/HealthRow" unique_id=472301854]
 custom_minimum_size = Vector2(80, 12)
-max_value = 100
-value = 50
+layout_mode = 2
+value = 50.0
 show_percentage = false
 
-[node name="HealthValue" type="Label" parent="HUDContainer/StatsPanel/StatsVBox/HealthRow"]
-layout_mode = 2
+[node name="HealthValue" type="Label" parent="HUDContainer/StatsPanel/StatsVBox/HealthRow" unique_id=1262777733]
 custom_minimum_size = Vector2(28, 0)
-text = "50"
-theme_override_font_sizes/font_size = 12
+layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 12
+text = "50"
 
-[node name="CoinsRow" type="HBoxContainer" parent="HUDContainer/StatsPanel/StatsVBox"]
+[node name="CoinsRow" type="HBoxContainer" parent="HUDContainer/StatsPanel/StatsVBox" unique_id=167828013]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="CoinsIcon" type="Label" parent="HUDContainer/StatsPanel/StatsVBox/CoinsRow"]
-layout_mode = 2
+[node name="CoinsIcon" type="Label" parent="HUDContainer/StatsPanel/StatsVBox/CoinsRow" unique_id=1670174898]
 custom_minimum_size = Vector2(90, 0)
-text = "Coins"
-theme_override_font_sizes/font_size = 12
-theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
-
-[node name="CoinsValue" type="Label" parent="HUDContainer/StatsPanel/StatsVBox/CoinsRow"]
 layout_mode = 2
-text = "5000 g"
-theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 12
+text = "Coins"
+
+[node name="CoinsValue" type="Label" parent="HUDContainer/StatsPanel/StatsVBox/CoinsRow" unique_id=1537267131]
+layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 13
+text = "5000 g"

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cky1ldoda38v6" path="res://Sprite Assest/Map/World Object/Trees.png" id="4_8fqh3"]
 [ext_resource type="Texture2D" uid="uid://ccw0lgbqe53aj" path="res://Sprite Assest/Map/World Object/Chest _01.png" id="5_hdpd5"]
 [ext_resource type="Texture2D" uid="uid://cj6hcieu5u574" path="res://Sprite Assest/Map/TileMaps/TileSet.png" id="6_fcmx6"]
-[ext_resource type="PackedScene" uid="uid://cydjs7kmnnae4" path="res://character.tscn" id="8_kxtte"]
+[ext_resource type="PackedScene" uid="uid://746cfg3pt4g6" path="res://character.tscn" id="8_kxtte"]
 [ext_resource type="PackedScene" uid="uid://dlm7ok1vnef24" path="res://Chest.tscn" id="9_o0cdl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pqxx7"]
@@ -9161,7 +9161,7 @@ size = Vector2(588, 864)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l1e5b"]
 size = Vector2(1132, 231)
 
-[node name="World" type="Node2D" unique_id=1541952122]
+[node name="World1" type="Node2D" unique_id=1541952122]
 y_sort_enabled = true
 metadata/_edit_horizontal_guides_ = [-65.0]
 
@@ -9312,9 +9312,9 @@ tile_map_data = PackedByteArray("AAD7/wwAAQACABIAAAD7/w0AAQACABIAAAD7/w4AAQACABM
 tile_set = SubResource("TileSet_sqirv")
 
 [node name="Character" parent="." unique_id=207392448 instance=ExtResource("8_kxtte")]
-light_mask = 2
-visibility_layer = 2
-z_index = 8
+light_mask = 3
+visibility_layer = 3
+z_index = 6
 position = Vector2(88, 567)
 
 [node name="Chest" parent="." unique_id=1814988311 instance=ExtResource("9_o0cdl")]
