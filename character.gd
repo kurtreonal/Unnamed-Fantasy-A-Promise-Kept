@@ -266,7 +266,7 @@ func _is_aim_valid(aim_dir: Vector2, forward_dir: Vector2) -> bool:
 	if aim_dir == Vector2.ZERO or forward_dir == Vector2.ZERO:
 		return false
 	return abs(rad_to_deg(aim_dir.angle_to(forward_dir))) <= AIM_CONE_DEGREES
-
+#comment
 # ── Movement ─────────────────────────────────────────────────
 func process_movement() -> void:
 	var direction := Input.get_vector("Left", "Right", "Up", "Down")
