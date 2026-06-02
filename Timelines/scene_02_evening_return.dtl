@@ -1,0 +1,208 @@
+# Scene 2: Evening Return & Health Check
+# Setting: Home, 6:00 PM
+# Theme: Consequences of daily choices, affection impacts health
+
+narrator: You push open the door to the house.
+narrator: Your body aches from the dungeon run.
+narrator: The weight of your gear feels heavier with each step.
+
+narrator: You hear soft movement from inside the home.
+
+join Asami center [animation="Fade In"]
+
+Asami: [expression: "surprised 1"] Oh! You're home!
+
+Asami: [expression: "scared"] Are you hurt?
+
+# Dynamic dialogue based on morning affection level
+[if affection >= 8]:
+  Asami: I was so worried about you.
+  Asami: Come here—let me help you rest.
+  [emotion_highlight: "deeply_concerned"]
+  
+  -> high_affection_return
+  
+[if affection >= 3]:
+  Asami: You look exhausted.
+  Asami: Did something bad happen down there?
+  [emotion_highlight: "concerned"]
+  
+  -> medium_affection_return
+
+[if affection < 3]:
+  Asami: [expression: "calm"] You came back late again.
+  Asami: The dungeon must have been difficult.
+  [emotion_highlight: "detached"]
+  
+  -> low_affection_return
+
+label high_affection_return:
+  player: I'm alright. Just tired.
+  
+  narrator: Rin helps you to a seat, insisting you rest.
+  
+  Asami: [expression: "smile 1"] At least you made it back safely.
+  
+  player: How are *you* feeling?
+  
+  Asami: [expression: "happy 1"] I feel better than I have in days.
+  Asami: That breakfast you made this morning...
+  Asami: And knowing how hard you're working for me...
+  Asami: It lifted my spirits.
+  
+  narrator: Her energy is visibly better than usual.
+  
+  [rin_health: 75]
+  [affection: +2]
+  
+  -> evening_interaction_choice
+
+label medium_affection_return:
+  player: I'm okay. How are *you* doing?
+  
+  Asami: [expression: "smile 1"] I'm feeling better than yesterday.
+  Asami: I even managed to walk around the house a bit.
+  
+  player: That's good. You need movement to stay strong.
+  
+  Asami: [expression: "calm"] I'm trying. For you.
+  
+  [rin_health: 60]
+  [affection: +1]
+  
+  -> evening_interaction_choice
+
+label low_affection_return:
+  player: I'm fine. How are you feeling?
+  
+  Asami: [expression: "sad 1"] Honestly... I'm tired.
+  Asami: And lonely.
+  Asami: I spent most of the day in bed.
+  
+  player: Tomorrow will be better.
+  
+  Asami: [expression: "sad 2"] Maybe.
+  
+  narrator: There's distance in her voice.
+  
+  [rin_health: 40]
+  [affection: -1]
+  
+  -> evening_interaction_choice
+
+label evening_interaction_choice:
+  narrator: Rin settles back, watching you carefully.
+  
+  narrator: You have a few moments before evening fully settles in.
+  
+  choice:
+    "Sit with her quietly for a while" -> sit_together
+    "Prepare her evening medicine" -> give_medicine
+    "Ask about her day" -> ask_day
+    "Head to bed early—you're exhausted" -> go_sleep
+
+label sit_together:
+  narrator: You sit at the edge of her bed.
+  narrator: The silence between you is comfortable.
+  
+  player: I'm sorry I'm always gone. I just... I need to find the cure.
+  
+  Asami: [expression: "smile 2"] I know.
+  Asami: And I'm not upset with you.
+  Asami: I just... miss you.
+  
+  player: I miss you too.
+  
+  narrator: The two of you sit in the fading light.
+  narrator: The weight of your quest feels lighter, if only for a moment.
+  
+  [affection: +3]
+  [rin_health: +5]
+  [time: "7:00 PM"]
+  
+  -> evening_wind_down
+
+label give_medicine:
+  narrator: You prepare Rin's evening medicine.
+  narrator: A bitter herbal blend—temporary relief for her symptoms.
+  
+  player: Here. This will help with the pain tonight.
+  
+  Asami: [expression: "smile 1"] Thank you.
+  
+  narrator: She drinks it carefully, making a slight face at the taste.
+  
+  Asami: [expression: "calm"] It's getting easier to take.
+  Asami: Or maybe I'm just getting used to it.
+  
+  player: Either way, it's helping. I can see it.
+  
+  [affection: +2]
+  [rin_health: +15]
+  [time: "6:30 PM"]
+  
+  -> evening_wind_down
+
+label ask_day:
+  narrator: You pull up a chair beside her.
+  
+  player: What did you do today? Anything nice?
+  
+  Asami: [expression: "smile 1"] I read a bit.
+  Asami: There's a story about a heroine who gets better after a long journey.
+  Asami: I kept thinking... "That could be me."
+  
+  player: It will be me. I promise you that.
+  
+  Asami: [expression: "touched"] I believe you.
+  Asami: More than I believe anything else.
+  
+  narrator: For a moment, her expression is pure hope.
+  
+  [affection: +2]
+  [time: "6:45 PM"]
+  
+  -> evening_wind_down
+
+label go_sleep:
+  narrator: Exhaustion pulls at you.
+  narrator: Your body needs rest.
+  
+  player: I'm going to get some sleep. Today wore me out.
+  
+  Asami: [expression: "sad 2"] Oh... I understand.
+  Asami: Sleep well, then.
+  
+  narrator: You notice her disappointment, but your energy is gone.
+  
+  player: Good night, Rin.
+  
+  [affection: -2]
+  [time: "7:30 PM"]
+  
+  -> end_evening
+
+label evening_wind_down:
+  narrator: As the evening deepens, Rin's eyes grow heavy.
+  
+  Asami: [expression: "smile 1"] I think I need to rest now.
+  Asami: Thank you for being here.
+  
+  player: Of course. Sleep well.
+  
+  [time: "8:00 PM"]
+  
+  -> end_evening
+
+label end_evening:
+  narrator: You head to your own room.
+  narrator: Tomorrow morning, you'll wake her again.
+  narrator: And the day will begin anew.
+  
+  narrator: Each dungeon run brings you closer to the cure.
+  narrator: But it also takes you further from her side.
+  
+  leave Asami [animation="Fade Out"]
+  
+  narrator: Still, you push forward.
+  narrator: Because giving up is not an option.

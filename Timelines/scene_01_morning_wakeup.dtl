@@ -1,0 +1,135 @@
+# Scene 1: Morning Wake-Up
+# Setting: Rin's bedroom, 8:00 AM
+# Theme: Establishing care and emotional connection
+[background arg="res://Assets/Noraneko_Backgrounds_Pack_2/Noraneko_Backgrounds_Pack_2/Bedroom_Day.png" fade="0.0"]
+
+narrator: The morning light filters through the curtains.
+narrator: Her face looks peaceful. She's still asleep.
+
+- Let her sleep a bit longer
+	narrator: You quietly leave the room, letting her rest.
+	narrator: Time passes. You return at 9\:00 AM.
+	[signal arg="time:+1"]
+	join Asami center [animation="Slide From Left" length="2.0" wait="true"]
+	Asami: Oh... I slept longer than I meant to.
+	Asami: I'm sorry. I know you wanted to have breakfast together...
+	player: Don't apologize. Your health comes first.
+	Asami: You're too kind to me.
+	narrator: There's relief in her voice.
+	[signal arg="affection:+2"]
+	[signal arg="mood:calm"]
+	leave Asami [animation="Fade Out" length="0.3"]
+	jump scene_01_morning_wakeup/breakfast_choice:
+
+- Gently call her name
+	player: Rin... good morning.
+	[signal arg="time:+1"]
+	join Asami center [animation="Fade In"]
+	Asami: Mm... Good morning...
+	Asami: What time is it?
+	player: Eight o'clock. How do you feel today?
+	Asami: A bit tired, but... I'm okay.
+	Asami: You're always checking on me first thing.
+	Asami: That's sweet.
+	narrator: Rin stretches gently, careful not to strain herself.
+	[signal arg="affection:+3"]
+	[signal arg="mood:calm"]
+	leave Asami [animation="Fade Out" length="0.3"]
+	jump scene_01_morning_wakeup/breakfast_choice:
+
+- Check her health first
+	player: Let me check how you're feeling first.
+	narrator: You gently place a hand on her forehead.
+	narrator: She stirs slightly.
+	[signal arg="time:+1"]
+	join Asami center [animation="Fade In"]
+	Asami: Ah! You startled me.
+	Asami: ...Is everything okay?
+	player: Just wanted to make sure you're not running a fever.
+	Asami: You worry too much.
+	Asami: I'm alright. My body's just... always tired.
+	player: That's why I'm going to find the Elixir.
+	Asami: I know.
+	Asami: I don't want you to have to risk your life for me...
+	Asami: But I'm grateful you're here.
+	narrator: The weight of your quest settles on you both.
+	[signal arg="affection:+5"]
+	[signal arg="mood:touched"]
+	leave Asami [animation="Fade Out" length="0.3"]
+	jump scene_01_morning_wakeup/breakfast_choice:
+
+label breakfast_choice:
+[background arg="res://Assets/Noraneko_Background_Pack_1/Noraneko_Background_Pack_1/Sitting_Room.png" fade="0.0"]
+
+narrator: Rin's stomach reminds you both that breakfast is needed.
+narrator: What will you prepare?
+
+- Cook her favorite — a grand meal (3000g)
+	[signal arg="mood:very_happy"]
+	[signal arg="meal:grand"]
+	narrator: You spend an hour preparing Rin's favorite meal.
+	narrator: Roasted vegetables, fresh bread, herbal tea infused with honey.
+	[signal arg="time:+1"]
+	join Asami center [animation="Fade In"]
+	Asami: Oh wow... you really went all out.
+	Asami: This looks amazing!
+	player: Eat as much as you can. You need your strength.
+	Asami: Thank you.
+	narrator: She eats slowly but genuinely enjoys every bite.
+	narrator: For a moment, she forgets her pain.
+	jump scene_01_morning_wakeup/end_breakfast:
+
+- Make something simple and warm (1000g)
+	[signal arg="mood:content"]
+	[signal arg="meal:simple"]
+	narrator: You prepare a simple breakfast — warm bread, cheese, and mild broth.
+	[signal arg="time:+1"]
+	join Asami center [animation="Fade In"]
+	Asami: This is nice. Thank you.
+	player: Just eat at your own pace.
+	Asami: I will. It's warm and comforting.
+	jump scene_01_morning_wakeup/end_breakfast:
+
+- Order takeout from town (1500g)
+	[signal arg="affection:-2"]
+	[signal arg="mood:sad"]
+	[signal arg="meal:takeout"]
+	narrator: You order food from the local shop in town.
+	narrator: It arrives warm, but store-bought.
+	[signal arg="time:+1"]
+	join Asami center [animation="Fade In"]
+	Asami: Again...?
+	Asami: Don't you think we could cook together sometimes?
+	player: I wanted to let you rest.
+	Asami: I know, but... I miss cooking with you.
+	Asami: It makes me feel like I'm still useful.
+	player: You're always useful to me, Rin.
+	Asami: ...Thanks.
+	jump scene_01_morning_wakeup/end_breakfast:
+
+- Skip breakfast and go explore
+	[signal arg="affection:-3"]
+	[signal arg="mood:worried"]
+	[signal arg="meal:skip"]
+	[signal arg="rin_health:-5"]
+	narrator: You're eager to get to the dungeons.
+	narrator: Every day counts toward finding the cure.
+	join Asami center [animation="Fade In"]
+	Asami: You're leaving already?
+	Asami: You haven't eaten...
+	player: I'll grab something in town. You should rest.
+	Asami: Please be careful out there.
+	Asami: Come home safe.
+	player: I will. I promise.
+	jump scene_01_morning_wakeup/end_breakfast:
+
+label end_breakfast:
+
+leave Asami [animation="Fade Out"]
+narrator: After breakfast, you gather your gear.
+narrator: The dungeon awaits.
+narrator: Rin watches you prepare, a mix of hope and worry in her eyes.
+narrator: You step out into the morning air.
+narrator: Another day, another chance to find what she needs.
+[background arg="res://Assets/Noraneko_Background_Pack_1/Gate_to_the_Netherworld_29.webp" fade="0.0"]
+[signal arg="show_location_card:abyss"]

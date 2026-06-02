@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cp6osvedk52br"
+path="res://.godot/imported/Long Bow Draw Sound Effect.mp3-feb5a0a996b80a27eb4449402147fd16.mp3str"
+
+[deps]
+
+source_file="res://Sprite Assest/Long Bow Draw Sound Effect.mp3"
+dest_files=["res://.godot/imported/Long Bow Draw Sound Effect.mp3-feb5a0a996b80a27eb4449402147fd16.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
