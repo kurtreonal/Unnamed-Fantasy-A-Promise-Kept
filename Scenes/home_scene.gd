@@ -123,8 +123,13 @@ func _ready() -> void:
 
 	_connect_dialogic_signals()
 
+	# ── Decide which scene to play based on how we got here ─────
 	if dialogic.current_timeline == null and _pending_timeline == "":
-		_request_scene("morning")
+		if day_system.return_reason == DaySystem.ReturnReason.CURFEW:
+			print("[HomeScene] Curfew return detected — loading evening scene.")
+			_request_scene("evening")
+		else:
+			_request_scene("morning")
 
 	var canvas := get_node_or_null("CanvasLayer")
 	if canvas:
