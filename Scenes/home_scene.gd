@@ -4,6 +4,7 @@ extends Control
 var affection_system: Affection_System
 var meal_system:      Meal_System
 var health_system:    Health_System
+var day_system:       DaySystem
 
 # ─── Dialogic ────────────────────────────────────────────────────
 var dialogic: Node
@@ -12,7 +13,6 @@ var dialogic: Node
 var hud: HUD
 
 # ─── Scene state ─────────────────────────────────────────────────
-var current_time:  int    = 8
 var current_scene: String = "morning"
 
 # ─── Singleton guard ─────────────────────────────────────────────
@@ -29,8 +29,6 @@ var _signals_connected: bool = false
 var _meal_purchased_this_scene: bool = false
 
 # ─── Title card running guard ────────────────────────────────────
-# While true, ALL incoming Dialogic signals are dropped.
-# Prevents load_world or any other signal racing the title card coroutine.
 var _title_card_running: bool = false
 
 # ─── Meal keywords → cost key mapping ────────────────────────────
@@ -48,8 +46,6 @@ const WORLD_SCENES: Dictionary = {
 }
 
 # ─── Location card definitions ───────────────────────────────────
-# Each key maps to a Dictionary that becomes a LocationTitleCardConfig.
-# Add new locations here — no other code needs to change.
 const LOCATION_CARDS: Dictionary = {
 	"abyss": {
 		"name_en":     "Abyss",
@@ -96,48 +92,44 @@ func _ready() -> void:
 	affection_system = get_node_or_null("/root/Affection_System")
 	meal_system      = get_node_or_null("/root/Meal_System")
 	health_system    = get_node_or_null("/root/Health_System")
+	day_system       = get_node_or_null("/root/DaySystem")
 	dialogic         = get_node_or_null("/root/Dialogic")
 
-	if not affection_system:
-		push_error("[HomeScene] AffectionSystem not found in autoload!")
-		return
-	if not meal_system:
-		push_error("[HomeScene] MealSystem not found in autoload!")
-		return
-	if not health_system:
-		push_error("[HomeScene] HealthSystem not found in autoload!")
-		return
-	if not dialogic:
-		push_error("[HomeScene] Dialogic not found in autoload!")
-		return
+	if not affection_system: push_error("[HomeScene] Affection_System not found in autoload!"); return
+	if not meal_system:      push_error("[HomeScene] Meal_System not found in autoload!"); return
+	if not health_system:    push_error("[HomeScene] Health_System not found in autoload!"); return
+	if not day_system:       push_error("[HomeScene] DaySystem not found in autoload!"); return
+	if not dialogic:         push_error("[HomeScene] Dialogic not found in autoload!"); return
 
 	hud = get_node_or_null("CanvasLayer/HUD")
 	if not hud:
 		push_warning("[HomeScene] HUD not found at CanvasLayer/HUD.")
 
-	# ── LocationTitleCard check ───────────────────────────────────
-	# The card is registered as an autoload named LocationTitle_Card.
-	# We just verify it exists here; all calls go through _show_location_card().
 	var card := get_node_or_null("/root/LocationTitle_Card")
 	if not card:
 		push_warning("[HomeScene] LocationTitle_Card autoload not found. Location cards disabled.")
 
+	# ── Connect DaySystem curfew signal ──────────────────────────
+	if not day_system.curfew_triggered.is_connected(_on_curfew_triggered):
+		day_system.curfew_triggered.connect(_on_curfew_triggered)
+
 	print("[HomeScene] Systems loaded successfully.")
-	print("  - AffectionSystem: affection = %d" % affection_system.current_affection)
-	print("  - MealSystem: coins = %d"           % meal_system.coins)
-	print("  - HealthSystem: rin_health = %d"    % health_system.rin_health)
+	print("  - Day: %d | Time: %s" % [day_system.current_day, day_system.get_time_string()])
+	print("  - Affection: %d | Coins: %d | Health: %d" % [
+		affection_system.current_affection,
+		meal_system.coins,
+		health_system.rin_health
+	])
 
 	_connect_dialogic_signals()
 
-	# Double check that we only start if absolutely clean
 	if dialogic.current_timeline == null and _pending_timeline == "":
 		_request_scene("morning")
-		
-	# Ensure HUD canvas is visible at runtime (it's hidden in editor to prevent
-	# Dialogic character editor freeze)
+
 	var canvas := get_node_or_null("CanvasLayer")
 	if canvas:
 		canvas.visible = true
+
 
 func _process(_delta: float) -> void:
 	if _start_deferred and _pending_timeline != "":
@@ -213,26 +205,30 @@ func _request_scene(scene_key: String) -> void:
 	match scene_key:
 		"morning":
 			current_scene     = "morning"
-			current_time      = 8
 			_pending_timeline = "res://Timelines/scene_01_morning_wakeup.dtl"
+			# Set time to morning, clock stops during dialogue
+			day_system.set_time(8, 0)
 			if hud:
-				hud.set_time(8)
 				hud.stop_time()
+
 		"evening":
 			current_scene     = "evening"
-			current_time      = 18
 			_pending_timeline = "res://Timelines/scene_02_evening_return.dtl"
+			# Snap time to 6 PM for the evening scene
+			day_system.set_evening_time()
 			if hud:
-				hud.set_time(18)
+				hud.stop_time()
+
 		"doubt":
 			if not affection_system.affection_check(5):
-				print("[HomeScene] Affection too low for doubt scene (need >= 5, have %d)" % affection_system.current_affection)
+				print("[HomeScene] Affection too low for doubt scene.")
 				return
 			current_scene     = "doubt"
-			current_time      = 17
 			_pending_timeline = "res://Timelines/scene_03_moment_of_doubt.dtl"
+			day_system.set_time(17, 0)
 			if hud:
-				hud.set_time(17)
+				hud.stop_time()
+
 		_:
 			push_error("[HomeScene] _request_scene: unknown key '%s'" % scene_key)
 			return
@@ -244,14 +240,28 @@ func _request_scene(scene_key: String) -> void:
 # Public Scene API
 # ─────────────────────────────────────────────────────────────────
 
-func load_morning_scene() -> void:
-	_request_scene("morning")
+func load_morning_scene() -> void: _request_scene("morning")
+func load_evening_scene() -> void: _request_scene("evening")
+func load_doubt_scene()   -> void: _request_scene("doubt")
 
-func load_evening_scene() -> void:
-	_request_scene("evening")
 
-func load_doubt_scene() -> void:
-	_request_scene("doubt")
+# ─────────────────────────────────────────────────────────────────
+# Curfew Handler — Called by DaySystem at 11:59 PM
+# ─────────────────────────────────────────────────────────────────
+
+func _on_curfew_triggered() -> void:
+	print("[HomeScene] Curfew triggered — forcing return home from world.")
+
+	# If we're in a world scene, this signal fires there too.
+	# The world scene calls HomeScene via autoload, so we handle it centrally.
+	_disconnect_dialogic_signals()
+	_clear_dialogic_layout()
+
+	# Small delay so the player sees the screen before we cut.
+	await get_tree().create_timer(0.5).timeout
+
+	# Return to home and load the evening scene.
+	get_tree().change_scene_to_file.call_deferred("res://Scenes/home_scene.tscn")
 
 
 # ─────────────────────────────────────────────────────────────────
@@ -266,9 +276,8 @@ func _on_choice_buttons_shown() -> void:
 func _apply_choice_greying() -> void:
 	if not meal_system:
 		return
-
-	var coins: int       = meal_system.get_coins()
-	var all_buttons      := _find_dialogic_choice_buttons()
+	var coins: int  = meal_system.get_coins()
+	var all_buttons := _find_dialogic_choice_buttons()
 
 	if all_buttons.is_empty():
 		push_warning("[HomeScene] _apply_choice_greying: no choice buttons found.")
@@ -276,10 +285,8 @@ func _apply_choice_greying() -> void:
 
 	for btn in all_buttons:
 		var cost_key: String = _get_meal_cost_key(btn.text)
-
 		if cost_key == "":
 			continue
-
 		var can_afford: bool = coins >= meal_system.MEAL_COSTS[cost_key]
 		btn.disabled = not can_afford
 		btn.modulate = Color.WHITE if can_afford else Color(0.55, 0.55, 0.55, 0.65)
@@ -289,21 +296,18 @@ func _apply_choice_greying() -> void:
 
 func _find_dialogic_choice_buttons() -> Array:
 	var result: Array = []
-
 	var grouped := get_tree().get_nodes_in_group("dialogic_choice")
 	if not grouped.is_empty():
 		for n in grouped:
 			if n is Button and n.visible:
 				result.append(n)
 		return result
-
 	var container := _find_node_by_name(get_tree().root, "ChoiceContainer")
 	if container:
 		for child in container.get_children():
 			if child is Button:
 				result.append(child)
 		return result
-
 	_collect_visible_buttons(get_tree().root, result)
 	return result
 
@@ -333,13 +337,12 @@ func _get_meal_cost_key(label: String) -> String:
 
 
 # ─────────────────────────────────────────────────────────────────
-# Time Advance
+# Time Advance (dialogue-triggered fast-forward)
 # ─────────────────────────────────────────────────────────────────
 
 func _advance_time(hours: int) -> void:
 	if not hud or not dialogic:
 		return
-	current_time   += hours
 	dialogic.paused = true
 	hud.advance_hours(hours)
 
@@ -349,20 +352,15 @@ func _advance_time(hours: int) -> void:
 
 func _on_time_advance_finished() -> void:
 	dialogic.paused = false
-	print("[HomeScene] Clock advanced → now %02d:00" % current_time)
+	print("[HomeScene] Clock advanced → now %s" % day_system.get_time_string())
 
 
 # ─────────────────────────────────────────────────────────────────
 # Location Title Card
 # ─────────────────────────────────────────────────────────────────
 
-## Called from _on_dialogic_signal when "show_location_card:KEY" arrives.
-## Pauses Dialogic, shows the card using await, then shifts scenes.
 func _show_location_card(location_key: String) -> void:
 	print("[HomeScene] === LOCATION CARD SEQUENCE START for '%s' ===" % location_key)
-
-	# Raise guard FIRST — drops any further Dialogic signals (including
-	# load_world) until we lower it or change scenes.
 	_title_card_running = true
 
 	var card: LocationTitleCard = get_node_or_null("/root/LocationTitle_Card")
@@ -373,69 +371,66 @@ func _show_location_card(location_key: String) -> void:
 		return
 
 	dialogic.paused = true
-	print("[HomeScene] Dialogic paused.")
-
 	var data: Dictionary = LOCATION_CARDS[location_key]
 	var cfg := _build_card_config(data)
-
-	print("[HomeScene] Displaying location card: %s" % location_key)
-
-	# show_and_wait blocks until full fade-out is done and tweens are cleared.
-	# One extra process_frame is included inside show_and_wait — no second await needed.
 	await card.show_and_wait(cfg)
-	print("[HomeScene] Card animation finished — safe to transition.")
-
 	await _after_location_card(location_key)
 	print("[HomeScene] === LOCATION CARD SEQUENCE COMPLETE ===")
 
 
-## Builds a LocationTitleCardConfig from a LOCATION_CARDS Dictionary entry.
 func _build_card_config(data: Dictionary) -> LocationTitleCardConfig:
 	var cfg: LocationTitleCardConfig
-
 	match data.get("preset", "gold"):
 		"gold":    cfg = LocationTitleCardConfig.gold_preset()
 		"silver":  cfg = LocationTitleCardConfig.silver_preset()
 		"crimson": cfg = LocationTitleCardConfig.crimson_preset()
 		"teal":    cfg = LocationTitleCardConfig.teal_preset()
 		_:         cfg = LocationTitleCardConfig.gold_preset()
-
 	cfg.location_name_en = data.get("name_en",     "")
 	cfg.location_name_jp = data.get("name_jp",     "")
 	cfg.description      = data.get("description", "")
 	cfg.icon_symbol      = data.get("icon",        "✦")
 	return cfg
 
-## For the morning scene we go to World1; for others we resume Dialogic.
-## Runs after show_and_wait() has fully completed — tweens are already dead.
+
 func _after_location_card(location_key: String) -> void:
 	print("[HomeScene] _after_location_card() for '%s'" % location_key)
-
 	match location_key:
 		"abyss":
-			print("[HomeScene] Abyss — transitioning to World1.")
+			print("[HomeScene] Abyss — setting dungeon start time and transitioning to World1.")
+			# Set time to 10:00 AM and start the clock when entering the dungeon
+			day_system.set_dungeon_start_time()
+			if hud:
+				hud.start_time()
 			_disconnect_dialogic_signals()
 			_clear_dialogic_layout()
 			get_tree().change_scene_to_file.call_deferred(WORLD_SCENES[1])
-
 		_:
 			print("[HomeScene] '%s' card done — resuming Dialogic." % location_key)
 			_title_card_running = false
 			dialogic.paused = false
-
 	print("[HomeScene] _after_location_card() END")
+
 
 # ─────────────────────────────────────────────────────────────────
 # Dialogic Signal Handlers
 # ─────────────────────────────────────────────────────────────────
 
 func _on_dialogue_finished() -> void:
-	print("[HomeScene] Dialogue finished.")
+	print("[HomeScene] Dialogue finished — scene: %s | Day: %d | Time: %s" % [
+		current_scene, day_system.current_day, day_system.get_time_string()
+	])
 	match current_scene:
+		"evening":
+			# Day is done — advance and loop back to morning
+			day_system.advance_day()
+			health_system.daily_health_decay()
+			print("[HomeScene] New day: %d | Rin health after decay: %d" % [
+				day_system.current_day, health_system.get_health()
+			])
+			_request_scene("morning")
 		"morning":
 			print("[HomeScene] Morning scene complete.")
-		"evening":
-			print("[HomeScene] Evening scene complete.")
 		"doubt":
 			print("[HomeScene] Doubt scene complete.")
 		_:
@@ -443,8 +438,6 @@ func _on_dialogue_finished() -> void:
 
 
 func _on_dialogic_signal(argument: String) -> void:
-	# Drop every signal while the title card owns the transition.
-	# This prevents load_world or any stray signal racing the coroutine.
 	if _title_card_running:
 		print("[HomeScene] Signal dropped (title card running): %s" % argument)
 		return
@@ -452,7 +445,6 @@ func _on_dialogic_signal(argument: String) -> void:
 	print("[HomeScene] Dialogic signal received: %s" % argument)
 
 	var colon_idx := argument.find(":")
-
 	if colon_idx == -1:
 		push_warning("[HomeScene] Unknown no-value signal: %s" % argument)
 		return
@@ -466,11 +458,9 @@ func _on_dialogic_signal(argument: String) -> void:
 			var hours: int = int(value)
 			if hours != 0:
 				_advance_time(hours)
-				print("[HomeScene] Time advance queued: %+d hour(s)" % hours)
 
 		"affection":
 			set_affection(int(value))
-			print("[HomeScene] Affection %s → now %d" % [value, affection_system.get_affection()])
 
 		"meal":
 			if _meal_purchased_this_scene:
@@ -485,24 +475,24 @@ func _on_dialogic_signal(argument: String) -> void:
 		"coins":
 			if meal_system:
 				meal_system.add_coins(int(value))
-				print("[HomeScene] Coins %s → now %d" % [value, meal_system.get_coins()])
-				if hud:
-					hud.notify_coins_changed()
+				if hud: hud.notify_coins_changed()
 
 		"rin_health":
 			if health_system:
 				health_system.modify_health(int(value))
-				print("[HomeScene] Rin health %s → now %d" % [value, health_system.get_health()])
-				if hud:
-					hud.notify_health_changed()
+				if hud: hud.notify_health_changed()
+
+		"day":
+			# Manual day signal from dialogue (optional override)
+			day_system.advance_day()
+			health_system.daily_health_decay()
+			if hud:
+				hud.notify_health_changed()
 
 		"load_world":
 			_load_world(int(value))
 
-		# ── Location card ─────────────────────────────────────────
-		# Triggered by: [signal arg="show_location_card:abyss"]
 		"show_location_card":
-			# IMPORTANT: Must await to allow the card sequence to complete!
 			await _show_location_card(value)
 
 		_:
@@ -516,26 +506,21 @@ func _on_dialogic_signal(argument: String) -> void:
 func set_affection(amount: int) -> void:
 	if affection_system:
 		affection_system.modify_affection(amount)
-		if hud:
-			hud.notify_affection_changed()
+		if hud: hud.notify_affection_changed()
 
 
 func set_meal(meal_type: String) -> void:
 	if not meal_system or not affection_system or not health_system:
 		return
-
 	if meal_system.purchase_meal(meal_type):
 		var aff:    int = meal_system.get_affection_impact(meal_type)
 		var health: int = meal_system.get_health_impact(meal_type)
-
 		affection_system.modify_affection(aff)
 		health_system.modify_health(health)
-
 		if hud:
 			hud.notify_affection_changed()
 			hud.notify_health_changed()
 			hud.notify_coins_changed()
-
 		print("[HomeScene] Meal '%s' | Affection: %+d | Health: %+d" % [meal_type, aff, health])
 	else:
 		print("[HomeScene] Meal purchase failed: '%s' (not enough coins)" % meal_type)
@@ -553,30 +538,15 @@ func _load_world(world_number: int) -> void:
 	if not WORLD_SCENES.has(world_number):
 		push_error("[HomeScene] _load_world: no scene mapped for world %d" % world_number)
 		return
-
 	print("[HomeScene] Transitioning to World%d..." % world_number)
-
 	_disconnect_dialogic_signals()
 	_clear_dialogic_layout()
 	get_tree().change_scene_to_file(WORLD_SCENES[world_number])
 
 
-## Removes every Dialogic layout CanvasLayer from the scene tree.
-##
-## Dialogic 2 instantiates a layout scene (e.g. DialogicLayout_TextBox) as a
-## direct child of /root when a timeline starts. end_timeline() clears the
-## timeline STATE but does NOT free those nodes when the timeline has already
-## ended naturally (current_timeline == null by then). We must free them
-## ourselves before changing scenes, or they render on top of the new scene.
-##
-## We match on "DialogicLayout" prefix — that covers every built-in and custom
-## layout Dialogic creates (TextBox, FullscreenBackground, etc.).
 func _clear_dialogic_layout() -> void:
-	# Also attempt end_timeline() in case it IS still running (e.g. load_world path).
 	if dialogic:
 		dialogic.end_timeline()
-
-	# Walk /root's direct children and free anything Dialogic left behind.
 	var root := get_tree().root
 	for child in root.get_children():
 		if child.name.begins_with("DialogicLayout"):
