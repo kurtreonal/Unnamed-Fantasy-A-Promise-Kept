@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://ddco4f7vn2vfk"]
 
 [ext_resource type="Texture2D" uid="uid://c8nopwn85fuv8" path="res://Sprite Assest/Map/World Object/Props.png" id="1_4suu4"]
+[ext_resource type="Script" uid="uid://dwwaynkak5dmn" path="res://Scenes/world_base.gd" id="1_jjfra"]
 [ext_resource type="Texture2D" uid="uid://bnenb6l600xs2" path="res://Sprite Assest/Map/TileMaps/WaterTiles-6frames.png" id="2_jjfra"]
 [ext_resource type="Texture2D" uid="uid://d1ym54nftcf15" path="res://Sprite Assest/Map/World Object/Trees_seperated.png" id="3_vkyju"]
 [ext_resource type="Texture2D" uid="uid://cky1ldoda38v6" path="res://Sprite Assest/Map/World Object/Trees.png" id="4_0xpvo"]
@@ -100500,6 +100501,7 @@ sources/3 = SubResource("TileSetAtlasSource_548uc")
 sources/4 = SubResource("TileSetAtlasSource_1we6s")
 
 [node name="World2" type="Node2D" unique_id=1701929527]
+script = ExtResource("1_jjfra")
 
 [node name="Position0" type="TileMapLayer" parent="." unique_id=457373693]
 position = Vector2(1, -90)

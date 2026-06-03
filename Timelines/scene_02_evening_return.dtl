@@ -17,47 +17,47 @@ update bckup/Asami [extra_data="set CharacterOffset/Expressions/Scared"]
 Asami: Are you hurt?
 
 [if "{affection}" >= "8"]
-	player: I'm alright. Just tired.
-	narrator: Rin moves toward you, insisting you sit down.
-	update bckup/Asami [extra_data="set CharacterOffset/Expressions/Smile1"]
-	Asami: I was so worried about you.
-	Asami: Come here— at least sit down.
-	player: How are you feeling?
-	update bckup/Asami [extra_data="set CharacterOffset/Expressions/Happy1"]
-	Asami: I feel better than I have in days.
-	Asami: That breakfast you made this morning...
-	Asami: And knowing how hard you're working for me...
-	Asami: It lifted my spirits.
-	narrator: Her energy is visibly better than usual.
-	[signal arg="rin_health:75"]
-	[signal arg="affection:+2"]
-	jump scene_02_evening_return/evening_interaction_choice:
+player: I'm alright. Just tired.
+narrator: Rin moves toward you, insisting you sit down.
+update bckup/Asami [extra_data="set CharacterOffset/Expressions/Smile1"]
+Asami: I was so worried about you.
+Asami: Come here— at least sit down.
+player: How are you feeling?
+update bckup/Asami [extra_data="set CharacterOffset/Expressions/Happy1"]
+Asami: I feel better than I have in days.
+Asami: That breakfast you made this morning...
+Asami: And knowing how hard you're working for me...
+Asami: It lifted my spirits.
+narrator: Her energy is visibly better than usual.
+[signal arg="rin_health:75"]
+[signal arg="affection:+2"]
+jump scene_02_evening_return/evening_interaction_choice:
 
 [if "{affection}" >= "3"]
-	player: I'm okay. How are you doing?
-	update bckup/Asami [extra_data="set CharacterOffset/Expressions/Smile1"]
-	Asami: I'm feeling better than yesterday.
-	Asami: I even managed to walk around the house a bit.
-	player: That's good. You need movement to stay strong.
-	update bckup/Asami [extra_data="set CharacterOffset/Expressions/Smile2"]
-	Asami: I'm trying. For you.
-	[signal arg="rin_health:60"]
-	[signal arg="affection:+1"]
-	jump scene_02_evening_return/evening_interaction_choice:
+player: I'm okay. How are you doing?
+update bckup/Asami [extra_data="set CharacterOffset/Expressions/Smile1"]
+Asami: I'm feeling better than yesterday.
+Asami: I even managed to walk around the house a bit.
+player: That's good. You need movement to stay strong.
+update bckup/Asami [extra_data="set CharacterOffset/Expressions/Smile2"]
+Asami: I'm trying. For you.
+[signal arg="rin_health:60"]
+[signal arg="affection:+1"]
+jump scene_02_evening_return/evening_interaction_choice:
 
 [if "{affection}" < "3"]
-	player: I'm fine. How are you feeling?
-	update bckup/Asami [extra_data="set CharacterOffset/Expressions/Sad1"]
-	Asami: Honestly... I'm tired.
-	Asami: And a little lonely.
-	Asami: I spent most of the day in bed.
-	player: Tomorrow will be better.
-	update bckup/Asami [extra_data="set CharacterOffset/Expressions/Sad2"]
-	Asami: Maybe.
-	narrator: There's distance in her voice.
-	[signal arg="rin_health:40"]
-	[signal arg="affection:-1"]
-	jump scene_02_evening_return/evening_interaction_choice:
+player: I'm fine. How are you feeling?
+update bckup/Asami [extra_data="set CharacterOffset/Expressions/Sad1"]
+Asami: Honestly... I'm tired.
+Asami: And a little lonely.
+Asami: I spent most of the day in bed.
+player: Tomorrow will be better.
+update bckup/Asami [extra_data="set CharacterOffset/Expressions/Sad2"]
+Asami: Maybe.
+narrator: There's distance in her voice.
+[signal arg="rin_health:40"]
+[signal arg="affection:-1"]
+jump scene_02_evening_return/evening_interaction_choice:
 
 label evening_interaction_choice:
 
