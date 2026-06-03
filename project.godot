@@ -26,7 +26,6 @@ LocationTitle_Card="*res://UI/LocationTitleCard/LocationTitleCard.tscn"
 [dialogic]
 
 directories/dch_directory={
-"Asami": "res://Characters/Asami.dch",
 "bckup/Asami": "res://Characters/bckup/Asami.dch"
 }
 directories/dtl_directory={
