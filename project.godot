@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Living Together with my Childhood Friend: Fantasy Monochrome"
-run/main_scene="uid://bdpd2nj7lujdr"
+run/main_scene="uid://7ok118iwmjmb"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -21,23 +21,28 @@ Dialogic="*uid://ds2q0uclmolvu"
 Affection_System="*uid://c1wj7dvsxywk2"
 Health_System="*uid://kbq5try170rc"
 Meal_System="*uid://qy52v6toqagx"
+LocationTitle_Card="*res://UI/LocationTitleCard/LocationTitleCard.tscn"
+DaySystem="*uid://n7cpwdd5jl4y"
 
 [dialogic]
 
 directories/dch_directory={
-"Asami": "res://Characters/Asami.dch",
 "bckup/Asami": "res://Characters/bckup/Asami.dch"
 }
 directories/dtl_directory={
+"prologue": "res://Timelines/prologue.dtl",
 "scene_01_morning_wakeup": "res://Timelines/scene_01_morning_wakeup.dtl",
 "scene_02_evening_return": "res://Timelines/scene_02_evening_return.dtl",
 "scene_03_moment_of_doubt": "res://Timelines/scene_03_moment_of_doubt.dtl",
 "timeline1": "res://Timelines/timeline1.dtl"
 }
-layout/style_directory={}
+layout/style_directory={
+"": "res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/text_box.tres",
+"text_box": "res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/text_box.tres"
+}
 glossary/default_case_sensitive=true
-layout/style_list=[]
-layout/default_style=""
+layout/style_list=["res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/text_box.tres"]
+layout/default_style="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/text_box.tres"
 text/letter_speed=0.01
 text/initial_text_reveal_skippable=true
 text/text_reveal_skip_delay=0.5

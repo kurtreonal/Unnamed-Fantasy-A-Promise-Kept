@@ -3,133 +3,145 @@
 # Theme: Establishing care and emotional connection
 [background arg="res://Assets/Noraneko_Backgrounds_Pack_2/Noraneko_Backgrounds_Pack_2/Bedroom_Day.png" fade="0.0"]
 
-narrator: The morning light filters through the curtains.
+"The morning light filters through the curtains."
 narrator: Her face looks peaceful. She's still asleep.
 
-- "Let her sleep a bit longer"
+- Let her sleep a bit longer
 	narrator: You quietly leave the room, letting her rest.
 	narrator: Time passes. You return at 9\:00 AM.
 	[signal arg="time:+1"]
-	join Asami center [animation="Slide From Left" length="3.0" wait="true"]
-	Asami: Oh... I slept longer than I meant to.
-	Asami: I'm sorry. I know you wanted to have breakfast together...
-	player: Don't apologize. Your health comes first.
-	Asami: You're too kind to me.
-	narrator: There's relief in her voice.
+	join bckup/Asami center [animation="Slide From Left" length="2.0" wait="true"]
+	bckup/Asami: Oh... I slept longer than I meant to.
+	bckup/Asami: I'm sorry. I know you wanted to have breakfast together...
+	Don't apologize. Your health comes first.
+	update bckup/Asami [extra_data="set CharacterOffset/Expressions/Happy1"]
+	bckup/Asami: ...
+	bckup/Asami: You're too kind to me.
+	narrator: "There's relief in her voice."
 	[signal arg="affection:+2"]
 	[signal arg="mood:calm"]
-	leave Asami [animation="Fade Out" length="0.3"]
+	leave bckup/Asami [animation="Fade Out" length="0.3"]
 	jump scene_01_morning_wakeup/breakfast_choice:
 
-- "Gently call her name"
+- Gently call her name
 	player: Rin... good morning.
 	[signal arg="time:+1"]
-	join Asami center [animation="Fade In"]
-	Asami: Mm... Good morning...
-	Asami: What time is it?
+	join bckup/Asami center [animation="Slide From Left" length="2.5" wait="true"]
+	bckup/Asami: Mm... Good morning...
+	bckup/Asami: What time is it?
 	player: Eight o'clock. How do you feel today?
-	Asami: A bit tired, but... I'm okay.
-	Asami: You're always checking on me first thing.
-	Asami: That's sweet.
-	narrator: Rin stretches gently, careful not to strain herself.
+	bckup/Asami: A bit tired, but... I'm okay.
+	bckup/Asami: You're always checking on me first thing.
+	bckup/Asami: That's sweet.
+	narrator: "Rin stretches gently, careful not to strain herself."
 	[signal arg="affection:+3"]
 	[signal arg="mood:calm"]
-	leave Asami [animation="Fade Out" length="0.3"]
+	leave bckup/Asami [animation="Fade Out" length="0.3"]
 	jump scene_01_morning_wakeup/breakfast_choice:
 
-- "Check her health first"
-	player: Let me check how you're feeling first.
-	narrator: You gently place a hand on her forehead.
-	narrator: She stirs slightly.
+- Check her health first
+	Let me check how you're feeling first.
+	"You gently place a hand on her forehead."
+	"She stirs slightly."
 	[signal arg="time:+1"]
-	join Asami center [animation="Fade In"]
-	Asami: Ah! You startled me.
-	Asami: ...Is everything okay?
+	join bckup/Asami center [animation="Fade In" wait="true" extra_data="set CharacterOffset/Expressions/Surprised1"]
+	bckup/Asami: Ah! You startled me.
+	bckup/Asami: ...Is everything okay?
 	player: Just wanted to make sure you're not running a fever.
-	Asami: You worry too much.
-	Asami: I'm alright. My body's just... always tired.
+	update bckup/Asami [extra_data="set CharacterOffset/Expressions/Smile1"]
+	bckup/Asami: You worry too much.
+	bckup/Asami: I'm alright. My body's just... always tired.
 	player: That's why I'm going to find the Elixir.
-	Asami: I know.
-	Asami: I don't want you to have to risk your life for me...
-	Asami: But I'm grateful you're here.
-	narrator: The weight of your quest settles on you both.
+	update bckup/Asami [extra_data="set CharacterOffset/Expressions/Sad1"]
+	bckup/Asami: .....
+	bckup/Asami: I know.
+	bckup/Asami: I don't want you to have to risk your life for me...
+	bckup/Asami: But I'm grateful you're here.
+	"The weight of your quest settles on you both."
 	[signal arg="affection:+5"]
 	[signal arg="mood:touched"]
-	leave Asami [animation="Fade Out" length="0.3"]
+	leave bckup/Asami
 	jump scene_01_morning_wakeup/breakfast_choice:
 
 label breakfast_choice:
 [background arg="res://Assets/Noraneko_Background_Pack_1/Noraneko_Background_Pack_1/Sitting_Room.png" fade="0.0"]
 
-narrator: Rin's stomach reminds you both that breakfast is needed.
-narrator: What will you prepare?
+"Rin's stomach reminds you both that breakfast is needed."
+"What will you prepare?"
 
-[signal arg="check_coins"]
-
-- "Cook her favorite — a grand meal (3000g)" if grand_affordable
-	narrator: You spend an hour preparing Rin's favorite meal.
-	narrator: Roasted vegetables, fresh bread, herbal tea infused with honey.
-	[signal arg="time:+1"]
-	join Asami center [animation="Fade In"]
-	Asami: Oh wow... you really went all out.
-	Asami: This looks amazing!
-	player: Eat as much as you can. You need your strength.
-	Asami: Thank you.
-	narrator: She eats slowly but genuinely enjoys every bite.
-	narrator: For a moment, she forgets her pain.
+- Cook her favorite — a grand meal (3000g)
 	[signal arg="mood:very_happy"]
 	[signal arg="meal:grand"]
+	"You spend an hour preparing Rin's favorite meal."
+	narrator: Roasted vegetables, fresh bread, herbal tea infused with honey.
+	[signal arg="time:+1"]
+	join bckup/Asami center [animation="Fade In" wait="true" extra_data="set CharacterOffset/Expressions/Surprised1"]
+	bckup/Asami: Oh wow... you really went all out.
+	bckup/Asami: This looks amazing!
+	player: Eat as much as you can. You need your strength.
+	update bckup/Asami [extra_data="set CharacterOffset/Expressions/Happy1"]
+	bckup/Asami: Thank you.
+	"She eats slowly but genuinely enjoys every bite."
 	jump scene_01_morning_wakeup/end_breakfast:
 
-- "Make something simple and warm (1000g)" if simple_affordable
-	narrator: You prepare a simple breakfast — warm bread, cheese, and mild broth.
-	[signal arg="time:+1"]
-	join Asami (Asami Pajama(Smile)) center [animation="Fade In"]
-	Asami: This is nice. Thank you.
-	player: Just eat at your own pace.
-	Asami: I will. It's warm and comforting.
+- Make something simple and warm (1000g)
 	[signal arg="mood:content"]
 	[signal arg="meal:simple"]
+	"You prepare a simple breakfast — warm bread, cheese, and mild broth."
+	[signal arg="time:+1"]
+	join bckup/Asami center [animation="Fade In" wait="true" extra_data="set CharacterOffset/Expressions/Happy1"]
+	bckup/Asami: This is nice. Thank you.
+	player: Just eat at your own pace.
+	bckup/Asami: I will. It's warm and comforting.
 	jump scene_01_morning_wakeup/end_breakfast:
 
-- "Order takeout from town (1500g)" if takeout_affordable
-	narrator: You order food from the local shop in town.
-	narrator: It arrives warm, but store-bought.
-	[signal arg="time:+1"]
-	join Asami center [animation="Fade In"]
-	Asami: Again...?
-	Asami: Don't you think we could cook together sometimes?
-	player: I wanted to let you rest.
-	Asami: I know, but... I miss cooking with you.
-	Asami: It makes me feel like I'm still useful.
-	player: You're always useful to me, Rin.
-	Asami: ...Thanks.
+- Order takeout from town (1500g)
 	[signal arg="affection:-2"]
 	[signal arg="mood:sad"]
 	[signal arg="meal:takeout"]
+	"You order food from the local shop in town."
+	"It arrives warm, but store-bought."
+	[signal arg="time:+1"]
+	join bckup/Asami center [animation="Fade In" wait="true" extra_data="set CharacterOffset/Expressions/Annoyed2"]
+	bckup/Asami: Again...?
+	update bckup/Asami [extra_data="set CharacterOffset/Expressions/Annoyed1"]
+	bckup/Asami: Don't you think we could cook together sometimes?
+	player: I wanted to let you rest.
+	update bckup/Asami [extra_data="set CharacterOffset/Expressions/Sad1"]
+	bckup/Asami: I know, but... I miss cooking with you.
+	bckup/Asami: It makes me feel like I'm still useful.
+	player: You're always useful to me, Rin.
+	update bckup/Asami [extra_data="set CharacterOffset/Expressions/Smile1"]
+	bckup/Asami: ...Thanks.
 	jump scene_01_morning_wakeup/end_breakfast:
 
-- "Skip breakfast and go explore"
-	narrator: You're eager to get to the dungeons.
-	narrator: Every day counts toward finding the cure.
-	join Asami (Asami T-shirt(Smile 1)) center [animation="Fade In"]
-	Asami: You're leaving already?
-	Asami: You haven't eaten...
-	player: I'll grab something in town. You should rest.
-	Asami: Please be careful out there.
-	Asami: Come home safe.
-	player: I will. I promise.
+- Skip breakfast and go explore
 	[signal arg="affection:-3"]
 	[signal arg="mood:worried"]
 	[signal arg="meal:skip"]
 	[signal arg="rin_health:-5"]
+	"You're eager to get to the dungeons."
+	bckup/Asami: Every day counts toward finding the cure.
+	join bckup/Asami center [animation="Fade In" wait="true" extra_data="set CharacterOffset/Expressions/Sad1"]
+	bckup/Asami: You're leaving already?
+	bckup/Asami: You haven't eaten...
+	player: I'll grab something in town. You should rest.
+	I might comeback late
+	You should cook for yourself for now
+	update bckup/Asami [extra_data="set CharacterOffset/Expressions/Smile1"]
+	bckup/Asami: Mhmm..
+	bckup/Asami: Please be careful out there.
+	bckup/Asami: Come home safe.
+	player: I will. I promise.
 	jump scene_01_morning_wakeup/end_breakfast:
 
 label end_breakfast:
 
-leave Asami [animation="Fade Out"]
-narrator: After breakfast, you gather your gear.
-narrator: The dungeon awaits.
-narrator: Rin watches you prepare, a mix of hope and worry in her eyes.
-narrator: You step out into the morning air.
-narrator: Another day, another chance to find what she needs.
+leave bckup/Asami
+"After breakfast, you gather your gear."
+"The dungeon awaits."
+"Rin watches you prepare, a mix of hope and worry in her eyes."
+"You step out into the morning air."
+"Another day, another chance to find what she needs."
+[background arg="res://Assets/Noraneko_Background_Pack_1/Gate_to_the_Netherworld_29.webp" fade="0.0"]
+[signal arg="show_location_card:abyss"]

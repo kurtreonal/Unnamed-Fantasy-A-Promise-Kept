@@ -81,93 +81,93 @@
 
 [node name="CharacterOffset" type="Node2D" unique_id=973512357]
 
-[node name="Hair Behind" type="Node2D" parent="." unique_id=263020835]
+[node name="HairBehind" type="Node2D" parent="." unique_id=263020835]
 
-[node name="Style 1" type="Node2D" parent="Hair Behind" unique_id=1864787952]
+[node name="Style1" type="Node2D" parent="HairBehind" unique_id=1864787952]
 
-[node name="Black" type="Sprite2D" parent="Hair Behind/Style 1" unique_id=1394480376]
+[node name="Black" type="Sprite2D" parent="HairBehind/Style1" unique_id=1394480376]
 visible = false
 texture = ExtResource("1_n75og")
 
-[node name="Pink" type="Sprite2D" parent="Hair Behind/Style 1" unique_id=666025623]
+[node name="Pink" type="Sprite2D" parent="HairBehind/Style1" unique_id=666025623]
 visible = false
 texture = ExtResource("2_dr6md")
 
-[node name="Silver" type="Sprite2D" parent="Hair Behind/Style 1" unique_id=750334969]
+[node name="Silver" type="Sprite2D" parent="HairBehind/Style1" unique_id=750334969]
 visible = false
 texture = ExtResource("3_yh1rf")
 
-[node name="Brown" type="Sprite2D" parent="Hair Behind/Style 1" unique_id=1686215248]
+[node name="Brown" type="Sprite2D" parent="HairBehind/Style1" unique_id=1686215248]
 visible = false
 texture = ExtResource("4_mrndd")
 
-[node name="Blonde" type="Sprite2D" parent="Hair Behind/Style 1" unique_id=1526078538]
+[node name="Blonde" type="Sprite2D" parent="HairBehind/Style1" unique_id=1526078538]
 visible = false
 texture = ExtResource("5_pcppu")
 
-[node name="Style 2" type="Node2D" parent="Hair Behind" unique_id=578525992]
+[node name="Style2" type="Node2D" parent="HairBehind" unique_id=578525992]
 
-[node name="Black" type="Sprite2D" parent="Hair Behind/Style 2" unique_id=2081159950]
+[node name="Black" type="Sprite2D" parent="HairBehind/Style2" unique_id=2081159950]
 visible = false
 texture = ExtResource("6_31u40")
 
-[node name="Pink" type="Sprite2D" parent="Hair Behind/Style 2" unique_id=1362795989]
+[node name="Pink" type="Sprite2D" parent="HairBehind/Style2" unique_id=1362795989]
 visible = false
 texture = ExtResource("7_4lp58")
 
-[node name="Silver" type="Sprite2D" parent="Hair Behind/Style 2" unique_id=857002696]
+[node name="Silver" type="Sprite2D" parent="HairBehind/Style2" unique_id=857002696]
 visible = false
 texture = ExtResource("8_ifrci")
 
-[node name="Brown" type="Sprite2D" parent="Hair Behind/Style 2" unique_id=165951647]
+[node name="Brown" type="Sprite2D" parent="HairBehind/Style2" unique_id=165951647]
 visible = false
 texture = ExtResource("9_n2kv7")
 
-[node name="Blonde" type="Sprite2D" parent="Hair Behind/Style 2" unique_id=565058548]
+[node name="Blonde" type="Sprite2D" parent="HairBehind/Style2" unique_id=565058548]
 visible = false
 texture = ExtResource("10_l2x2n")
 
-[node name="Style 3" type="Node2D" parent="Hair Behind" unique_id=61663651]
+[node name="Style3" type="Node2D" parent="HairBehind" unique_id=61663651]
 
-[node name="Black" type="Sprite2D" parent="Hair Behind/Style 3" unique_id=1773552552]
+[node name="Black" type="Sprite2D" parent="HairBehind/Style3" unique_id=1773552552]
 visible = false
 texture = ExtResource("11_7qprb")
 
-[node name="Pink" type="Sprite2D" parent="Hair Behind/Style 3" unique_id=148508712]
+[node name="Pink" type="Sprite2D" parent="HairBehind/Style3" unique_id=148508712]
 visible = false
 texture = ExtResource("12_curvf")
 
-[node name="Silver" type="Sprite2D" parent="Hair Behind/Style 3" unique_id=634372034]
+[node name="Silver" type="Sprite2D" parent="HairBehind/Style3" unique_id=634372034]
 visible = false
 texture = ExtResource("13_qtyan")
 
-[node name="Brown" type="Sprite2D" parent="Hair Behind/Style 3" unique_id=389047037]
+[node name="Brown" type="Sprite2D" parent="HairBehind/Style3" unique_id=389047037]
 visible = false
 texture = ExtResource("14_qfnjk")
 
-[node name="Blonde" type="Sprite2D" parent="Hair Behind/Style 3" unique_id=209010052]
+[node name="Blonde" type="Sprite2D" parent="HairBehind/Style3" unique_id=209010052]
 visible = false
 texture = ExtResource("15_pbkdb")
 
-[node name="Style 4" type="Node2D" parent="Hair Behind" unique_id=1083974451]
+[node name="Style4" type="Node2D" parent="HairBehind" unique_id=1083974451]
 
-[node name="Black" type="Sprite2D" parent="Hair Behind/Style 4" unique_id=1687041355]
+[node name="Black" type="Sprite2D" parent="HairBehind/Style4" unique_id=1687041355]
+visible = false
 texture = ExtResource("16_i3qny")
 
-[node name="Pink" type="Sprite2D" parent="Hair Behind/Style 4" unique_id=832899644]
+[node name="Pink" type="Sprite2D" parent="HairBehind/Style4" unique_id=832899644]
 visible = false
 texture = ExtResource("17_f87s1")
 
-[node name="Silver" type="Sprite2D" parent="Hair Behind/Style 4" unique_id=288955407]
+[node name="Silver" type="Sprite2D" parent="HairBehind/Style4" unique_id=288955407]
 visible = false
 texture = ExtResource("18_vcy18")
 
-[node name="Brown" type="Sprite2D" parent="Hair Behind/Style 4" unique_id=1293359298]
+[node name="Brown" type="Sprite2D" parent="HairBehind/Style4" unique_id=1293359298]
 visible = false
 texture = ExtResource("19_bggdc")
 
-[node name="Blonde" type="Sprite2D" parent="Hair Behind/Style 4" unique_id=536632891]
-visible = false
+[node name="Blonde" type="Sprite2D" parent="HairBehind/Style4" unique_id=536632891]
 texture = ExtResource("20_i57s4")
 
 [node name="Base" type="Sprite2D" parent="." unique_id=447085882]
@@ -175,26 +175,26 @@ texture = ExtResource("21_2sp05")
 
 [node name="Blush" type="Node2D" parent="." unique_id=693079171]
 
-[node name="Blush 1" type="Sprite2D" parent="Blush" unique_id=419512749]
+[node name="Blush1" type="Sprite2D" parent="Blush" unique_id=419512749]
 texture = ExtResource("22_x0rlv")
 
-[node name="Blush 2" type="Sprite2D" parent="Blush" unique_id=1993301012]
+[node name="Blush2" type="Sprite2D" parent="Blush" unique_id=1993301012]
 
 [node name="Costume" type="Node2D" parent="." unique_id=1472398494]
 
-[node name="Towel 1" type="Sprite2D" parent="Costume" unique_id=707509440]
+[node name="Towel1" type="Sprite2D" parent="Costume" unique_id=707509440]
 visible = false
 texture = ExtResource("23_7cd7r")
 
-[node name="Towel 2" type="Sprite2D" parent="Costume" unique_id=1349751600]
+[node name="Towel2" type="Sprite2D" parent="Costume" unique_id=1349751600]
 visible = false
 texture = ExtResource("24_50j8p")
 
-[node name="PE uniform 1" type="Sprite2D" parent="Costume" unique_id=94454581]
+[node name="PEuniform1" type="Sprite2D" parent="Costume" unique_id=94454581]
 visible = false
 texture = ExtResource("25_k1icm")
 
-[node name="PE uniform 2" type="Sprite2D" parent="Costume" unique_id=1752876741]
+[node name="PEuniform2" type="Sprite2D" parent="Costume" unique_id=1752876741]
 visible = false
 texture = ExtResource("26_uauhr")
 
@@ -202,27 +202,27 @@ texture = ExtResource("26_uauhr")
 visible = false
 texture = ExtResource("27_vesas")
 
-[node name="Pajamas 1" type="Sprite2D" parent="Costume" unique_id=537154046]
+[node name="Pajamas1" type="Sprite2D" parent="Costume" unique_id=537154046]
 visible = false
 texture = ExtResource("28_7ucxt")
 
-[node name="Pajamas 2" type="Sprite2D" parent="Costume" unique_id=996268299]
+[node name="Pajamas2" type="Sprite2D" parent="Costume" unique_id=996268299]
 visible = false
 texture = ExtResource("29_pipwx")
 
-[node name="Winter 1" type="Sprite2D" parent="Costume" unique_id=582361755]
+[node name="Winter1" type="Sprite2D" parent="Costume" unique_id=582361755]
 visible = false
 texture = ExtResource("30_fqr0b")
 
-[node name="Winter 2" type="Sprite2D" parent="Costume" unique_id=120371083]
+[node name="Winter2" type="Sprite2D" parent="Costume" unique_id=120371083]
 visible = false
 texture = ExtResource("31_8muog")
 
-[node name="T-shirt 1" type="Sprite2D" parent="Costume" unique_id=2081628542]
+[node name="T-shirt1" type="Sprite2D" parent="Costume" unique_id=2081628542]
 visible = false
 texture = ExtResource("32_yepvb")
 
-[node name="T-shirt 2" type="Sprite2D" parent="Costume" unique_id=1415225361]
+[node name="T-shir2" type="Sprite2D" parent="Costume" unique_id=1415225361]
 visible = false
 texture = ExtResource("33_cnndg")
 
@@ -230,125 +230,125 @@ texture = ExtResource("33_cnndg")
 visible = false
 texture = ExtResource("34_x5xe5")
 
-[node name="Summer Dress" type="Sprite2D" parent="Costume" unique_id=990904018]
+[node name="SummerDress" type="Sprite2D" parent="Costume" unique_id=990904018]
 visible = false
 texture = ExtResource("35_10bi2")
 
-[node name="Seifuku 1" type="Sprite2D" parent="Costume" unique_id=388974872]
+[node name="Seifuku1" type="Sprite2D" parent="Costume" unique_id=388974872]
 visible = false
 texture = ExtResource("36_6bhlf")
 
-[node name="Seifuku 2" type="Sprite2D" parent="Costume" unique_id=1631713207]
+[node name="Seifuku2" type="Sprite2D" parent="Costume" unique_id=1631713207]
 texture = ExtResource("37_cro5l")
 
-[node name="Hair Front" type="Node2D" parent="." unique_id=1751022201]
+[node name="HairFront" type="Node2D" parent="." unique_id=1751022201]
 
-[node name="Style 1" type="Node2D" parent="Hair Front" unique_id=43896805]
+[node name="Style1" type="Node2D" parent="HairFront" unique_id=43896805]
 
-[node name="Black" type="Sprite2D" parent="Hair Front/Style 1" unique_id=266051923]
+[node name="Black" type="Sprite2D" parent="HairFront/Style1" unique_id=266051923]
 visible = false
 texture = ExtResource("38_vufqa")
 
-[node name="Pink" type="Sprite2D" parent="Hair Front/Style 1" unique_id=2101247055]
+[node name="Pink" type="Sprite2D" parent="HairFront/Style1" unique_id=2101247055]
 visible = false
 texture = ExtResource("39_fdle3")
 
-[node name="Silver" type="Sprite2D" parent="Hair Front/Style 1" unique_id=712362497]
+[node name="Silver" type="Sprite2D" parent="HairFront/Style1" unique_id=712362497]
 visible = false
 texture = ExtResource("40_nem4x")
 
-[node name="Brown" type="Sprite2D" parent="Hair Front/Style 1" unique_id=292195986]
+[node name="Brown" type="Sprite2D" parent="HairFront/Style1" unique_id=292195986]
 visible = false
 texture = ExtResource("41_qhqt7")
 
-[node name="Blonde" type="Sprite2D" parent="Hair Front/Style 1" unique_id=1468992492]
+[node name="Blonde" type="Sprite2D" parent="HairFront/Style1" unique_id=1468992492]
 visible = false
 texture = ExtResource("42_3fcvw")
 
-[node name="Style 2" type="Node2D" parent="Hair Front" unique_id=1754372835]
+[node name="Style2" type="Node2D" parent="HairFront" unique_id=1754372835]
 
-[node name="Black" type="Sprite2D" parent="Hair Front/Style 2" unique_id=1780145011]
+[node name="Black" type="Sprite2D" parent="HairFront/Style2" unique_id=1780145011]
+visible = false
 texture = ExtResource("43_jaoq1")
 
-[node name="Pink" type="Sprite2D" parent="Hair Front/Style 2" unique_id=1563665328]
+[node name="Pink" type="Sprite2D" parent="HairFront/Style2" unique_id=1563665328]
 visible = false
 texture = ExtResource("44_qgj3w")
 
-[node name="Silver" type="Sprite2D" parent="Hair Front/Style 2" unique_id=963724940]
+[node name="Silver" type="Sprite2D" parent="HairFront/Style2" unique_id=963724940]
 visible = false
 texture = ExtResource("45_b8gvp")
 
-[node name="Brown" type="Sprite2D" parent="Hair Front/Style 2" unique_id=1961990777]
+[node name="Brown" type="Sprite2D" parent="HairFront/Style2" unique_id=1961990777]
 visible = false
 texture = ExtResource("46_8g8ki")
 
-[node name="Blonde" type="Sprite2D" parent="Hair Front/Style 2" unique_id=486751388]
-visible = false
+[node name="Blonde" type="Sprite2D" parent="HairFront/Style2" unique_id=486751388]
 texture = ExtResource("47_g5mkk")
 
-[node name="Style 3" type="Node2D" parent="Hair Front" unique_id=845320531]
+[node name="Style3" type="Node2D" parent="HairFront" unique_id=845320531]
 
-[node name="Black" type="Sprite2D" parent="Hair Front/Style 3" unique_id=755438899]
+[node name="Black" type="Sprite2D" parent="HairFront/Style3" unique_id=755438899]
 visible = false
 texture = ExtResource("48_75akk")
 
-[node name="Pink" type="Sprite2D" parent="Hair Front/Style 3" unique_id=2146834085]
+[node name="Pink" type="Sprite2D" parent="HairFront/Style3" unique_id=2146834085]
 visible = false
 texture = ExtResource("49_lhwp3")
 
-[node name="Silver" type="Sprite2D" parent="Hair Front/Style 3" unique_id=1757498852]
+[node name="Silver" type="Sprite2D" parent="HairFront/Style3" unique_id=1757498852]
 visible = false
 texture = ExtResource("50_by2o7")
 
-[node name="Brown" type="Sprite2D" parent="Hair Front/Style 3" unique_id=363455371]
+[node name="Brown" type="Sprite2D" parent="HairFront/Style3" unique_id=363455371]
 visible = false
 texture = ExtResource("51_5sh3n")
 
-[node name="Blonde" type="Sprite2D" parent="Hair Front/Style 3" unique_id=191890164]
+[node name="Blonde" type="Sprite2D" parent="HairFront/Style3" unique_id=191890164]
 visible = false
 texture = ExtResource("52_gfdwl")
 
-[node name="Style 4" type="Node2D" parent="Hair Front" unique_id=1301769430]
+[node name="Style4" type="Node2D" parent="HairFront" unique_id=1301769430]
 visible = false
 
-[node name="Black" type="Sprite2D" parent="Hair Front/Style 4" unique_id=1426055073]
+[node name="Black" type="Sprite2D" parent="HairFront/Style4" unique_id=1426055073]
 texture = ExtResource("53_222bb")
 
-[node name="Pink" type="Sprite2D" parent="Hair Front/Style 4" unique_id=101836219]
+[node name="Pink" type="Sprite2D" parent="HairFront/Style4" unique_id=101836219]
 visible = false
 texture = ExtResource("54_8ttba")
 
-[node name="Silver" type="Sprite2D" parent="Hair Front/Style 4" unique_id=1874969810]
+[node name="Silver" type="Sprite2D" parent="HairFront/Style4" unique_id=1874969810]
 visible = false
 texture = ExtResource("55_gk2pq")
 
-[node name="Brown" type="Sprite2D" parent="Hair Front/Style 4" unique_id=937033009]
+[node name="Brown" type="Sprite2D" parent="HairFront/Style4" unique_id=937033009]
 visible = false
 texture = ExtResource("56_wuudv")
 
-[node name="Blonde" type="Sprite2D" parent="Hair Front/Style 4" unique_id=857432387]
+[node name="Blonde" type="Sprite2D" parent="HairFront/Style4" unique_id=857432387]
 visible = false
 texture = ExtResource("57_rw48m")
 
-[node name="Style 5" type="Node2D" parent="Hair Front" unique_id=613290958]
+[node name="Style5" type="Node2D" parent="HairFront" unique_id=613290958]
 
-[node name="Black" type="Sprite2D" parent="Hair Front/Style 5" unique_id=1829506490]
+[node name="Black" type="Sprite2D" parent="HairFront/Style5" unique_id=1829506490]
 visible = false
 texture = ExtResource("58_s0f5e")
 
-[node name="Pink" type="Sprite2D" parent="Hair Front/Style 5" unique_id=2078272515]
+[node name="Pink" type="Sprite2D" parent="HairFront/Style5" unique_id=2078272515]
 visible = false
 texture = ExtResource("59_6e5pw")
 
-[node name="Silver" type="Sprite2D" parent="Hair Front/Style 5" unique_id=1376156887]
+[node name="Silver" type="Sprite2D" parent="HairFront/Style5" unique_id=1376156887]
 visible = false
 texture = ExtResource("60_vmer6")
 
-[node name="Brown" type="Sprite2D" parent="Hair Front/Style 5" unique_id=1791200633]
+[node name="Brown" type="Sprite2D" parent="HairFront/Style5" unique_id=1791200633]
 visible = false
 texture = ExtResource("61_4tkkf")
 
-[node name="Blonde" type="Sprite2D" parent="Hair Front/Style 5" unique_id=1028250044]
+[node name="Blonde" type="Sprite2D" parent="HairFront/Style5" unique_id=1028250044]
 visible = false
 texture = ExtResource("62_8oxiy")
 
@@ -362,27 +362,27 @@ texture = ExtResource("63_pi3w7")
 visible = false
 texture = ExtResource("64_0rd27")
 
-[node name="Surprised 1" type="Sprite2D" parent="Expressions" unique_id=1064683016]
+[node name="Surprised1" type="Sprite2D" parent="Expressions" unique_id=1064683016]
 visible = false
 texture = ExtResource("65_t1uww")
 
-[node name="Surprised 2" type="Sprite2D" parent="Expressions" unique_id=252074074]
+[node name="Surprised2" type="Sprite2D" parent="Expressions" unique_id=252074074]
 visible = false
 texture = ExtResource("66_ats3l")
 
-[node name="Annoyed 1" type="Sprite2D" parent="Expressions" unique_id=1287640300]
+[node name="Annoyed1" type="Sprite2D" parent="Expressions" unique_id=1287640300]
 visible = false
 texture = ExtResource("67_tbo6h")
 
-[node name="Annoyed 2" type="Sprite2D" parent="Expressions" unique_id=1366078036]
+[node name="Annoyed2" type="Sprite2D" parent="Expressions" unique_id=1366078036]
 visible = false
 texture = ExtResource("68_uoetl")
 
-[node name="Sad 1" type="Sprite2D" parent="Expressions" unique_id=1609127918]
+[node name="Sad1" type="Sprite2D" parent="Expressions" unique_id=1609127918]
 visible = false
 texture = ExtResource("69_10ij5")
 
-[node name="Sad 2" type="Sprite2D" parent="Expressions" unique_id=409880090]
+[node name="Sad2" type="Sprite2D" parent="Expressions" unique_id=409880090]
 visible = false
 texture = ExtResource("70_q7mp3")
 
@@ -394,22 +394,22 @@ texture = ExtResource("71_jx1fu")
 visible = false
 texture = ExtResource("72_jdbh8")
 
-[node name="Happy 1" type="Sprite2D" parent="Expressions" unique_id=1350345483]
+[node name="Happy1" type="Sprite2D" parent="Expressions" unique_id=1350345483]
 visible = false
 texture = ExtResource("73_mvyka")
 
-[node name="Happy 2" type="Sprite2D" parent="Expressions" unique_id=2089297765]
+[node name="Happy2" type="Sprite2D" parent="Expressions" unique_id=2089297765]
 visible = false
 texture = ExtResource("74_usdn5")
 
-[node name="Smile 1" type="Sprite2D" parent="Expressions" unique_id=197605780]
+[node name="Smile1" type="Sprite2D" parent="Expressions" unique_id=197605780]
 texture = ExtResource("75_lx5g5")
 
-[node name="Smile 2" type="Sprite2D" parent="Expressions" unique_id=581174390]
+[node name="Smile2" type="Sprite2D" parent="Expressions" unique_id=581174390]
 visible = false
 texture = ExtResource("76_uanbw")
 
-[node name="Smile 3" type="Sprite2D" parent="Expressions" unique_id=964301755]
+[node name="Smile3" type="Sprite2D" parent="Expressions" unique_id=964301755]
 visible = false
 texture = ExtResource("77_r4os1")
 
