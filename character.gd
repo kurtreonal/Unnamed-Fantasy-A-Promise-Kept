@@ -41,8 +41,8 @@ const WEAPON_EFFECT_OFFSET = {
 }
 
 # Staff shoot spawns far ahead in the aimed direction
-const STAFF_SHOOT_OFFSET: float = 200.0
-const BOW_ARROW_OFFSET:   float = 150.0
+const STAFF_SHOOT_OFFSET: float = 150.0
+const BOW_ARROW_OFFSET:   float = 50.0
 
 # ── Sword Element System ──────────────────────────────────────
 enum SwordElement { FIRE, LIGHTNING, WATER }
@@ -241,7 +241,11 @@ func _spawn_effect(effect_key: String, element: String,
 	else:
 		effect.rotation = 0.0
 
+	# add_child FIRST so AudioStreamPlayer2D nodes are in the scene tree
+	# before effect.play() calls .play() on them — otherwise sound is silent
 	get_parent().add_child(effect)
+	effect.z_index = 10          # always render above characters and terrain
+	effect.z_as_relative = false # absolute z, not relative to parent
 	# Pass aim_direction to effect so Staff_Magic can self-rotate
 	effect.play(effect_key, element, direction if is_staff_shoot else Vector2.ZERO)
 	_auto_free_effect(effect)
@@ -307,14 +311,20 @@ func _on_bow_animation_finished() -> void:
 	if not is_attacking or current_weapon != Weapon.BOW:
 		return
 	is_aiming = false
-	# Only spawn arrow if mouse aim is within 35° of the character's facing
+	# ── Facing cone check: only fire if mouse aim is within AIM_CONE_DEGREES
+	# of the direction the character is facing. Prevents shooting
+	# backwards or sideways relative to the bow draw animation.
 	if _is_aim_valid(aim_direction, last_direction):
-		_spawn_effect("Bow", SWORD_ELEMENT_NAME[sword_element],
+		# apply_rotation=False — do NOT rotate the Effect_Combat parent node.
+		# Rotating the parent causes Arrow_Projectile.position to move in local
+		# (rotated) space, making the arrow travel backwards for LEFT/UP/DOWN.
+		# The arrow sprite and velocity are both handled inside effect_combat.gd.
+		_spawn_effect("Bow_Arrow_Fly", SWORD_ELEMENT_NAME[sword_element],
 			BOW_ARROW_OFFSET, aim_direction,
-			true, false)
+			false, true)
+	# else: aim was outside the cone — arrow is cancelled silently
 	is_attacking = false
 	play_animation(WEAPON_IDLE_PREFIX[current_weapon], last_direction)
-
 func _on_staff_animation_finished() -> void:
 	if current_weapon != Weapon.STAFF:
 		return

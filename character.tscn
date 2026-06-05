@@ -6,10 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://6h1fxjua0u3x" path="res://Sprite Assest/Character Sheet/Bow.png" id="4_0qfo5"]
 [ext_resource type="Texture2D" uid="uid://bt8wuup1cacuf" path="res://Sprite Assest/Character Sheet/Magic.png" id="5_yxww1"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pjt0s"]
-atlas = ExtResource("2_pjt0s")
-region = Rect2(0, 1536, 64, 64)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_wa5vi"]
 atlas = ExtResource("2_pjt0s")
 region = Rect2(64, 1536, 64, 64)
@@ -77,10 +73,6 @@ region = Rect2(256, 3584, 128, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_y0ipg"]
 atlas = ExtResource("2_pjt0s")
 region = Rect2(384, 3584, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kjduu"]
-atlas = ExtResource("2_pjt0s")
-region = Rect2(512, 3584, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3d8aq"]
 atlas = ExtResource("2_pjt0s")
