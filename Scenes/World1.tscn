@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://746cfg3pt4g6" path="res://character.tscn" id="8_kxtte"]
 [ext_resource type="PackedScene" uid="uid://dlm7ok1vnef24" path="res://Chest.tscn" id="9_o0cdl"]
 [ext_resource type="PackedScene" uid="uid://dofksiswgt8a4" path="res://enemy_bug.tscn" id="9_x6xud"]
+[ext_resource type="PackedScene" uid="uid://dixcn76cfmed1" path="res://UI_Gamepad/hud.tscn" id="11_051au"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wea1w"]
 texture = ExtResource("1_tcatq")
@@ -9381,6 +9382,8 @@ light_mask = 3
 visibility_layer = 3
 z_index = 6
 position = Vector2(88, 567)
+
+[node name="HUD" parent="Character" unique_id=1674421489 instance=ExtResource("11_051au")]
 
 [node name="Enemy_Bug" parent="." unique_id=926645366 instance=ExtResource("9_x6xud")]
 z_index = 10

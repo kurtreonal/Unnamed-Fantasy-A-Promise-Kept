@@ -1,0 +1,501 @@
+[gd_scene format=3 uid="uid://dixcn76cfmed1"]
+
+[ext_resource type="Script" uid="uid://bq8cyhbku3b1u" path="res://UI_Gamepad/hud.gd" id="1_2hoc7"]
+[ext_resource type="Script" uid="uid://cijqp5gs0tp3a" path="res://UI_Gamepad/hp_bar.gd" id="1_nlhc4"]
+[ext_resource type="Script" uid="uid://bcin7ntxfkxq" path="res://UI_Gamepad/weapon_bar.gd" id="2_bbaaa"]
+[ext_resource type="Script" uid="uid://bcfe6wckgab6t" path="res://UI_Gamepad/item_bar.gd" id="4_qu8n6"]
+[ext_resource type="Script" uid="uid://dcmef541pki7k" path="res://UI_Gamepad/staff_panel.gd" id="5_5n38o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.06, 0.06, 0.12, 0.88)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hp_bar_bg"]
+bg_color = Color(0.22, 0.04, 0.04, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hp_bar_fill"]
+bg_color = Color(0.85, 0.18, 0.18, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_slot_active"]
+bg_color = Color(0.18, 0.18, 0.38, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.45, 0.45, 0.9, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_badge"]
+bg_color = Color(0.8, 0.18, 0.05, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_slot"]
+bg_color = Color(0.12, 0.12, 0.22, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3, 0.3, 0.6, 0.6)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cooldown_bg"]
+bg_color = Color(0.1, 0.1, 0.2, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cooldown_fill"]
+bg_color = Color(0.9, 0.55, 0.1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cast_bar_bg"]
+bg_color = Color(0.1, 0.1, 0.25, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cast_bar_fill"]
+bg_color = Color(0.6, 0.35, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="HUD" type="CanvasLayer" unique_id=1674421489]
+layer = 10
+script = ExtResource("1_2hoc7")
+
+[node name="HPBar" type="MarginContainer" parent="." unique_id=441194223]
+offset_left = 638.0
+offset_top = 517.0
+offset_right = 901.0
+offset_bottom = 555.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 8
+script = ExtResource("1_nlhc4")
+
+[node name="BG" type="PanelContainer" parent="HPBar" unique_id=1859611062]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="VBox" type="VBoxContainer" parent="HPBar/BG" unique_id=345984851]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Bar" type="ProgressBar" parent="HPBar/BG/VBox" unique_id=2145557678]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_styles/background = SubResource("StyleBoxFlat_hp_bar_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hp_bar_fill")
+value = 100.0
+show_percentage = false
+
+[node name="WeaponBar" type="PanelContainer" parent="." unique_id=596133722]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -69.0
+offset_right = 236.0
+offset_bottom = 1.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+script = ExtResource("2_bbaaa")
+
+[node name="OuterVBox" type="VBoxContainer" parent="WeaponBar" unique_id=1865846322]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="TopRow" type="HBoxContainer" parent="WeaponBar/OuterVBox" unique_id=239899256]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="WeaponLabel" type="Label" parent="WeaponBar/OuterVBox/TopRow" unique_id=1972288530]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.55, 0.55, 0.55, 1)
+theme_override_font_sizes/font_size = 10
+text = "                    Weapons Cooldown"
+
+[node name="CooldownLabel" type="Label" parent="WeaponBar/OuterVBox/TopRow" unique_id=849031997]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.55, 0.1, 1)
+theme_override_font_sizes/font_size = 10
+text = "0.0"
+
+[node name="HBox" type="HBoxContainer" parent="WeaponBar/OuterVBox" unique_id=2059848764]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Slot0" type="PanelContainer" parent="WeaponBar/OuterVBox/HBox" unique_id=1788289497]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot_active")
+
+[node name="SlotVBox" type="VBoxContainer" parent="WeaponBar/OuterVBox/HBox/Slot0" unique_id=897142276]
+layout_mode = 2
+alignment = 1
+
+[node name="IconLabel" type="Label" parent="WeaponBar/OuterVBox/HBox/Slot0/SlotVBox" unique_id=1612039514]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "⚔"
+horizontal_alignment = 1
+
+[node name="NameLabel" type="Label" parent="WeaponBar/OuterVBox/HBox/Slot0/SlotVBox" unique_id=1490509448]
+layout_mode = 2
+theme_override_font_sizes/font_size = 9
+text = "Sword"
+horizontal_alignment = 1
+
+[node name="ElementBadge" type="PanelContainer" parent="WeaponBar/OuterVBox/HBox/Slot0" unique_id=139742446]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_badge")
+
+[node name="Label" type="Label" parent="WeaponBar/OuterVBox/HBox/Slot0/ElementBadge" unique_id=2109806730]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 8
+text = "Fire"
+horizontal_alignment = 1
+
+[node name="Slot1" type="PanelContainer" parent="WeaponBar/OuterVBox/HBox" unique_id=976445775]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="SlotVBox" type="VBoxContainer" parent="WeaponBar/OuterVBox/HBox/Slot1" unique_id=516204480]
+layout_mode = 2
+alignment = 1
+
+[node name="IconLabel" type="Label" parent="WeaponBar/OuterVBox/HBox/Slot1/SlotVBox" unique_id=498077328]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "🏹"
+horizontal_alignment = 1
+
+[node name="NameLabel" type="Label" parent="WeaponBar/OuterVBox/HBox/Slot1/SlotVBox" unique_id=159273173]
+layout_mode = 2
+theme_override_font_sizes/font_size = 9
+text = "Bow"
+horizontal_alignment = 1
+
+[node name="Slot2" type="PanelContainer" parent="WeaponBar/OuterVBox/HBox" unique_id=8131645]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="SlotVBox" type="VBoxContainer" parent="WeaponBar/OuterVBox/HBox/Slot2" unique_id=400097288]
+layout_mode = 2
+alignment = 1
+
+[node name="IconLabel" type="Label" parent="WeaponBar/OuterVBox/HBox/Slot2/SlotVBox" unique_id=1788496142]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "🗡"
+horizontal_alignment = 1
+
+[node name="NameLabel" type="Label" parent="WeaponBar/OuterVBox/HBox/Slot2/SlotVBox" unique_id=1216647942]
+layout_mode = 2
+theme_override_font_sizes/font_size = 9
+text = "Lance"
+horizontal_alignment = 1
+
+[node name="Slot3" type="PanelContainer" parent="WeaponBar/OuterVBox/HBox" unique_id=1030736515]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="SlotVBox" type="VBoxContainer" parent="WeaponBar/OuterVBox/HBox/Slot3" unique_id=1183693980]
+layout_mode = 2
+alignment = 1
+
+[node name="IconLabel" type="Label" parent="WeaponBar/OuterVBox/HBox/Slot3/SlotVBox" unique_id=94753035]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "🪄"
+horizontal_alignment = 1
+
+[node name="NameLabel" type="Label" parent="WeaponBar/OuterVBox/HBox/Slot3/SlotVBox" unique_id=1288884594]
+layout_mode = 2
+theme_override_font_sizes/font_size = 9
+text = "Staff"
+horizontal_alignment = 1
+
+[node name="CooldownBar" type="ProgressBar" parent="WeaponBar/OuterVBox" unique_id=2006270662]
+visible = false
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_cooldown_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_cooldown_fill")
+max_value = 2.0
+show_percentage = false
+
+[node name="ItemBar" type="PanelContainer" parent="." unique_id=588829985]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -72.0
+offset_right = 260.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+script = ExtResource("4_qu8n6")
+
+[node name="OuterVBox" type="VBoxContainer" parent="ItemBar" unique_id=1474534715]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="HeaderLabel" type="Label" parent="ItemBar/OuterVBox" unique_id=773609292]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.55, 0.55, 1)
+theme_override_font_sizes/font_size = 10
+text = "items"
+horizontal_alignment = 1
+
+[node name="HBox" type="HBoxContainer" parent="ItemBar/OuterVBox" unique_id=1239111656]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Item0" type="PanelContainer" parent="ItemBar/OuterVBox/HBox" unique_id=29638088]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="SlotVBox" type="VBoxContainer" parent="ItemBar/OuterVBox/HBox/Item0" unique_id=129269453]
+layout_mode = 2
+alignment = 1
+
+[node name="IconLabel" type="Label" parent="ItemBar/OuterVBox/HBox/Item0/SlotVBox" unique_id=1947986041]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "🍎"
+horizontal_alignment = 1
+
+[node name="CountLabel" type="Label" parent="ItemBar/OuterVBox/HBox/Item0/SlotVBox" unique_id=974922126]
+layout_mode = 2
+theme_override_font_sizes/font_size = 9
+text = "x0"
+horizontal_alignment = 1
+
+[node name="Item1" type="PanelContainer" parent="ItemBar/OuterVBox/HBox" unique_id=2052226048]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="SlotVBox" type="VBoxContainer" parent="ItemBar/OuterVBox/HBox/Item1" unique_id=1858172888]
+layout_mode = 2
+alignment = 1
+
+[node name="IconLabel" type="Label" parent="ItemBar/OuterVBox/HBox/Item1/SlotVBox" unique_id=1621537590]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "⚙️"
+horizontal_alignment = 1
+
+[node name="CountLabel" type="Label" parent="ItemBar/OuterVBox/HBox/Item1/SlotVBox" unique_id=1612425097]
+layout_mode = 2
+theme_override_font_sizes/font_size = 9
+text = "x0"
+horizontal_alignment = 1
+
+[node name="Item2" type="PanelContainer" parent="ItemBar/OuterVBox/HBox" unique_id=1893367364]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="SlotVBox" type="VBoxContainer" parent="ItemBar/OuterVBox/HBox/Item2" unique_id=1397300270]
+layout_mode = 2
+alignment = 1
+
+[node name="IconLabel" type="Label" parent="ItemBar/OuterVBox/HBox/Item2/SlotVBox" unique_id=763670077]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "🗑️"
+horizontal_alignment = 1
+
+[node name="CountLabel" type="Label" parent="ItemBar/OuterVBox/HBox/Item2/SlotVBox" unique_id=314966937]
+layout_mode = 2
+theme_override_font_sizes/font_size = 9
+text = "x0"
+horizontal_alignment = 1
+
+[node name="Item3" type="PanelContainer" parent="ItemBar/OuterVBox/HBox" unique_id=2135131733]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="SlotVBox" type="VBoxContainer" parent="ItemBar/OuterVBox/HBox/Item3" unique_id=2123230369]
+layout_mode = 2
+alignment = 1
+
+[node name="IconLabel" type="Label" parent="ItemBar/OuterVBox/HBox/Item3/SlotVBox" unique_id=297817072]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+
+[node name="CountLabel" type="Label" parent="ItemBar/OuterVBox/HBox/Item3/SlotVBox" unique_id=475733597]
+layout_mode = 2
+theme_override_font_sizes/font_size = 9
+text = "x0"
+horizontal_alignment = 1
+
+[node name="Item4" type="PanelContainer" parent="ItemBar/OuterVBox/HBox" unique_id=1821931152]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="SlotVBox" type="VBoxContainer" parent="ItemBar/OuterVBox/HBox/Item4" unique_id=1137772576]
+layout_mode = 2
+alignment = 1
+
+[node name="IconLabel" type="Label" parent="ItemBar/OuterVBox/HBox/Item4/SlotVBox" unique_id=816832131]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+
+[node name="CountLabel" type="Label" parent="ItemBar/OuterVBox/HBox/Item4/SlotVBox" unique_id=1510210811]
+layout_mode = 2
+theme_override_font_sizes/font_size = 9
+text = "x0"
+horizontal_alignment = 1
+
+[node name="StaffPanel" type="PanelContainer" parent="." unique_id=952368608]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1277.0
+offset_top = -152.0
+offset_right = -1111.0
+offset_bottom = -74.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+script = ExtResource("5_5n38o")
+
+[node name="OuterVBox" type="VBoxContainer" parent="StaffPanel" unique_id=1906151494]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="TopRow" type="HBoxContainer" parent="StaffPanel/OuterVBox" unique_id=833072529]
+layout_mode = 2
+
+[node name="HeaderLabel" type="Label" parent="StaffPanel/OuterVBox/TopRow" unique_id=1291255050]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.55, 0.55, 1)
+theme_override_font_sizes/font_size = 10
+text = "       Staff Skill"
+
+[node name="Spacer" type="Control" parent="StaffPanel/OuterVBox/TopRow" unique_id=557739716]
+layout_mode = 2
+
+[node name="HintLabel" type="Label" parent="StaffPanel/OuterVBox/TopRow" unique_id=965505652]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.55, 0.55, 1)
+theme_override_font_sizes/font_size = 10
+text = "R to switch"
+
+[node name="HBox" type="HBoxContainer" parent="StaffPanel/OuterVBox" unique_id=382963779]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Skill0" type="PanelContainer" parent="StaffPanel/OuterVBox/HBox" unique_id=1544817662]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot_active")
+
+[node name="SlotVBox" type="VBoxContainer" parent="StaffPanel/OuterVBox/HBox/Skill0" unique_id=775162470]
+layout_mode = 2
+alignment = 1
+
+[node name="IconLabel" type="Label" parent="StaffPanel/OuterVBox/HBox/Skill0/SlotVBox" unique_id=2047607899]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "🔥"
+horizontal_alignment = 1
+
+[node name="NameLabel" type="Label" parent="StaffPanel/OuterVBox/HBox/Skill0/SlotVBox" unique_id=1444259182]
+layout_mode = 2
+theme_override_font_sizes/font_size = 9
+text = "Fireball"
+horizontal_alignment = 1
+
+[node name="Skill1" type="PanelContainer" parent="StaffPanel/OuterVBox/HBox" unique_id=179843804]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="SlotVBox" type="VBoxContainer" parent="StaffPanel/OuterVBox/HBox/Skill1" unique_id=1107342381]
+layout_mode = 2
+alignment = 1
+
+[node name="IconLabel" type="Label" parent="StaffPanel/OuterVBox/HBox/Skill1/SlotVBox" unique_id=28082411]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "⚡"
+horizontal_alignment = 1
+
+[node name="NameLabel" type="Label" parent="StaffPanel/OuterVBox/HBox/Skill1/SlotVBox" unique_id=1319679154]
+layout_mode = 2
+theme_override_font_sizes/font_size = 9
+text = "Lightning"
+horizontal_alignment = 1
+
+[node name="CastRow" type="HBoxContainer" parent="StaffPanel/OuterVBox" unique_id=1068516699]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="CastBarLabel" type="Label" parent="StaffPanel/OuterVBox/CastRow" unique_id=1425223198]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.55, 0.55, 1)
+theme_override_font_sizes/font_size = 10
+text = "cast"
+
+[node name="CastBar" type="ProgressBar" parent="StaffPanel/OuterVBox/CastRow" unique_id=1657675325]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_cast_bar_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_cast_bar_fill")
+max_value = 0.8
+show_percentage = false
+
+[node name="CastLabel" type="Label" parent="StaffPanel/OuterVBox/CastRow" unique_id=1154533857]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.5, 1, 1)
+theme_override_font_sizes/font_size = 10
+text = "0.0s"

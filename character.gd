@@ -182,6 +182,11 @@ func _attack_bow() -> void:
 	is_aiming     = true
 	aim_direction = last_direction  # start aim at current facing
 	sprite_bow.play(_get_directional_anim("Aim_Bow", last_direction))
+	# Play the bow draw sound in sync with the aim animation start.
+	# The node lives on $Bow in character.tscn (Long Bow Draw Sound Effect.mp3).
+	var draw_audio = sprite_bow.get_node("AudioStreamPlayer2D")
+	draw_audio.stop()
+	draw_audio.play()
 
 # ── Attack: Lance ─────────────────────────────────────────────
 func _attack_lance(mode: String) -> void:
@@ -311,6 +316,9 @@ func _on_bow_animation_finished() -> void:
 	if not is_attacking or current_weapon != Weapon.BOW:
 		return
 	is_aiming = false
+	# Draw phase is over — stop the draw sound regardless of whether the
+	# shot is valid. Arrow_pierce.mp3 takes over in effect_combat.gd.
+	sprite_bow.get_node("AudioStreamPlayer2D").stop()
 	# ── Facing cone check: only fire if mouse aim is within AIM_CONE_DEGREES
 	# of the direction the character is facing. Prevents shooting
 	# backwards or sideways relative to the bow draw animation.

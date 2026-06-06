@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cml1oflfrw0m2" path="res://Sprite Assest/Effects/Fire_Effect/VFX3/sprite-sheet/sprite-sheet.png" id="2_us6ai"]
 [ext_resource type="Texture2D" uid="uid://cl4k720i0nl84" path="res://Sprite Assest/Effects/Lightning_Effect/VFX6/Sprite-sheet/Sprite-sheet.png" id="3_nt26b"]
 [ext_resource type="Texture2D" uid="uid://b5m48echsi2qp" path="res://Sprite Assest/Effects/Lightning_Effect/VFX5/Sprite-sheet/Sprite-sheet.png" id="4_m1qfv"]
-[ext_resource type="AudioStream" uid="uid://cr1y4e7n0ywh1" path="res://Sprite Assest/Sword Whoosh Sound Effects.mp3" id="5_0f0xm"]
+[ext_resource type="AudioStream" uid="uid://b0uc48xpweqy5" path="res://Sprite Assest/Sword_Swoosh.mp3" id="5_0f0xm"]
 [ext_resource type="Texture2D" uid="uid://b07lyglq2pdgl" path="res://Sprite Assest/Effects/Fire_Effect/VFX2/sprite-sheet/sprite-sheet.png" id="5_3pblr"]
 [ext_resource type="Texture2D" uid="uid://c77skmu8h7rgl" path="res://Sprite Assest/Effects/Fire_Effect/VFX1/sprite-sheet/sprite-sheet.png" id="6_kprhq"]
 [ext_resource type="Texture2D" uid="uid://cjvn4jw3e3dyj" path="res://Sprite Assest/Effects/Lightning_Effect/VFX1/Sprite-sheet/Sprite-sheet.png" id="6_omstv"]
@@ -21,7 +21,6 @@
 [ext_resource type="AudioStream" uid="uid://b26lq4y861jp" path="res://Sprite Assest/Lance_sound_effect.mp3" id="17_0f0xm"]
 [ext_resource type="Texture2D" uid="uid://bo3lpmh283cnc" path="res://Sprite Assest/Effects/1/1_2.png" id="17_n48yn"]
 [ext_resource type="Texture2D" uid="uid://d2su3v1oc0up7" path="res://Sprite Assest/Effects/1/1_3.png" id="18_07pev"]
-[ext_resource type="AudioStream" uid="uid://tqacjyq1ekph" path="res://Sprite Assest/ARROW SOUND EFFECT - FREE.mp3" id="18_8uinl"]
 [ext_resource type="Texture2D" uid="uid://b2juklu850dwv" path="res://Sprite Assest/Effects/1/1_4.png" id="19_0f0xm"]
 [ext_resource type="Texture2D" uid="uid://b6le3xrhwl45n" path="res://Sprite Assest/Effects/1/1_5.png" id="20_cdufu"]
 [ext_resource type="Texture2D" uid="uid://ceimh7ofg34hc" path="res://Sprite Assest/Effects/1/1_6.png" id="21_f4tnb"]
@@ -48,6 +47,7 @@
 [ext_resource type="Texture2D" uid="uid://yy1sxj57tfcm" path="res://Sprite Assest/Effects/1/1_27.png" id="42_4f45s"]
 [ext_resource type="Texture2D" uid="uid://5qxry7hglwxe" path="res://Sprite Assest/Effects/1/1_28.png" id="43_ndemu"]
 [ext_resource type="Texture2D" uid="uid://dojuadeg3r2xb" path="res://Sprite Assest/Effects/1/1_29.png" id="44_36ejn"]
+[ext_resource type="AudioStream" uid="uid://cyc702fr6d6id" path="res://Sprite Assest/Arrow_pierce.mp3" id="48_0f0xm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2jsm3"]
 atlas = ExtResource("11_3pblr")
@@ -204,7 +204,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Fire",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -239,7 +239,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Lightning",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -274,7 +274,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Water",
-"speed": 10.0
+"speed": 15.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_omstv"]
@@ -524,7 +524,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Casting_FireBall",
-"speed": 20.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -571,7 +571,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Casting_Lightning",
-"speed": 20.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -618,7 +618,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Shoot_FireBall",
-"speed": 20.0
+"speed": 16.25
 }, {
 "frames": [{
 "duration": 1.0,
@@ -647,13 +647,13 @@ animations = [{
 }],
 "loop": false,
 "name": &"Shoot_Lightning",
-"speed": 20.0
+"speed": 16.25
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0f0xm"]
 radius = 30.413813
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qm0qp"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cdufu"]
 size = Vector2(211, 39)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e13lh"]
@@ -858,41 +858,39 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xjcf8"]
-radius = 6.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_f4tnb"]
+radius = 8.062258
 
 [node name="Effect_Combat" type="Node2D" unique_id=1440762939]
 script = ExtResource("1_nt26b")
 
 [node name="Sword_Slash" type="AnimatedSprite2D" parent="." unique_id=826957491]
+visible = false
 sprite_frames = SubResource("SpriteFrames_0k5ft")
 animation = &"Fire"
-frame = 9
-frame_progress = 1.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Sword_Slash" unique_id=621404172]
 stream = ExtResource("5_0f0xm")
 volume_db = 24.0
 
 [node name="Staff_Magic" type="AnimatedSprite2D" parent="." unique_id=745503215]
+visible = false
 sprite_frames = SubResource("SpriteFrames_gk1vn")
-animation = &"Shoot_FireBall"
-frame = 13
-frame_progress = 1.0
-
-[node name="FireBallHitBox" type="Area2D" parent="Staff_Magic" unique_id=585730007]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Staff_Magic/FireBallHitBox" unique_id=1242875757]
-shape = SubResource("CircleShape2D_0f0xm")
+animation = &"Shoot_Lightning"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Staff_Magic" unique_id=2132963503]
 stream = ExtResource("14_f4tnb")
 
-[node name="LightningHitBox" type="Area2D" parent="Staff_Magic" unique_id=1170040739]
+[node name="FireBallHitBox" type="Area2D" parent="Staff_Magic" unique_id=546958502]
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Staff_Magic/LightningHitBox" unique_id=477854303]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Staff_Magic/FireBallHitBox" unique_id=1772745436]
+shape = SubResource("CircleShape2D_0f0xm")
+
+[node name="LightningHitBox" type="Area2D" parent="Staff_Magic" unique_id=126243758]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Staff_Magic/LightningHitBox" unique_id=1812396217]
 position = Vector2(2.5, 0.5)
-shape = SubResource("RectangleShape2D_qm0qp")
+shape = SubResource("RectangleShape2D_cdufu")
 
 [node name="Lance_Poke" type="AnimatedSprite2D" parent="." unique_id=1669669004]
 visible = false
@@ -907,11 +905,11 @@ visible = false
 sprite_frames = SubResource("SpriteFrames_on1j5")
 animation = &"Arrow"
 
-[node name="ArrowHitbox" type="Area2D" parent="Arrow_Projectile" unique_id=668622026]
+[node name="ArrowHitbox" type="Area2D" parent="Arrow_Projectile" unique_id=100859028]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Arrow_Projectile/ArrowHitbox" unique_id=782552307]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arrow_Projectile/ArrowHitbox" unique_id=1458877376]
 position = Vector2(20, 2)
-shape = SubResource("CircleShape2D_xjcf8")
+shape = SubResource("CircleShape2D_f4tnb")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Arrow_Projectile" unique_id=1175870649]
-stream = ExtResource("18_8uinl")
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Arrow_Projectile" unique_id=206894744]
+stream = ExtResource("48_0f0xm")

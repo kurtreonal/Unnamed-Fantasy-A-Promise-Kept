@@ -1,109 +1,60 @@
 extends CharacterBody2D
 
 # ── Stats ─────────────────────────────────────────────────────
+const MAX_HP: int = 3
 
-const WANDER_SPEED:   float = 60.0   # px/s while wandering
-
-const CIRCLE_RADIUS:  float = 60.0   # radius of wander circle
-
-const CIRCLE_SPEED:   float = 1.2    # radians/s around the circle
-
-const MAX_HP:         int   = 3      # hits to kill
-
-# ── State machine ─────────────────────────────────────────────
-
+# ── State ─────────────────────────────────────────────────────
 enum State { WANDER, ATTACK, DEATH }
-
 var state: State = State.WANDER
 
-# ── Runtime vars ──────────────────────────────────────────────
-
-var hp: int = MAX_HP
-
-var _circle_angle: float = 0.0      # current angle on the wander circle
-
-var _circle_origin: Vector2         # center of the wander circle (set on ready)
-
+# ── Runtime ───────────────────────────────────────────────────
+var hp: int       = MAX_HP
 var _is_dead: bool = false
 
 # ── Node refs ─────────────────────────────────────────────────
-
-@onready var sprite:     AnimatedSprite2D  = $AnimatedSprite2D
-
-@onready var audio:      AudioStreamPlayer2D = $AudioStreamPlayer2D
-
-@onready var attack_col:   CollisionShape2D  = $AttactHitbox
-
-@onready var body:     Area2D            = $AnimatedSprite2D/Area2D
-
-@onready var body_col: CollisionShape2D  = $AnimatedSprite2D/Area2D/CollisionShape2D
+@onready var sprite: AnimatedSprite2D    = $AnimatedSprite2D
+@onready var audio:  AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var body:   CollisionShape2D    = $CollisionShape2D
 
 func _ready() -> void:
-
-	_circle_origin = global_position
-
 	sprite.play("Enemy_Movement")
-
-	body.body_entered.connect(_on_body_entered)
-
-	body.area_entered.connect(_on_body_area_entered)
+	# Damage is triggered by weapon Area2D.body_entered → effect_combat.gd
+	# No signal connections needed on the enemy side.
 
 
-
+# ── Called by effect_combat._on_hit_body() ────────────────────
 func take_damage(amount: int = 1) -> void:
-
 	if _is_dead:
-
 		return
-
 	hp -= amount
 
-	audio.play()   # hurt sound
+	# Visual hit flash
+	sprite.modulate = Color(1.5, 0.3, 0.3)
+	get_tree().create_timer(0.12).timeout.connect(func():
+		if is_instance_valid(self) and not _is_dead:
+			sprite.modulate = Color.WHITE
+	)
+
+	# Play hurt sound — AudioStreamPlayer2D in enemy_bug.tscn
+	# Note: assign a proper hurt/impact sound to this node in the Inspector.
+	# The current tscn has Sword Whoosh assigned; swap it for an impact SFX.
+	if not audio.playing:
+		audio.play()
 
 	if hp <= 0:
-
 		_die()
 
 
-
 func _die() -> void:
-
-	_is_dead      = true
-
-	state         = State.DEATH
-
-	velocity      = Vector2.ZERO
-
-	attack_col.set_deferred("disabled", true)   # disable attack
-
-	body_col.set_deferred("disabled", true)     # disable body
-
+	_is_dead = true
+	state    = State.DEATH
+	velocity = Vector2.ZERO
+	audio.stop()
+	body.set_deferred("disabled", true)
+	sprite.modulate = Color.WHITE
 	sprite.play("Enemy_Death")
-
 	sprite.animation_finished.connect(_on_death_anim_finished, CONNECT_ONE_SHOT)
 
-	
 
 func _on_death_anim_finished() -> void:
-
 	queue_free()
-
-func _on_body_area_entered(area: Area2D) -> void:
-
-	var weapon_hitboxes = [
-
-		"SwordHitBox", "LanceHitBox",
-
-		"FireBallHitBox", "LightningHitBox"
-
-	]
-
-	if area.name in weapon_hitboxes:
-
-		take_damage(1)
-
-func _on_body_entered(body: Node2D) -> void:
-
-	if body.name == "Arrow_Projectile":
-
-		take_damage(1)

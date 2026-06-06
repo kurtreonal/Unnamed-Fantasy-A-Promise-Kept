@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://frt1485i2u45" path="res://Sprite Assest/Character Sheet/Sword.png" id="2_pjt0s"]
 [ext_resource type="Texture2D" uid="uid://ceqqfvjm7r2ut" path="res://Sprite Assest/Character Sheet/Spear.png" id="3_px5sl"]
 [ext_resource type="Texture2D" uid="uid://6h1fxjua0u3x" path="res://Sprite Assest/Character Sheet/Bow.png" id="4_0qfo5"]
+[ext_resource type="AudioStream" uid="uid://cp6osvedk52br" path="res://Sprite Assest/Long Bow Draw Sound Effect.mp3" id="5_0qfo5"]
 [ext_resource type="Texture2D" uid="uid://bt8wuup1cacuf" path="res://Sprite Assest/Character Sheet/Magic.png" id="5_yxww1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wa5vi"]
@@ -525,7 +526,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_px5sl"]
-size = Vector2(30, 20)
+size = Vector2(70, 27)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eec34"]
 atlas = ExtResource("3_px5sl")
@@ -1509,7 +1510,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Aim_Bow_Down",
-"speed": 20.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1553,7 +1554,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Aim_Bow_Left",
-"speed": 20.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1597,7 +1598,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Aim_Bow_Right",
-"speed": 20.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1641,7 +1642,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Aim_Bow_Up",
-"speed": 20.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -2382,10 +2383,12 @@ sprite_frames = SubResource("SpriteFrames_glpr6")
 animation = &"Slash_Sword_Down"
 
 [node name="SwordHitBox" type="Area2D" parent="Sword" unique_id=1366149292]
+visible = false
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sword/SwordHitBox" unique_id=1884860755]
-position = Vector2(0, 32)
+visible = false
+position = Vector2(0, 35.5)
 shape = SubResource("RectangleShape2D_px5sl")
 disabled = true
 
@@ -2407,7 +2410,12 @@ disabled = true
 [node name="Bow" type="AnimatedSprite2D" parent="." unique_id=796837569]
 visible = false
 sprite_frames = SubResource("SpriteFrames_wa5vi")
-animation = &"Idle_Bow_Up"
+animation = &"Aim_Bow_Down"
+frame = 12
+frame_progress = 1.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Bow" unique_id=651407937]
+stream = ExtResource("5_0qfo5")
 
 [node name="Staff" type="AnimatedSprite2D" parent="." unique_id=767941979]
 visible = false
@@ -2419,7 +2427,8 @@ position = Vector2(0, 11)
 shape = SubResource("RectangleShape2D_eec34")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=974332559]
-zoom = Vector2(2.7, 2.7)
+position = Vector2(0, -32)
+zoom = Vector2(3, 3)
 
 [connection signal="animation_finished" from="Sword" to="." method="_on_sword_animation_finished"]
 [connection signal="animation_finished" from="Lance" to="." method="_on_lance_animation_finished"]

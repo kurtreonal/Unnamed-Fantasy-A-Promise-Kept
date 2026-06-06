@@ -11,7 +11,11 @@ config_version=5
 [application]
 
 config/name="Living Together with my Childhood Friend: Fantasy Monochrome"
+<<<<<<< HEAD
 run/main_scene="res://Scenes/main_menu.tscn"
+=======
+run/main_scene="uid://bdpd2nj7lujdr"
+>>>>>>> 01be58a (InGame_UI)
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -88,6 +92,11 @@ variables={
 "simple_affordable": true,
 "takeout_affordable": true
 }
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
 
 [editor_plugins]
 
