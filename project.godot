@@ -11,11 +11,7 @@ config_version=5
 [application]
 
 config/name="Living Together with my Childhood Friend: Fantasy Monochrome"
-<<<<<<< HEAD
-run/main_scene="res://Scenes/main_menu.tscn"
-=======
-run/main_scene="uid://bdpd2nj7lujdr"
->>>>>>> 01be58a (InGame_UI)
+run/main_scene="uid://cx0cxni3jvqp3"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -33,7 +29,7 @@ GameState="*uid://covgmy0dup0ed"
 [dialogic]
 
 directories/dch_directory={
-"bckup/Asami": "res://Characters/bckup/Asami.dch"
+"Asami": "res://Characters/bckup/Asami.dch"
 }
 directories/dtl_directory={
 "prologue": "res://Timelines/prologue.dtl",
