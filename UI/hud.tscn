@@ -1,37 +1,50 @@
 [gd_scene format=3 uid="uid://cmrytrmso1len"]
 
 [ext_resource type="Script" uid="uid://br2quk36vtxqw" path="res://UI/hud.gd" id="1_hud"]
-[ext_resource type="Texture2D" uid="uid://dqkh4odcn51ad" path="res://Assets/kenney_fantasy-ui-borders/PNG/Default/Panel/panel-005.png" id="2_bytes"]
+[ext_resource type="Texture2D" uid="uid://dqkh4odcn51ad" path="res://Assets/kenney_fantasy-ui-borders/PNG/Default/Panel/panel-005.png" id="2_panel"]
 
-[node name="HUD" type="CanvasLayer" unique_id=208553937]
+; ════════════════════════════════════════════════════════════════
+; HUD — CanvasLayer (layer 10, always on top of gameplay content)
+; ════════════════════════════════════════════════════════════════
+[node name="HUD" type="CanvasLayer"]
 layer = 10
 script = ExtResource("1_hud")
 
-[node name="HUDContainer" type="Control" parent="." unique_id=699147646]
+; ── Full-screen container — all HUD children go here ─────────────
+[node name="HUDContainer" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
-[node name="TopBar" type="Control" parent="HUDContainer" unique_id=1066130811]
+; ════════════════════════════════════════════════════════════════
+; TOP-LEFT: Time + Day bar
+; Anchored to the top-left corner.  Fixed height 44 px.
+; ════════════════════════════════════════════════════════════════
+[node name="TopBar" type="Control" parent="HUDContainer"]
 layout_mode = 1
 anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 210.0
-offset_bottom = 44.0
+offset_right = 218.0
+offset_bottom = 48.0
 
-[node name="TopBarBG" type="NinePatchRect" parent="HUDContainer/TopBar" unique_id=910000010]
-modulate = Color(0, 0, 0.07545638, 1)
+[node name="TopBarBG" type="NinePatchRect" parent="HUDContainer/TopBar"]
+modulate = Color(0.02, 0.02, 0.08, 0.88)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_bytes")
+texture = ExtResource("2_panel")
 patch_margin_left = 16
 patch_margin_top = 16
 patch_margin_right = 16
@@ -39,12 +52,11 @@ patch_margin_bottom = 16
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[node name="TopBarMargin" type="MarginContainer" parent="HUDContainer/TopBar" unique_id=910000001]
+[node name="TopBarMargin" type="MarginContainer" parent="HUDContainer/TopBar"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 13.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 10
@@ -52,42 +64,47 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 4
 
-[node name="TopBarHBox" type="HBoxContainer" parent="HUDContainer/TopBar/TopBarMargin" unique_id=15916203]
+[node name="TopBarHBox" type="HBoxContainer" parent="HUDContainer/TopBar/TopBarMargin"]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="DayLabel" type="Label" parent="HUDContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=1047261456]
+[node name="DayLabel" type="Label" parent="HUDContainer/TopBar/TopBarMargin/TopBarHBox"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.95, 0.92, 0.85, 1)
 theme_override_font_sizes/font_size = 15
-text = "Fri"
+text = "Day 1  Mon"
 
-[node name="TimeLabel" type="Label" parent="HUDContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=67435786]
+[node name="TimeLabel" type="Label" parent="HUDContainer/TopBar/TopBarMargin/TopBarHBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 15
 text = "08:00 AM"
 
-[node name="StatsPanel" type="Control" parent="HUDContainer" unique_id=604452030]
+; ════════════════════════════════════════════════════════════════
+; TOP-RIGHT: Stats panel  (Affection / Health / Coins)
+; Anchored to the top-right corner.
+; ════════════════════════════════════════════════════════════════
+[node name="StatsPanel" type="Control" parent="HUDContainer"]
 layout_mode = 1
-anchors_preset = 1
 anchor_left = 1.0
+anchor_top = 0.0
 anchor_right = 1.0
-offset_left = -291.0
+anchor_bottom = 0.0
+offset_left = -296.0
 offset_top = 8.0
 offset_right = -8.0
-offset_bottom = 129.0
+offset_bottom = 132.0
 grow_horizontal = 0
 
-[node name="StatsPanelBG" type="NinePatchRect" parent="HUDContainer/StatsPanel" unique_id=910000020]
-modulate = Color(0, 0, 0.11054552, 1)
+[node name="StatsPanelBG" type="NinePatchRect" parent="HUDContainer/StatsPanel"]
+modulate = Color(0.02, 0.02, 0.10, 0.88)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_bytes")
+texture = ExtResource("2_panel")
 patch_margin_left = 16
 patch_margin_top = 16
 patch_margin_right = 16
@@ -95,89 +112,272 @@ patch_margin_bottom = 16
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[node name="StatsPanelMargin" type="MarginContainer" parent="HUDContainer/StatsPanel" unique_id=910000002]
+[node name="StatsPanelMargin" type="MarginContainer" parent="HUDContainer/StatsPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 14.0
-offset_top = 14.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 6
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 6
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 8
 
-[node name="StatsVBox" type="VBoxContainer" parent="HUDContainer/StatsPanel/StatsPanelMargin" unique_id=1408409070]
+[node name="StatsVBox" type="VBoxContainer" parent="HUDContainer/StatsPanel/StatsPanelMargin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+; ── Affection row ────────────────────────────────────────────────
+[node name="AffectionRow" type="HBoxContainer" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox"]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="AffectionRow" type="HBoxContainer" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox" unique_id=1841131369]
-layout_mode = 2
-theme_override_constants/separation = 6
-
-[node name="AffectionIcon" type="Label" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox/AffectionRow" unique_id=1864911167]
-custom_minimum_size = Vector2(90, 0)
+[node name="AffectionIcon" type="Label" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox/AffectionRow"]
+custom_minimum_size = Vector2(88, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
-theme_override_font_sizes/font_size = 12
-text = "Affection"
+theme_override_font_sizes/font_size = 13
+text = "♡ Affection"
 
-[node name="AffectionBar" type="ProgressBar" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox/AffectionRow" unique_id=2146152329]
+[node name="AffectionBar" type="ProgressBar" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox/AffectionRow"]
 custom_minimum_size = Vector2(80, 12)
 layout_mode = 2
+size_flags_horizontal = 3
 show_percentage = false
 
-[node name="AffectionValue" type="Label" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox/AffectionRow" unique_id=1928383674]
-custom_minimum_size = Vector2(28, 0)
+[node name="AffectionValue" type="Label" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox/AffectionRow"]
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(1, 0.80, 0.88, 1)
+theme_override_font_sizes/font_size = 13
 text = "0"
+horizontal_alignment = 2
 
-[node name="HealthRow" type="HBoxContainer" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox" unique_id=1738814324]
+; ── Health row ───────────────────────────────────────────────────
+[node name="HealthRow" type="HBoxContainer" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox"]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="HealthIcon" type="Label" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox/HealthRow" unique_id=1783413168]
-custom_minimum_size = Vector2(90, 0)
+[node name="HealthIcon" type="Label" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox/HealthRow"]
+custom_minimum_size = Vector2(88, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
-theme_override_font_sizes/font_size = 12
-text = "Rin Health"
+theme_override_font_sizes/font_size = 13
+text = "♥ Health"
 
-[node name="HealthBar" type="ProgressBar" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox/HealthRow" unique_id=589409133]
+[node name="HealthBar" type="ProgressBar" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox/HealthRow"]
 custom_minimum_size = Vector2(80, 12)
 layout_mode = 2
+size_flags_horizontal = 3
 value = 50.0
 show_percentage = false
 
-[node name="HealthValue" type="Label" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox/HealthRow" unique_id=208733644]
-custom_minimum_size = Vector2(28, 0)
+[node name="HealthValue" type="Label" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox/HealthRow"]
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.80, 1, 0.80, 1)
+theme_override_font_sizes/font_size = 13
 text = "50"
+horizontal_alignment = 2
 
-[node name="CoinsRow" type="HBoxContainer" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox" unique_id=321970788]
+; ── Coins row ────────────────────────────────────────────────────
+[node name="CoinsRow" type="HBoxContainer" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox"]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="CoinsIcon" type="Label" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox/CoinsRow" unique_id=392558089]
-custom_minimum_size = Vector2(90, 0)
+[node name="CoinsIcon" type="Label" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox/CoinsRow"]
+custom_minimum_size = Vector2(88, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
-theme_override_font_sizes/font_size = 12
-text = "Coins"
+theme_override_font_sizes/font_size = 13
+text = "✦ Coins"
 
-[node name="CoinsValue" type="Label" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox/CoinsRow" unique_id=1097505241]
+[node name="CoinsValue" type="Label" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox/CoinsRow"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.92, 0.55, 1)
 theme_override_font_sizes/font_size = 13
 text = "5000 g"
+horizontal_alignment = 2
 
-[node name="PopupLayer" type="Control" parent="HUDContainer" unique_id=910000030]
+; ════════════════════════════════════════════════════════════════
+; BOTTOM BAR: History / Save / Load
+; Always visible — even during the prologue.
+; Sits directly BELOW the Dialogic dialogue box.
+; Anchored to the bottom edge; height auto-fits its buttons.
+; ════════════════════════════════════════════════════════════════
+[node name="BottomBar" type="Control" parent="HUDContainer"]
+layout_mode = 1
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_bottom = 0.0
+grow_vertical = 0
+
+[node name="BottomBarBG" type="NinePatchRect" parent="HUDContainer/BottomBar"]
+modulate = Color(0.02, 0.02, 0.07, 0.92)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_panel")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="BottomBarMargin" type="MarginContainer" parent="HUDContainer/BottomBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 5
+
+[node name="BottomBarHBox" type="HBoxContainer" parent="HUDContainer/BottomBar/BottomBarMargin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+; History button
+[node name="BtnHistory" type="Button" parent="HUDContainer/BottomBar/BottomBarMargin/BottomBarHBox"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.90, 0.90, 1.0, 1)
+theme_override_font_sizes/font_size = 13
+text = "History"
+
+; Save button
+[node name="BtnSave" type="Button" parent="HUDContainer/BottomBar/BottomBarMargin/BottomBarHBox"]
+custom_minimum_size = Vector2(74, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 1.0, 0.85, 1)
+theme_override_font_sizes/font_size = 13
+text = "Save"
+
+; Load button (enabled only when a save exists — checked in hud.gd)
+[node name="BtnLoad" type="Button" parent="HUDContainer/BottomBar/BottomBarMargin/BottomBarHBox"]
+custom_minimum_size = Vector2(74, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.92, 1.0, 1)
+theme_override_font_sizes/font_size = 13
+text = "Load"
+
+; ════════════════════════════════════════════════════════════════
+; HISTORY OVERLAY — full-screen modal, toggled by BtnHistory
+; ════════════════════════════════════════════════════════════════
+[node name="HistoryOverlay" type="Control" parent="HUDContainer"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+z_index = 50
+
+; Dark translucent background
+[node name="HistoryBG" type="ColorRect" parent="HUDContainer/HistoryOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04, 0.03, 0.08, 0.88)
+mouse_filter = 0
+
+; Centred panel — 680 × 520 px
+[node name="HistoryPanel" type="Control" parent="HUDContainer/HistoryOverlay"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -340.0
+offset_top = -260.0
+offset_right = 340.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HistoryPanelBG" type="NinePatchRect" parent="HUDContainer/HistoryOverlay/HistoryPanel"]
+modulate = Color(0.02, 0.02, 0.10, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_panel")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="HistoryVBox" type="VBoxContainer" parent="HUDContainer/HistoryOverlay/HistoryPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="HistoryTitle" type="Label" parent="HUDContainer/HistoryOverlay/HistoryPanel/HistoryVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.92, 0.75, 1)
+theme_override_font_sizes/font_size = 16
+text = "Dialogue History"
+horizontal_alignment = 1
+
+[node name="HistorySeparator" type="HSeparator" parent="HUDContainer/HistoryOverlay/HistoryPanel/HistoryVBox"]
+layout_mode = 2
+
+[node name="HistoryScroll" type="ScrollContainer" parent="HUDContainer/HistoryOverlay/HistoryPanel/HistoryVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HistoryLog" type="RichTextLabel" parent="HUDContainer/HistoryOverlay/HistoryPanel/HistoryVBox/HistoryScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.9, 0.88, 0.85, 1)
+theme_override_font_sizes/normal_font_size = 13
+bbcode_enabled = true
+text = "[i]No dialogue recorded yet.[/i]"
+fit_content = true
+
+[node name="BtnCloseHistory" type="Button" parent="HUDContainer/HistoryOverlay/HistoryPanel/HistoryVBox"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 13
+text = "Close"
+
+; ════════════════════════════════════════════════════════════════
+; POPUP LAYER — floating +N / -N delta labels, no mouse input
+; ════════════════════════════════════════════════════════════════
+[node name="PopupLayer" type="Control" parent="HUDContainer"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -185,3 +385,4 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+z_index = 20

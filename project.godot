@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Living Together with my Childhood Friend: Fantasy Monochrome"
-run/main_scene="uid://7ok118iwmjmb"
+run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -23,6 +23,8 @@ Health_System="*uid://kbq5try170rc"
 Meal_System="*uid://qy52v6toqagx"
 LocationTitle_Card="*res://UI/LocationTitleCard/LocationTitleCard.tscn"
 DaySystem="*uid://n7cpwdd5jl4y"
+SaveSystem="*uid://cokaa4bhvmx84"
+GameState="*uid://covgmy0dup0ed"
 
 [dialogic]
 

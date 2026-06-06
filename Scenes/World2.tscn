@@ -100501,6 +100501,7 @@ sources/3 = SubResource("TileSetAtlasSource_548uc")
 sources/4 = SubResource("TileSetAtlasSource_1we6s")
 
 [node name="World2" type="Node2D" unique_id=1701929527]
+position = Vector2(1711, -495)
 script = ExtResource("1_jjfra")
 
 [node name="Position0" type="TileMapLayer" parent="." unique_id=457373693]

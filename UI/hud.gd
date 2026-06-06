@@ -2,24 +2,42 @@ extends CanvasLayer
 
 class_name HUD
 
+# ─────────────────────────────────────────────────────────────────
+# hud.gd
+#
+# Manages two distinct display modes:
+#   • Prologue mode  — TopBar + StatsPanel hidden, BottomBar shown
+#   • Gameplay mode  — everything shown, stats update normally
+#
+# @onready paths all use the corrected scene hierarchy in hud.tscn:
+#   HUD (CanvasLayer)
+#   └── HUDContainer (Control, full-screen)
+#       ├── TopBar          (top-left,  time + day)
+#       ├── StatsPanel      (top-right, affection / health / coins)
+#       ├── BottomBar       (bottom, always visible: History/Save/Load)
+#       ├── HistoryOverlay  (full-screen overlay, hidden by default)
+#       └── PopupLayer      (floating +/- popups, mouse-ignore)
+# ─────────────────────────────────────────────────────────────────
+
 # ─── System References ───────────────────────────────────────────
 var affection_system: Affection_System
 var health_system:    Health_System
 var meal_system:      Meal_System
 var day_system:       DaySystem
+var game_state:       Node
 
 # ─── Smooth advance state ─────────────────────────────────────────
 const ADVANCE_TICK_RATE: float = 0.03
-var _advance_minutes_remaining: int = 0
+var _advance_minutes_remaining: int   = 0
 var _advance_accumulator:       float = 0.0
 var _is_advancing:              bool  = false
 
-# ─── Live clock tick (1 real second = 1 in-game minute) ──────────
+# ─── Live clock (1 real second = 1 in-game minute) ───────────────
 const TICK_RATE:      float = 1.0
 var _tick_accumulator: float = 0.0
 var time_running:      bool  = false
 
-# ─── Cached values ────────────────────────────────────────────────
+# ─── Cached values (prevent redundant redraws) ────────────────────
 var _last_affection: int = -999
 var _last_health:    int = -999
 var _last_coins:     int = -999
@@ -27,21 +45,42 @@ var _last_coins:     int = -999
 # ─── Shake guard ─────────────────────────────────────────────────
 var _is_shaking: bool = false
 
-# ─── Cached StyleBox ─────────────────────────────────────────────
+# ─── Cached health StyleBox ──────────────────────────────────────
 var _health_fill_style: StyleBoxFlat = null
 
-# ─── UI Node References ──────────────────────────────────────────
+# ─── HUD visibility mode ─────────────────────────────────────────
+## true while the prologue is running — TopBar + StatsPanel stay hidden.
+var _stats_hidden: bool = false
+
+# ─────────────────────────────────────────────────────────────────
+# @onready — all paths rooted at the HUD CanvasLayer node
+# ─────────────────────────────────────────────────────────────────
+
+# TopBar (top-left)
+@onready var top_bar:         Control     = $HUDContainer/TopBar
 @onready var time_label:      Label       = $HUDContainer/TopBar/TopBarMargin/TopBarHBox/TimeLabel
 @onready var day_label:       Label       = $HUDContainer/TopBar/TopBarMargin/TopBarHBox/DayLabel
+
+# StatsPanel (top-right)
+@onready var stats_panel:     Control     = $HUDContainer/StatsPanel
 @onready var affection_bar:   ProgressBar = $HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox/AffectionRow/AffectionBar
 @onready var affection_label: Label       = $HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox/AffectionRow/AffectionValue
 @onready var health_bar:      ProgressBar = $HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox/HealthRow/HealthBar
 @onready var health_label:    Label       = $HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox/HealthRow/HealthValue
 @onready var coins_label:     Label       = $HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox/CoinsRow/CoinsValue
-@onready var top_bar:         Control     = $HUDContainer/TopBar
-@onready var stats_panel:     Control     = $HUDContainer/StatsPanel
-@onready var hud_container:   Control     = $HUDContainer
-@onready var popup_layer:     Control     = $HUDContainer/PopupLayer
+
+# BottomBar (always visible — History / Save / Load)
+@onready var bottom_bar:  Control = $HUDContainer/BottomBar
+@onready var btn_history: Button  = $HUDContainer/BottomBar/BottomBarMargin/BottomBarHBox/BtnHistory
+@onready var btn_save:    Button  = $HUDContainer/BottomBar/BottomBarMargin/BottomBarHBox/BtnSave
+@onready var btn_load:    Button  = $HUDContainer/BottomBar/BottomBarMargin/BottomBarHBox/BtnLoad
+
+# HistoryOverlay (full-screen, toggled by BtnHistory)
+@onready var history_overlay: Control = $HUDContainer/HistoryOverlay
+
+# PopupLayer (floating +N / -N labels)
+@onready var popup_layer: Control = $HUDContainer/PopupLayer
+
 
 # ─────────────────────────────────────────────────────────────────
 # Lifecycle
@@ -52,13 +91,14 @@ func _ready() -> void:
 	health_system    = get_node_or_null("/root/Health_System")
 	meal_system      = get_node_or_null("/root/Meal_System")
 	day_system       = get_node_or_null("/root/DaySystem")
+	game_state       = get_node_or_null("/root/GameState")
 
-	if not affection_system: push_warning("[HUD] AffectionSystem autoload not found.")
-	if not health_system:    push_warning("[HUD] HealthSystem autoload not found.")
-	if not meal_system:      push_warning("[HUD] MealSystem autoload not found.")
+	if not affection_system: push_warning("[HUD] Affection_System autoload not found.")
+	if not health_system:    push_warning("[HUD] Health_System autoload not found.")
+	if not meal_system:      push_warning("[HUD] Meal_System autoload not found.")
 	if not day_system:       push_warning("[HUD] DaySystem autoload not found.")
 
-	# Listen to DaySystem for time & day changes
+	# Subscribe to DaySystem signals for live clock
 	if day_system:
 		if not day_system.time_changed.is_connected(_on_time_changed):
 			day_system.time_changed.connect(_on_time_changed)
@@ -72,9 +112,25 @@ func _ready() -> void:
 	_apply_bar_styles()
 	_refresh_all()
 
+	# Wire bottom-bar buttons
+	if btn_history: btn_history.pressed.connect(_on_btn_history)
+	if btn_save:    btn_save.pressed.connect(_on_btn_save)
+	if btn_load:    btn_load.pressed.connect(_on_btn_load)
+
+	# History overlay starts hidden
+	if history_overlay:
+		history_overlay.visible = false
+
+	# Start with stats hidden — home_scene._ready() is the single authority
+	# that calls hide_stats() or show_stats() once it knows the game state.
+	# Hiding here prevents any flash of stats before home_scene decides.
+	if top_bar:    top_bar.visible    = false
+	if stats_panel: stats_panel.visible = false
+	_stats_hidden = true
+
 
 func _process(delta: float) -> void:
-	# ── Smooth fast-forward advance (used by home_scene.gd) ──────
+	# ── Smooth fast-forward (used by home_scene.gd) ──────────────
 	if _is_advancing:
 		_advance_accumulator += delta
 		while _advance_accumulator >= ADVANCE_TICK_RATE and _advance_minutes_remaining > 0:
@@ -87,13 +143,98 @@ func _process(delta: float) -> void:
 			_advance_accumulator = 0.0
 			time_advance_finished.emit()
 
-	# ── Live clock tick (1 real second = 1 in-game minute) ───────
+	# ── Live clock tick ──────────────────────────────────────────
 	elif time_running:
 		_tick_accumulator += delta
 		if _tick_accumulator >= TICK_RATE:
 			_tick_accumulator -= TICK_RATE
 			if day_system:
 				day_system.tick_minute()
+
+
+# ─────────────────────────────────────────────────────────────────
+# Prologue: Stats Visibility Control
+# ─────────────────────────────────────────────────────────────────
+
+## Hides TopBar + StatsPanel for the duration of the prologue.
+## BottomBar (History/Save/Load) remains visible at all times.
+func hide_stats() -> void:
+	_stats_hidden = true
+	if top_bar:    top_bar.visible    = false
+	if stats_panel: stats_panel.visible = false
+	print("[HUD] Stats hidden — prologue mode.")
+
+
+## Reveals TopBar + StatsPanel with a gentle fade-in.
+## Called by home_scene when scene_01_morning begins.
+func show_stats() -> void:
+	_stats_hidden = false
+
+	if top_bar:
+		top_bar.visible    = true
+		top_bar.modulate.a = 0.0
+	if stats_panel:
+		stats_panel.visible    = true
+		stats_panel.modulate.a = 0.0
+
+	var t := create_tween()
+	t.set_parallel(true)
+	t.tween_property(top_bar,    "modulate:a", 1.0, 0.8)
+	t.tween_property(stats_panel, "modulate:a", 1.0, 0.8)
+
+	_refresh_all()
+	print("[HUD] Stats shown — gameplay mode.")
+
+
+# ─────────────────────────────────────────────────────────────────
+# Bottom Bar: History / Save / Load
+# ─────────────────────────────────────────────────────────────────
+
+func _on_btn_history() -> void:
+	if not history_overlay:
+		return
+	history_overlay.visible = not history_overlay.visible
+	print("[HUD] History overlay: %s" % history_overlay.visible)
+
+
+func _on_btn_save() -> void:
+	var save_sys: Node = get_node_or_null("/root/SaveSystem")
+	if save_sys:
+		save_sys.save_game()
+		print("[HUD] Quick-save triggered.")
+		_flash_button(btn_save, Color(0.3, 0.9, 0.5, 1.0))
+	else:
+		push_warning("[HUD] SaveSystem not found — cannot save.")
+
+
+func _on_btn_load() -> void:
+	var save_sys: Node = get_node_or_null("/root/SaveSystem")
+	if save_sys and save_sys.save_exists:
+		save_sys.load_game()
+		_refresh_all()
+		print("[HUD] Quick-load triggered.")
+		_flash_button(btn_load, Color(0.4, 0.7, 1.0, 1.0))
+	else:
+		push_warning("[HUD] No save file to load.")
+
+
+## Brief colour flash on a button to confirm the action.
+func _flash_button(btn: Button, flash_color: Color) -> void:
+	if not btn:
+		return
+	var orig := btn.modulate
+	var t := create_tween()
+	t.tween_property(btn, "modulate", flash_color, 0.12)
+	t.tween_property(btn, "modulate", orig,        0.25)
+
+
+## Appended by home_scene.gd whenever a dialogue line fires.
+func append_history(line: String) -> void:
+	var log_label: RichTextLabel = get_node_or_null(
+		"HUDContainer/HistoryOverlay/HistoryPanel/HistoryVBox/HistoryScroll/HistoryLog"
+	)
+	if log_label:
+		log_label.append_text(line + "\n")
 
 
 # ─────────────────────────────────────────────────────────────────
@@ -127,7 +268,7 @@ func _apply_bar_styles() -> void:
 
 
 # ─────────────────────────────────────────────────────────────────
-# Time — Public API (delegates to DaySystem)
+# Time — Public API
 # ─────────────────────────────────────────────────────────────────
 
 func start_time() -> void:

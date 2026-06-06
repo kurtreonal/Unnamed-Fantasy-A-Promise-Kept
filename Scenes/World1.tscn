@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dlm7ok1vnef24" path="res://Chest.tscn" id="9_o0cdl"]
 [ext_resource type="PackedScene" uid="uid://dofksiswgt8a4" path="res://enemy_bug.tscn" id="9_x6xud"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pqxx7"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wea1w"]
 texture = ExtResource("1_tcatq")
 1:0/0 = 0
 2:0/0 = 0
@@ -635,7 +635,7 @@ texture = ExtResource("1_tcatq")
 21:25/0 = 0
 22:25/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wc0sl"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_051au"]
 texture = ExtResource("2_nw2cs")
 16:0/animation_columns = 6
 16:0/animation_separation = Vector2i(1, 1)
@@ -3041,7 +3041,7 @@ texture = ExtResource("2_nw2cs")
 0:50/0 = 0
 1:50/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y78fj"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2xybp"]
 texture = ExtResource("3_eadv2")
 24:0/0 = 0
 25:0/0 = 0
@@ -3693,7 +3693,7 @@ texture = ExtResource("3_eadv2")
 29:39/0 = 0
 30:39/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ht5k1"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xle36"]
 texture = ExtResource("4_8fqh3")
 24:0/0 = 0
 25:0/0 = 0
@@ -4534,7 +4534,7 @@ texture = ExtResource("4_8fqh3")
 36:42/0 = 0
 3:43/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cca01"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oymae"]
 texture = ExtResource("5_hdpd5")
 0:0/animation_columns = 4
 0:0/animation_speed = 5.0
@@ -4545,7 +4545,7 @@ texture = ExtResource("5_hdpd5")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f73vy"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sd52g"]
 texture = ExtResource("6_fcmx6")
 0:0/0 = 0
 1:0/0 = 0
@@ -9244,12 +9244,12 @@ terrain_set_1/terrain_1/name = "Path Tiles"
 terrain_set_1/terrain_1/color = Color(1, 0, 0.51584375, 1)
 terrain_set_1/terrain_2/name = "Path Dirt"
 terrain_set_1/terrain_2/color = Color(0.46875, 0.5, 0.25, 1)
-sources/8 = SubResource("TileSetAtlasSource_f73vy")
-sources/1 = SubResource("TileSetAtlasSource_wc0sl")
-sources/0 = SubResource("TileSetAtlasSource_pqxx7")
-sources/2 = SubResource("TileSetAtlasSource_y78fj")
-sources/3 = SubResource("TileSetAtlasSource_ht5k1")
-sources/4 = SubResource("TileSetAtlasSource_cca01")
+sources/8 = SubResource("TileSetAtlasSource_sd52g")
+sources/1 = SubResource("TileSetAtlasSource_051au")
+sources/0 = SubResource("TileSetAtlasSource_wea1w")
+sources/2 = SubResource("TileSetAtlasSource_2xybp")
+sources/3 = SubResource("TileSetAtlasSource_xle36")
+sources/4 = SubResource("TileSetAtlasSource_oymae")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gkke7"]
 size = Vector2(588, 348)

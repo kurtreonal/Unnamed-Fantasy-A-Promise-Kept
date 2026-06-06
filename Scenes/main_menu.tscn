@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://d1himtjuomxjj"]
+
+[ext_resource type="Script" uid="uid://b6emp01hlyqot" path="res://Scenes/main_menu.gd" id="1_main_menu"]
+
+[node name="MainMenu" type="Control" unique_id=1376807116]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_main_menu")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1930468748]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05, 0.04, 0.08, 1)
+
+[node name="BgOverlay" type="ColorRect" parent="." unique_id=2000527899]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.1, 0.06, 0.14, 0.5)
+
+[node name="TitleAnchor" type="Control" parent="." unique_id=392722887]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_top = 60.0
+offset_right = 300.0
+offset_bottom = 200.0
+grow_horizontal = 2
+
+[node name="TitleVBox" type="VBoxContainer" parent="TitleAnchor" unique_id=1438695487]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="GameTitle" type="Label" parent="TitleAnchor/TitleVBox" unique_id=691638368]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.92, 0.8, 1)
+theme_override_font_sizes/font_size = 48
+text = "A PROMISE KEPT"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="TitleAnchor/TitleVBox" unique_id=2080574882]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.65, 0.85, 0.85)
+theme_override_font_sizes/font_size = 16
+text = "— A story of care and devotion —"
+horizontal_alignment = 1
+
+[node name="MenuCenter" type="CenterContainer" parent="." unique_id=1660034714]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuVBox" type="VBoxContainer" parent="MenuCenter" unique_id=2046440941]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="BtnNewGame" type="Button" parent="MenuCenter/MenuVBox" unique_id=1888960792]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 52)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.85, 1)
+theme_override_font_sizes/font_size = 20
+text = "New Game"
+
+[node name="BtnLoadGame" type="Button" parent="MenuCenter/MenuVBox" unique_id=223407072]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 52)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.85, 1)
+theme_override_font_sizes/font_size = 20
+text = "Load Game"
+
+[node name="BtnQuit" type="Button" parent="MenuCenter/MenuVBox" unique_id=994196959]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 52)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.75, 0.75, 1)
+theme_override_font_sizes/font_size = 20
+text = "Quit"
+
+[node name="VersionLabel" type="Label" parent="." unique_id=385837777]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = -28.0
+offset_right = 200.0
+offset_bottom = -8.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.5, 0.5, 0.6, 0.6)
+theme_override_font_sizes/font_size = 12
+text = "v0.1.0"

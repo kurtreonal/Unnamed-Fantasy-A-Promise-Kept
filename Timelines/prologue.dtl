@@ -1,6 +1,6 @@
-~ Prologue: A Promise
+~ Prologue\: A Promise
 
-[background arg="res://Assets/Backgrounds/House_Night.png" fade="0.0"]
+[background arg="res://Assets/Noraneko_Backgrounds_Pack_2/Noraneko_Backgrounds_Pack_2/Livingroom_Dark.png" fade="0.0"]
 
 narrator: It was the kind of night that stays with you forever.
 narrator: Heavy rain.
@@ -13,7 +13,7 @@ narrator: Young enough to still believe promises could fix things.
 
 narrator: I still remember every word.
 
-[background arg="res://Assets/Backgrounds/Father_Bedroom.png" fade="1.0"]
+[background arg="res://Assets/Noraneko_Background_Pack_1/Noraneko_Background_Pack_1/Futon_Room_Night.png" fade="1.0"]
 
 narrator: The room smelled of medicine and old wood.
 narrator: A single candle burned on the bedside table.
@@ -23,7 +23,7 @@ narrator: The village doctor had already done everything he could.
 narrator: He had said nothing as he left.
 narrator: That silence said enough.
 
-join Father center [animation="Fade In"]
+join  center [animation="Fade In"]
 
 Father: ...Thank you for coming.
 Father: I know it's late.
@@ -40,8 +40,10 @@ narrator: He smiled, but his eyes were tired.
 narrator: The kind of tired that sleep couldn't fix.
 
 narrator: His gaze slowly drifted toward the small girl sitting quietly beside the bed.
+[background arg="res://Assets/1 (2).png" fade="2.5" wait="true"]
 
-join Asami right [animation="Fade In"]
+join bckup/Asami left [animation="Fade In" length="1.5" wait="true" extra_data="set CharacterOffset/Expressions/Sad1"]
+[background arg="res://Assets/Noraneko_Background_Pack_1/Noraneko_Background_Pack_1/Futon_Room_Night.png" fade="2.5"]
 
 narrator: She had been holding his hand since before I arrived.
 narrator: She didn't cry.
@@ -54,14 +56,14 @@ narrator: But she understood enough to be afraid.
 Father: Asami...
 Father: Come closer.
 
-Asami (expression="sad 1"): ...Dad.
+Asami: ...Dad.
 
 Father: It's alright.
 Father: I'm not in pain.
 Father: I just need you to listen carefully.
 Father: Can you do that for me?
 
-Asami (expression="sad 2"): ...Yes.
+Asami: ...Yes.
 
 Father: Good girl.
 
@@ -70,7 +72,7 @@ narrator: She leaned into his touch.
 
 Father: There may come a day when I can't be beside you anymore.
 
-Asami (expression="scared"): Don't say that.
+Asami: Don't say that.
 Asami: Don't say things like that.
 
 Father: It's alright to be scared.
@@ -130,8 +132,8 @@ Father: That's more than enough.
 narrator: He closed his eyes.
 narrator: His grip loosened, but didn't let go.
 
-leave Asami [animation="Fade Out"]
-leave Father [animation="Fade Out"]
+leave 
+leave 
 
 narrator: A few days later, he passed away quietly in that same room.
 narrator: The candle had long gone out by then.
@@ -260,4 +262,4 @@ narrator: The same house.
 narrator: A different morning.
 narrator: The same promise.
 
-jump scene_01_morning_wakeup
+jump prologue/
