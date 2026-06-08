@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://cj6hcieu5u574" path="res://Sprite Assest/Map/TileMaps/TileSet.png" id="6_027y7"]
 [ext_resource type="PackedScene" uid="uid://746cfg3pt4g6" path="res://character.tscn" id="8_2mo70"]
 [ext_resource type="Texture2D" uid="uid://bebotubpn7por" path="res://Assets/spr_portal_strip8.png" id="9_ah55a"]
-[ext_resource type="AudioStream" uid="uid://da7rufxrde5tb" path="res://BGM/LVS04_04_Sealed_Sanctuary.mp3" id="10_gnqtj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7kmno"]
 texture = ExtResource("1_id2kp")
@@ -44316,7 +44315,6 @@ shape = SubResource("RectangleShape2D_mky5p")
 z_index = 6
 position = Vector2(1049, 561)
 
-<<<<<<< HEAD
 [node name="TileMapLayer8" type="TileMapLayer" parent="." unique_id=459217053]
 tile_map_data = PackedByteArray("AAASAAoAAAAEAA4AAAASAAsAAAAEAA8AAAATAAoAAAAFAA4AAAATAAsAAAAFAA8AAAATAAcAAAAIAA4AAAATAAgAAAAIAA8AAAATAAkAAAAIABAAAAAUAAcAAAAJAA4AAAAUAAgAAAAJAA8AAAAUAAkAAAAJABAAAAAUAAoAAAAJABEAAAAUAAsAAAAJABIAAAAUAAwAAAAJABMAAAAVAAcAAAAKAA4AAAAVAAgAAAAKAA8AAAAVAAkAAAAKABAAAAAVAAoAAAAKABEAAAAVAAsAAAAKABIAAAAVAAwAAAAKABMAAAAWAAgAAAALAA8AAAAWAAkAAAALABAAAAAWAAoAAAALABEAAAAWAAsAAAALABIAAAA=")
 tile_set = SubResource("TileSet_ri4d7")
@@ -44328,8 +44326,3 @@ tile_set = SubResource("TileSet_ctuir")
 [node name="TileMapLayer7" type="TileMapLayer" parent="." unique_id=2012898536]
 tile_map_data = PackedByteArray("AAAOAAoAAAABABIAAAAOAAsAAAABABMAAAAPAAoAAAACABIAAAAPAAsAAAACABMAAAAQAAoAAAADABIAAAAQAAsAAAADABMAAAA=")
 tile_set = SubResource("TileSet_s3nif")
-=======
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=398885563]
-stream = ExtResource("10_gnqtj")
-autoplay = true
->>>>>>> b9a9d953 (Update of world song)
