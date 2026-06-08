@@ -1,16 +1,16 @@
 [gd_scene format=3 uid="uid://cwpmstmaxh1bs"]
 
-[ext_resource type="Script" uid="uid://dte1ndht8kq31" path="res://effect_combat.gd" id="1_nt26b"]
+[ext_resource type="Script" uid="uid://dk1s4d63v8lf8" path="res://effect_combat.gd" id="1_nt26b"]
 [ext_resource type="Texture2D" uid="uid://cml1oflfrw0m2" path="res://Sprite Assest/Effects/Fire_Effect/VFX3/sprite-sheet/sprite-sheet.png" id="2_us6ai"]
 [ext_resource type="Texture2D" uid="uid://cl4k720i0nl84" path="res://Sprite Assest/Effects/Lightning_Effect/VFX6/Sprite-sheet/Sprite-sheet.png" id="3_nt26b"]
 [ext_resource type="Texture2D" uid="uid://b5m48echsi2qp" path="res://Sprite Assest/Effects/Lightning_Effect/VFX5/Sprite-sheet/Sprite-sheet.png" id="4_m1qfv"]
 [ext_resource type="AudioStream" uid="uid://b0uc48xpweqy5" path="res://Sprite Assest/Sword_Swoosh.mp3" id="5_0f0xm"]
 [ext_resource type="Texture2D" uid="uid://b07lyglq2pdgl" path="res://Sprite Assest/Effects/Fire_Effect/VFX2/sprite-sheet/sprite-sheet.png" id="5_3pblr"]
-[ext_resource type="Texture2D" uid="uid://c77skmu8h7rgl" path="res://Sprite Assest/Effects/Fire_Effect/VFX1/sprite-sheet/sprite-sheet.png" id="6_kprhq"]
+[ext_resource type="Texture2D" path="res://Sprite Assest/Effects/Fire_Effect/VFX1/sprite-sheet/sprite-sheet.png" id="6_kprhq"]
 [ext_resource type="Texture2D" uid="uid://cjvn4jw3e3dyj" path="res://Sprite Assest/Effects/Lightning_Effect/VFX1/Sprite-sheet/Sprite-sheet.png" id="6_omstv"]
 [ext_resource type="Texture2D" uid="uid://4p0m3ev5aaka" path="res://Sprite Assest/Effects/Lightning_Effect/VFX2/Sprite-sheet/Sprite-sheet.png" id="7_kprhq"]
 [ext_resource type="Texture2D" uid="uid://ghod6tdh5kqa" path="res://Sprite Assest/Effects/VFX4/COLOR/sprite-sheet.png" id="8_2jsm3"]
-[ext_resource type="Texture2D" uid="uid://d2cdhqit1kd3q" path="res://Sprite Assest/Effects/VFX5/B&W/sprite-sheet.png" id="9_el16s"]
+[ext_resource type="Texture2D" path="res://Sprite Assest/Effects/VFX5/B&W/sprite-sheet.png" id="9_el16s"]
 [ext_resource type="Texture2D" uid="uid://ceknmqbfi6plb" path="res://Sprite Assest/Effects/VFX5/COLOR/sprite-sheet.png" id="10_7pkai"]
 [ext_resource type="Texture2D" uid="uid://hu7d0yqi7udf" path="res://Sprite Assest/Effects/128x128/Slash 1/color2/sprite-sheet.png" id="11_3pblr"]
 [ext_resource type="Texture2D" uid="uid://b7lnllx6gid2g" path="res://Sprite Assest/Effects/128x128/Slash 1/color4/sprite-sheet.png" id="12_omstv"]
@@ -876,7 +876,7 @@ volume_db = 24.0
 [node name="Staff_Magic" type="AnimatedSprite2D" parent="." unique_id=745503215]
 visible = false
 sprite_frames = SubResource("SpriteFrames_gk1vn")
-animation = &"Shoot_Lightning"
+animation = &"Casting_Lightning"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Staff_Magic" unique_id=2132963503]
 stream = ExtResource("14_f4tnb")
@@ -895,7 +895,7 @@ shape = SubResource("RectangleShape2D_cdufu")
 [node name="Lance_Poke" type="AnimatedSprite2D" parent="." unique_id=1669669004]
 visible = false
 sprite_frames = SubResource("SpriteFrames_phwde")
-animation = &"Thrust"
+animation = &"Pierce"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Lance_Poke" unique_id=1610380155]
 stream = ExtResource("17_0f0xm")

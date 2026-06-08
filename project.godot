@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Living Together with my Childhood Friend: Fantasy Monochrome"
-run/main_scene="uid://cx0cxni3jvqp3"
+run/main_scene="uid://bdpd2nj7lujdr"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
