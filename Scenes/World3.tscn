@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cj6hcieu5u574" path="res://Sprite Assest/Map/TileMaps/TileSet.png" id="6_027y7"]
 [ext_resource type="PackedScene" uid="uid://746cfg3pt4g6" path="res://character.tscn" id="8_2mo70"]
 [ext_resource type="Texture2D" uid="uid://bebotubpn7por" path="res://Assets/spr_portal_strip8.png" id="9_ah55a"]
+[ext_resource type="AudioStream" uid="uid://da7rufxrde5tb" path="res://BGM/LVS04_04_Sealed_Sanctuary.mp3" id="10_gnqtj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7kmno"]
 texture = ExtResource("1_id2kp")
@@ -44326,3 +44327,7 @@ tile_set = SubResource("TileSet_ctuir")
 [node name="TileMapLayer7" type="TileMapLayer" parent="." unique_id=2012898536]
 tile_map_data = PackedByteArray("AAAOAAoAAAABABIAAAAOAAsAAAABABMAAAAPAAoAAAACABIAAAAPAAsAAAACABMAAAAQAAoAAAADABIAAAAQAAsAAAADABMAAAA=")
 tile_set = SubResource("TileSet_s3nif")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=666419029]
+stream = ExtResource("10_gnqtj")
+autoplay = true
