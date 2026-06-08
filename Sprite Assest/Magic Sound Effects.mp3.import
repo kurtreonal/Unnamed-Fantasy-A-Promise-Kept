@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ca88y75ufodkm"
+path="res://.godot/imported/Magic Sound Effects.mp3-b6e41b26777c6dafd99de8975cdceeea.mp3str"
+
+[deps]
+
+source_file="res://Sprite Assest/Magic Sound Effects.mp3"
+dest_files=["res://.godot/imported/Magic Sound Effects.mp3-b6e41b26777c6dafd99de8975cdceeea.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b26lq4y861jp"
+path="res://.godot/imported/Lance_sound_effect.mp3-8101dddc72b4a21399c23b9bb7bc5202.mp3str"
+
+[deps]
+
+source_file="res://Sprite Assest/Lance_sound_effect.mp3"
+dest_files=["res://.godot/imported/Lance_sound_effect.mp3-8101dddc72b4a21399c23b9bb7bc5202.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
