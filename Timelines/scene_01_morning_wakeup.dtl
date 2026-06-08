@@ -1,7 +1,9 @@
+audio music "res://BGM/坂の上の陽炎 - morning 2.mp3"
 # Scene 1: Morning Wake-Up
 # Setting: Rin's bedroom, 8:00 AM
 # Theme: Establishing care and emotional connection
-[background arg="res://Assets/Noraneko_Backgrounds_Pack_2/Noraneko_Backgrounds_Pack_2/Bedroom_Day.png" fade="0.0"]
+[background arg="res://Assets/Noraneko_Backgrounds_Pack_2/Noraneko_Backgrounds_Pack_2/Bedroom_Night_Dark.png" fade="1.5" wait="true"]
+[background arg="res://Assets/Noraneko_Backgrounds_Pack_2/Noraneko_Backgrounds_Pack_2/Bedroom_Day.png" fade="1.5" wait="true"]
 
 "The morning light filters through the curtains."
 narrator: Her face looks peaceful. She's still asleep.

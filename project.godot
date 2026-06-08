@@ -23,8 +23,9 @@ Health_System="*uid://kbq5try170rc"
 Meal_System="*uid://qy52v6toqagx"
 LocationTitle_Card="*res://UI/LocationTitleCard/LocationTitleCard.tscn"
 DaySystem="*uid://n7cpwdd5jl4y"
-SaveSystem="*uid://cokaa4bhvmx84"
-GameState="*uid://covgmy0dup0ed"
+SaveSystem="*res://Systems/save_system.gd"
+GameState="*res://Systems/game_state.gd"
+SaveManager="*uid://dqrcca70jmc3f"
 
 [dialogic]
 
@@ -88,6 +89,7 @@ variables={
 "simple_affordable": true,
 "takeout_affordable": true
 }
+layout/end_behaviour=0
 
 [display]
 

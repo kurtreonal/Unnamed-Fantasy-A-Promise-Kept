@@ -12,10 +12,10 @@ extends Node
 const SAVE_PATH := "user://savegame.json"
 
 # ─── System references ────────────────────────────────────────────
-var _affection: AffectionSystem
-var _health:    HealthSystem
-var _meal:      MealSystem
-var _day:       DaySystem
+var _affection: Node  # Affection_System autoload
+var _health:    Node  # Health_System autoload
+var _meal:      Node  # Meal_System autoload
+var _day:       Node  # DaySystem autoload
 
 # ─── Whether a save exists on disk ────────────────────────────────
 var save_exists: bool = false
@@ -25,9 +25,9 @@ var save_exists: bool = false
 # ─────────────────────────────────────────────────────────────────
 
 func _ready() -> void:
-	_affection = get_node_or_null("/root/AffectionSystem")
-	_health    = get_node_or_null("/root/HealthSystem")
-	_meal      = get_node_or_null("/root/MealSystem")
+	_affection = get_node_or_null("/root/Affection_System")
+	_health    = get_node_or_null("/root/Health_System")
+	_meal      = get_node_or_null("/root/Meal_System")
 	_day       = get_node_or_null("/root/DaySystem")
 
 	save_exists = FileAccess.file_exists(SAVE_PATH)
@@ -175,7 +175,7 @@ func delete_save() -> void:
 # ─────────────────────────────────────────────────────────────────
 
 func _resolve_systems() -> void:
-	if not _affection: _affection = get_node_or_null("/root/AffectionSystem")
-	if not _health:    _health    = get_node_or_null("/root/HealthSystem")
-	if not _meal:      _meal      = get_node_or_null("/root/MealSystem")
+	if not _affection: _affection = get_node_or_null("/root/Affection_System")
+	if not _health:    _health    = get_node_or_null("/root/Health_System")
+	if not _meal:      _meal      = get_node_or_null("/root/Meal_System")
 	if not _day:       _day       = get_node_or_null("/root/DaySystem")

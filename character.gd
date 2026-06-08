@@ -70,6 +70,19 @@ const STAFF_SKILL_SHOOT_ANIM = {
 # ── Staff State ───────────────────────────────────────────────
 var is_staff_casting: bool = false
 
+# ── Recall / Input Lock ────────────────────────────────────────
+var _input_locked: bool = false
+
+func set_input_locked(locked: bool) -> void:
+	_input_locked = locked
+	if locked:
+		velocity          = Vector2.ZERO
+		is_attacking      = false
+		is_aiming         = false
+		is_staff_casting  = false
+		lance_button_held = false
+		play_animation(WEAPON_IDLE_PREFIX[current_weapon], last_direction)
+
 # ── Lance State ───────────────────────────────────────────────
 const LANCE_HOLD_THRESHOLD: float = 0.25
 var lance_hold_timer: float = 0.0
@@ -97,6 +110,8 @@ func switch_weapon_visibility() -> void:
 
 # ── R key — toggles Staff skill only, blocked during attack ──
 func _input(event: InputEvent) -> void:
+	if _input_locked:
+		return
 	if event is InputEventKey and event.pressed and not event.echo:
 		if event.keycode == KEY_R and not is_attacking:
 			cycle_staff_skill()
@@ -104,6 +119,10 @@ func _input(event: InputEvent) -> void:
 
 # ── Physics ──────────────────────────────────────────────────
 func _physics_process(delta: float) -> void:
+	if _input_locked:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		return
 	# ── MOUSE AIM: updates aim_direction from mouse while aiming ──
 	# Both Bow and Staff use this during their aim/cast phase.
 	# aim_direction = vector from character toward the mouse cursor.

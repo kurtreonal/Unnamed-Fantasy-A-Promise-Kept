@@ -2375,7 +2375,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eec34"]
 size = Vector2(20, 28)
 
-[node name="Character" type="CharacterBody2D" unique_id=1715330192]
+[node name="Character" type="CharacterBody2D" unique_id=1715330192 groups=["player"]]
 script = ExtResource("1_pjt0s")
 
 [node name="Sword" type="AnimatedSprite2D" parent="." unique_id=1672628496]
