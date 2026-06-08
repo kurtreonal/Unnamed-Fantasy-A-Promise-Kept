@@ -1,501 +1,285 @@
 [gd_scene format=3 uid="uid://dixcn76cfmed1"]
 
 [ext_resource type="Script" uid="uid://bq8cyhbku3b1u" path="res://UI_Gamepad/hud.gd" id="1_2hoc7"]
-[ext_resource type="Script" uid="uid://cijqp5gs0tp3a" path="res://UI_Gamepad/hp_bar.gd" id="1_nlhc4"]
-[ext_resource type="Script" uid="uid://bcin7ntxfkxq" path="res://UI_Gamepad/weapon_bar.gd" id="2_bbaaa"]
-[ext_resource type="Script" uid="uid://bcfe6wckgab6t" path="res://UI_Gamepad/item_bar.gd" id="4_qu8n6"]
-[ext_resource type="Script" uid="uid://dcmef541pki7k" path="res://UI_Gamepad/staff_panel.gd" id="5_5n38o"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
-bg_color = Color(0.06, 0.06, 0.12, 0.88)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
+[ext_resource type="Texture2D" uid="uid://odpmogx5mhga" path="res://Assets/kenney_fantasy-ui-borders/PNG/Default/Panel/panel-021.png" id="2_5n38o"]
+[ext_resource type="Texture2D" uid="uid://ce64k7qlwb5pd" path="res://Assets/kenney_fantasy-ui-borders/PNG/Default/Panel/panel-029.png" id="3_joa8u"]
+[ext_resource type="Texture2D" uid="uid://bf5nc6pjm6mkn" path="res://Assets/kenney_fantasy-ui-borders/PNG/Default/Border/panel-border-025.png" id="4_euoh8"]
+[ext_resource type="Texture2D" uid="uid://d2sjuvyolr2he" path="res://Assets/kenney_fantasy-ui-borders/PNG/Double/Border/panel-border-030.png" id="4_w3cfy"]
+[ext_resource type="Texture2D" uid="uid://dc8jdhpewyx0k" path="res://Assets/kenney_fantasy-ui-borders/PNG/Default/Border/panel-border-013.png" id="5_q6ln3"]
+[ext_resource type="Texture2D" uid="uid://cngdyacu3n48r" path="res://Sprite Assest/Free - Raven Fantasy Icons/Separated Files/64x64/fc155.png" id="6_3jmpg"]
+[ext_resource type="Texture2D" uid="uid://gbfn1awvevfb" path="res://Sprite Assest/Free - Raven Fantasy Icons/Separated Files/64x64/fc1352.png" id="7_joa8u"]
+[ext_resource type="FontFile" uid="uid://dmduqcgftjeqb" path="res://Fonts/Noto_Serif_JP/static/NotoSerifJP-Black.ttf" id="8_5dee1"]
+[ext_resource type="Texture2D" uid="uid://ci82qgegi75a2" path="res://Assets/kenney_fantasy-ui-borders/PNG/Default/Panel/panel-008.png" id="9_e8cu1"]
+[ext_resource type="Texture2D" uid="uid://bfvugrrgffbnj" path="res://Sprite Assest/Free - Raven Fantasy Icons/Separated Files/64x64/fc293.png" id="11_420uw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hp_bar_bg"]
 bg_color = Color(0.22, 0.04, 0.04, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hp_bar_fill"]
-bg_color = Color(0.85, 0.18, 0.18, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
+bg_color = Color(0.2, 0.75, 0.2, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_slot_active"]
-bg_color = Color(0.18, 0.18, 0.38, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.45, 0.45, 0.9, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_badge"]
-bg_color = Color(0.8, 0.18, 0.05, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_slot"]
-bg_color = Color(0.12, 0.12, 0.22, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.3, 0.3, 0.6, 0.6)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cooldown_bg"]
-bg_color = Color(0.1, 0.1, 0.2, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cooldown_fill"]
-bg_color = Color(0.9, 0.55, 0.1, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cast_bar_bg"]
-bg_color = Color(0.1, 0.1, 0.25, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cast_bar_fill"]
-bg_color = Color(0.6, 0.35, 1, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-
-[node name="HUD" type="CanvasLayer" unique_id=1674421489]
-layer = 10
+[node name="HUD" type="CanvasLayer" unique_id=1674421489 groups=["hud"]]
 script = ExtResource("1_2hoc7")
 
-[node name="HPBar" type="MarginContainer" parent="." unique_id=441194223]
-offset_left = 638.0
-offset_top = 517.0
-offset_right = 901.0
-offset_bottom = 555.0
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 8
-script = ExtResource("1_nlhc4")
+[node name="Scene" type="Control" parent="." unique_id=999000001]
+layout_mode = 3
+anchor_right = 0.35500002
+anchor_bottom = 0.279
+offset_left = 1.9999847
+offset_top = -2.0
+offset_right = 640.9855
+offset_bottom = 347.79346
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.1661264, 1.3130136)
 
-[node name="BG" type="PanelContainer" parent="HPBar" unique_id=1859611062]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+[node name="TopRight_Hp" type="Control" parent="Scene" unique_id=1783587850]
+layout_mode = 1
+anchor_left = 0.87000006
+anchor_top = 0.010000001
+anchor_right = 0.99100006
+anchor_bottom = 0.08800001
+offset_left = -52.935364
+offset_top = 13.67095
+offset_right = -109.44885
+offset_bottom = 55.085426
+scale = Vector2(2, 0.681)
 
-[node name="VBox" type="VBoxContainer" parent="HPBar/BG" unique_id=345984851]
-layout_mode = 2
-theme_override_constants/separation = 4
+[node name="Hp_Bg" type="NinePatchRect" parent="Scene/TopRight_Hp" unique_id=1713767485]
+modulate = Color(0.02, 0.02, 0.1, 0.88)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.87700003
+anchor_bottom = 0.822
+offset_left = -11.809656
+offset_top = -3.5570264
+offset_right = 23.797226
+offset_bottom = -40.906704
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8085378, 1.681826)
+texture = ExtResource("2_5n38o")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
-[node name="Bar" type="ProgressBar" parent="HPBar/BG/VBox" unique_id=2145557678]
-custom_minimum_size = Vector2(0, 10)
+[node name="HPBar" type="MarginContainer" parent="Scene/TopRight_Hp" unique_id=441194223]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 0.62469816
+offset_top = 7.626625
+offset_right = 69.89557
+offset_bottom = 17.626625
+scale = Vector2(0.8294287, 2.9608037)
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 3
+
+[node name="HPBar_BG" type="VBoxContainer" parent="Scene/TopRight_Hp/HPBar" unique_id=345984851]
 layout_mode = 2
-size_flags_vertical = 6
+theme_override_constants/separation = 2
+
+[node name="HPBar_BG" type="ProgressBar" parent="Scene/TopRight_Hp/HPBar/HPBar_BG" unique_id=2145557678]
+texture_filter = 1
+custom_minimum_size = Vector2(60, 4)
+layout_mode = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_hp_bar_bg")
 theme_override_styles/fill = SubResource("StyleBoxFlat_hp_bar_fill")
-value = 100.0
+max_value = 5.0
+value = 5.0
 show_percentage = false
 
-[node name="WeaponBar" type="PanelContainer" parent="." unique_id=596133722]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 1.0
-offset_top = -69.0
-offset_right = 236.0
-offset_bottom = 1.0
-grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
-script = ExtResource("2_bbaaa")
+[node name="BottomLeft_Weapon_Skill" type="Control" parent="Scene" unique_id=378745189]
+anchors_preset = 0
+offset_left = 125.20085
+offset_top = 416.59888
+offset_right = 366.06744
+offset_bottom = 561.6322
 
-[node name="OuterVBox" type="VBoxContainer" parent="WeaponBar" unique_id=1865846322]
-layout_mode = 2
-theme_override_constants/separation = 4
+[node name="BottomLeft_BG" type="NinePatchRect" parent="Scene/BottomLeft_Weapon_Skill" unique_id=365002919]
+modulate = Color(0.02, 0.02, 0.1, 0.88)
+layout_mode = 0
+offset_left = -115.60025
+offset_top = 3.3636665
+offset_right = 193.97165
+offset_bottom = 138.16808
+texture = ExtResource("3_joa8u")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
-[node name="TopRow" type="HBoxContainer" parent="WeaponBar/OuterVBox" unique_id=239899256]
-layout_mode = 2
-theme_override_constants/separation = 6
+[node name="Staff_Skill" type="NinePatchRect" parent="Scene/BottomLeft_Weapon_Skill" unique_id=87942754]
+modulate = Color(0.06999999, 0.8449999, 1, 1)
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_left = 84.89646
+offset_top = 39.603558
+offset_right = 171.47409
+offset_bottom = 121.210556
+scale = Vector2(1.0102965, 0.85860056)
+texture = ExtResource("4_euoh8")
+patch_margin_left = 24
+patch_margin_top = 24
+patch_margin_right = 24
+patch_margin_bottom = 24
 
-[node name="WeaponLabel" type="Label" parent="WeaponBar/OuterVBox/TopRow" unique_id=1972288530]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.55, 0.55, 0.55, 1)
-theme_override_font_sizes/font_size = 10
-text = "                    Weapons Cooldown"
+[node name="Weapon_Sword" type="NinePatchRect" parent="Scene/BottomLeft_Weapon_Skill" unique_id=1767070094]
+modulate = Color(1, 0.7666667, 0, 1)
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_left = -76.15341
+offset_top = 40.68242
+offset_right = 10.424217
+offset_bottom = 122.28941
+scale = Vector2(1.0102965, 0.85860056)
+texture = ExtResource("5_q6ln3")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
-[node name="CooldownLabel" type="Label" parent="WeaponBar/OuterVBox/TopRow" unique_id=849031997]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.9, 0.55, 0.1, 1)
-theme_override_font_sizes/font_size = 10
-text = "0.0"
-
-[node name="HBox" type="HBoxContainer" parent="WeaponBar/OuterVBox" unique_id=2059848764]
-layout_mode = 2
-theme_override_constants/separation = 6
-
-[node name="Slot0" type="PanelContainer" parent="WeaponBar/OuterVBox/HBox" unique_id=1788289497]
-custom_minimum_size = Vector2(52, 52)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_slot_active")
-
-[node name="SlotVBox" type="VBoxContainer" parent="WeaponBar/OuterVBox/HBox/Slot0" unique_id=897142276]
-layout_mode = 2
+[node name="WeaponName_Holder" type="VBoxContainer" parent="Scene/BottomLeft_Weapon_Skill" unique_id=897142276]
+layout_mode = 0
+offset_left = -58.31272
+offset_top = 45.69645
+offset_right = -3.3127213
+offset_bottom = 130.69644
 alignment = 1
 
-[node name="IconLabel" type="Label" parent="WeaponBar/OuterVBox/HBox/Slot0/SlotVBox" unique_id=1612039514]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "⚔"
-horizontal_alignment = 1
-
-[node name="NameLabel" type="Label" parent="WeaponBar/OuterVBox/HBox/Slot0/SlotVBox" unique_id=1490509448]
-layout_mode = 2
-theme_override_font_sizes/font_size = 9
-text = "Sword"
-horizontal_alignment = 1
-
-[node name="ElementBadge" type="PanelContainer" parent="WeaponBar/OuterVBox/HBox/Slot0" unique_id=139742446]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_badge")
-
-[node name="Label" type="Label" parent="WeaponBar/OuterVBox/HBox/Slot0/ElementBadge" unique_id=2109806730]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 8
-text = "Fire"
-horizontal_alignment = 1
-
-[node name="Slot1" type="PanelContainer" parent="WeaponBar/OuterVBox/HBox" unique_id=976445775]
-custom_minimum_size = Vector2(52, 52)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
-
-[node name="SlotVBox" type="VBoxContainer" parent="WeaponBar/OuterVBox/HBox/Slot1" unique_id=516204480]
-layout_mode = 2
-alignment = 1
-
-[node name="IconLabel" type="Label" parent="WeaponBar/OuterVBox/HBox/Slot1/SlotVBox" unique_id=498077328]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "🏹"
-horizontal_alignment = 1
-
-[node name="NameLabel" type="Label" parent="WeaponBar/OuterVBox/HBox/Slot1/SlotVBox" unique_id=159273173]
-layout_mode = 2
-theme_override_font_sizes/font_size = 9
-text = "Bow"
-horizontal_alignment = 1
-
-[node name="Slot2" type="PanelContainer" parent="WeaponBar/OuterVBox/HBox" unique_id=8131645]
-custom_minimum_size = Vector2(52, 52)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
-
-[node name="SlotVBox" type="VBoxContainer" parent="WeaponBar/OuterVBox/HBox/Slot2" unique_id=400097288]
-layout_mode = 2
-alignment = 1
-
-[node name="IconLabel" type="Label" parent="WeaponBar/OuterVBox/HBox/Slot2/SlotVBox" unique_id=1788496142]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "🗡"
-horizontal_alignment = 1
-
-[node name="NameLabel" type="Label" parent="WeaponBar/OuterVBox/HBox/Slot2/SlotVBox" unique_id=1216647942]
-layout_mode = 2
-theme_override_font_sizes/font_size = 9
-text = "Lance"
-horizontal_alignment = 1
-
-[node name="Slot3" type="PanelContainer" parent="WeaponBar/OuterVBox/HBox" unique_id=1030736515]
-custom_minimum_size = Vector2(52, 52)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
-
-[node name="SlotVBox" type="VBoxContainer" parent="WeaponBar/OuterVBox/HBox/Slot3" unique_id=1183693980]
-layout_mode = 2
-alignment = 1
-
-[node name="IconLabel" type="Label" parent="WeaponBar/OuterVBox/HBox/Slot3/SlotVBox" unique_id=94753035]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "🪄"
-horizontal_alignment = 1
-
-[node name="NameLabel" type="Label" parent="WeaponBar/OuterVBox/HBox/Slot3/SlotVBox" unique_id=1288884594]
-layout_mode = 2
-theme_override_font_sizes/font_size = 9
-text = "Staff"
-horizontal_alignment = 1
-
-[node name="CooldownBar" type="ProgressBar" parent="WeaponBar/OuterVBox" unique_id=2006270662]
-visible = false
-custom_minimum_size = Vector2(0, 6)
-layout_mode = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_cooldown_bg")
-theme_override_styles/fill = SubResource("StyleBoxFlat_cooldown_fill")
-max_value = 2.0
-show_percentage = false
-
-[node name="ItemBar" type="PanelContainer" parent="." unique_id=588829985]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_top = -72.0
-offset_right = 260.0
-offset_bottom = -3.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
-script = ExtResource("4_qu8n6")
-
-[node name="OuterVBox" type="VBoxContainer" parent="ItemBar" unique_id=1474534715]
-layout_mode = 2
-theme_override_constants/separation = 4
-
-[node name="HeaderLabel" type="Label" parent="ItemBar/OuterVBox" unique_id=773609292]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.55, 0.55, 0.55, 1)
-theme_override_font_sizes/font_size = 10
-text = "items"
-horizontal_alignment = 1
-
-[node name="HBox" type="HBoxContainer" parent="ItemBar/OuterVBox" unique_id=1239111656]
-layout_mode = 2
-theme_override_constants/separation = 6
-
-[node name="Item0" type="PanelContainer" parent="ItemBar/OuterVBox/HBox" unique_id=29638088]
-custom_minimum_size = Vector2(44, 44)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
-
-[node name="SlotVBox" type="VBoxContainer" parent="ItemBar/OuterVBox/HBox/Item0" unique_id=129269453]
-layout_mode = 2
-alignment = 1
-
-[node name="IconLabel" type="Label" parent="ItemBar/OuterVBox/HBox/Item0/SlotVBox" unique_id=1947986041]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "🍎"
-horizontal_alignment = 1
-
-[node name="CountLabel" type="Label" parent="ItemBar/OuterVBox/HBox/Item0/SlotVBox" unique_id=974922126]
-layout_mode = 2
-theme_override_font_sizes/font_size = 9
-text = "x0"
-horizontal_alignment = 1
-
-[node name="Item1" type="PanelContainer" parent="ItemBar/OuterVBox/HBox" unique_id=2052226048]
-custom_minimum_size = Vector2(44, 44)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
-
-[node name="SlotVBox" type="VBoxContainer" parent="ItemBar/OuterVBox/HBox/Item1" unique_id=1858172888]
-layout_mode = 2
-alignment = 1
-
-[node name="IconLabel" type="Label" parent="ItemBar/OuterVBox/HBox/Item1/SlotVBox" unique_id=1621537590]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "⚙️"
-horizontal_alignment = 1
-
-[node name="CountLabel" type="Label" parent="ItemBar/OuterVBox/HBox/Item1/SlotVBox" unique_id=1612425097]
-layout_mode = 2
-theme_override_font_sizes/font_size = 9
-text = "x0"
-horizontal_alignment = 1
-
-[node name="Item2" type="PanelContainer" parent="ItemBar/OuterVBox/HBox" unique_id=1893367364]
-custom_minimum_size = Vector2(44, 44)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
-
-[node name="SlotVBox" type="VBoxContainer" parent="ItemBar/OuterVBox/HBox/Item2" unique_id=1397300270]
-layout_mode = 2
-alignment = 1
-
-[node name="IconLabel" type="Label" parent="ItemBar/OuterVBox/HBox/Item2/SlotVBox" unique_id=763670077]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "🗑️"
-horizontal_alignment = 1
-
-[node name="CountLabel" type="Label" parent="ItemBar/OuterVBox/HBox/Item2/SlotVBox" unique_id=314966937]
-layout_mode = 2
-theme_override_font_sizes/font_size = 9
-text = "x0"
-horizontal_alignment = 1
-
-[node name="Item3" type="PanelContainer" parent="ItemBar/OuterVBox/HBox" unique_id=2135131733]
-custom_minimum_size = Vector2(44, 44)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
-
-[node name="SlotVBox" type="VBoxContainer" parent="ItemBar/OuterVBox/HBox/Item3" unique_id=2123230369]
-layout_mode = 2
-alignment = 1
-
-[node name="IconLabel" type="Label" parent="ItemBar/OuterVBox/HBox/Item3/SlotVBox" unique_id=297817072]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-horizontal_alignment = 1
-
-[node name="CountLabel" type="Label" parent="ItemBar/OuterVBox/HBox/Item3/SlotVBox" unique_id=475733597]
-layout_mode = 2
-theme_override_font_sizes/font_size = 9
-text = "x0"
-horizontal_alignment = 1
-
-[node name="Item4" type="PanelContainer" parent="ItemBar/OuterVBox/HBox" unique_id=1821931152]
-custom_minimum_size = Vector2(44, 44)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
-
-[node name="SlotVBox" type="VBoxContainer" parent="ItemBar/OuterVBox/HBox/Item4" unique_id=1137772576]
-layout_mode = 2
-alignment = 1
-
-[node name="IconLabel" type="Label" parent="ItemBar/OuterVBox/HBox/Item4/SlotVBox" unique_id=816832131]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-horizontal_alignment = 1
-
-[node name="CountLabel" type="Label" parent="ItemBar/OuterVBox/HBox/Item4/SlotVBox" unique_id=1510210811]
-layout_mode = 2
-theme_override_font_sizes/font_size = 9
-text = "x0"
-horizontal_alignment = 1
-
-[node name="StaffPanel" type="PanelContainer" parent="." unique_id=952368608]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1277.0
-offset_top = -152.0
-offset_right = -1111.0
-offset_bottom = -74.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
-script = ExtResource("5_5n38o")
-
-[node name="OuterVBox" type="VBoxContainer" parent="StaffPanel" unique_id=1906151494]
-layout_mode = 2
-theme_override_constants/separation = 4
-
-[node name="TopRow" type="HBoxContainer" parent="StaffPanel/OuterVBox" unique_id=833072529]
-layout_mode = 2
-
-[node name="HeaderLabel" type="Label" parent="StaffPanel/OuterVBox/TopRow" unique_id=1291255050]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.55, 0.55, 0.55, 1)
-theme_override_font_sizes/font_size = 10
-text = "       Staff Skill"
-
-[node name="Spacer" type="Control" parent="StaffPanel/OuterVBox/TopRow" unique_id=557739716]
-layout_mode = 2
-
-[node name="HintLabel" type="Label" parent="StaffPanel/OuterVBox/TopRow" unique_id=965505652]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.55, 0.55, 0.55, 1)
-theme_override_font_sizes/font_size = 10
-text = "R to switch"
-
-[node name="HBox" type="HBoxContainer" parent="StaffPanel/OuterVBox" unique_id=382963779]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="Skill0" type="PanelContainer" parent="StaffPanel/OuterVBox/HBox" unique_id=1544817662]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_slot_active")
-
-[node name="SlotVBox" type="VBoxContainer" parent="StaffPanel/OuterVBox/HBox/Skill0" unique_id=775162470]
-layout_mode = 2
-alignment = 1
-
-[node name="IconLabel" type="Label" parent="StaffPanel/OuterVBox/HBox/Skill0/SlotVBox" unique_id=2047607899]
-layout_mode = 2
-theme_override_font_sizes/font_size = 26
-text = "🔥"
-horizontal_alignment = 1
-
-[node name="NameLabel" type="Label" parent="StaffPanel/OuterVBox/HBox/Skill0/SlotVBox" unique_id=1444259182]
-layout_mode = 2
-theme_override_font_sizes/font_size = 9
-text = "Fireball"
-horizontal_alignment = 1
-
-[node name="Skill1" type="PanelContainer" parent="StaffPanel/OuterVBox/HBox" unique_id=179843804]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
-
-[node name="SlotVBox" type="VBoxContainer" parent="StaffPanel/OuterVBox/HBox/Skill1" unique_id=1107342381]
-layout_mode = 2
-alignment = 1
-
-[node name="IconLabel" type="Label" parent="StaffPanel/OuterVBox/HBox/Skill1/SlotVBox" unique_id=28082411]
-layout_mode = 2
-theme_override_font_sizes/font_size = 26
-text = "⚡"
-horizontal_alignment = 1
-
-[node name="NameLabel" type="Label" parent="StaffPanel/OuterVBox/HBox/Skill1/SlotVBox" unique_id=1319679154]
-layout_mode = 2
-theme_override_font_sizes/font_size = 9
-text = "Lightning"
-horizontal_alignment = 1
-
-[node name="CastRow" type="HBoxContainer" parent="StaffPanel/OuterVBox" unique_id=1068516699]
-visible = false
-layout_mode = 2
-theme_override_constants/separation = 6
-
-[node name="CastBarLabel" type="Label" parent="StaffPanel/OuterVBox/CastRow" unique_id=1425223198]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.55, 0.55, 0.55, 1)
-theme_override_font_sizes/font_size = 10
-text = "cast"
-
-[node name="CastBar" type="ProgressBar" parent="StaffPanel/OuterVBox/CastRow" unique_id=1657675325]
-custom_minimum_size = Vector2(0, 10)
+[node name="WeaponIcon" type="TextureRect" parent="Scene/BottomLeft_Weapon_Skill/WeaponName_Holder" unique_id=1813561592]
+texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/background = SubResource("StyleBoxFlat_cast_bar_bg")
-theme_override_styles/fill = SubResource("StyleBoxFlat_cast_bar_fill")
-max_value = 0.8
-show_percentage = false
+texture = ExtResource("6_3jmpg")
+expand_mode = 4
 
-[node name="CastLabel" type="Label" parent="StaffPanel/OuterVBox/CastRow" unique_id=1154533857]
+[node name="WeaponName" type="Label" parent="Scene/BottomLeft_Weapon_Skill/WeaponName_Holder" unique_id=1490509448]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.75, 0.5, 1, 1)
-theme_override_font_sizes/font_size = 10
-text = "0.0s"
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 15
+text = "Sword"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Staff_SpellHolder" type="VBoxContainer" parent="Scene/BottomLeft_Weapon_Skill" unique_id=532610871 groups=["hud"]]
+layout_mode = 0
+offset_left = 102.9048
+offset_top = 41.126778
+offset_right = 157.90483
+offset_bottom = 147.12677
+alignment = 1
+
+[node name="SpellIcon" type="TextureRect" parent="Scene/BottomLeft_Weapon_Skill/Staff_SpellHolder" unique_id=53020690]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("7_joa8u")
+expand_mode = 4
+
+[node name="SpellName" type="Label" parent="Scene/BottomLeft_Weapon_Skill/Staff_SpellHolder" unique_id=604049975]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 15
+text = "Fireball
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Weapons" type="Label" parent="Scene/BottomLeft_Weapon_Skill" unique_id=1972288530]
+texture_filter = 1
+layout_mode = 0
+offset_left = -77.178604
+offset_top = 14.470522
+offset_right = 150.8214
+offset_bottom = 58.470512
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("8_5dee1")
+theme_override_font_sizes/font_size = 18
+text = "WEAPONS       |        SKILL"
+horizontal_alignment = 1
+
+[node name="MiddleBar_Items" type="Control" parent="Scene" unique_id=458852299]
+anchors_preset = 0
+offset_left = 3.4302063
+offset_top = 319.87482
+offset_right = 193.6889
+offset_bottom = 415.76324
+
+[node name="Middle_BG" type="NinePatchRect" parent="Scene/MiddleBar_Items" unique_id=1370021045]
+modulate = Color(0.02, 0.02, 0.1, 0.88)
+layout_mode = 0
+offset_left = 6.167059
+offset_top = 5.4793377
+offset_right = 196.42578
+offset_bottom = 95.8884
+texture = ExtResource("9_e8cu1")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="NameTag_item" type="Label" parent="Scene/MiddleBar_Items" unique_id=773609292]
+layout_mode = 0
+offset_left = 44.371895
+offset_top = 5.4793396
+offset_right = 146.37195
+offset_bottom = 33.47934
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "ITEMS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot1_BR" type="NinePatchRect" parent="Scene/MiddleBar_Items" unique_id=561054123]
+modulate = Color(0, 0, 1, 1)
+texture_filter = 1
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_left = 74.94815
+offset_top = 45.431923
+offset_right = 113.537445
+offset_bottom = 80.809586
+texture = ExtResource("4_w3cfy")
+
+[node name="ItemHolder" type="VBoxContainer" parent="Scene/MiddleBar_Items" unique_id=129269453]
+layout_mode = 0
+offset_left = 83.18134
+offset_top = 52.286407
+offset_right = 106.2993
+offset_bottom = 87.28641
+alignment = 1
+
+[node name="Icon_Item" type="TextureRect" parent="Scene/MiddleBar_Items/ItemHolder" unique_id=670568240]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("11_420uw")
+expand_mode = 4
+
+[node name="Icon_Value" type="Label" parent="Scene/MiddleBar_Items/ItemHolder" unique_id=974922126]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 5
+text = "x0"
+horizontal_alignment = 1
+vertical_alignment = 1

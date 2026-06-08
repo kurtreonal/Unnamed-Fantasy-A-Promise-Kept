@@ -2375,7 +2375,198 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eec34"]
 size = Vector2(20, 28)
 
-[node name="Character" type="CharacterBody2D" unique_id=1715330192]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kjduu"]
+atlas = ExtResource("4_0qfo5")
+region = Rect2(0, 1280, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a64ot"]
+atlas = ExtResource("4_0qfo5")
+region = Rect2(64, 1280, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ausxt"]
+atlas = ExtResource("4_0qfo5")
+region = Rect2(128, 1280, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhswg"]
+atlas = ExtResource("4_0qfo5")
+region = Rect2(192, 1280, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2lo3"]
+atlas = ExtResource("4_0qfo5")
+region = Rect2(256, 1280, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdvss"]
+atlas = ExtResource("4_0qfo5")
+region = Rect2(320, 1280, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42dl3"]
+atlas = ExtResource("3_px5sl")
+region = Rect2(0, 1280, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omg3n"]
+atlas = ExtResource("3_px5sl")
+region = Rect2(64, 1280, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j40gk"]
+atlas = ExtResource("3_px5sl")
+region = Rect2(128, 1280, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lycac"]
+atlas = ExtResource("3_px5sl")
+region = Rect2(192, 1280, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pyqwn"]
+atlas = ExtResource("3_px5sl")
+region = Rect2(256, 1280, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j43rc"]
+atlas = ExtResource("3_px5sl")
+region = Rect2(320, 1280, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eo8e8"]
+atlas = ExtResource("5_yxww1")
+region = Rect2(0, 1280, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7x8yw"]
+atlas = ExtResource("5_yxww1")
+region = Rect2(64, 1280, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sq2b0"]
+atlas = ExtResource("5_yxww1")
+region = Rect2(128, 1280, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utaxy"]
+atlas = ExtResource("5_yxww1")
+region = Rect2(192, 1280, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5bur"]
+atlas = ExtResource("5_yxww1")
+region = Rect2(256, 1280, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21jav"]
+atlas = ExtResource("5_yxww1")
+region = Rect2(320, 1280, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5s8hi"]
+atlas = ExtResource("2_pjt0s")
+region = Rect2(0, 1280, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gl3h"]
+atlas = ExtResource("2_pjt0s")
+region = Rect2(64, 1280, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_254c4"]
+atlas = ExtResource("2_pjt0s")
+region = Rect2(128, 1280, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6y43j"]
+atlas = ExtResource("2_pjt0s")
+region = Rect2(192, 1280, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlddg"]
+atlas = ExtResource("2_pjt0s")
+region = Rect2(256, 1280, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bma8"]
+atlas = ExtResource("2_pjt0s")
+region = Rect2(320, 1280, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vxt17"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjduu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a64ot")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ausxt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhswg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2lo3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdvss")
+}],
+"loop": false,
+"name": &"Death_Bow",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42dl3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omg3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j40gk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lycac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pyqwn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j43rc")
+}],
+"loop": false,
+"name": &"Death_Lance",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eo8e8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7x8yw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sq2b0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utaxy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5bur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21jav")
+}],
+"loop": false,
+"name": &"Death_Staff",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5s8hi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gl3h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_254c4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6y43j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mlddg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1bma8")
+}],
+"loop": false,
+"name": &"Death_Sword",
+"speed": 10.0
+}]
+
+[node name="Character" type="CharacterBody2D" unique_id=1715330192 groups=["player"]]
 script = ExtResource("1_pjt0s")
 
 [node name="Sword" type="AnimatedSprite2D" parent="." unique_id=1672628496]
@@ -2423,12 +2614,17 @@ sprite_frames = SubResource("SpriteFrames_wfnr8")
 animation = &"Idle_Staff_Up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1008754440]
-position = Vector2(0, 11)
+position = Vector2(-1, 6)
 shape = SubResource("RectangleShape2D_eec34")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=974332559]
 position = Vector2(0, -32)
 zoom = Vector2(3, 3)
+
+[node name="DeathAnimation" type="AnimatedSprite2D" parent="." unique_id=641000130]
+visible = false
+sprite_frames = SubResource("SpriteFrames_vxt17")
+animation = &"Death_Bow"
 
 [connection signal="animation_finished" from="Sword" to="." method="_on_sword_animation_finished"]
 [connection signal="animation_finished" from="Lance" to="." method="_on_lance_animation_finished"]

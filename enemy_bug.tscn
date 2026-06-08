@@ -165,7 +165,10 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_qil3i"]
 radius = 14.142136
 
-[node name="Enemy_Bug" type="CharacterBody2D" unique_id=926645366]
+[sub_resource type="CircleShape2D" id="CircleShape2D_18dte"]
+radius = 73.02739
+
+[node name="Enemy_Bug" type="CharacterBody2D" unique_id=926645366 groups=["enemy"]]
 script = ExtResource("1_18dte")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=532428579]
@@ -179,3 +182,12 @@ stream = ExtResource("3_18dte")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1082670124]
 shape = SubResource("CircleShape2D_qil3i")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=596875196]
+rect = Rect2(-16, -16, 32, 32)
+
+[node name="DetectArea" type="Area2D" parent="." unique_id=13783409]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea" unique_id=349011004]
+shape = SubResource("CircleShape2D_18dte")
