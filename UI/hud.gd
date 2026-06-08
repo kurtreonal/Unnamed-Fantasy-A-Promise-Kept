@@ -198,34 +198,48 @@ func _on_btn_history() -> void:
 
 
 func _on_btn_save() -> void:
-	var save_sys: Node = get_node_or_null("/root/SaveSystem")
-	if save_sys:
-		save_sys.save_game()
-		print("[HUD] Quick-save triggered.")
-		_flash_button(btn_save, Color(0.3, 0.9, 0.5, 1.0))
-	else:
-		push_warning("[HUD] SaveSystem not found — cannot save.")
+	var save_mgr: Node = get_node_or_null("/root/SaveManager")
+	if not save_mgr:
+		push_warning("[HUD] SaveManager not found.")
+		return
+	var ui := _open_slots_ui("save")
+	if ui:
+		ui.current_scene_name = get_tree().current_scene.scene_file_path
+		var player := get_tree().get_first_node_in_group("player")
+		if player:
+			ui.current_player_pos = player.global_position
+		print("[HUD] Save slot UI opened.")
 
 
 func _on_btn_load() -> void:
-	var save_sys: Node = get_node_or_null("/root/SaveSystem")
-	if save_sys and save_sys.save_exists:
-		save_sys.load_game()
-		_refresh_all()
-		print("[HUD] Quick-load triggered.")
-		_flash_button(btn_load, Color(0.4, 0.7, 1.0, 1.0))
-	else:
-		push_warning("[HUD] No save file to load.")
-
-
-## Brief colour flash on a button to confirm the action.
-func _flash_button(btn: Button, flash_color: Color) -> void:
-	if not btn:
+	var save_mgr: Node = get_node_or_null("/root/SaveManager")
+	if not save_mgr:
+		push_warning("[HUD] SaveManager not found.")
 		return
-	var orig := btn.modulate
-	var t := create_tween()
-	t.tween_property(btn, "modulate", flash_color, 0.12)
-	t.tween_property(btn, "modulate", orig,        0.25)
+	_open_slots_ui("load")
+	print("[HUD] Load slot UI opened.")
+
+
+func _open_slots_ui(ui_mode: String) -> Node:
+	# Prevent stacking multiple instances — check for the wrapper layer
+	var existing := get_tree().root.get_node_or_null("SaveSlotsLayer")
+	if existing:
+		return null
+
+	const SLOTS_SCENE := "res://UI/SaveSlots/save_slots_ui.tscn"
+	if not ResourceLoader.exists(SLOTS_SCENE):
+		push_error("[HUD] save_slots_ui.tscn not found at: %s" % SLOTS_SCENE)
+		return null
+
+	var ui: Node = load(SLOTS_SCENE).instantiate()
+	ui.name = "SaveSlotsUI"
+	ui.mode = ui_mode
+	get_tree().root.add_child(ui)
+	# NOTE: do NOT connect closed → ui.queue_free here.
+	# save_slots_ui._on_close() already frees its CanvasLayer wrapper
+	# (which takes the UI with it). A second queue_free on an already-freed
+	# node would generate a spurious error.
+	return ui
 
 
 ## Appended by home_scene.gd whenever a dialogue line fires.

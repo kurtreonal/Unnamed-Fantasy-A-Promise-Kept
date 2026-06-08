@@ -203,7 +203,6 @@ visible = false
 texture = ExtResource("27_vesas")
 
 [node name="Pajamas1" type="Sprite2D" parent="Costume" unique_id=537154046]
-visible = false
 texture = ExtResource("28_7ucxt")
 
 [node name="Pajamas2" type="Sprite2D" parent="Costume" unique_id=996268299]
@@ -239,6 +238,7 @@ visible = false
 texture = ExtResource("36_6bhlf")
 
 [node name="Seifuku2" type="Sprite2D" parent="Costume" unique_id=1631713207]
+visible = false
 texture = ExtResource("37_cro5l")
 
 [node name="HairFront" type="Node2D" parent="." unique_id=1751022201]

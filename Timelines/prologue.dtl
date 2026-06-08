@@ -1,6 +1,8 @@
+[background arg="black" fade="2.0" wait="true"]
+audio music "res://BGM/White Loneliness.mp3" [volume="0.0" bus="" loop="true" sync="music"]
 ~ Prologue\: A Promise
 
-[background arg="res://Assets/Noraneko_Backgrounds_Pack_2/Noraneko_Backgrounds_Pack_2/Livingroom_Dark.png" fade="0.0"]
+[background arg="res://Assets/Noraneko_Backgrounds_Pack_2/Noraneko_Backgrounds_Pack_2/Livingroom_Dark.png" fade="2.0" wait="true"]
 
 narrator: It was the kind of night that stays with you forever.
 narrator: Heavy rain.
@@ -22,8 +24,6 @@ narrator: Her father lay beneath thin blankets, his breathing slow and shallow.
 narrator: The village doctor had already done everything he could.
 narrator: He had said nothing as he left.
 narrator: That silence said enough.
-
-join  center [animation="Fade In"]
 
 Father: ...Thank you for coming.
 Father: I know it's late.
@@ -53,7 +53,7 @@ narrator: She didn't fully understand what was happening.
 narrator: Not completely.
 narrator: But she understood enough to be afraid.
 
-Father: Asami...
+Father: Rin...
 Father: Come closer.
 
 Asami: ...Dad.
@@ -118,7 +118,7 @@ Father: Can you do that?
 player: ...
 
 narrator: The candle flickered.
-narrator: Asami was watching me now.
+narrator: Rin was watching me now.
 narrator: Her small hands clutched the blanket.
 narrator: Waiting.
 
@@ -133,7 +133,7 @@ narrator: He closed his eyes.
 narrator: His grip loosened, but didn't let go.
 
 leave 
-leave 
+leave bckup/Asami
 
 narrator: A few days later, he passed away quietly in that same room.
 narrator: The candle had long gone out by then.
@@ -144,20 +144,29 @@ narrator: Said kind things.
 narrator: Then returned to their lives.
 
 narrator: The house became quieter than I had ever known a house to be.
+[wait time="1.0"]
+audio music "res://BGM/Sea, You & Me.mp3" [fade="1.0"]
 
 narrator: But I couldn't forget the promise.
 narrator: It had weight to it.
 narrator: The kind that doesn't fade.
 
-[background arg="res://Assets/Backgrounds/Village_Montage.png" fade="1.5"]
+[background arg="res://Assets/Noraneko_Backgrounds_Pack_3/Noraneko_Backgrounds_Pack_3/Temple_Spring_Afternoon.png" fade="1.5" wait="true"]
+[background arg="res://Assets/Noraneko_Backgrounds_Pack_3/Noraneko_Backgrounds_Pack_3/Temple_Spring_Clouds.png" fade="1.5" wait="true"]
+[background arg="res://Assets/Noraneko_Backgrounds_Pack_3/Noraneko_Backgrounds_Pack_3/Temple_Spring_Day.png" fade="1.5" wait="true"]
+[background arg="res://Assets/Noraneko_Backgrounds_Pack_3/Noraneko_Backgrounds_Pack_3/Temple_Spring_Night.png" fade="1.5" wait="true"]
+[background arg="res://Assets/Noraneko_Backgrounds_Pack_3/Noraneko_Backgrounds_Pack_3/Temple_Spring_Rain.png" fade="1.5" wait="true"]
+[background arg="res://Assets/Noraneko_Backgrounds_Pack_3/Noraneko_Backgrounds_Pack_3/Temple_Summer_Afternoon.png" fade="1.5" wait="true"]
+[background arg="res://Assets/Noraneko_Backgrounds_Pack_3/Noraneko_Backgrounds_Pack_3/Temple_Summer_Day.png" fade="1.5" wait="true"]
 
 narrator: Years passed.
 
-narrator: Asami moved in with me.
+narrator: Rin moved in with me.
 narrator: She was quiet at first.
 narrator: She would sit by the window for hours.
 narrator: Watching the road.
 narrator: As if some part of her still expected him to come back.
+[background arg="res://Assets/rinveranda.png" fade="5.0" wait="true"]
 
 narrator: Slowly, she found her footing.
 narrator: She laughed again.
@@ -169,8 +178,10 @@ narrator: Side by side.
 narrator: Through ordinary days and unremarkable seasons.
 
 narrator: And for a while, I believed the hardest part was over.
+audio music "res://BGM/木陰の憩.mp3"
 
 narrator: I was wrong.
+[background arg="res://Assets/Noraneko_Background_Pack_1/Noraneko_Background_Pack_1/Sitting_Room_Dark.png" fade="3.0" wait="true"]
 
 narrator: The sickness appeared without warning.
 
@@ -261,5 +272,3 @@ narrator: Eight years later.
 narrator: The same house.
 narrator: A different morning.
 narrator: The same promise.
-
-jump prologue/

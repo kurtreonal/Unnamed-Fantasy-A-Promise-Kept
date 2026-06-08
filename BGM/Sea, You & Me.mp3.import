@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://davhgigxv7xqs"
+path="res://.godot/imported/Sea, You & Me.mp3-f59cced21a5c720173568c1d309dca8b.mp3str"
+
+[deps]
+
+source_file="res://BGM/Sea, You & Me.mp3"
+dest_files=["res://.godot/imported/Sea, You & Me.mp3-f59cced21a5c720173568c1d309dca8b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

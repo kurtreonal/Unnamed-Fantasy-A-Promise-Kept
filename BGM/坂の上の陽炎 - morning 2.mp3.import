@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b06o8k3hn35un"
+path="res://.godot/imported/坂の上の陽炎 - morning 2.mp3-bc0f16d8d7e086caeba31130597bfaef.mp3str"
+
+[deps]
+
+source_file="res://BGM/坂の上の陽炎 - morning 2.mp3"
+dest_files=["res://.godot/imported/坂の上の陽炎 - morning 2.mp3-bc0f16d8d7e086caeba31130597bfaef.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

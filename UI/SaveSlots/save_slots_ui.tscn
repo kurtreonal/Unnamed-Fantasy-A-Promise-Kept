@@ -1,0 +1,258 @@
+[gd_scene format=3 uid="uid://bfadfiqfjxjl"]
+
+[ext_resource type="Script" uid="uid://ddho2noglthd0" path="res://UI/SaveSlots/save_slots_ui.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://c1f4becutde5g" path="res://Assets/kenney_fantasy-ui-borders/PNG/Default/Transparent center/panel-transparent-center-009.png" id="2_kvxtb"]
+[ext_resource type="FontFile" uid="uid://b7y2vqvvh8woj" path="res://Fonts/EB_Garamond/static/EBGaramond-Bold.ttf" id="3_font_bold"]
+[ext_resource type="FontFile" uid="uid://xqdinwhdqkq0" path="res://Fonts/EB_Garamond/static/EBGaramond-Medium.ttf" id="4_font_medium"]
+[ext_resource type="Texture2D" uid="uid://bie8en0yofgjy" path="res://Assets/kenney_fantasy-ui-borders/PNG/Default/Border/panel-border-001.png" id="4_pnqhg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.06, 0.05, 0.1, 0.97)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.4, 0.35, 0.55, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pd5lx"]
+texture = ExtResource("4_pnqhg")
+texture_margin_left = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 9.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_inteh"]
+texture = ExtResource("4_pnqhg")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_slot_pressed"]
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+bg_color = Color(0.24, 0.2, 0.38, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.75, 0.65, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_slot_hover"]
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+bg_color = Color(0.18, 0.16, 0.28, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.6, 0.5, 0.85, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_confirm"]
+bg_color = Color(0.05, 0.04, 0.09, 0.98)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.55, 0.45, 0.75, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_yes"]
+bg_color = Color(0.2, 0.38, 0.22, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.4, 0.75, 0.45, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_no"]
+bg_color = Color(0.36, 0.12, 0.12, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.75, 0.3, 0.3, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="SaveSlotsUI" type="Control" unique_id=1250998813]
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Overlay" type="ColorRect" parent="." unique_id=1441280618]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.72)
+
+[node name="Panel" type="PanelContainer" parent="." unique_id=452068301]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -290.0
+offset_right = 320.0
+offset_bottom = 290.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Panel" unique_id=592543176]
+modulate = Color(0, 0, 0, 0.72156864)
+layout_mode = 2
+texture = ExtResource("2_kvxtb")
+patch_margin_left = 24
+patch_margin_top = 24
+patch_margin_right = 24
+patch_margin_bottom = 24
+
+[node name="OuterMargin" type="MarginContainer" parent="Panel" unique_id=1762682568]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 20
+
+[node name="VBox" type="VBoxContainer" parent="Panel/OuterMargin" unique_id=1034080478]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="TitleLabel" type="Label" parent="Panel/OuterMargin/VBox" unique_id=1286052879]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.88, 0.82, 1, 1)
+theme_override_fonts/font = ExtResource("3_font_bold")
+theme_override_font_sizes/font_size = 22
+text = "Save / Load"
+horizontal_alignment = 1
+
+[node name="Divider" type="HSeparator" parent="Panel/OuterMargin/VBox" unique_id=1859487068]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxTexture_pd5lx")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/OuterMargin/VBox" unique_id=1727033833]
+custom_minimum_size = Vector2(0, 340)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SlotsGrid" type="GridContainer" parent="Panel/OuterMargin/VBox/ScrollContainer" unique_id=876953074]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 6
+
+[node name="Divider2" type="HSeparator" parent="Panel/OuterMargin/VBox" unique_id=2037347655]
+layout_mode = 2
+
+[node name="BtnClose" type="Button" parent="Panel/OuterMargin/VBox" unique_id=805617431]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.7, 0.9, 1)
+theme_override_fonts/font = ExtResource("4_font_medium")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxTexture_inteh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_slot_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_slot_hover")
+text = "Close"
+
+[node name="ConfirmPanel" type="PanelContainer" parent="." unique_id=620069401]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -80.0
+offset_right = 180.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_confirm")
+
+[node name="ConfirmMargin" type="MarginContainer" parent="ConfirmPanel" unique_id=937186052]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 16
+
+[node name="VBox" type="VBoxContainer" parent="ConfirmPanel/ConfirmMargin" unique_id=2040036066]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="ConfirmLabel" type="Label" parent="ConfirmPanel/ConfirmMargin/VBox" unique_id=2060637084]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.87, 1, 1)
+theme_override_fonts/font = ExtResource("4_font_medium")
+theme_override_font_sizes/font_size = 15
+text = "Are you sure?"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="HBox" type="HBoxContainer" parent="ConfirmPanel/ConfirmMargin/VBox" unique_id=1056290820]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="BtnConfirm" type="Button" parent="ConfirmPanel/ConfirmMargin/VBox/HBox" unique_id=1200505267]
+custom_minimum_size = Vector2(110, 34)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 1, 0.78, 1)
+theme_override_fonts/font = ExtResource("3_font_bold")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_yes")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_yes")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_yes")
+text = "Yes"
+
+[node name="BtnCancel" type="Button" parent="ConfirmPanel/ConfirmMargin/VBox/HBox" unique_id=748946833]
+custom_minimum_size = Vector2(110, 34)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.72, 0.72, 1)
+theme_override_fonts/font = ExtResource("3_font_bold")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_no")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_no")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_no")
+text = "No"

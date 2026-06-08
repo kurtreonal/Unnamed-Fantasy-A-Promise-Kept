@@ -12,7 +12,11 @@ extends Control
 
 const HOME_SCENE_PATH := "res://Scenes/home_scene.tscn"
 
-var save_system: Node
+var save_system:  Node
+var save_manager: Node
+
+# Slots UI scene — same one used in-game by hud.gd
+const SLOTS_SCENE := "res://UI/SaveSlots/save_slots_ui.tscn"
 
 # % prefix = unique-name access — works no matter where the node lives
 @onready var btn_new_game:  Button = %BtnNewGame
@@ -22,14 +26,22 @@ var save_system: Node
 
 
 func _ready() -> void:
-	save_system = get_node_or_null("/root/SaveSystem")
+	save_system  = get_node_or_null("/root/SaveSystem")
+	save_manager = get_node_or_null("/root/SaveManager")
 
 	# Hard-fail with a clear message if any button is still missing
 	assert(btn_new_game  != null, "[MainMenu] %BtnNewGame not found — ensure the node has 'Access as Unique Name' enabled in main_menu.tscn")
 	assert(btn_load_game != null, "[MainMenu] %BtnContinue not found — ensure the node has 'Access as Unique Name' enabled in main_menu.tscn")
 	assert(btn_quit      != null, "[MainMenu] %BtnQuit not found — ensure the node has 'Access as Unique Name' enabled in main_menu.tscn")
 
-	var has_save: bool = save_system != null and save_system.save_exists
+	# Enable Load if there is at least one slot save OR an old single-file save.
+	var has_slot_save: bool = false
+	if save_manager:
+		for info in save_manager.get_all_slots():
+			if info != null:
+				has_slot_save = true
+				break
+	var has_save: bool = has_slot_save or (save_system != null and save_system.save_exists)
 	btn_load_game.disabled = not has_save
 	btn_load_game.modulate = Color(1, 1, 1, 1) if has_save else Color(0.55, 0.55, 0.55, 0.7)
 
@@ -85,11 +97,23 @@ func _on_new_game() -> void:
 
 func _on_load_game() -> void:
 	print("[MainMenu] Load Game pressed.")
-	var game_state: Node = get_node_or_null("/root/GameState")
-	if game_state:
-		game_state.is_new_game     = false
-		game_state.prologue_active = false
-	_transition_to_game()
+	_open_load_slots_ui()
+
+
+func _open_load_slots_ui() -> void:
+	# Prevent stacking
+	if get_tree().root.get_node_or_null("SaveSlotsLayer"):
+		return
+	if not ResourceLoader.exists(SLOTS_SCENE):
+		push_error("[MainMenu] save_slots_ui.tscn not found: %s" % SLOTS_SCENE)
+		return
+
+	var ui: Node = load(SLOTS_SCENE).instantiate()
+	ui.name = "SaveSlotsUI"
+	ui.mode = "load"
+	get_tree().root.add_child(ui)
+	# No need to connect closed — save_slots_ui._on_close() self-cleans its wrapper.
+	print("[MainMenu] Load slot UI opened.")
 
 
 func _on_quit() -> void:
