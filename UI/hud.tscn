@@ -1,0 +1,350 @@
+[gd_scene format=3 uid="uid://cmrytrmso1len"]
+
+[ext_resource type="Script" uid="uid://br2quk36vtxqw" path="res://UI/hud.gd" id="1_hud"]
+[ext_resource type="Texture2D" uid="uid://dqkh4odcn51ad" path="res://Assets/kenney_fantasy-ui-borders/PNG/Default/Panel/panel-005.png" id="2_panel"]
+
+[node name="HUD" type="CanvasLayer" unique_id=1516545032]
+layer = 10
+script = ExtResource("1_hud")
+
+[node name="HUDContainer" type="Control" parent="." unique_id=15507115]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TopBar" type="Control" parent="HUDContainer" unique_id=39931393]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 218.0
+offset_bottom = 48.0
+
+[node name="TopBarBG" type="NinePatchRect" parent="HUDContainer/TopBar" unique_id=1366448483]
+modulate = Color(0.02, 0.02, 0.08, 0.88)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_panel")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="TopBarMargin" type="MarginContainer" parent="HUDContainer/TopBar" unique_id=1536097111]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 4
+
+[node name="TopBarHBox" type="HBoxContainer" parent="HUDContainer/TopBar/TopBarMargin" unique_id=1173776221]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="DayLabel" type="Label" parent="HUDContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=129103127]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.92, 0.85, 1)
+theme_override_font_sizes/font_size = 15
+text = "Day 1  Mon"
+
+[node name="TimeLabel" type="Label" parent="HUDContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=1981469449]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 15
+text = "08:00 AM"
+
+[node name="StatsPanel" type="Control" parent="HUDContainer" unique_id=1807643032]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -296.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 132.0
+grow_horizontal = 0
+
+[node name="StatsPanelBG" type="NinePatchRect" parent="HUDContainer/StatsPanel" unique_id=870441671]
+modulate = Color(0.02, 0.02, 0.1, 0.88)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_panel")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="StatsPanelMargin" type="MarginContainer" parent="HUDContainer/StatsPanel" unique_id=675726080]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 8
+
+[node name="StatsVBox" type="VBoxContainer" parent="HUDContainer/StatsPanel/StatsPanelMargin" unique_id=1081143765]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="AffectionRow" type="HBoxContainer" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox" unique_id=585935259]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="AffectionIcon" type="Label" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox/AffectionRow" unique_id=334610532]
+custom_minimum_size = Vector2(88, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 13
+text = "♡ Affection"
+
+[node name="AffectionBar" type="ProgressBar" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox/AffectionRow" unique_id=1113593719]
+custom_minimum_size = Vector2(80, 12)
+layout_mode = 2
+size_flags_horizontal = 3
+show_percentage = false
+
+[node name="AffectionValue" type="Label" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox/AffectionRow" unique_id=7507017]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8, 0.88, 1)
+theme_override_font_sizes/font_size = 13
+text = "0"
+horizontal_alignment = 2
+
+[node name="HealthRow" type="HBoxContainer" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox" unique_id=1852834136]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="HealthIcon" type="Label" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox/HealthRow" unique_id=690417125]
+custom_minimum_size = Vector2(88, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 13
+text = "♥ Health"
+
+[node name="HealthBar" type="ProgressBar" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox/HealthRow" unique_id=1952194265]
+custom_minimum_size = Vector2(80, 12)
+layout_mode = 2
+size_flags_horizontal = 3
+value = 50.0
+show_percentage = false
+
+[node name="HealthValue" type="Label" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox/HealthRow" unique_id=951607504]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 1, 0.8, 1)
+theme_override_font_sizes/font_size = 13
+text = "50"
+horizontal_alignment = 2
+
+[node name="CoinsRow" type="HBoxContainer" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox" unique_id=1517621495]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="CoinsIcon" type="Label" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox/CoinsRow" unique_id=1453547632]
+custom_minimum_size = Vector2(88, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 13
+text = "✦ Coins"
+
+[node name="CoinsValue" type="Label" parent="HUDContainer/StatsPanel/StatsPanelMargin/StatsVBox/CoinsRow" unique_id=469776009]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.92, 0.55, 1)
+theme_override_font_sizes/font_size = 13
+text = "5000 g"
+horizontal_alignment = 2
+
+[node name="BottomBar" type="Control" parent="HUDContainer" unique_id=1941378646]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="BottomBarBG" type="NinePatchRect" parent="HUDContainer/BottomBar" unique_id=1066838238]
+modulate = Color(0.02, 0.02, 0.07, 0.92)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_panel")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="BottomBarMargin" type="MarginContainer" parent="HUDContainer/BottomBar" unique_id=1358736738]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 5
+
+[node name="BottomBarHBox" type="HBoxContainer" parent="HUDContainer/BottomBar/BottomBarMargin" unique_id=290338927]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="BtnHistory" type="Button" parent="HUDContainer/BottomBar/BottomBarMargin/BottomBarHBox" unique_id=387881554]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 13
+text = "History"
+
+[node name="BtnSave" type="Button" parent="HUDContainer/BottomBar/BottomBarMargin/BottomBarHBox" unique_id=1570752241]
+custom_minimum_size = Vector2(74, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 1, 0.85, 1)
+theme_override_font_sizes/font_size = 13
+text = "Save"
+
+[node name="BtnLoad" type="Button" parent="HUDContainer/BottomBar/BottomBarMargin/BottomBarHBox" unique_id=2066522898]
+custom_minimum_size = Vector2(74, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.92, 1, 1)
+theme_override_font_sizes/font_size = 13
+text = "Load"
+
+[node name="HistoryOverlay" type="Control" parent="HUDContainer" unique_id=1445389882]
+visible = false
+z_index = 50
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HistoryBG" type="ColorRect" parent="HUDContainer/HistoryOverlay" unique_id=1262462624]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04, 0.03, 0.08, 0.88)
+
+[node name="HistoryPanel" type="Control" parent="HUDContainer/HistoryOverlay" unique_id=1551925097]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -340.0
+offset_top = -260.0
+offset_right = 340.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HistoryPanelBG" type="NinePatchRect" parent="HUDContainer/HistoryOverlay/HistoryPanel" unique_id=516601956]
+modulate = Color(0.02, 0.02, 0.1, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_panel")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="HistoryVBox" type="VBoxContainer" parent="HUDContainer/HistoryOverlay/HistoryPanel" unique_id=1626388297]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="HistoryTitle" type="Label" parent="HUDContainer/HistoryOverlay/HistoryPanel/HistoryVBox" unique_id=262477179]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.92, 0.75, 1)
+theme_override_font_sizes/font_size = 16
+text = "Dialogue History"
+horizontal_alignment = 1
+
+[node name="HistorySeparator" type="HSeparator" parent="HUDContainer/HistoryOverlay/HistoryPanel/HistoryVBox" unique_id=437175880]
+layout_mode = 2
+
+[node name="HistoryScroll" type="ScrollContainer" parent="HUDContainer/HistoryOverlay/HistoryPanel/HistoryVBox" unique_id=715227715]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HistoryLog" type="RichTextLabel" parent="HUDContainer/HistoryOverlay/HistoryPanel/HistoryVBox/HistoryScroll" unique_id=1253508137]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.9, 0.88, 0.85, 1)
+theme_override_font_sizes/normal_font_size = 13
+bbcode_enabled = true
+text = "[i]No dialogue recorded yet.[/i]"
+fit_content = true
+
+[node name="BtnCloseHistory" type="Button" parent="HUDContainer/HistoryOverlay/HistoryPanel/HistoryVBox" unique_id=855034878]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 13
+text = "Close"
+
+[node name="PopupLayer" type="Control" parent="HUDContainer" unique_id=1866280136]
+z_index = 20
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

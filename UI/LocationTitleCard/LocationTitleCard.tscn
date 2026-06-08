@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://ce1xtbqwy04eo"]
+
+[ext_resource type="Script" uid="uid://dg03cr0qpx1qd" path="res://UI/LocationTitleCard/LocationTitleCard.gd" id="1_script"]
+[ext_resource type="FontFile" uid="uid://b7y2vqvvh8woj" path="res://Fonts/EB_Garamond/static/EBGaramond-Bold.ttf" id="2_7dc4h"]
+[ext_resource type="FontFile" uid="uid://doickjfg6d2ej" path="res://Fonts/Noto_Serif_JP/static/NotoSerifJP-ExtraBold.ttf" id="3_mr3wc"]
+
+[node name="LocationTitleCard" type="CanvasLayer" unique_id=527215302]
+layer = 10
+script = ExtResource("1_script")
+
+[node name="Root" type="Control" parent="." unique_id=1679542420]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Overlay" type="ColorRect" parent="Root" unique_id=899261554]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.55)
+
+[node name="Vignette" type="ColorRect" parent="Root" unique_id=738899653]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+
+[node name="CardContainer" type="VBoxContainer" parent="Root" unique_id=1557064828]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -120.0
+offset_right = 300.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="IconLabel" type="Label" parent="Root/CardContainer" unique_id=807666317]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 28
+text = "✦"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="Root/CardContainer" unique_id=1788460195]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_7dc4h")
+theme_override_font_sizes/font_size = 14
+text = "Abyss"
+horizontal_alignment = 1
+
+[node name="TitleLabel" type="Label" parent="Root/CardContainer" unique_id=1770997191]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_mr3wc")
+theme_override_font_sizes/font_size = 52
+text = "深淵"
+horizontal_alignment = 1
+
+[node name="DividerContainer" type="HBoxContainer" parent="Root/CardContainer" unique_id=697468032]
+custom_minimum_size = Vector2(320, 12)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="LineLeft" type="ColorRect" parent="Root/CardContainer/DividerContainer" unique_id=921851342]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+color = Color(0.784, 0.659, 0.333, 0.7)
+
+[node name="Dot" type="ColorRect" parent="Root/CardContainer/DividerContainer" unique_id=1648844480]
+custom_minimum_size = Vector2(5, 5)
+layout_mode = 2
+size_flags_vertical = 4
+color = Color(0.784, 0.659, 0.333, 0.8)
+
+[node name="LineRight" type="ColorRect" parent="Root/CardContainer/DividerContainer" unique_id=190711792]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+color = Color(0.784, 0.659, 0.333, 0.7)
+
+[node name="DescriptionLabel" type="Label" parent="Root/CardContainer" unique_id=797340555]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_7dc4h")
+theme_override_font_sizes/font_size = 14
+text = "A vast labyrinth filled with countless mysteries"
+horizontal_alignment = 1

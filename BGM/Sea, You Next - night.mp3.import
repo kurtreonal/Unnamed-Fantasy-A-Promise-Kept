@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dku6geo1qshft"
+path="res://.godot/imported/Sea, You Next - night.mp3-2f25edf27788f26d1cb2359a34cc01f3.mp3str"
+
+[deps]
+
+source_file="res://BGM/Sea, You Next - night.mp3"
+dest_files=["res://.godot/imported/Sea, You Next - night.mp3-2f25edf27788f26d1cb2359a34cc01f3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

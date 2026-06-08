@@ -1,0 +1,167 @@
+# Scene 3: A Moment of Doubt
+# Setting: Home, living room, 5:30 PM (afternoon)
+# Theme: Emotional vulnerability, branching consequences, story progression
+#
+# Entry points (resolved in home_scene.gd before dialogic.start()):
+#   scene_03_moment_of_doubt/scene_open   — affection >= 5 (full scene)
+#   scene_03_moment_of_doubt/scene_locked — affection <  5 (locked)
+
+jump scene_03_moment_of_doubt/scene_locked:
+
+label scene_locked:
+
+narrator: Rin is withdrawn today.
+narrator: She doesn't seem to want to talk.
+narrator: Perhaps tomorrow will be better.
+jump scene_03_moment_of_doubt/doubt_resolution_end:
+
+label scene_open:
+
+join bckup/Asami center [animation="Fade In" wait="true" extra_data="set CharacterOffset/Expressions/Sad1"]
+
+narrator: Rin sits by the window, staring out at the world beyond.
+narrator: The afternoon light casts long shadows.
+narrator: She looks smaller than usual.
+narrator: Fragile.
+
+player: Rin? What's wrong?
+
+Asami: Do you ever... wonder if this is worth it?
+Asami: You're risking your life every day.
+Asami: Diving deeper into those dungeons.
+Asami: And I'm just... here. Waiting.
+
+player: Don't say that.
+
+update bckup/Asami [extra_data="set CharacterOffset/Expressions/Sad2"]
+Asami: It's true, though.
+Asami: What if I'm just holding you back?
+
+narrator: Her doubt hangs heavy in the air.
+narrator: You must choose how to respond. Your words matter now.
+
+- Reassure her — she's your priority
+	narrator: You sit beside her.
+	player: Rin, listen to me.
+	player: There's nothing in this world more worth it than you.
+	player: You're my oldest friend. My most important person.
+	player: I'd do this a thousand times over.
+	update bckup/Asami [extra_data="set CharacterOffset/Expressions/Surprised1"]
+	Asami: Really?
+	player: Really.
+	narrator: Her eyes glisten slightly.
+	update bckup/Asami [extra_data="set CharacterOffset/Expressions/Happy1"]
+	Asami: Then... I'll try to be strong for you.
+	Asami: I'll take care of myself. I promise.
+	[signal arg="affection:+5"]
+	[signal arg="mood:happy"]
+	jump scene_03_moment_of_doubt/doubt_resolution_good:
+
+- Be honest about your fears
+	narrator: You take a deep breath.
+	player: If I'm being completely honest with you... yes.
+	player: I have doubts.
+	player: I don't know if the Elixir exists.
+	player: I don't know if it'll work even if I find it.
+	update bckup/Asami [extra_data="set CharacterOffset/Expressions/Surprised2"]
+	Asami: You... really think that?
+	player: I do. But I can't give up. Not while you're still here.
+	player: Not while there's even a chance.
+	narrator: Rin looks at you with new understanding.
+	update bckup/Asami [extra_data="set CharacterOffset/Expressions/Smile2"]
+	Asami: Then I'll have hope for both of us.
+	Asami: Even when you can't.
+	[signal arg="affection:+4"]
+	[signal arg="mood:content"]
+	jump scene_03_moment_of_doubt/doubt_resolution_good:
+
+- Remind her of your childhood promise
+	narrator: You reach out and take her hand.
+	player: Do you remember? When we were kids?
+	player: We made a promise.
+	player: That we'd always take care of each other.
+	update bckup/Asami [extra_data="set CharacterOffset/Expressions/Smile1"]
+	Asami: I remember.
+	player: I meant it then. I mean it now.
+	player: I made you a promise to find the cure.
+	player: And I don't break my promises, Rin.
+	update bckup/Asami [extra_data="set CharacterOffset/Expressions/Sad2"]
+	Asami: But what if it's impossible?
+	player: Then I'll find another way. And another.
+	player: Until something works.
+	update bckup/Asami [extra_data="set CharacterOffset/Expressions/Smile2"]
+	Asami: You really mean that, don't you?
+	[signal arg="affection:+3"]
+	[signal arg="mood:calm"]
+	jump scene_03_moment_of_doubt/doubt_resolution_good:
+
+- Change the subject gently
+	narrator: You stand up, turning away.
+	player: Hey, don't think like that.
+	player: Let's talk about something else.
+	update bckup/Asami [extra_data="set CharacterOffset/Expressions/Sad1"]
+	Asami: Always pushing it away...
+	narrator: Her voice grows quieter.
+	Asami: I just wanted to talk to you. Really talk.
+	player: I know, but dwelling on it won't help anything.
+	update bckup/Asami [extra_data="set CharacterOffset/Expressions/Sad2"]
+	Asami: Maybe not. But you not listening doesn't help either.
+	narrator: An awkward silence settles between you.
+	[signal arg="affection:-2"]
+	[signal arg="mood:sad"]
+	jump scene_03_moment_of_doubt/doubt_resolution_neutral:
+
+label doubt_resolution_good:
+
+narrator: After a long moment, Rin speaks again.
+narrator: Her voice is quieter, but more focused.
+
+update bckup/Asami [extra_data="set CharacterOffset/Expressions/Calm"]
+Asami: Actually... there's something I wanted to tell you.
+Asami: I overheard some merchants talking in town.
+Asami: When you were out buying supplies yesterday.
+
+player: Oh?
+
+update bckup/Asami [extra_data="set CharacterOffset/Expressions/Smile1"]
+Asami: They mentioned a scholar.
+Asami: Someone who lives in the Eastern District.
+Asami: An old researcher who knows about ancient cures and lost remedies.
+
+player: A scholar? That could be important.
+
+update bckup/Asami [extra_data="set CharacterOffset/Expressions/Happy1"]
+Asami: Maybe they can help you.
+Asami: Or point you toward someone who can.
+
+narrator: Hope flickers back to life.
+jump scene_03_moment_of_doubt/doubt_resolution_end:
+
+label doubt_resolution_neutral:
+
+narrator: Rin looks away.
+narrator: The moment of closeness has passed.
+
+update bckup/Asami [extra_data="set CharacterOffset/Expressions/Sad1"]
+Asami: I should rest now.
+Asami: You should focus on your search.
+
+player: Yeah... maybe.
+
+narrator: Neither of you says much after that.
+jump scene_03_moment_of_doubt/doubt_resolution_end:
+
+label doubt_resolution_end:
+
+narrator: As evening approaches, Rin retreats to her room.
+narrator: You're left alone with your thoughts.
+
+narrator: The weight of your quest settles on your shoulders again.
+narrator: But now, there might be another path forward.
+
+narrator: Or perhaps just more uncertainty.
+
+leave bckup/Asami [animation="Fade Out" length="0.3"]
+
+narrator: Tomorrow will bring new choices.
+narrator: For now, you rest — and hope.

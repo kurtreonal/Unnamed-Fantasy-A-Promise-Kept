@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://pt138xlls3gp"
+path="res://.godot/imported/夏休みの過ごし方 - game morning.mp3-3f46966b4cbe24f5d10203786a6a883b.mp3str"
+
+[deps]
+
+source_file="res://BGM/夏休みの過ごし方 - game morning.mp3"
+dest_files=["res://.godot/imported/夏休みの過ごし方 - game morning.mp3-3f46966b4cbe24f5d10203786a6a883b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

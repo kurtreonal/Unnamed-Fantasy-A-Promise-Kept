@@ -1,0 +1,161 @@
+# Scene 2: Evening Return & Health Check
+# Setting: Home, 6:00 PM
+# Theme: Consequences of daily choices, affection impacts health
+
+[background arg="res://Assets/Noraneko_Backgrounds_Pack_2/Noraneko_Backgrounds_Pack_2/Livingroom_Night.png" fade="0.0"]
+
+narrator: You push open the door to the house.
+narrator: Your body aches from the dungeon run.
+narrator: The weight of your gear feels heavier with each step.
+
+narrator: You hear soft movement from inside.
+
+join bckup/Asami center [animation="Slide From Left" length="2.0" wait="true" extra_data="set CharacterOffset/Expressions/Surprised1"]
+
+Asami: Oh! You're home!
+update bckup/Asami [extra_data="set CharacterOffset/Expressions/Scared"]
+Asami: Are you hurt?
+
+jump scene_02_evening_return/tier_low:
+
+label tier_high:
+
+player: I'm alright. Just tired.
+narrator: Rin moves toward you, insisting you sit down.
+update bckup/Asami [extra_data="set CharacterOffset/Expressions/Smile1"]
+Asami: I was so worried about you.
+Asami: Come here— at least sit down.
+player: How are you feeling?
+update bckup/Asami [extra_data="set CharacterOffset/Expressions/Happy1"]
+Asami: I feel better than I have in days.
+Asami: That breakfast you made this morning...
+Asami: And knowing how hard you're working for me...
+Asami: It lifted my spirits.
+narrator: Her energy is visibly better than usual.
+[signal arg="rin_health:+25"]
+[signal arg="affection:+2"]
+[signal arg="mood:happy"]
+jump scene_02_evening_return/evening_interaction_choice:
+
+label tier_mid:
+
+player: I'm okay. How are you doing?
+update bckup/Asami [extra_data="set CharacterOffset/Expressions/Smile1"]
+Asami: I'm feeling better than yesterday.
+Asami: I even managed to walk around the house a bit.
+player: That's good. You need movement to stay strong.
+update bckup/Asami [extra_data="set CharacterOffset/Expressions/Smile2"]
+Asami: I'm trying. For you.
+[signal arg="rin_health:+10"]
+[signal arg="affection:+1"]
+[signal arg="mood:calm"]
+jump scene_02_evening_return/evening_interaction_choice:
+
+label tier_low:
+
+player: I'm fine. How are you feeling?
+update bckup/Asami [extra_data="set CharacterOffset/Expressions/Sad1"]
+Asami: Honestly... I'm tired.
+Asami: And a little lonely.
+Asami: I spent most of the day in bed.
+player: Tomorrow will be better.
+update bckup/Asami [extra_data="set CharacterOffset/Expressions/Sad2"]
+Asami: Maybe.
+narrator: There's distance in her voice.
+[signal arg="rin_health:-10"]
+[signal arg="affection:-1"]
+[signal arg="mood:sad"]
+jump scene_02_evening_return/evening_interaction_choice:
+
+label evening_interaction_choice:
+
+leave bckup/Asami [animation="Fade Out" length="0.3"]
+[background arg="res://Assets/Noraneko_Background_Pack_1/Noraneko_Background_Pack_1/Sitting_Room.png" fade="1.0"]
+narrator: Rin settles back in her room.
+narrator: The evening is still young. You have a moment.
+
+- Sit with her quietly for a while
+	join bckup/Asami center [animation="Fade In" wait="true" extra_data="set CharacterOffset/Expressions/Smile2"]
+	player: I'm sorry I'm always gone. I just... I need to find the cure.
+	update bckup/Asami [extra_data="set CharacterOffset/Expressions/Smile2"]
+	Asami: I know.
+	Asami: And I'm not upset with you.
+	Asami: I just... miss you.
+	player: I miss you too.
+	narrator: The two of you sit in the fading light.
+	narrator: The weight of your quest feels lighter, if only for a moment.
+	[signal arg="affection:+3"]
+	[signal arg="rin_health:+5"]
+	[signal arg="mood:content"]
+	jump scene_02_evening_return/evening_wind_down:
+
+- Prepare her evening medicine
+	join bckup/Asami center [animation="Fade In" wait="true" extra_data="set CharacterOffset/Expressions/Smile1"]
+	narrator: You prepare Rin's evening medicine.
+	narrator: A bitter herbal blend — temporary relief for her symptoms.
+	player: Here. This will help with the pain tonight.
+	Asami: Thank you.
+	narrator: She drinks it carefully, making a slight face at the taste.
+	update bckup/Asami [extra_data="set CharacterOffset/Expressions/Awkward"]
+	Asami: It's getting easier to take.
+	Asami: Or maybe I'm just getting used to it.
+	player: Either way, it's helping. I can see it.
+	[signal arg="affection:+2"]
+	[signal arg="rin_health:+15"]
+	[signal arg="mood:calm"]
+	jump scene_02_evening_return/evening_wind_down:
+
+- Ask about her day
+	join bckup/Asami center [animation="Fade In" wait="true" extra_data="set CharacterOffset/Expressions/Smile1"]
+	player: What did you do today? Anything nice?
+	Asami: I read a bit.
+	Asami: There's a story about a heroine who gets better after a long journey.
+	update bckup/Asami [extra_data="set CharacterOffset/Expressions/Sad1"]
+	Asami: I kept thinking... that could be me.
+	player: It will be you. I promise.
+	update bckup/Asami [extra_data="set CharacterOffset/Expressions/Smile1"]
+	Asami: I believe you.
+	Asami: More than I believe anything else.
+	narrator: For a moment, her expression is pure hope.
+	[signal arg="affection:+2"]
+	[signal arg="mood:content"]
+	jump scene_02_evening_return/evening_wind_down:
+
+- Head to bed early — you're exhausted
+	join bckup/Asami center [animation="Fade In" wait="true" extra_data="set CharacterOffset/Expressions/Sad2"]
+	narrator: Exhaustion pulls at you. Your body needs rest.
+	player: I'm going to get some sleep. Today wore me out.
+	Asami: Oh... I understand.
+	Asami: Sleep well, then.
+	narrator: You notice her disappointment, but your energy is gone.
+	player: Good night, Rin.
+	[signal arg="affection:-2"]
+	[signal arg="mood:sad"]
+	jump scene_02_evening_return/end_evening:
+
+label evening_wind_down:
+
+update bckup/Asami [extra_data="set CharacterOffset/Expressions/Smile1"]
+narrator: As the evening deepens, Rin's eyes grow heavy.
+Asami: I think I need to rest now.
+Asami: Thank you for being here.
+player: Of course. Sleep well.
+update bckup/Asami [extra_data="set CharacterOffset/Expressions/Smile2"]
+Asami: ...See you in the morning.
+[background arg="res://Assets/Noraneko_Background_Pack_1/Noraneko_Background_Pack_1/Sitting_Room_Dark.png" fade="0.0"]
+jump scene_02_evening_return/end_evening:
+
+label end_evening:
+
+leave bckup/Asami [animation="Fade Out" length="0.3"]
+
+narrator: You head to your own room.
+[background arg="res://Assets/Noraneko_Backgrounds_Pack_2/Noraneko_Backgrounds_Pack_2/Bedroom_Night.png" fade="1.5" wait="true"]
+[background arg="res://Assets/Noraneko_Backgrounds_Pack_2/Noraneko_Backgrounds_Pack_2/Bedroom_Night_Dark.png" fade="1.5" wait="true"]
+narrator: Tomorrow morning, you'll wake her again.
+narrator: And the day will begin anew.
+narrator: Each dungeon run brings you closer to the cure.
+narrator: But it also takes you further from her side.
+narrator: Still, you push forward.
+narrator: Because giving up is not an option.
+[background arg="black" fade="0.0"]

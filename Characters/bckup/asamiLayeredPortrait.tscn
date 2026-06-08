@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bmcy48vcxicyo"]
+
+[ext_resource type="Script" uid="uid://cfwf5d8exox4f" path="res://addons/dialogic/Modules/LayeredPortrait/custom_layered_portrait.gd" id="1_uubi5"]
+[ext_resource type="PackedScene" uid="uid://vksav3umvcfw" path="res://Characters/bckup/character_offset.tscn" id="2_72egi"]
+
+[node name="LayeredPortrait" type="CanvasGroup" unique_id=2120967875]
+script = ExtResource("1_uubi5")
+
+[node name="CharacterOffset" parent="." unique_id=973512357 instance=ExtResource("2_72egi")]

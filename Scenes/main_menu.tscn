@@ -1,0 +1,175 @@
+[gd_scene format=3 uid="uid://d1himtjuomxjj"]
+
+[ext_resource type="Script" uid="uid://ci01d85fjb3l4" path="res://Scenes/main_menu.gd" id="1_main_menu"]
+[ext_resource type="Texture2D" uid="uid://6kh0q6upmy1t" path="res://Assets/menugif.png" id="2_1ehe0"]
+[ext_resource type="AudioStream" uid="uid://bltjdhc00i2nn" path="res://BGM/Sickly_Days_and_Summer_Traces_trailer.mp3" id="2_48xlc"]
+[ext_resource type="FontFile" uid="uid://b7y2vqvvh8woj" path="res://Fonts/EB_Garamond/static/EBGaramond-Bold.ttf" id="3_n45e2"]
+[ext_resource type="FontFile" uid="uid://xqdinwhdqkq0" path="res://Fonts/EB_Garamond/static/EBGaramond-Medium.ttf" id="4_n45e2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ce3w2"]
+atlas = ExtResource("2_1ehe0")
+region = Rect2(0, 0, 500, 288)
+
+[sub_resource type="Animation" id="Animation_n45e2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture:region")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 500, 288)]
+}
+
+[sub_resource type="Animation" id="Animation_opfnp"]
+resource_name = "background_loop"
+length = 15.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture:region")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(0, 0, 500, 288), Rect2(500, 0, 500, 288), Rect2(1000, 0, 500, 288), Rect2(1500, 0, 500, 288), Rect2(2000, 0, 500, 288), Rect2(0, 288, 500, 288), Rect2(500, 288, 500, 288), Rect2(1000, 288, 500, 288), Rect2(1500, 288, 500, 288), Rect2(2000, 288, 500, 288), Rect2(0, 576, 500, 288), Rect2(500, 576, 500, 288), Rect2(1000, 576, 500, 288), Rect2(1500, 576, 500, 288), Rect2(2000, 576, 500, 288), Rect2(0, 864, 500, 288)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cp0ys"]
+_data = {
+&"RESET": SubResource("Animation_n45e2"),
+&"background_loop": SubResource("Animation_opfnp")
+}
+
+[node name="MainMenu" type="Control" unique_id=1376807116]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_main_menu")
+
+[node name="Background" type="TextureRect" parent="." unique_id=784925778]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_ce3w2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background" unique_id=439804748]
+libraries/ = SubResource("AnimationLibrary_cp0ys")
+autoplay = &"background_loop"
+speed_scale = 6.0
+
+[node name="BgOverlay" type="ColorRect" parent="." unique_id=2000527899]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.1, 0.06, 0.14, 0.5)
+
+[node name="TitleAnchor" type="Control" parent="." unique_id=392722887]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_top = 60.0
+offset_right = 300.0
+offset_bottom = 200.0
+grow_horizontal = 2
+
+[node name="TitleVBox" type="VBoxContainer" parent="TitleAnchor" unique_id=1438695487]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="GameTitle" type="Label" parent="TitleAnchor/TitleVBox" unique_id=691638368]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.92, 0.8, 1)
+theme_override_fonts/font = ExtResource("3_n45e2")
+theme_override_font_sizes/font_size = 48
+text = "A PROMISE KEPT"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="TitleAnchor/TitleVBox" unique_id=2080574882]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.65, 0.85, 0.85)
+theme_override_fonts/font = ExtResource("4_n45e2")
+theme_override_font_sizes/font_size = 16
+text = "A story of care and devotion"
+horizontal_alignment = 1
+
+[node name="MenuCenter" type="CenterContainer" parent="." unique_id=1660034714]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuVBox" type="VBoxContainer" parent="MenuCenter" unique_id=2046440941]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="BtnNewGame" type="Button" parent="MenuCenter/MenuVBox" unique_id=1888960792]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 52)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.85, 1)
+theme_override_font_sizes/font_size = 20
+text = "New Game"
+
+[node name="BtnLoadGame" type="Button" parent="MenuCenter/MenuVBox" unique_id=223407072]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 52)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.85, 1)
+theme_override_font_sizes/font_size = 20
+text = "Load Game"
+
+[node name="BtnQuit" type="Button" parent="MenuCenter/MenuVBox" unique_id=994196959]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 52)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.75, 0.75, 1)
+theme_override_font_sizes/font_size = 20
+text = "Quit"
+
+[node name="VersionLabel" type="Label" parent="." unique_id=385837777]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = -28.0
+offset_right = 200.0
+offset_bottom = -8.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.5, 0.5, 0.6, 0.6)
+theme_override_font_sizes/font_size = 12
+text = "v0.1.0"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1296496174]
+stream = ExtResource("2_48xlc")
+autoplay = true

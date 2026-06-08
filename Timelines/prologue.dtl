@@ -1,0 +1,274 @@
+[background arg="black" fade="2.0" wait="true"]
+audio music "res://BGM/White Loneliness.mp3" [volume="0.0" bus="" loop="true" sync="music"]
+~ Prologue\: A Promise
+
+[background arg="res://Assets/Noraneko_Backgrounds_Pack_2/Noraneko_Backgrounds_Pack_2/Livingroom_Dark.png" fade="2.0" wait="true"]
+
+narrator: It was the kind of night that stays with you forever.
+narrator: Heavy rain.
+narrator: Cold wind pressing against the windows.
+narrator: The kind of silence that only comes when something is about to end.
+
+narrator: I was young then.
+narrator: Old enough to understand loss.
+narrator: Young enough to still believe promises could fix things.
+
+narrator: I still remember every word.
+
+[background arg="res://Assets/Noraneko_Background_Pack_1/Noraneko_Background_Pack_1/Futon_Room_Night.png" fade="1.0"]
+
+narrator: The room smelled of medicine and old wood.
+narrator: A single candle burned on the bedside table.
+narrator: Her father lay beneath thin blankets, his breathing slow and shallow.
+
+narrator: The village doctor had already done everything he could.
+narrator: He had said nothing as he left.
+narrator: That silence said enough.
+
+Father: ...Thank you for coming.
+Father: I know it's late.
+
+player: Please don't talk too much.
+player: You need to rest.
+
+Father: Heh...
+Father: Still worrying about everyone else before yourself.
+Father: You've always been like that.
+Father: Since you were small.
+
+narrator: He smiled, but his eyes were tired.
+narrator: The kind of tired that sleep couldn't fix.
+
+narrator: His gaze slowly drifted toward the small girl sitting quietly beside the bed.
+[background arg="res://Assets/1 (2).png" fade="2.5" wait="true"]
+
+join bckup/Asami left [animation="Fade In" length="1.5" wait="true" extra_data="set CharacterOffset/Expressions/Sad1"]
+[background arg="res://Assets/Noraneko_Background_Pack_1/Noraneko_Background_Pack_1/Futon_Room_Night.png" fade="2.5"]
+
+narrator: She had been holding his hand since before I arrived.
+narrator: She didn't cry.
+narrator: She just held on.
+
+narrator: She didn't fully understand what was happening.
+narrator: Not completely.
+narrator: But she understood enough to be afraid.
+
+Father: Rin...
+Father: Come closer.
+
+Asami: ...Dad.
+
+Father: It's alright.
+Father: I'm not in pain.
+Father: I just need you to listen carefully.
+Father: Can you do that for me?
+
+Asami: ...Yes.
+
+Father: Good girl.
+
+narrator: His hand trembled as he reached out to brush the hair from her face.
+narrator: She leaned into his touch.
+
+Father: There may come a day when I can't be beside you anymore.
+
+Asami: Don't say that.
+Asami: Don't say things like that.
+
+Father: It's alright to be scared.
+Father: I'm scared too.
+Father: But some things can't be stopped.
+Father: Only faced.
+
+narrator: A long silence filled the room.
+narrator: Only the rain spoke.
+
+narrator: Then he turned back toward me.
+narrator: His eyes were clear, even now.
+narrator: Certain.
+
+Father: After I'm gone...
+Father: She'll be alone in this world.
+Father: I don't want that for her.
+Father: No parent would.
+
+Father: Promise me you'll look after her.
+
+player: ...
+
+Father: Give her a home.
+Father: Let her know she still belongs somewhere.
+Father: Treat her not as a burden.
+Father: But as family.
+
+narrator: He paused, as if measuring his remaining strength.
+
+Father: Make sure she smiles.
+Father: Truly smiles.
+Father: That's all I ask.
+Father: That's everything I ask.
+
+narrator: His hand reached slowly toward mine.
+narrator: Cold.
+narrator: Trembling.
+narrator: But firm.
+
+Father: Can you do that?
+
+player: ...
+
+narrator: The candle flickered.
+narrator: Rin was watching me now.
+narrator: Her small hands clutched the blanket.
+narrator: Waiting.
+
+player: I can.
+player: I promise.
+
+Father (expression="smile"): Good...
+Father: That's enough for me.
+Father: That's more than enough.
+
+narrator: He closed his eyes.
+narrator: His grip loosened, but didn't let go.
+
+leave 
+leave bckup/Asami
+
+narrator: A few days later, he passed away quietly in that same room.
+narrator: The candle had long gone out by then.
+
+narrator: The village held a small ceremony.
+narrator: People came and went.
+narrator: Said kind things.
+narrator: Then returned to their lives.
+
+narrator: The house became quieter than I had ever known a house to be.
+[wait time="1.0"]
+audio music "res://BGM/Sea, You & Me.mp3" [fade="1.0"]
+
+narrator: But I couldn't forget the promise.
+narrator: It had weight to it.
+narrator: The kind that doesn't fade.
+
+[background arg="res://Assets/Noraneko_Backgrounds_Pack_3/Noraneko_Backgrounds_Pack_3/Temple_Spring_Afternoon.png" fade="1.5" wait="true"]
+[background arg="res://Assets/Noraneko_Backgrounds_Pack_3/Noraneko_Backgrounds_Pack_3/Temple_Spring_Clouds.png" fade="1.5" wait="true"]
+[background arg="res://Assets/Noraneko_Backgrounds_Pack_3/Noraneko_Backgrounds_Pack_3/Temple_Spring_Day.png" fade="1.5" wait="true"]
+[background arg="res://Assets/Noraneko_Backgrounds_Pack_3/Noraneko_Backgrounds_Pack_3/Temple_Spring_Night.png" fade="1.5" wait="true"]
+[background arg="res://Assets/Noraneko_Backgrounds_Pack_3/Noraneko_Backgrounds_Pack_3/Temple_Spring_Rain.png" fade="1.5" wait="true"]
+[background arg="res://Assets/Noraneko_Backgrounds_Pack_3/Noraneko_Backgrounds_Pack_3/Temple_Summer_Afternoon.png" fade="1.5" wait="true"]
+[background arg="res://Assets/Noraneko_Backgrounds_Pack_3/Noraneko_Backgrounds_Pack_3/Temple_Summer_Day.png" fade="1.5" wait="true"]
+
+narrator: Years passed.
+
+narrator: Rin moved in with me.
+narrator: She was quiet at first.
+narrator: She would sit by the window for hours.
+narrator: Watching the road.
+narrator: As if some part of her still expected him to come back.
+[background arg="res://Assets/rinveranda.png" fade="5.0" wait="true"]
+
+narrator: Slowly, she found her footing.
+narrator: She laughed again.
+narrator: Small laughs at first.
+narrator: Then real ones.
+
+narrator: We grew older together.
+narrator: Side by side.
+narrator: Through ordinary days and unremarkable seasons.
+
+narrator: And for a while, I believed the hardest part was over.
+audio music "res://BGM/木陰の憩.mp3"
+
+narrator: I was wrong.
+[background arg="res://Assets/Noraneko_Background_Pack_1/Noraneko_Background_Pack_1/Sitting_Room_Dark.png" fade="3.0" wait="true"]
+
+narrator: The sickness appeared without warning.
+
+narrator: At first it was small.
+narrator: Fatigue after light tasks.
+narrator: A dizziness that came and went without reason.
+narrator: Days where getting out of bed felt like climbing a mountain.
+
+narrator: We thought it was exhaustion.
+narrator: We thought rest would fix it.
+
+narrator: Then weeks passed.
+narrator: Then months.
+narrator: Then years.
+
+narrator: She never fully recovered between bad days.
+narrator: The good days grew shorter.
+narrator: The bad days grew longer.
+
+narrator: Healers came.
+narrator: They examined her carefully.
+narrator: They left quietly.
+narrator: None of them had answers.
+
+narrator: No one could name what was wrong with her.
+narrator: No medicine could slow it.
+narrator: No treatment could stop it.
+
+narrator: I watched her grow smaller.
+narrator: Not in spirit.
+narrator: In body.
+narrator: In energy.
+narrator: In the space she let herself take up in the world.
+
+narrator: And I remembered the promise.
+narrator: Make sure she smiles.
+
+narrator: She still smiled.
+narrator: Even now.
+narrator: Even on the days she could barely sit up.
+narrator: She smiled.
+
+narrator: That made it worse.
+
+narrator: I started searching for answers.
+narrator: Old records in the village archive.
+narrator: Traders passing through with knowledge of distant lands.
+narrator: Rumors from adventurers who had gone deep into the dungeons below the eastern mountains.
+
+narrator: And then I found it.
+narrator: A single mention in a crumbling text.
+narrator: Written in faded ink.
+narrator: Barely legible.
+
+narrator: The Elixir of Life.
+
+narrator: A legendary medicine.
+narrator: Said to cure any illness.
+narrator: Said to restore what time and sickness had taken.
+narrator: Said to exist somewhere deep within the dungeons.
+narrator: Guarded by creatures and distance and danger.
+
+narrator: Most dismissed it as myth.
+narrator: A story told to give people hope where none existed.
+
+narrator: But I had made a promise.
+
+[background arg="black" fade="0.5"]
+
+narrator: If the Elixir truly exists...
+narrator: I will find it.
+
+narrator: No matter how deep the dungeons go.
+narrator: No matter how many times I have to come back empty-handed.
+narrator: No matter how long it takes.
+
+narrator: Because a promise isn't something you abandon.
+narrator: Especially not when family is counting on you.
+narrator: Especially not when she still smiles at you every morning.
+narrator: Like you are the reason she bothered to wake up.
+
+narrator: I won't let that smile disappear.
+narrator: Not while I'm still breathing.
+
+[background arg="res://Assets/Noraneko_Backgrounds_Pack_2/Noraneko_Backgrounds_Pack_2/Bedroom_Day.png" fade="2.0"]
+
+narrator: Eight years later.
+narrator: The same house.
+narrator: A different morning.
+narrator: The same promise.
