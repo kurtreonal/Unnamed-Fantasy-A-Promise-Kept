@@ -10,11 +10,11 @@ extends CharacterBody2D
 # ══════════════════════════════════════════════════════════════════
 
 # ── Stats ──────────────────────────────────────────────────────────
-const MAX_HP        : int   = 5
+const MAX_HP        : int   = 25
 const MOVE_SPEED    : float = 60.0   # patrol speed (px/s)
 const CHASE_SPEED   : float = 90.0   # chase speed  (px/s)
-const ATTACK_RANGE  : float = 24.0   # pixels – how close to deal damage
-const ATTACK_DAMAGE : int   = 1      # damage the bug deals to the player
+const ATTACK_RANGE  : float = 50.0   # pixels – how close to deal damage
+const ATTACK_DAMAGE : int   = 5      # damage the bug deals to the player
 const ATTACK_COOLDOWN: float = 0.5  # seconds between attacks
 
 # ── Weapon damage table ────────────────────────────────────────────

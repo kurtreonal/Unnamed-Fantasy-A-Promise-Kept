@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var enemy_scene: PackedScene
-@export var spawn_count: int = 10       # how many bugs to spawn
+@export var spawn_count: int = 100       # how many bugs to spawn
 @export var path: Path2D                # drag EnemyPath here in inspector
 
 var _spawned: bool = false
