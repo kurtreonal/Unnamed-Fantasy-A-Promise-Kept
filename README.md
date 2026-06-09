@@ -1,2 +1,4 @@
 # Unnamed-Fantasy
-IDK WHAT TO CALL THIS SHT
+Unnamed-Fantasy: A Promise Kept.
+
+A Story about care and devotion
