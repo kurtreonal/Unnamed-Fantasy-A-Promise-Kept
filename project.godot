@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Living Together with my Childhood Friend: Fantasy Monochrome"
-run/main_scene="uid://cx0cxni3jvqp3"
+run/main_scene="uid://bdpd2nj7lujdr"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="uid://d3utipjm38rb7"
 
 [autoload]
 
@@ -26,6 +30,8 @@ DaySystem="*uid://n7cpwdd5jl4y"
 SaveSystem="*res://Systems/save_system.gd"
 GameState="*res://Systems/game_state.gd"
 SaveManager="*uid://dqrcca70jmc3f"
+CoinSystem="*uid://bpmftfsi0q5pq"
+MusicPlayer="*uid://bcb3xfva4sp8m"
 
 [dialogic]
 

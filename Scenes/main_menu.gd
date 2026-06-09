@@ -29,6 +29,9 @@ func _ready() -> void:
 	save_system  = get_node_or_null("/root/SaveSystem")
 	save_manager = get_node_or_null("/root/SaveManager")
 
+	# Music is already playing via MusicPlayer autoload (started in splash_screen).
+	# Nothing to do here — it carries over automatically.
+
 	# Hard-fail with a clear message if any button is still missing
 	assert(btn_new_game  != null, "[MainMenu] %BtnNewGame not found — ensure the node has 'Access as Unique Name' enabled in main_menu.tscn")
 	assert(btn_load_game != null, "[MainMenu] %BtnContinue not found — ensure the node has 'Access as Unique Name' enabled in main_menu.tscn")
@@ -125,6 +128,11 @@ func _on_quit() -> void:
 # ─────────────────────────────────────────────────────────────────
 
 func _transition_to_game() -> void:
+	# Fade out the menu music before the prologue starts.
+	var music: Node = get_node_or_null("/root/MusicPlayer")
+	if music:
+		music.fade_out(0.5)
+
 	var t := create_tween()
 	t.tween_property(self, "modulate:a", 0.0, 0.5)
 	await t.finished

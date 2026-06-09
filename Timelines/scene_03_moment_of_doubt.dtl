@@ -21,7 +21,7 @@ join Asami center [animation="Fade In" wait="true" extra_data="set CharacterOffs
 
 narrator: Rin sits by the window, staring out at the world beyond.
 narrator: The afternoon light casts long shadows.
-narrator: She looks smaller than usual.
+narrator: She looks tired than usual.
 narrator: Fragile.
 
 player: Rin? What's wrong?

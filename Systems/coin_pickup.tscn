@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://c4tdmga6vr0lr"]
+
+[ext_resource type="Texture2D" uid="uid://7jr7odi58mi5" path="res://Assets/Coins/coin1.png" id="1"]
+[ext_resource type="Script" uid="uid://bpmftfsi0q5pq" path="res://Systems/coin_system.gd" id="1_erfkn"]
+[ext_resource type="Texture2D" uid="uid://bl5cv0jmv64ca" path="res://Assets/Coins/coin2.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://b73mlcq5eolqh" path="res://Assets/Coins/coin3.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://dtxt0nlpakuir" path="res://Assets/Coins/coin4.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://u5elwcvh4w60" path="res://Assets/Coins/coin5.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://cv87b8u3k4px2" path="res://Assets/Coins/coin6.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://dvhgtat7k4iiu" path="res://Assets/Coins/coin7.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://dmjweoq5h8r7p" path="res://Assets/Coins/coin8.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://cdjl2ukdfwi63" path="res://Assets/Coins/coin9.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://c7c5ld5m5jfvc" path="res://Assets/Coins/coin10.png" id="10"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10")
+}],
+"loop": true,
+"name": &"spin",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+radius = 8.0
+
+[node name="CoinPickup" type="Area2D" unique_id=383665375]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_erfkn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1485035521]
+sprite_frames = SubResource("SpriteFrames_1")
+animation = &"spin"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=813873694]
+shape = SubResource("CircleShape2D_1")

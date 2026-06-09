@@ -5,9 +5,14 @@ extends Control
 #
 # Scene flow:
 #   New Game  → Prologue → Scene01 → World1
-#   Recall    → Scene02 → Scene01 (next day loop)
-#   Curfew    → Scene02 → Scene01 (next day loop)
+#   Recall    → Scene02 or Scene03 → Scene01 (next day loop)
+#   Curfew    → Scene02 or Scene03 → Scene01 (next day loop)
 #   Load Game → resumes at saved_scene (morning or evening)
+#
+# Scene03 (doubt) replaces the evening scene when:
+#   - affection < 5
+#   - current_day >= 3
+#   - at least 3 days since last scene03 trigger
 #
 # Grey-screen fix: never touch the layout node manually.
 # Just call Dialogic.start() directly — Dialogic 2.0 handles
@@ -21,6 +26,7 @@ var meal_system:      Meal_System
 var health_system:    Health_System
 var day_system:       DaySystem
 var save_system:      SaveSystem
+var coin_system:      Node   # CoinSystem autoload
 var game_state:       Node
 var dialogic:         Node
 var hud:              HUD
@@ -98,6 +104,7 @@ func _ready() -> void:
 	health_system    = get_node_or_null("/root/Health_System")
 	day_system       = get_node_or_null("/root/DaySystem")
 	save_system      = get_node_or_null("/root/SaveSystem")
+	coin_system      = get_node_or_null("/root/CoinSystem")
 	game_state       = get_node_or_null("/root/GameState")
 	dialogic         = get_node_or_null("/root/Dialogic")
 	hud              = get_node_or_null("CanvasLayer/HUD")
@@ -108,9 +115,21 @@ func _ready() -> void:
 	if not day_system:       push_error("[HomeScene] DaySystem not found!");        return
 	if not dialogic:         push_error("[HomeScene] Dialogic not found!");         return
 	if not game_state:       push_error("[HomeScene] GameState not found!");        return
+	if not coin_system:
+		push_warning("[HomeScene] CoinSystem not found — coin features disabled.")
+
+	# Stop the menu BGM as soon as we enter gameplay (covers new game,
+	# load game, and returning from a world scene).
+	var music: Node = get_node_or_null("/root/MusicPlayer")
+	if music:
+		music.fade_out(0.4)
 
 	# Initialize Dialogic variable default so it is never null/empty
 	Dialogic.VAR.set("affection_tier", "low")
+
+	# Sync coin total into Dialogic so timelines can read it immediately.
+	if coin_system:
+		coin_system.sync_dialogic()
 
 	print("====================")
 	print("HOME READY")
@@ -143,7 +162,7 @@ func _ready() -> void:
 		day_system.get_time_string(),
 		affection_system.current_affection,
 		health_system.rin_health,
-		meal_system.coins,
+		coin_system.get_coins() if coin_system else 0,
 	])
 
 	# ── Decide which scene to open ────────────────────────────────
@@ -151,7 +170,7 @@ func _ready() -> void:
 	# Priority:
 	#   1. is_new_game → prologue
 	#   2. saved_scene != "" → resume that scene (load game)
-	#   3. return_reason == RECALL or CURFEW → evening
+	#   3. return_reason == RECALL or CURFEW → evening or doubt
 	#   4. anything else (normal world return) → morning
 	#
 	var canvas := get_node_or_null("CanvasLayer")
@@ -186,10 +205,10 @@ func _ready() -> void:
 		_play_scene(key)
 
 	elif day_system.return_reason in [DaySystem.ReturnReason.RECALL, DaySystem.ReturnReason.CURFEW]:
-		print("[HomeScene] → RETURN (%s): starting evening." % str(day_system.return_reason))
+		print("[HomeScene] → RETURN (%s): checking evening scene." % str(day_system.return_reason))
 		day_system.set_evening_time()
 		if hud: hud.show_stats()
-		_play_scene("evening")
+		_play_scene(_get_evening_scene())
 
 	else:
 		print("[HomeScene] → NORMAL: starting morning.")
@@ -211,6 +230,37 @@ func _wait_frame() -> void:
 
 
 # ─────────────────────────────────────────────────────────────────
+# Evening scene selector
+# ─────────────────────────────────────────────────────────────────
+# Returns "doubt" when the player has been neglecting Rin:
+#   - affection < 5
+#   - at least day 3
+#   - at least 3 days since scene_03 last fired
+# Records the trigger day and routes the label based on affection.
+# ─────────────────────────────────────────────────────────────────
+
+func _get_evening_scene() -> String:
+	var day        : int  = day_system.current_day
+	var affection  : int  = affection_system.current_affection
+	var days_since : int  = day - game_state.last_scene03_day
+
+	var should_trigger : bool = (
+		affection < 5  and
+		day       >= 3 and
+		days_since >= 3
+	)
+
+	if should_trigger:
+		game_state.last_scene03_day = day
+		print("[HomeScene] scene_03 triggered — Day %d | Affection %d | Days since last: %d" % [
+			day, affection, days_since
+		])
+		return "doubt"
+
+	return "evening"
+
+
+# ─────────────────────────────────────────────────────────────────
 # Core: play a scene
 # ─────────────────────────────────────────────────────────────────
 
@@ -225,9 +275,17 @@ func _play_scene(key: String) -> void:
 	if key == "morning" or key == "prologue":
 		if hud: hud.stop_time()
 
-	# end_timeline() in _disconnect_all_dialogic() already cleared
-	# current_timeline and reset Dialogic's background state, so no
-	# manual background clearing is needed here.
+	# Route scene_03 to the correct label based on affection.
+	# scene_open  = affection >= 5 (full emotional scene)
+	# scene_locked = affection <  5 (Rin is withdrawn, short scene)
+	if key == "doubt":
+		var label := "scene_03_moment_of_doubt/scene_open" \
+			if affection_system.current_affection >= 5 \
+			else "scene_03_moment_of_doubt/scene_locked"
+		print("[HomeScene] Starting doubt scene at label: %s" % label)
+		await _hard_reset_dialogic()
+		dialogic.start(label)
+		return
 
 	print("---- PLAY SCENE DEBUG ----" )
 	print("KEY = ", key)
@@ -299,7 +357,7 @@ func _on_dialogue_finished() -> void:
 
 		"morning":
 			# Morning (Scene01) done → go to World2
-			# World scene will return here via RECALL or CURFEW → evening
+			# World scene will return here via RECALL or CURFEW → evening or doubt
 			print("[HomeScene] Morning complete → entering World2.")
 			if day_system: day_system.record_save_checkpoint()
 			if save_system: save_system.save_game()
@@ -322,8 +380,20 @@ func _on_dialogue_finished() -> void:
 			_play_scene("morning")
 
 		"doubt":
+			# Doubt (Scene03) done → advance day, start next morning
+			day_system.advance_day()
+			health_system.daily_health_decay()
+			print("[HomeScene] Doubt scene complete → Day %d | Health: %d" % [
+				day_system.current_day, health_system.get_health()
+			])
+			day_system.record_save_checkpoint()
 			if save_system: save_system.save_game()
-			print("[HomeScene] Doubt scene complete.")
+			if hud:
+				hud.notify_health_changed()
+				hud.notify_affection_changed()
+				hud.notify_coins_changed()
+				hud.stop_time()
+			_play_scene("morning")
 
 		_:
 			print("[HomeScene] Unhandled scene end: '%s'" % current_scene)
@@ -373,8 +443,18 @@ func _on_dialogic_signal(argument: String) -> void:
 			set_mood(value)
 
 		"coins":
-			if meal_system:
-				meal_system.add_coins(int(value))
+			# Route through CoinSystem (primary) with meal_system as fallback
+			# for backwards compatibility during the transition period.
+			var amount := int(value)
+			if coin_system:
+				if amount >= 0:
+					coin_system.add_coins(amount)
+				else:
+					coin_system.spend_coins(-amount)
+				if hud: hud.notify_coins_changed()
+				coin_system.sync_dialogic()
+			elif meal_system:
+				meal_system.add_coins(amount)
 				if hud: hud.notify_coins_changed()
 
 		"rin_health":
@@ -393,7 +473,7 @@ func _on_dialogic_signal(argument: String) -> void:
 			print("[HomeScene] affection_tier set → %s (aff: %d)" % [tier, aff])
 
 		"day":
-			# No-op: day advance happens only in _on_dialogue_finished("evening").
+			# No-op: day advance happens only in _on_dialogue_finished("evening"/"doubt").
 			push_warning("[HomeScene] 'day' signal mid-timeline ignored. Remove [signal arg=\"day:+1\"] from the timeline.")
 
 		"load_world":
@@ -418,7 +498,8 @@ func _on_choice_buttons_shown() -> void:
 func _apply_choice_greying() -> void:
 	if not meal_system:
 		return
-	var coins: int  = meal_system.get_coins()
+	# Read coin total from CoinSystem when available, fall back to meal_system.
+	var coins: int = coin_system.get_coins() if coin_system else meal_system.get_coins()
 	var all_buttons := _find_dialogic_choice_buttons()
 	for btn in all_buttons:
 		var cost_key: String = _get_meal_cost_key(btn.text)
@@ -598,8 +679,13 @@ func set_meal(meal_type: String) -> void:
 	if meal_system.purchase_meal(meal_type):
 		var aff:    int = meal_system.get_affection_impact(meal_type)
 		var health: int = meal_system.get_health_impact(meal_type)
+		var cost:   int = meal_system.MEAL_COSTS.get(meal_type, 0)
 		affection_system.modify_affection(aff)
 		health_system.modify_health(health)
+		# Mirror coin deduction into CoinSystem for persistence & HUD accuracy.
+		if coin_system and cost > 0:
+			coin_system.spend_coins(cost)
+			coin_system.sync_dialogic()
 		if hud:
 			hud.notify_affection_changed()
 			hud.notify_health_changed()

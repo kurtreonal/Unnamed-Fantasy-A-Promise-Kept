@@ -1,7 +1,8 @@
 extends Node2D
 # world_base.gd
 
-var day_system: DaySystem
+var day_system:  DaySystem
+var coin_system: Node   # CoinSystem autoload
 
 # ─── Clock (1 real second = 1 in-game minute) ─────────────────────
 const TICK_RATE:      float = 1.0
@@ -9,8 +10,9 @@ var _tick_accumulator: float = 0.0
 var _clock_running:    bool  = false
 
 # ─── Time HUD ─────────────────────────────────────────────────────
-var _world_hud:  CanvasLayer = null
-var _time_label: Label       = null
+var _world_hud:   CanvasLayer = null
+var _time_label:  Label       = null
+var _coin_label:  Label       = null
 
 # ─── Recall ───────────────────────────────────────────────────────
 const RECALL_DURATION: float = 4.0
@@ -35,10 +37,18 @@ var _fade_rect:          ColorRect    = null
 
 # ─────────────────────────────────────────────────────────────────
 func _ready() -> void:
-	day_system = get_node_or_null("/root/DaySystem")
+	day_system  = get_node_or_null("/root/DaySystem")
+	coin_system = get_node_or_null("/root/CoinSystem")
+
 	if not day_system:
 		push_error("[WorldBase] DaySystem autoload not found!")
 		return
+
+	if coin_system:
+		if not coin_system.coins_changed.is_connected(_on_coins_changed):
+			coin_system.coins_changed.connect(_on_coins_changed)
+	else:
+		push_warning("[WorldBase] CoinSystem not found — coin HUD disabled.")
 
 	if not day_system.curfew_triggered.is_connected(_on_curfew_triggered):
 		day_system.curfew_triggered.connect(_on_curfew_triggered)
@@ -231,11 +241,12 @@ func _spawn_world_hud() -> void:
 	_world_hud.layer = 15
 	add_child(_world_hud)
 
+	# ── Shared panel ─────────────────────────────────────────────
 	var panel := PanelContainer.new()
 	panel.set_anchors_and_offsets_preset(Control.PRESET_TOP_LEFT)
 	panel.offset_left   = 10
 	panel.offset_top    = 10
-	panel.offset_right  = 160
+	panel.offset_right  = 220   # wider to fit coin counter
 	panel.offset_bottom = 46
 
 	var style := StyleBoxFlat.new()
@@ -256,11 +267,30 @@ func _spawn_world_hud() -> void:
 	margin.add_theme_constant_override("margin_bottom",  4)
 	panel.add_child(margin)
 
+	# HBox holds time on the left and coin count on the right.
+	var hbox := HBoxContainer.new()
+	hbox.add_theme_constant_override("separation", 16)
+	margin.add_child(hbox)
+
+	# ── Time label ───────────────────────────────────────────────
 	_time_label = Label.new()
 	_time_label.text = "--:-- --"
 	_time_label.add_theme_color_override("font_color", Color(1, 1, 1, 1))
 	_time_label.add_theme_font_size_override("font_size", 16)
-	margin.add_child(_time_label)
+	hbox.add_child(_time_label)
+
+	# Spacer pushes coin counter to the right.
+	var spacer := Control.new()
+	spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	hbox.add_child(spacer)
+
+	# ── Coin label ───────────────────────────────────────────────
+	_coin_label = Label.new()
+	_coin_label.add_theme_color_override("font_color", Color(1.0, 0.88, 0.2, 1.0))  # warm gold
+	_coin_label.add_theme_font_size_override("font_size", 16)
+	_coin_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	hbox.add_child(_coin_label)
+	_update_coin_label()
 
 
 # ─── Helpers ──────────────────────────────────────────────────────
@@ -276,6 +306,15 @@ func _on_time_changed(_hour: int, _minute: int) -> void:
 func _update_time_label() -> void:
 	if _time_label and day_system:
 		_time_label.text = day_system.get_time_string()
+
+func _on_coins_changed(_new_total: int) -> void:
+	_update_coin_label()
+
+func _update_coin_label() -> void:
+	if not _coin_label:
+		return
+	var total: int = coin_system.get_coins() if coin_system else 0
+	_coin_label.text = "🪙 %d" % total
 
 func _on_curfew_triggered() -> void:
 	print("[WorldBase] Curfew reached — forcing return to Scene02.")

@@ -35,3 +35,8 @@ var saved_scene: String = ""
 ## Resolved by home_scene before starting the evening timeline.
 ## Values: "high" | "mid" | "low"
 var affection_tier: String = "low"
+
+## Tracks the last day scene_03 was triggered.
+## Used to enforce the 3-day cooldown between doubt scene repeats.
+## Starts at -99 so the gap check always passes on first trigger.
+var last_scene03_day: int = -99

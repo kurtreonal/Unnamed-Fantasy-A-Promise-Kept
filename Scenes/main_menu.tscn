@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://ci01d85fjb3l4" path="res://Scenes/main_menu.gd" id="1_main_menu"]
 [ext_resource type="Texture2D" uid="uid://6kh0q6upmy1t" path="res://Assets/menugif.png" id="2_1ehe0"]
-[ext_resource type="AudioStream" uid="uid://bltjdhc00i2nn" path="res://BGM/Sickly_Days_and_Summer_Traces_trailer.mp3" id="2_48xlc"]
 [ext_resource type="FontFile" uid="uid://b7y2vqvvh8woj" path="res://Fonts/EB_Garamond/static/EBGaramond-Bold.ttf" id="3_n45e2"]
 [ext_resource type="FontFile" uid="uid://xqdinwhdqkq0" path="res://Fonts/EB_Garamond/static/EBGaramond-Medium.ttf" id="4_n45e2"]
 
@@ -170,6 +169,3 @@ theme_override_colors/font_color = Color(0.5, 0.5, 0.6, 0.6)
 theme_override_font_sizes/font_size = 12
 text = "v0.1.0"
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1296496174]
-stream = ExtResource("2_48xlc")
-autoplay = true

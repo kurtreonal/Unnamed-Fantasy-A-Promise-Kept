@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://b47q3cyhvg3me"]
+
+[ext_resource type="Script" uid="uid://br2snlaxs5ucn" path="res://Scenes/splash_screen.gd" id="1_splash"]
+[ext_resource type="AudioStream" uid="uid://bltjdhc00i2nn" path="res://BGM/Sickly_Days_and_Summer_Traces_trailer.mp3" id="2_wwf30"]
+
+[node name="SplashScreen" type="Control" unique_id=1812266803]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_splash")
+menu_music = ExtResource("2_wwf30")
+
+[node name="Background" type="ColorRect" parent="." unique_id=2084939674]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="LogoDisplay" type="TextureRect" parent="." unique_id=293669473]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch_mode = 3

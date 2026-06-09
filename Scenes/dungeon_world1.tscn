@@ -23,6 +23,7 @@
 [ext_resource type="Script" uid="uid://kaxgpu4b5y0n" path="res://Scenes/enemy_spawner.gd" id="21_rg2x5"]
 [ext_resource type="PackedScene" uid="uid://dofksiswgt8a4" path="res://enemy_bug.tscn" id="22_5fbaw"]
 [ext_resource type="PackedScene" uid="uid://dixcn76cfmed1" path="res://UI_Gamepad/hud.tscn" id="23_5fbaw"]
+[ext_resource type="PackedScene" uid="uid://chiq8v1kf6e4n" path="res://Scenes/coin_pickup.tscn" id="23_slwoy"]
 [ext_resource type="AudioStream" uid="uid://da7rufxrde5tb" path="res://BGM/LVS04_04_Sealed_Sanctuary.mp3" id="24_ia5v4"]
 [ext_resource type="PackedScene" uid="uid://xpcu48fcmfdx" path="res://Scenes/WorldTransition.tscn" id="25_p6836"]
 
@@ -110700,7 +110701,9 @@ position = Vector2(93.57144, 263.57144)
 z_index = 7
 script = ExtResource("21_rg2x5")
 enemy_scene = ExtResource("22_5fbaw")
+coin_pickup_scene = ExtResource("23_slwoy")
 path = NodePath("../EnemyPath")
+coin_per_enemy = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_Spawner" unique_id=305570002]
 position = Vector2(1293.2139, 1189.6426)
