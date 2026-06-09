@@ -26,6 +26,13 @@ var _recall_cancel_label: Label       = null
 var _fade_rect:          ColorRect    = null
 
 
+# ─── World Transition ─────────────────────────────────────────────
+# WorldTransition (Area2D) nodes handle scene switching automatically.
+# They write to GameState.spawn_position before calling change_scene_to_file().
+# world_base._ready() already reads that value below and moves the player.
+# No extra code is needed here — just place WorldTransition.tscn in your world.
+# ─────────────────────────────────────────────────────────────────
+
 # ─────────────────────────────────────────────────────────────────
 func _ready() -> void:
 	day_system = get_node_or_null("/root/DaySystem")

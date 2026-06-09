@@ -42,7 +42,7 @@ narrator: The kind of tired that sleep couldn't fix.
 narrator: His gaze slowly drifted toward the small girl sitting quietly beside the bed.
 [background arg="res://Assets/1 (2).png" fade="2.5" wait="true"]
 
-join bckup/Asami left [animation="Fade In" length="1.5" wait="true" extra_data="set CharacterOffset/Expressions/Sad1"]
+join Asami left [animation="Fade In" length="1.5" wait="true" extra_data="set CharacterOffset/Expressions/Sad1"]
 [background arg="res://Assets/Noraneko_Background_Pack_1/Noraneko_Background_Pack_1/Futon_Room_Night.png" fade="2.5"]
 
 narrator: She had been holding his hand since before I arrived.
@@ -132,8 +132,8 @@ Father: That's more than enough.
 narrator: He closed his eyes.
 narrator: His grip loosened, but didn't let go.
 
+leave Asami
 leave 
-leave bckup/Asami
 
 narrator: A few days later, he passed away quietly in that same room.
 narrator: The candle had long gone out by then.

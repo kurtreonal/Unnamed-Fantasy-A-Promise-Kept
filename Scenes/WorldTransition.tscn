@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://xpcu48fcmfdx"]
+
+[ext_resource type="Script" uid="uid://bgjye1v87t0qg" path="res://Scenes/world_transition.gd" id="1_trans"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_zone"]
+size = Vector2(195, 180)
+
+[node name="WorldTransition" type="Area2D" unique_id=1685530016]
+script = ExtResource("1_trans")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1473343725]
+position = Vector2(-6, 2)
+shape = SubResource("RectangleShape2D_zone")

@@ -298,12 +298,12 @@ func _on_dialogue_finished() -> void:
 			_play_scene("morning")
 
 		"morning":
-			# Morning (Scene01) done → go to World1
+			# Morning (Scene01) done → go to World2
 			# World scene will return here via RECALL or CURFEW → evening
-			print("[HomeScene] Morning complete → entering World1.")
+			print("[HomeScene] Morning complete → entering World2.")
 			if day_system: day_system.record_save_checkpoint()
 			if save_system: save_system.save_game()
-			_go_to_world(1)
+			_go_to_world(2)
 
 		"evening":
 			# Evening (Scene02) done → advance day, start next morning
@@ -531,7 +531,7 @@ func _after_location_card(location_key: String) -> void:
 			if hud: hud.start_time()
 			if save_system: save_system.save_game()
 			_disconnect_all_dialogic()
-			get_tree().change_scene_to_file.call_deferred(WORLD_SCENES[1])
+			get_tree().change_scene_to_file.call_deferred(WORLD_SCENES[2])
 		_:
 			dialogic.paused = false
 

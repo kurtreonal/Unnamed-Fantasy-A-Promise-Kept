@@ -77,7 +77,7 @@ narrator: The evening is still young. You have a moment.
 - Sit with her quietly for a while
 	join Asami center [animation="Fade In" wait="true" extra_data="set CharacterOffset/Expressions/Smile2"]
 	player: I'm sorry I'm always gone. I just... I need to find the cure.
-	update  [extra_data="set CharacterOffset/Expressions/Smile2"]
+	update Asami
 	Asami: I know.
 	Asami: And I'm not upset with you.
 	Asami: I just... miss you.
@@ -90,13 +90,13 @@ narrator: The evening is still young. You have a moment.
 	jump scene_02_evening_return/evening_wind_down:
 
 - Prepare her evening medicine
-	join  center [animation="Fade In" wait="true" extra_data="set CharacterOffset/Expressions/Smile1"]
+	join Asami center [animation="Fade In" wait="true" extra_data="set CharacterOffset/Expressions/Smile1"]
 	narrator: You prepare Rin's evening medicine.
 	narrator: A bitter herbal blend — temporary relief for her symptoms.
 	player: Here. This will help with the pain tonight.
 	Asami: Thank you.
 	narrator: She drinks it carefully, making a slight face at the taste.
-	update  [extra_data="set CharacterOffset/Expressions/Awkward"]
+	update Asami CharacterOffset/Expressions/Awkward"]
 	Asami: It's getting easier to take.
 	Asami: Or maybe I'm just getting used to it.
 	player: Either way, it's helping. I can see it.
@@ -106,14 +106,14 @@ narrator: The evening is still young. You have a moment.
 	jump scene_02_evening_return/evening_wind_down:
 
 - Ask about her day
-	join  center [animation="Fade In" wait="true" extra_data="set CharacterOffset/Expressions/Smile1"]
+	join Asami center [animation="Fade In" wait="true" extra_data="set CharacterOffset/Expressions/Smile1"]
 	player: What did you do today? Anything nice?
 	Asami: I read a bit.
 	Asami: There's a story about a heroine who gets better after a long journey.
-	update  [extra_data="set CharacterOffset/Expressions/Sad1"]
+	update Asami
 	Asami: I kept thinking... that could be me.
 	player: It will be you. I promise.
-	update  [extra_data="set CharacterOffset/Expressions/Smile1"]
+	update Asami CharacterOffset/Expressions/Smile1"]
 	Asami: I believe you.
 	Asami: More than I believe anything else.
 	narrator: For a moment, her expression is pure hope.
@@ -122,7 +122,7 @@ narrator: The evening is still young. You have a moment.
 	jump scene_02_evening_return/evening_wind_down:
 
 - Head to bed early — you're exhausted
-	join  center [animation="Fade In" wait="true" extra_data="set CharacterOffset/Expressions/Sad2"]
+	join Asami center [animation="Fade In" wait="true" extra_data="set CharacterOffset/Expressions/Sad2"]
 	narrator: Exhaustion pulls at you. Your body needs rest.
 	player: I'm going to get some sleep. Today wore me out.
 	Asami: Oh... I understand.
@@ -135,19 +135,19 @@ narrator: The evening is still young. You have a moment.
 
 label evening_wind_down:
 
-update  [extra_data="set CharacterOffset/Expressions/Smile1"]
+update Asami CharacterOffset/Expressions/Smile1"]
 narrator: As the evening deepens, Rin's eyes grow heavy.
 Asami: I think I need to rest now.
 Asami: Thank you for being here.
 player: Of course. Sleep well.
-update  [extra_data="set CharacterOffset/Expressions/Smile2"]
+update Asami CharacterOffset/Expressions/Smile2"]
 Asami: ...See you in the morning.
 [background arg="res://Assets/Noraneko_Background_Pack_1/Noraneko_Background_Pack_1/Sitting_Room_Dark.png" fade="0.0"]
 jump scene_02_evening_return/end_evening:
 
 label end_evening:
 
-leave  [animation="Fade Out" length="0.3"]
+leave Asami
 
 narrator: You head to your own room.
 [background arg="res://Assets/Noraneko_Backgrounds_Pack_2/Noraneko_Backgrounds_Pack_2/Bedroom_Night.png" fade="1.5" wait="true"]
