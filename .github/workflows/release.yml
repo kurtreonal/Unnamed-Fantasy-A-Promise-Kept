@@ -31,14 +31,10 @@ jobs:
           assert os.environ['RELEASE_TAG'] == 'v' + version, 'Update project and Android preset versions before tagging.'
           PY
           printf '%s' "$KEYSTORE_BASE64" | base64 --decode > "$RUNNER_TEMP/release.p12"
-      - uses: chickensoft-games/setup-godot@v2
-        with:
-          version: 4.6.2
-          use-dotnet: false
-          include-templates: true
-          path: ${{ runner.temp }}/godot
-          downloads-path: ${{ runner.temp }}/godot-downloads
-          bin-path: ${{ runner.temp }}/godot-bin
+      - name: Install official Godot and Android templates
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 tools/setup_godot.py --platform android
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
