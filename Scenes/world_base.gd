@@ -37,6 +37,7 @@ var _fade_rect:          ColorRect    = null
 
 # ─────────────────────────────────────────────────────────────────
 func _ready() -> void:
+	add_child(preload("res://UI/Mobile/mobile_controls.gd").new())
 	day_system  = get_node_or_null("/root/DaySystem")
 	coin_system = get_node_or_null("/root/CoinSystem")
 
@@ -112,12 +113,11 @@ func _process(delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed and not event.echo:
-		if event.keycode == RECALL_KEY:
-			if _recall_active:
-				_cancel_recall()
-			else:
-				_start_recall()
+	if event.is_action_pressed("Recall") and not event.is_echo():
+		if _recall_active:
+			_cancel_recall()
+		else:
+			_start_recall()
 
 
 # ─── Recall core ──────────────────────────────────────────────────

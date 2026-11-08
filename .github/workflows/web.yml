@@ -1,0 +1,56 @@
+name: Publish playable web game
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: godot-pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: chickensoft-games/setup-godot@v2
+        with:
+          version: 4.6.2
+          use-dotnet: false
+          include-templates: true
+          path: ${{ runner.temp }}/godot
+          downloads-path: ${{ runner.temp }}/godot-downloads
+          bin-path: ${{ runner.temp }}/godot-bin
+      - name: Import project
+        run: godot --headless --path . --editor --import
+      - name: Test mobile controls
+        run: |
+          trap 'rm -f override.cfg' EXIT
+          printf '[application]\nconfig/name="Unnamed Fantasy Release Smoke Test"\n' > override.cfg
+          godot --headless --path . --script tests/mobile_smoke.gd --quit-after 600 2>&1 | tee "$RUNNER_TEMP/mobile-smoke.log"
+          grep -q 'PASS: touch movement' "$RUNNER_TEMP/mobile-smoke.log"
+      - name: Export browser game
+        run: |
+          mkdir -p build/web
+          godot --headless --path . --export-release Web build/web/index.html
+          touch build/web/.nojekyll
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/web
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/configure-pages@v5
+      - name: Publish GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -7,6 +7,10 @@ static var channel_cache := {}
 
 static var special_resources := {}
 
+# Keep runtime resources within GDScript's lifetime, not Engine metadata.
+# https://github.com/godotengine/godot/issues/119279
+static var runtime_directories: Dictionary = {}
+
 
 static func update() -> void:
 	update_directory('.dch')
@@ -21,6 +25,10 @@ static func update() -> void:
 
 static func get_directory(extension:String) -> Dictionary:
 	extension = extension.trim_prefix('.')
+	if not Engine.is_editor_hint():
+		if not runtime_directories.has(extension):
+			runtime_directories[extension] = ProjectSettings.get_setting("dialogic/directories/"+extension+'_directory', {}).duplicate()
+		return runtime_directories[extension]
 	if Engine.has_meta(extension+'_directory'):
 		return Engine.get_meta(extension+'_directory', {})
 
@@ -34,7 +42,9 @@ static func set_directory(extension:String, directory:Dictionary) -> void:
 	if Engine.is_editor_hint():
 		ProjectSettings.set_setting("dialogic/directories/"+extension+'_directory', directory)
 		ProjectSettings.save()
-	Engine.set_meta(extension+'_directory', directory)
+		Engine.set_meta(extension+'_directory', directory)
+	else:
+		runtime_directories[extension] = directory
 
 
 static func update_directory(extension:String) -> void:

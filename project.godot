@@ -11,27 +11,24 @@ config_version=5
 [application]
 
 config/name="Living Together with my Childhood Friend: Fantasy Monochrome"
-run/main_scene="uid://bdpd2nj7lujdr"
+config/version="0.1.0"
+run/main_scene="res://Scenes/splash_screen.tscn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
-
-[audio]
-
-buses/default_bus_layout="uid://d3utipjm38rb7"
 
 [autoload]
 
 Dialogic="*uid://ds2q0uclmolvu"
-Affection_System="*uid://c1wj7dvsxywk2"
-Health_System="*uid://kbq5try170rc"
-Meal_System="*uid://qy52v6toqagx"
+Affection_System="*res://Systems/affection_system.gd"
+Health_System="*res://Systems/health_system.gd"
+Meal_System="*res://Systems/meal_system.gd"
 LocationTitle_Card="*res://UI/LocationTitleCard/LocationTitleCard.tscn"
-DaySystem="*uid://n7cpwdd5jl4y"
+DaySystem="*res://Systems/day_system.gd"
 SaveSystem="*res://Systems/save_system.gd"
 GameState="*res://Systems/game_state.gd"
-SaveManager="*uid://dqrcca70jmc3f"
-CoinSystem="*uid://bpmftfsi0q5pq"
-MusicPlayer="*uid://bcb3xfva4sp8m"
+SaveManager="*res://Systems/save_manager.gd"
+CoinSystem="*res://Systems/coin_system.gd"
+MusicPlayer="*res://Systems/music_player.gd"
 
 [dialogic]
 
@@ -101,6 +98,7 @@ layout/end_behaviour=0
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
@@ -164,6 +162,11 @@ Switch_Skill={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":82,"key_label":0,"unicode":114,"location":0,"echo":false,"script":null)
 ]
 }
+Recall={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":66,"key_label":0,"unicode":98,"location":0,"echo":false,"script":null)
+]
+}
 
 [physics]
 
@@ -175,3 +178,4 @@ textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

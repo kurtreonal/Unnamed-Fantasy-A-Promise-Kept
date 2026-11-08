@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dmjweoq5h8r7p" path="res://Assets/Coins/coin8.png" id="8"]
 [ext_resource type="Texture2D" uid="uid://cdjl2ukdfwi63" path="res://Assets/Coins/coin9.png" id="9"]
 [ext_resource type="Texture2D" uid="uid://c7c5ld5m5jfvc" path="res://Assets/Coins/coin10.png" id="10"]
-[ext_resource type="Script" uid="uid://sj24fvib1mgg" path="res://Systems/coin_pickup.gd" id="11"]
+[ext_resource type="Script" uid="uid://sj24fvib1mgg" path="res://Scenes/coin_pickup.gd" id="11"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1"]
 animations = [{

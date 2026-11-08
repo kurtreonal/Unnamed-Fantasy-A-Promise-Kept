@@ -26,6 +26,7 @@ const SLOTS_SCENE := "res://UI/SaveSlots/save_slots_ui.tscn"
 
 
 func _ready() -> void:
+	btn_quit.visible = not OS.has_feature("web")
 	save_system  = get_node_or_null("/root/SaveSystem")
 	save_manager = get_node_or_null("/root/SaveManager")
 

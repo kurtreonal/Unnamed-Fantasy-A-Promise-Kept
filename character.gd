@@ -187,6 +187,8 @@ func _setup_hitbox(area: Area2D) -> void:
 	area.monitorable     = false
 
 func _find_hud() -> void:
+	if not is_inside_tree():
+		return
 	_hud = get_tree().get_first_node_in_group("hud")
 
 ## Can also be set explicitly by the world scene if needed.
@@ -194,44 +196,27 @@ func set_hud(hud: CanvasLayer) -> void:
 	_hud = hud
 
 # ── Input ─────────────────────────────────────────────────────
-func _input(event: InputEvent) -> void:
-	if not (event is InputEventKey and event.pressed and not event.echo):
-		return
-
-	match event.keycode:
-		# Q — cycle sword element (no cooldown, owned here)
-		KEY_Q:
-			if not is_attacking:
-				cycle_sword_element()
-				get_viewport().set_input_as_handled()
-
-		# E — cycle weapon; HUD owns the cooldown gate
-		KEY_E:
-			if _hud != null:
-				_hud.request_cycle_weapon()
-			elif not is_attacking:
-				cycle_weapon()
-			get_viewport().set_input_as_handled()
-
-		# R — cycle staff skill; HUD owns the cooldown gate
-		KEY_R:
-			if _hud != null:
-				_hud.request_cycle_skill()
-			elif not is_attacking:
-				cycle_staff_skill()
-			get_viewport().set_input_as_handled()
-
 # ── Physics ───────────────────────────────────────────────────
 func _physics_process(delta: float) -> void:
 	# Update mouse aim while aiming (Bow draw or Staff cast)
-	if is_aiming:
+	if is_aiming and not DisplayServer.is_touchscreen_available() and not OS.has_feature("android"):
 		var to_mouse := get_global_mouse_position() - global_position
 		if to_mouse.length() > 5.0:
 			aim_direction = to_mouse.normalized()
 
 	# Switch_Element action (can be gamepad / remap)
-	if Input.is_action_just_pressed("Switch_Element"):
+	if Input.is_action_just_pressed("Switch_Element") and not is_attacking:
 		cycle_sword_element()
+	if Input.is_action_just_pressed("Switch_Weapon"):
+		if is_instance_valid(_hud):
+			_hud.request_cycle_weapon()
+		elif not is_attacking:
+			cycle_weapon()
+	if Input.is_action_just_pressed("Switch_Skill"):
+		if is_instance_valid(_hud):
+			_hud.request_cycle_skill()
+		elif not is_attacking:
+			cycle_staff_skill()
 
 	# Dispatch per-weapon attack input
 	match current_weapon:

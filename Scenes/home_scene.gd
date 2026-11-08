@@ -216,9 +216,8 @@ func _ready() -> void:
 		_play_scene("morning")
 
 
-func _notification(what: int) -> void:
-	if what == NOTIFICATION_PREDELETE:
-		_disconnect_all_dialogic()
+func _exit_tree() -> void:
+	_disconnect_all_dialogic()
 
 
 # ─────────────────────────────────────────────────────────────────
@@ -319,7 +318,7 @@ func _hard_reset_dialogic() -> void:
 
 
 func _disconnect_all_dialogic() -> void:
-	if not dialogic: return
+	if not is_instance_valid(dialogic) or not dialogic.is_inside_tree(): return
 	# Disconnect signals FIRST so the timeline_ended signal from end_timeline()
 	# below does not re-trigger _on_dialogue_finished() mid-transition.
 	if dialogic.timeline_ended.is_connected(_on_dialogue_finished):
@@ -332,7 +331,8 @@ func _disconnect_all_dialogic() -> void:
 	# CRITICAL: clear current_timeline so the next dialogic.start() is not
 	# silently ignored. Dialogic 2.0 refuses start() when current_timeline != null.
 	if dialogic.current_timeline != null:
-		dialogic.end_timeline()
+		# Teardown must not start Dialogic's animated ending timeline.
+		dialogic.end_timeline(true)
 
 
 # ─────────────────────────────────────────────────────────────────
