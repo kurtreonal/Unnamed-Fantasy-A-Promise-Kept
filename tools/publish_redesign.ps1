@@ -12,12 +12,13 @@ $token=($credentialLines | Where-Object { $_.StartsWith('password=') } | Select-
 $headers=@{Authorization=('Bearer '+$token);Accept='application/vnd.github+json';'X-GitHub-Api-Version'='2022-11-28'}
 try {
     $commit=(git rev-parse HEAD).Trim()
-    $body=Get-Content -Raw -Encoding UTF8 -LiteralPath '.godot/redesign-release-notes.md'
+    [string]$body=[IO.File]::ReadAllText((Join-Path $projectRoot '.godot/redesign-release-notes.md'),[Text.Encoding]::UTF8)
     try { $release=Invoke-RestMethod -Uri ('https://api.github.com/repos/'+$repo+'/releases/tags/'+$Tag) -Headers $headers }
     catch { if ([int]$_.Exception.Response.StatusCode -ne 404) { throw }; $release=$null }
     if ($release -and -not $release.draft) { throw 'This release is already public; do not overwrite it automatically.' }
     if (-not $release) {
         $payload=@{tag_name=$Tag;target_commitish=$commit;name=('A Promise Kept '+$Tag+' - Story and Gameplay Redesign');body=$body;draft=$true;prerelease=$true} | ConvertTo-Json
+        if (-not (($payload | ConvertFrom-Json).body -is [string])) { throw 'Release notes must serialize as a plain string.' }
         $release=Invoke-RestMethod -Method Post -Uri ('https://api.github.com/repos/'+$repo+'/releases') -Headers $headers -ContentType 'application/json; charset=utf-8' -Body ([Text.Encoding]::UTF8.GetBytes($payload))
     }
     foreach ($file in @($apk,$checksums)) {
