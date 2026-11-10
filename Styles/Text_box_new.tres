@@ -1,10 +1,13 @@
-[gd_resource type="StyleBoxTexture" format=3 uid="uid://dkh6l0spt57a2"]
-
-[ext_resource type="Texture2D" uid="uid://dqkh4odcn51ad" path="res://Assets/kenney_fantasy-ui-borders/PNG/Default/Panel/panel-005.png" id="1_5mfcf"]
+[gd_resource type="StyleBoxFlat" format=3 uid="uid://dkh6l0spt57a2"]
 
 [resource]
-texture = ExtResource("1_5mfcf")
-texture_margin_left = 24.0
-texture_margin_top = 24.0
-texture_margin_right = 24.0
-texture_margin_bottom = 24.0
+bg_color = Color(0.13, 0.13, 0.13, 0.94)
+border_color = Color(0.47, 0.47, 0.47, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0

@@ -37,10 +37,20 @@ func _run() -> void:
 	await create_timer(0.15).timeout
 	expect(int(campaign.dialogue.get("index",-1))==3,"Fresh manual advance reaches the next protected line")
 	dialogue._finish()
-	await process_frame
+	# DialogicTimeline.clean() disconnects old events on the following frame.
+	await create_timer(0.15).timeout
 	expect(seated.visible,"Seated Rin returns when conversation ends")
 	expect(campaign.load_game() and campaign.dialogue.is_empty(),"Completed routine dialogue stays closed after reloading the autosave")
 	campaign.dialogue={}; campaign.input_locked=false
+	expect(load("res://Styles/Text_box_new.tres") is StyleBoxFlat,"Dialogic fallback panel has no dependency on excluded legacy textures")
+	app._show_dialogue({"id":"home_greeting","critical":false,"lines":["Rin|Welcome back."]},app._activities)
+	await create_timer(0.15).timeout
+	for press in range(3):
+		if campaign.modal_open: break
+		dialogic.Inputs.handle_input()
+		await create_timer(0.2).timeout
+	expect(campaign.modal_open and campaign.dialogue.is_empty(),"Natural dialogue completion restores the home and opens the activity panel")
+	app._close_modal()
 	expect(ResourceLoader.exists("res://Game/Timelines/e01.dtl"),"Story scenes must be editable Dialogic resources")
 	var actual=campaign.activity("talk")
 	campaign.dialogue={"id":"e01","index":2}

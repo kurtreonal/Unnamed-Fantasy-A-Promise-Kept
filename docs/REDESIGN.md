@@ -8,7 +8,7 @@ Rin/Asami and the protagonist are both 17-year-old high-school classmates. The c
 
 The 24 relationship scenes are genuine Dialogic timelines in `Game/Timelines/`. Open the Dialogic editor in Godot to edit their dialogue. Keep the `line_N` labels and `line:N:Speaker:protected` signals: they control save checkpoints, speaker labels, and protected skipping. Routine lines can use `routine` in place of `protected`.
 
-`Game/dialogue.gd` supplies the cinematic layout. Dialogic executes the timeline, reveals the text, records history, advances events and performs held auto-skip. The final response buttons commit one relationship transaction through Campaign, preventing duplicate rewards. Their definitions live in `Game/Data/campaign.json`.
+`Game/dialogue.gd` supplies the cinematic layout. Dialogic executes the timeline, reveals the text, records history, advances events and performs held auto-skip. The custom layout owns conversation teardown and disables Dialogic's default ending timeline, which would otherwise create the retired VN layout just to clear it. The final response buttons commit one relationship transaction through Campaign, preventing duplicate rewards. Their definitions live in `Game/Data/campaign.json`.
 
 `tools/build_campaign_content.py` is the original content authoring source. Running it regenerates both JSON and the 24 timelines, replacing manual changes to those generated files. Ordinary Godot imports and builds do not regenerate content.
 

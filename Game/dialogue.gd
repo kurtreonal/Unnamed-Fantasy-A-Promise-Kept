@@ -44,6 +44,9 @@ func _ready() -> void:
 	choices=VBoxContainer.new(); choices.position=Vector2(300,250); choices.size=Vector2(500,0); root.add_child(choices)
 	Dialogic.signal_event.connect(_signal)
 	Dialogic.timeline_ended.connect(_ended)
+	# This layout owns its teardown. Dialogic's default [clear] ending would
+	# instantiate the retired VN layout just to animate it out.
+	Dialogic.dialog_ending_timeline=null
 	Dialogic.Inputs.auto_skip.disable_on_user_input=false
 	Dialogic.Inputs.auto_skip.time_per_event=0.10
 	ProjectSettings.set_setting("dialogic/text/input_action","advance")
@@ -71,6 +74,7 @@ func play(data: Dictionary, callback := Callable()) -> void:
 	else: Dialogic.start_timeline(timeline)
 
 func _signal(arg: Variant) -> void:
+	if done: return
 	var value=str(arg)
 	if not value.begins_with("line:"): return
 	var parts=value.split(":",true,3)
@@ -116,6 +120,7 @@ func _input(input: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 func _ended() -> void:
+	if done: return
 	done=true; Dialogic.Inputs.auto_skip.enabled=false; release_required=true
 	var options: Array=event.get("choices",[])
 	if options.is_empty():
@@ -133,6 +138,8 @@ func _choose(index: int) -> void:
 	_finish()
 
 func _finish() -> void:
+	done=true; Dialogic.Inputs.auto_skip.enabled=false
+	if Dialogic.current_timeline!=null: Dialogic.end_timeline(true)
 	Campaign.dialogue={}; Campaign.input_locked=false
 	if on_finish.is_valid(): on_finish.call()
 	Campaign.save_game()
