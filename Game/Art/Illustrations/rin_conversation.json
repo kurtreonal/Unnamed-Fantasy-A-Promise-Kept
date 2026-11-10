@@ -1,0 +1,71 @@
+{
+  "file": "rin_conversation.png",
+  "provider": "Local AUTOMATIC1111",
+  "checkpoint": "AOM3A1B_orangemixs.safetensors",
+  "checkpoint_sha256": "5493a0ec491f5961dbdc1c861404088a6ae9bd4007f6a3a7c5dee8789cdc1361",
+  "prompt": "1girl, 17-year-old high school student, youthful face, chestnut brown hair in two long braids, warm brown eyes, gentle thoughtful smile, looking at viewer, (waist-up portrait:1.35), head and shoulders fully inside frame, natural proportional shoulders and torso, standard modest school uniform, cream collared shirt, forest green buttoned cardigan fully on both shoulders, relaxed arms extending below frame, hands outside frame, centered, simple white background, soft diffuse window light, muted earthy colors, delicate clean anime visual novel illustration",
+  "negative_prompt": "(EasyNegativeV2:0.75), worst quality, low quality, low resolution, blurry, jpeg artifacts, bad anatomy, malformed body, unnatural body proportions, long neck, tiny head, huge head, uneven shoulders, extra arms, missing arms, disconnected limbs, duplicate person, duplicate face, deformed face, crossed eyes, asymmetrical eyes, extra fingers, fused fingers, missing fingers, cropped head, cropped hair, cut off braids, full body, distant character, off shoulder, bare shoulders, loose collar, open cardigan, exposed midriff, revealing clothes, nudity, underwear, erotic, sexual, suggestive, mature adult face, young child, monochrome, black and white, sketch, harsh outlines, neon colors, oversaturated, text, watermark, signature, logo, room background, furniture",
+  "negative_embedding": {
+    "source": "https://huggingface.co/gsdf/Counterfeit-V3.0/resolve/main/embedding/EasyNegativeV2.safetensors",
+    "author": "gsdf",
+    "sha256": "339cc9210f70ef842b716588373d95b52351d7e6d111b858e133e3b1e3bd8088",
+    "license": "CreativeML OpenRAIL-M (Counterfeit-V3.0 repository)",
+    "model_card": "https://huggingface.co/gsdf/Counterfeit-V3.0",
+    "note": "The author notes no guaranteed superiority over the earlier embedding. Visual anatomy review remains necessary."
+  },
+  "seed": 171100,
+  "steps": 28,
+  "cfg_scale": 6.0,
+  "denoising_strength": 0.3,
+  "reference": "rin_standing.png, waist-up framing, white matte for img2img",
+  "reference_sha256": "6cd124ba2043aa3374bbcd051e0f5cd973224b8bc353891b4db84047e7cd6f63",
+  "generation_info": {
+    "prompt": "1girl, 17-year-old high school student, youthful face, chestnut brown hair in two long braids, warm brown eyes, gentle thoughtful smile, looking at viewer, (waist-up portrait:1.35), head and shoulders fully inside frame, natural proportional shoulders and torso, standard modest school uniform, cream collared shirt, forest green buttoned cardigan fully on both shoulders, relaxed arms extending below frame, hands outside frame, centered, simple white background, soft diffuse window light, muted earthy colors, delicate clean anime visual novel illustration",
+    "all_prompts": [
+      "1girl, 17-year-old high school student, youthful face, chestnut brown hair in two long braids, warm brown eyes, gentle thoughtful smile, looking at viewer, (waist-up portrait:1.35), head and shoulders fully inside frame, natural proportional shoulders and torso, standard modest school uniform, cream collared shirt, forest green buttoned cardigan fully on both shoulders, relaxed arms extending below frame, hands outside frame, centered, simple white background, soft diffuse window light, muted earthy colors, delicate clean anime visual novel illustration"
+    ],
+    "negative_prompt": "(EasyNegativeV2:0.75), worst quality, low quality, low resolution, blurry, jpeg artifacts, bad anatomy, malformed body, unnatural body proportions, long neck, tiny head, huge head, uneven shoulders, extra arms, missing arms, disconnected limbs, duplicate person, duplicate face, deformed face, crossed eyes, asymmetrical eyes, extra fingers, fused fingers, missing fingers, cropped head, cropped hair, cut off braids, full body, distant character, off shoulder, bare shoulders, loose collar, open cardigan, exposed midriff, revealing clothes, nudity, underwear, erotic, sexual, suggestive, mature adult face, young child, monochrome, black and white, sketch, harsh outlines, neon colors, oversaturated, text, watermark, signature, logo, room background, furniture",
+    "all_negative_prompts": [
+      "(EasyNegativeV2:0.75), worst quality, low quality, low resolution, blurry, jpeg artifacts, bad anatomy, malformed body, unnatural body proportions, long neck, tiny head, huge head, uneven shoulders, extra arms, missing arms, disconnected limbs, duplicate person, duplicate face, deformed face, crossed eyes, asymmetrical eyes, extra fingers, fused fingers, missing fingers, cropped head, cropped hair, cut off braids, full body, distant character, off shoulder, bare shoulders, loose collar, open cardigan, exposed midriff, revealing clothes, nudity, underwear, erotic, sexual, suggestive, mature adult face, young child, monochrome, black and white, sketch, harsh outlines, neon colors, oversaturated, text, watermark, signature, logo, room background, furniture"
+    ],
+    "seed": 171100,
+    "all_seeds": [
+      171100
+    ],
+    "subseed": 343858090,
+    "all_subseeds": [
+      343858090
+    ],
+    "subseed_strength": 0,
+    "width": 512,
+    "height": 640,
+    "sampler_name": "DPM++ 2M",
+    "cfg_scale": 6.0,
+    "steps": 28,
+    "batch_size": 1,
+    "restore_faces": false,
+    "face_restoration_model": null,
+    "sd_model_name": "AOM3A1B_orangemixs",
+    "sd_model_hash": "5493a0ec49",
+    "sd_vae_name": null,
+    "sd_vae_hash": null,
+    "seed_resize_from_w": -1,
+    "seed_resize_from_h": -1,
+    "denoising_strength": 0.3,
+    "extra_generation_params": {
+      "Denoising strength": 0.3,
+      "TI hashes": "EasyNegativeV2: 339cc9210f70",
+      "Schedule type": "Karras"
+    },
+    "index_of_first_image": 0,
+    "infotexts": [
+      "1girl, 17-year-old high school student, youthful face, chestnut brown hair in two long braids, warm brown eyes, gentle thoughtful smile, looking at viewer, (waist-up portrait:1.35), head and shoulders fully inside frame, natural proportional shoulders and torso, standard modest school uniform, cream collared shirt, forest green buttoned cardigan fully on both shoulders, relaxed arms extending below frame, hands outside frame, centered, simple white background, soft diffuse window light, muted earthy colors, delicate clean anime visual novel illustration\nNegative prompt: (EasyNegativeV2:0.75), worst quality, low quality, low resolution, blurry, jpeg artifacts, bad anatomy, malformed body, unnatural body proportions, long neck, tiny head, huge head, uneven shoulders, extra arms, missing arms, disconnected limbs, duplicate person, duplicate face, deformed face, crossed eyes, asymmetrical eyes, extra fingers, fused fingers, missing fingers, cropped head, cropped hair, cut off braids, full body, distant character, off shoulder, bare shoulders, loose collar, open cardigan, exposed midriff, revealing clothes, nudity, underwear, erotic, sexual, suggestive, mature adult face, young child, monochrome, black and white, sketch, harsh outlines, neon colors, oversaturated, text, watermark, signature, logo, room background, furniture\nSteps: 28, Sampler: DPM++ 2M, Schedule type: Karras, CFG scale: 6.0, Seed: 171100, Size: 512x640, Model hash: 5493a0ec49, Model: AOM3A1B_orangemixs, Denoising strength: 0.3, TI hashes: \"EasyNegativeV2: 339cc9210f70\", Version: v1.10.1"
+    ],
+    "styles": [],
+    "job_timestamp": "20261110204651",
+    "clip_skip": 1,
+    "is_using_inpainting_conditioning": false,
+    "version": "v1.10.1"
+  },
+  "review_status": "Approved after root and independent visual review: full crown, consistent face, covered shoulders, proportional torso, hands outside crop"
+}

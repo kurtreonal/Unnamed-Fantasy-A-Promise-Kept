@@ -7,9 +7,9 @@ SDK platform 35 / build-tools 35.0.1. Run `tools/configure_android.py --java PAT
 ## Android APK
 
 The Android preset builds an ARM64 APK for Android 7.0 or later, in landscape.
-It uses package ID `com.kurtreonal.unnamedfantasy`, version `0.1.0`, version code 1.
-Movement, attack, interaction, weapon/element/skill switching, and recall have
-touch controls. Bow/staff aiming uses the last movement direction on touch devices.
+It uses package ID `com.kurtreonal.unnamedfantasy`, version `0.2.0`, version code 2.
+Touch uses a joystick, attack, weapon skill, dodge and interaction. One weapon is
+equipped through inventory; recall and other utilities are available from Menu.
 
 Export a signed APK with `godot --headless --path . --export-release Android`.
 Supply signing credentials through these environment variables, not the preset:
@@ -50,3 +50,16 @@ publishes the playable build after each push to `main`.
 
 Build outputs and private keys are excluded from source control. Publish APKs,
 web ZIPs, and checksums as GitHub release assets rather than committing binaries.
+
+## Redesign verification
+
+Run the isolated campaign, integration, touch and runtime checks using
+`tools/check_redesign.ps1`, with `-Integration`, `-Touch`, or `-Runtime` for the
+additional suites. The web workflow checks campaign routes, Dialogic skipping,
+combat and touch input before deployment. Local exports use
+`tools/export_redesign.ps1 -Platform Web` or `-Platform Android`.
+
+The local art studio, model weights, intermediate candidates and signing keys
+are excluded from every export. Superseded art is excluded as well. A connected
+Android device is required to verify actual installation; signature and package
+checks alone do not establish device compatibility.

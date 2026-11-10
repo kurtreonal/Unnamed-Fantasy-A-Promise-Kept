@@ -1,0 +1,20 @@
+# The Crisp Edges
+# Dialogic source. Line signals drive the cinematic layout and save checkpoints.
+label line_0
+[signal arg="line:0:Rin:protected"]
+You always leave the darkest piece of bread for yourself.
+label line_1
+[signal arg="line:1:You:protected"]
+I thought you liked the soft middle.
+label line_2
+[signal arg="line:2:Rin:protected"]
+I like the crisp edges. You never asked.
+label line_3
+[signal arg="line:3:You:protected"]
+Then we have eight years of breakfasts to correct.
+label line_4
+[signal arg="line:4:Rin:protected"]
+Start with this one.
+label line_5
+[signal arg="line:5:Narrator:protected"]
+She breaks the toast in two and gives you the larger half.

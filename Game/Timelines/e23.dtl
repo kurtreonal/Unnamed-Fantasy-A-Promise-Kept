@@ -1,0 +1,20 @@
+# Not an Obligation
+# Dialogic source. Line signals drive the cinematic layout and save checkpoints.
+label line_0
+[signal arg="line:0:Rin:protected"]
+If we call this love, it must be ours.
+label line_1
+[signal arg="line:1:You:protected"]
+It is.
+label line_2
+[signal arg="line:2:Rin:protected"]
+Not an illness. Not your promise. Not gratitude for being looked after.
+label line_3
+[signal arg="line:3:You:protected"]
+I love your impossible questions and your terrible board-game victories.
+label line_4
+[signal arg="line:4:Rin:protected"]
+Good. Those will survive a cure.
+label line_5
+[signal arg="line:5:Narrator:protected"]
+She takes your hand before asking the question.

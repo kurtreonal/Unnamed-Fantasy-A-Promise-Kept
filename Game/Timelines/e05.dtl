@@ -1,0 +1,20 @@
+# An Honest Return
+# Dialogic source. Line signals drive the cinematic layout and save checkpoints.
+label line_0
+[signal arg="line:0:Rin:protected"]
+Did you get hurt today?
+label line_1
+[signal arg="line:1:You:protected"]
+Only a scratch.
+label line_2
+[signal arg="line:2:Rin:protected"]
+You say that before you even look at the bandage.
+label line_3
+[signal arg="line:3:You:protected"]
+I thought worrying you would make things harder.
+label line_4
+[signal arg="line:4:Rin:protected"]
+Guessing is harder. Let me know the person who comes home.
+label line_5
+[signal arg="line:5:Narrator:protected"]
+You set your pack down between you instead of hiding it by the door.

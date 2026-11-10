@@ -1,0 +1,20 @@
+# Letters in the Margin
+# Dialogic source. Line signals drive the cinematic layout and save checkpoints.
+label line_0
+[signal arg="line:0:Rin:protected"]
+The forester wrote the symptoms in reverse order.
+label line_1
+[signal arg="line:1:You:protected"]
+The healer said that page was useless.
+label line_2
+[signal arg="line:2:Rin:protected"]
+He read the list. He did not read the dates.
+label line_3
+[signal arg="line:3:You:protected"]
+You think the moss treats the fever, not the cause.
+label line_4
+[signal arg="line:4:Rin:protected"]
+I think we should find out together.
+label line_5
+[signal arg="line:5:Narrator:protected"]
+For the first time, her handwriting joins yours in the treatment book.

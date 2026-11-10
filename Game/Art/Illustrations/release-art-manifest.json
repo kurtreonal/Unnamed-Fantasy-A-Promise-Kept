@@ -1,0 +1,122 @@
+[
+  {
+    "file": "portrait_calm.png",
+    "sha256": "1b9604533918ee9300c5455dbe27af406901bae1a131c6de355fd93cffd3317d"
+  },
+  {
+    "file": "portrait_happy.png",
+    "sha256": "f49c4a9ee0f0b7b95055617e61cfb216d4c5eadb5df488c187370f2dc0c013c0"
+  },
+  {
+    "file": "portrait_sad.png",
+    "sha256": "aeee2addc7b5e1a7712d53cbb996305200d2bbe5d8811cbfa1f8771d0c0d02ab"
+  },
+  {
+    "file": "portrait_worried.png",
+    "sha256": "ac68c36fd363f626cbfdaa348130caf527d42230cb5a099827d6f9c67b4151d1"
+  },
+  {
+    "file": "portrait_surprised.png",
+    "sha256": "3a2a387b818bbe70929e46fc2c3a4325dcbf76bf02240db2230b273c4996046b"
+  },
+  {
+    "file": "portrait_thoughtful.png",
+    "sha256": "55f0a6ab091dd05df4198dfa83af0b5c3270a72ba996e6dc6070517d713aa1fc"
+  },
+  {
+    "file": "portrait_touched.png",
+    "sha256": "b476e76511ec7191182fe03f95b57b2ae8e75bab647025682872bb78a0d12ffb"
+  },
+  {
+    "file": "portrait_determined.png",
+    "sha256": "3fedd7a91e21cdc4fac508466bc364b00503cc61756355c356a776d3f315df2a"
+  },
+  {
+    "file": "portrait_tired.png",
+    "sha256": "3d9265ddcfed27995f351a250d11130412e02be71327f00e4989ac89c874b29b"
+  },
+  {
+    "file": "portrait_laughing.png",
+    "sha256": "ac67e3599dd7992a72371ba723271ef47b6a831bc6fdaac570b03f03be501cf0"
+  },
+  {
+    "file": "portrait_blue_calm.png",
+    "sha256": "3d13320b9be3a95dff0c1a9cbac6372373de825b2f9432f5d5feca94c7e794fa"
+  },
+  {
+    "file": "portrait_blue_happy.png",
+    "sha256": "a6cce253bdb2ca5375f77c2cbe08a792de3d19ef63b1193f3c698c7696343ce8"
+  },
+  {
+    "file": "portrait_blue_sad.png",
+    "sha256": "deb30e1b7a452e27c43c21c3b2e28f82d0ff578bb7e5d7542b1c6f064269ac9a"
+  },
+  {
+    "file": "portrait_blue_worried.png",
+    "sha256": "699c76495b7c4cfd7f6215072ffd7a60e30eb6bb597999cdbc8fc1b65f418614"
+  },
+  {
+    "file": "portrait_blue_surprised.png",
+    "sha256": "9c2caf2cc9b9cadd5c1894c3ebf608ca98c0acd110a17eea434f4011bf34b09b"
+  },
+  {
+    "file": "portrait_blue_thoughtful.png",
+    "sha256": "4e816063aaffd2a844f63df42d49ba9243971b1bd74011f9a7ca76c49c084b86"
+  },
+  {
+    "file": "portrait_blue_touched.png",
+    "sha256": "81138524dee4ca178f3c50974b018abbab3343b06346990177f9670372a3e61b"
+  },
+  {
+    "file": "portrait_blue_determined.png",
+    "sha256": "0cd655a346dba073d910967b906563a4773ffb1f6179247945ad33c94deb111e"
+  },
+  {
+    "file": "portrait_blue_tired.png",
+    "sha256": "6b6073db430d995b23842ea82ed2d4f7951c76857b0fd4ec0e06102eb97f98ba"
+  },
+  {
+    "file": "portrait_blue_laughing.png",
+    "sha256": "c664f78919624acbbceb2709ec23efa55fb75f7288d803056a59c4122b16ecf2"
+  },
+  {
+    "file": "rin_seated.png",
+    "sha256": "8a3f1ae722211a5613b6c2ff8d7c56d9f75a3e64dc51124b9f4d176e2d21019d"
+  },
+  {
+    "file": "rin_standing.png",
+    "sha256": "6cd124ba2043aa3374bbcd051e0f5cd973224b8bc353891b4db84047e7cd6f63"
+  },
+  {
+    "file": "rin_conversation.png",
+    "sha256": "6715064dff57513d104e8d9caf097187923c344baf327fd94cfcfb56c6bed2cd"
+  },
+  {
+    "file": "event_promise.png",
+    "sha256": "34f1c343a11814bfdbbab77028f386c6c95be8204a9850c899a099ec4adfe4ea"
+  },
+  {
+    "file": "event_atlas.png",
+    "sha256": "5c37f2045c58c1e0b3b705780fde6ed52adbd2c0156b431ac2e7992081a3dd88"
+  },
+  {
+    "file": "event_greenhouse.png",
+    "sha256": "dacb7677a222257af771110176841f10dbecf64cb574a9b479e8a8bbd4650ce8"
+  },
+  {
+    "file": "event_lanterns.png",
+    "sha256": "a3ab7a991060b99af4e1b6a6b8eae1a372195cc7e9b41421ef8a6a2bbd9d275c"
+  },
+  {
+    "file": "npc_healer.png",
+    "sha256": "bd1aafc03154211ce31cfe518f77134612027459bd270d42727dd464dd55e27b"
+  },
+  {
+    "file": "npc_merchant.png",
+    "sha256": "c95939faedeaad61c8b3aaeff21c3f41615c81ccde80e8e8556c7edab9b90b60"
+  },
+  {
+    "file": "npc_archivist.png",
+    "sha256": "c4e0762dfa9d8d9464ec2a2742980314a52f1835c77f282b47b56fde6bae1fae"
+  }
+]

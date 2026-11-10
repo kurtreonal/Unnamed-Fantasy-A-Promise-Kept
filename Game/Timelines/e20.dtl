@@ -1,0 +1,20 @@
+# A Door Without a Debt
+# Dialogic source. Line signals drive the cinematic layout and save checkpoints.
+label line_0
+[signal arg="line:0:Rin:protected"]
+The latch finally opens without a fight.
+label line_1
+[signal arg="line:1:You:protected"]
+It only took us eight years.
+label line_2
+[signal arg="line:2:Rin:protected"]
+Some things take practice.
+label line_3
+[signal arg="line:3:You:protected"]
+Is this still about the door?
+label line_4
+[signal arg="line:4:Rin:protected"]
+I want to stay because I choose to. I want you to know that.
+label line_5
+[signal arg="line:5:Narrator:protected"]
+The repaired door stands open to the spring air.

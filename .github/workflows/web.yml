@@ -25,12 +25,18 @@ jobs:
         run: python3 tools/setup_godot.py --platform web
       - name: Import project
         run: godot --headless --path . --editor --import
-      - name: Test mobile controls
+      - name: Test redesigned campaign and gameplay
         run: |
           trap 'rm -f override.cfg' EXIT
-          printf '[application]\nconfig/name="Unnamed Fantasy Release Smoke Test"\n' > override.cfg
-          godot --headless --path . --script tests/mobile_smoke.gd --quit-after 600 2>&1 | tee "$RUNNER_TEMP/mobile-smoke.log"
-          grep -q 'PASS: touch movement' "$RUNNER_TEMP/mobile-smoke.log"
+          printf '[application]\nconfig/name="A Promise Kept Redesign Smoke CI"\nconfig/use_custom_user_dir=true\nconfig/custom_user_dir_name="A Promise Kept Redesign Smoke CI"\n' > override.cfg
+          for suite in redesign_smoke redesign_integration; do
+            godot --headless --path . --script "tests/$suite.gd" --quit-after 1800 2>&1 | tee "$RUNNER_TEMP/$suite.log"
+            grep -q 'PASS:' "$RUNNER_TEMP/$suite.log"
+            if grep -E 'SCRIPT ERROR:|^ERROR:' "$RUNNER_TEMP/$suite.log" | grep -vE 'resources still in use|RID allocations'; then exit 1; fi
+          done
+          godot --headless --path . --script tests/redesign_touch.gd --quit-after 1800 -- --touch-test 2>&1 | tee "$RUNNER_TEMP/touch.log"
+          grep -q 'PASS: touch movement' "$RUNNER_TEMP/touch.log"
+          if grep -E 'SCRIPT ERROR:|^ERROR:' "$RUNNER_TEMP/touch.log" | grep -vE 'resources still in use|RID allocations'; then exit 1; fi
       - name: Export browser game
         run: |
           mkdir -p build/web

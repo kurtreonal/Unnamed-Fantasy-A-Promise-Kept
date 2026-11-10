@@ -1,0 +1,20 @@
+# A Small Celebration
+# Dialogic source. Line signals drive the cinematic layout and save checkpoints.
+label line_0
+[signal arg="line:0:Rin:protected"]
+What are we celebrating?
+label line_1
+[signal arg="line:1:You:protected"]
+We made it through another week.
+label line_2
+[signal arg="line:2:Rin:protected"]
+That is enough?
+label line_3
+[signal arg="line:3:You:protected"]
+It should have been enough sooner.
+label line_4
+[signal arg="line:4:Rin:protected"]
+Then give me the crisp piece.
+label line_5
+[signal arg="line:5:Narrator:protected"]
+There are no guests, no speeches, and more than enough reasons to set two places.

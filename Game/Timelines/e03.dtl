@@ -1,0 +1,20 @@
+# A Map Folded Twice
+# Dialogic source. Line signals drive the cinematic layout and save checkpoints.
+label line_0
+[signal arg="line:0:Rin:protected"]
+This atlas is older than we are.
+label line_1
+[signal arg="line:1:You:protected"]
+Most of the roads are probably gone.
+label line_2
+[signal arg="line:2:Rin:protected"]
+That does not mean the places are. Look: a town where the lanterns float on the river.
+label line_3
+[signal arg="line:3:You:protected"]
+Would you like to see it?
+label line_4
+[signal arg="line:4:Rin:protected"]
+I would like to be asked when we are not talking about medicine.
+label line_5
+[signal arg="line:5:Narrator:protected"]
+You leave a ribbon between the pages.

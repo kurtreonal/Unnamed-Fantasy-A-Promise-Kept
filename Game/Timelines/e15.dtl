@@ -1,0 +1,20 @@
+# Seeds for Next Year
+# Dialogic source. Line signals drive the cinematic layout and save checkpoints.
+label line_0
+[signal arg="line:0:Rin:protected"]
+I ordered seeds that will not flower until next year.
+label line_1
+[signal arg="line:1:You:protected"]
+That sounds optimistic.
+label line_2
+[signal arg="line:2:Rin:protected"]
+It sounds like a decision.
+label line_3
+[signal arg="line:3:You:protected"]
+Where will you put them?
+label line_4
+[signal arg="line:4:Rin:protected"]
+At the village greenhouse. I asked about helping there.
+label line_5
+[signal arg="line:5:Narrator:protected"]
+The future arrives as a paper packet on the table.

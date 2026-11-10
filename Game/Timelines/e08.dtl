@@ -1,0 +1,20 @@
+# The Mended Sleeve
+# Dialogic source. Line signals drive the cinematic layout and save checkpoints.
+label line_0
+[signal arg="line:0:Rin:protected"]
+Hold still. The thread keeps catching.
+label line_1
+[signal arg="line:1:You:protected"]
+You do not have to mend my coat.
+label line_2
+[signal arg="line:2:Rin:protected"]
+And you do not have to carry every difficult thing yourself.
+label line_3
+[signal arg="line:3:You:protected"]
+That is not quite the same.
+label line_4
+[signal arg="line:4:Rin:protected"]
+No. But it is where I can start.
+label line_5
+[signal arg="line:5:Narrator:protected"]
+The repaired seam is crooked and stronger than it was.

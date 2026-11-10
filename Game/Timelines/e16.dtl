@@ -1,0 +1,20 @@
+# An Unfinished Constellation
+# Dialogic source. Line signals drive the cinematic layout and save checkpoints.
+label line_0
+[signal arg="line:0:Rin:protected"]
+You connected the wrong stars.
+label line_1
+[signal arg="line:1:You:protected"]
+I was making a new constellation.
+label line_2
+[signal arg="line:2:Rin:protected"]
+What is it called?
+label line_3
+[signal arg="line:3:You:protected"]
+The Road We Have Not Taken.
+label line_4
+[signal arg="line:4:Rin:protected"]
+Then leave it unfinished. We might find more stars later.
+label line_5
+[signal arg="line:5:Narrator:protected"]
+She leans against you, warm beneath the evening shawl.

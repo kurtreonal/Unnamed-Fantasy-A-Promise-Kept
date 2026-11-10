@@ -1,0 +1,20 @@
+# Two Cups Cooling
+# Dialogic source. Line signals drive the cinematic layout and save checkpoints.
+label line_0
+[signal arg="line:0:Rin:protected"]
+If they find the cure, will you still sit here?
+label line_1
+[signal arg="line:1:You:protected"]
+Of course.
+label line_2
+[signal arg="line:2:Rin:protected"]
+You answered very quickly.
+label line_3
+[signal arg="line:3:You:protected"]
+I have had years to think about this chair.
+label line_4
+[signal arg="line:4:Rin:protected"]
+I meant with me.
+label line_5
+[signal arg="line:5:Narrator:protected"]
+The steam has faded. Neither of you reaches for the cups.

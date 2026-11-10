@@ -1,0 +1,20 @@
+# The Empty Place
+# Dialogic source. Line signals drive the cinematic layout and save checkpoints.
+label line_0
+[signal arg="line:0:Rin:protected"]
+I miss my father most when something good happens.
+label line_1
+[signal arg="line:1:You:protected"]
+I still remember what I promised him.
+label line_2
+[signal arg="line:2:Rin:protected"]
+I know. But I did not ask you to spend your life repaying a dead man.
+label line_3
+[signal arg="line:3:You:protected"]
+I am not here only because of him.
+label line_4
+[signal arg="line:4:Rin:protected"]
+Then someday, tell me why you stayed.
+label line_5
+[signal arg="line:5:Narrator:protected"]
+Her hand rests near yours, close enough to choose.

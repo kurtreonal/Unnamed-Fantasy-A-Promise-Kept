@@ -1,0 +1,20 @@
+# A Game Without Winners
+# Dialogic source. Line signals drive the cinematic layout and save checkpoints.
+label line_0
+[signal arg="line:0:Rin:protected"]
+You are letting me win.
+label line_1
+[signal arg="line:1:You:protected"]
+I am considering my strategy.
+label line_2
+[signal arg="line:2:Rin:protected"]
+Your strategy has lost four pieces in a row.
+label line_3
+[signal arg="line:3:You:protected"]
+Perhaps I like your victorious expression.
+label line_4
+[signal arg="line:4:Rin:protected"]
+Then earn it honestly.
+label line_5
+[signal arg="line:5:Narrator:protected"]
+Her laugh interrupts the rain. For a while, neither of you listens for anything else.

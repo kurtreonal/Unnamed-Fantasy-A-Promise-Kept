@@ -1,0 +1,16 @@
+[
+  {
+    "id": "dungeon",
+    "source": "https://0x72.itch.io/dungeontileset-ii",
+    "license": "CC0-1.0",
+    "archive": "dungeon.zip",
+    "sha256": "a5b23341ebc831d7798bfb9666d864a08c079bb7aed18e3cf023a27d517c1512"
+  },
+  {
+    "id": "forest",
+    "source": "https://ansimuz.itch.io/tiny-rpg-forest",
+    "license": "CC0-1.0",
+    "archive": "forest.zip",
+    "sha256": "20820baf4fcc4172d0bb68507010a91abe3087b78ecceb8c3382903ff76409e6"
+  }
+]

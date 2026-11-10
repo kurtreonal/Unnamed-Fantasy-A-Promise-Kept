@@ -1,0 +1,20 @@
+# The Chair by the Window
+# Dialogic source. Line signals drive the cinematic layout and save checkpoints.
+label line_0
+[signal arg="line:0:Rin:protected"]
+You moved the chair again.
+label line_1
+[signal arg="line:1:You:protected"]
+The morning light reaches this corner.
+label line_2
+[signal arg="line:2:Rin:protected"]
+So does the draft. I can choose where I sit, you know.
+label line_3
+[signal arg="line:3:You:protected"]
+Then where would you like it?
+label line_4
+[signal arg="line:4:Rin:protected"]
+Beside yours. Just for breakfast.
+label line_5
+[signal arg="line:5:Narrator:protected"]
+It is a small answer, but you finally hear the question beneath it.

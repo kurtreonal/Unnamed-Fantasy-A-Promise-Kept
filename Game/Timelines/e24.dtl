@@ -1,0 +1,20 @@
+# Before the Morning
+# Dialogic source. Line signals drive the cinematic layout and save checkpoints.
+label line_0
+[signal arg="line:0:Rin:protected"]
+Tomorrow feels very close.
+label line_1
+[signal arg="line:1:You:protected"]
+We do not have to solve it tonight.
+label line_2
+[signal arg="line:2:Rin:protected"]
+I know. Tonight, tell me something ordinary.
+label line_3
+[signal arg="line:3:You:protected"]
+The rosemary needs a larger pot.
+label line_4
+[signal arg="line:4:Rin:protected"]
+Then that is our first plan.
+label line_5
+[signal arg="line:5:Narrator:protected"]
+Beyond the window, the road waits. Inside, there is still time for one more cup of tea.

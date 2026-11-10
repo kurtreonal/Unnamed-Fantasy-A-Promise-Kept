@@ -1,0 +1,20 @@
+# A River of Paper Lanterns
+# Dialogic source. Line signals drive the cinematic layout and save checkpoints.
+label line_0
+[signal arg="line:0:Rin:protected"]
+I tried drawing that river town.
+label line_1
+[signal arg="line:1:You:protected"]
+The lanterns look like stars.
+label line_2
+[signal arg="line:2:Rin:protected"]
+They are supposed to. You write a wish on the paper first.
+label line_3
+[signal arg="line:3:You:protected"]
+What would yours say?
+label line_4
+[signal arg="line:4:Rin:protected"]
+Ask me when we get there.
+label line_5
+[signal arg="line:5:Narrator:protected"]
+She folds the drawing small enough to fit in your coat pocket.

@@ -1,0 +1,20 @@
+# Rain on the Windowsill
+# Dialogic source. Line signals drive the cinematic layout and save checkpoints.
+label line_0
+[signal arg="line:0:Rin:protected"]
+The rosemary is leaning toward the glass.
+label line_1
+[signal arg="line:1:You:protected"]
+I could move it outside.
+label line_2
+[signal arg="line:2:Rin:protected"]
+Not yet. It needs to learn the weather a little at a time.
+label line_3
+[signal arg="line:3:You:protected"]
+You sound like the gardener your father used to call you.
+label line_4
+[signal arg="line:4:Rin:protected"]
+I would rather be the gardener I might become.
+label line_5
+[signal arg="line:5:Narrator:protected"]
+Together, you turn the pot toward the light.

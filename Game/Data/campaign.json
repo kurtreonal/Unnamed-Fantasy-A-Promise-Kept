@@ -1,0 +1,1507 @@
+{
+  "characters": {
+    "rin": {
+      "display_name": "Rin",
+      "asset_name": "Asami",
+      "age": 17,
+      "role": "high_school_student"
+    },
+    "player": {
+      "age": 17,
+      "role": "high_school_classmate"
+    }
+  },
+  "chapters": [
+    "Ordinary Promises",
+    "What We Leave Unsaid",
+    "A Promise Shared",
+    "Tomorrow Together"
+  ],
+  "items": {
+    "sword_1": {
+      "name": "Weathered Sword",
+      "kind": "weapon",
+      "family": "sword",
+      "tier": 1,
+      "attack": 13,
+      "price": 100,
+      "description": "A reliable sword. Tier 1; its strength comes from careful preparation."
+    },
+    "sword_2": {
+      "name": "Riversteel Sword",
+      "kind": "weapon",
+      "family": "sword",
+      "tier": 2,
+      "attack": 18,
+      "price": 400,
+      "description": "A reliable sword. Tier 2; its strength comes from careful preparation."
+    },
+    "sword_3": {
+      "name": "Dawnkeeper",
+      "kind": "weapon",
+      "family": "sword",
+      "tier": 3,
+      "attack": 23,
+      "price": 900,
+      "description": "A reliable sword. Tier 3; its strength comes from careful preparation."
+    },
+    "spear_1": {
+      "name": "Ashwood Spear",
+      "kind": "weapon",
+      "family": "spear",
+      "tier": 1,
+      "attack": 13,
+      "price": 100,
+      "description": "A reliable spear. Tier 1; its strength comes from careful preparation."
+    },
+    "spear_2": {
+      "name": "Miner’s Pike",
+      "kind": "weapon",
+      "family": "spear",
+      "tier": 2,
+      "attack": 18,
+      "price": 400,
+      "description": "A reliable spear. Tier 2; its strength comes from careful preparation."
+    },
+    "spear_3": {
+      "name": "Lantern Lance",
+      "kind": "weapon",
+      "family": "spear",
+      "tier": 3,
+      "attack": 23,
+      "price": 900,
+      "description": "A reliable spear. Tier 3; its strength comes from careful preparation."
+    },
+    "bow_1": {
+      "name": "Willow Bow",
+      "kind": "weapon",
+      "family": "bow",
+      "tier": 1,
+      "attack": 13,
+      "price": 100,
+      "description": "A reliable bow. Tier 1; its strength comes from careful preparation."
+    },
+    "bow_2": {
+      "name": "Hawthorn Bow",
+      "kind": "weapon",
+      "family": "bow",
+      "tier": 2,
+      "attack": 18,
+      "price": 400,
+      "description": "A reliable bow. Tier 2; its strength comes from careful preparation."
+    },
+    "bow_3": {
+      "name": "Far Horizon",
+      "kind": "weapon",
+      "family": "bow",
+      "tier": 3,
+      "attack": 23,
+      "price": 900,
+      "description": "A reliable bow. Tier 3; its strength comes from careful preparation."
+    },
+    "staff_1": {
+      "name": "Hazel Staff",
+      "kind": "weapon",
+      "family": "staff",
+      "tier": 1,
+      "attack": 13,
+      "price": 100,
+      "description": "A reliable staff. Tier 1; its strength comes from careful preparation."
+    },
+    "staff_2": {
+      "name": "Moonstone Staff",
+      "kind": "weapon",
+      "family": "staff",
+      "tier": 2,
+      "attack": 18,
+      "price": 400,
+      "description": "A reliable staff. Tier 2; its strength comes from careful preparation."
+    },
+    "staff_3": {
+      "name": "Springlight",
+      "kind": "weapon",
+      "family": "staff",
+      "tier": 3,
+      "attack": 23,
+      "price": 900,
+      "description": "A reliable staff. Tier 3; its strength comes from careful preparation."
+    },
+    "cloth_coat": {
+      "name": "Mended Coat",
+      "kind": "armor",
+      "price": 60,
+      "description": "Mended Coat.",
+      "defense": 2
+    },
+    "leather_coat": {
+      "name": "Travel Coat",
+      "kind": "armor",
+      "price": 240,
+      "description": "Travel Coat.",
+      "defense": 5
+    },
+    "warden_coat": {
+      "name": "Warden Coat",
+      "kind": "armor",
+      "price": 600,
+      "description": "Warden Coat.",
+      "defense": 8
+    },
+    "ribbon": {
+      "name": "Rin’s Ribbon",
+      "kind": "accessory",
+      "price": 0,
+      "description": "Rin’s Ribbon.",
+      "max_hp": 15
+    },
+    "charm": {
+      "name": "Carved Charm",
+      "kind": "accessory",
+      "price": 180,
+      "description": "Carved Charm.",
+      "max_hp": 25
+    },
+    "locket": {
+      "name": "Promise Locket",
+      "kind": "accessory",
+      "price": 400,
+      "description": "Promise Locket.",
+      "max_hp": 40
+    },
+    "potion": {
+      "name": "Restorative Tea",
+      "kind": "consumable",
+      "price": 20,
+      "description": "Restorative Tea.",
+      "heal": 45
+    },
+    "grain": {
+      "name": "Oats",
+      "kind": "ingredient",
+      "price": 4,
+      "description": "Oats."
+    },
+    "vegetable": {
+      "name": "Root Vegetables",
+      "kind": "ingredient",
+      "price": 5,
+      "description": "Root Vegetables."
+    },
+    "honey": {
+      "name": "Wild Honey",
+      "kind": "ingredient",
+      "price": 8,
+      "description": "Wild Honey."
+    },
+    "herb": {
+      "name": "Meadow Herbs",
+      "kind": "ingredient",
+      "price": 6,
+      "description": "Meadow Herbs."
+    },
+    "moss": {
+      "name": "Silver Moss",
+      "kind": "quest",
+      "price": 0,
+      "description": "Silver Moss."
+    },
+    "moonstone": {
+      "name": "Moonstone Shard",
+      "kind": "quest",
+      "price": 0,
+      "description": "Moonstone Shard."
+    },
+    "sunpetal": {
+      "name": "Sunpetal",
+      "kind": "quest",
+      "price": 0,
+      "description": "Sunpetal."
+    },
+    "forest_seal": {
+      "name": "Forester’s Record",
+      "kind": "quest",
+      "price": 0,
+      "description": "Forester’s Record."
+    },
+    "mine_seal": {
+      "name": "Physician’s Record",
+      "kind": "quest",
+      "price": 0,
+      "description": "Physician’s Record."
+    },
+    "ruin_seal": {
+      "name": "Sanctuary Record",
+      "kind": "quest",
+      "price": 0,
+      "description": "Sanctuary Record."
+    },
+    "medicine": {
+      "name": "Herbal Medicine",
+      "kind": "quest",
+      "price": 0,
+      "description": "Herbal Medicine."
+    },
+    "cure": {
+      "name": "Elixir of Spring",
+      "kind": "quest",
+      "price": 0,
+      "description": "Elixir of Spring."
+    }
+  },
+  "activities": [
+    {
+      "id": "talk",
+      "name": "Sit and listen",
+      "hours": 1,
+      "affection": 2,
+      "health": 0,
+      "hint": "Ask what she wants to share, rather than deciding for her."
+    },
+    {
+      "id": "read",
+      "name": "Read together",
+      "hours": 1,
+      "affection": 2,
+      "health": 1,
+      "hint": "The atlas has a pressed flower between its pages."
+    },
+    {
+      "id": "garden",
+      "name": "Tend the windowsill",
+      "hours": 1,
+      "affection": 2,
+      "health": 2,
+      "hint": "Rin has ideas for a garden of her own."
+    },
+    {
+      "id": "cook",
+      "name": "Cook together",
+      "hours": 1,
+      "affection": 2,
+      "health": 2,
+      "hint": "Let her choose the seasoning."
+    },
+    {
+      "id": "walk",
+      "name": "A short village walk",
+      "hours": 1,
+      "affection": 2,
+      "health": 2,
+      "hint": "An easy pace is still a journey."
+    },
+    {
+      "id": "stargaze",
+      "name": "Watch the evening stars",
+      "hours": 1,
+      "affection": 2,
+      "health": 1,
+      "hint": "Some promises point beyond the village gate."
+    },
+    {
+      "id": "repair",
+      "name": "Mend something together",
+      "hours": 1,
+      "affection": 2,
+      "health": 0,
+      "hint": "A chair, a coat, a life: repair takes patience."
+    },
+    {
+      "id": "research",
+      "name": "Study the treatment notes",
+      "hours": 1,
+      "affection": 1,
+      "health": 0,
+      "hint": "Rin can recognize patterns the village healers missed."
+    },
+    {
+      "id": "game",
+      "name": "Play a quiet board game",
+      "hours": 1,
+      "affection": 2,
+      "health": 1,
+      "hint": "Winning is less important than making time."
+    },
+    {
+      "id": "tea",
+      "name": "Share herbal tea",
+      "hours": 1,
+      "affection": 2,
+      "health": 3,
+      "hint": "Comfort need not be expensive."
+    }
+  ],
+  "recipes": [
+    {
+      "id": "porridge",
+      "name": "Warm porridge",
+      "cost": 0,
+      "ingredients": {},
+      "health": 3,
+      "affection": 1,
+      "description": "A dependable pantry meal. Always available; varied meals offer more support."
+    },
+    {
+      "id": "soup",
+      "name": "Root vegetable soup",
+      "cost": 0,
+      "ingredients": {
+        "vegetable": 2
+      },
+      "health": 13,
+      "affection": 2,
+      "description": "Warmth that lasts into the afternoon."
+    },
+    {
+      "id": "bread",
+      "name": "Honey oat bread",
+      "cost": 0,
+      "ingredients": {
+        "grain": 2,
+        "honey": 1
+      },
+      "health": 12,
+      "affection": 3,
+      "description": "Rin likes the crisp edges best."
+    },
+    {
+      "id": "stew",
+      "name": "Harvest stew",
+      "cost": 0,
+      "ingredients": {
+        "vegetable": 2,
+        "herb": 1
+      },
+      "health": 18,
+      "affection": 2,
+      "description": "A generous meal for a cold day."
+    },
+    {
+      "id": "tea",
+      "name": "Honey herb infusion",
+      "cost": 0,
+      "ingredients": {
+        "herb": 1,
+        "honey": 1
+      },
+      "health": 10,
+      "affection": 2,
+      "description": "Gentle on difficult mornings."
+    },
+    {
+      "id": "feast",
+      "name": "A small celebration",
+      "cost": 0,
+      "ingredients": {
+        "grain": 2,
+        "vegetable": 2,
+        "honey": 1
+      },
+      "health": 22,
+      "affection": 4,
+      "description": "A meal worth preparing together."
+    }
+  ],
+  "quests": [
+    {
+      "id": "m01",
+      "title": "A Morning of Our Own",
+      "event": "talk",
+      "count": 1,
+      "day": 1,
+      "description": "Ask Rin what she hopes this spring will bring.",
+      "requires": "",
+      "kind": "main",
+      "reward": 60
+    },
+    {
+      "id": "m02",
+      "title": "Silver Beneath the Leaves",
+      "event": "gather:moss",
+      "count": 3,
+      "day": 1,
+      "description": "Gather silver moss from the forest.",
+      "requires": "m01",
+      "kind": "main",
+      "reward": 60
+    },
+    {
+      "id": "m03",
+      "title": "The Old Forester",
+      "event": "boss:0",
+      "count": 1,
+      "day": 1,
+      "description": "Defeat the Bramble Warden and recover the forester’s record.",
+      "requires": "m02",
+      "kind": "main",
+      "reward": 60
+    },
+    {
+      "id": "m04",
+      "title": "Two Sets of Eyes",
+      "event": "activity:research",
+      "count": 2,
+      "day": 8,
+      "description": "Study the forester’s notes together on two occasions.",
+      "requires": "m03",
+      "kind": "main",
+      "reward": 60
+    },
+    {
+      "id": "m05",
+      "title": "Light in the Mine",
+      "event": "gather:moonstone",
+      "count": 3,
+      "day": 8,
+      "description": "Find moonstone in the abandoned mine.",
+      "requires": "m04",
+      "kind": "main",
+      "reward": 60
+    },
+    {
+      "id": "m06",
+      "title": "What the Earth Remembers",
+      "event": "boss:1",
+      "count": 1,
+      "day": 8,
+      "description": "Defeat the Hollow Keeper and recover the physician’s record.",
+      "requires": "m05",
+      "kind": "main",
+      "reward": 60
+    },
+    {
+      "id": "m07",
+      "title": "A Hand in the Margins",
+      "event": "activity:read",
+      "count": 1,
+      "day": 15,
+      "description": "Read the physician’s notes with Rin.",
+      "requires": "m06",
+      "kind": "main",
+      "reward": 60
+    },
+    {
+      "id": "m08",
+      "title": "Flowers Without Sun",
+      "event": "gather:sunpetal",
+      "count": 3,
+      "day": 15,
+      "description": "Gather sunpetals in the sanctuary.",
+      "requires": "m07",
+      "kind": "main",
+      "reward": 60
+    },
+    {
+      "id": "m09",
+      "title": "The Last Custodian",
+      "event": "boss:2",
+      "count": 1,
+      "day": 15,
+      "description": "Defeat the Pale Custodian and recover the sanctuary record.",
+      "requires": "m08",
+      "kind": "main",
+      "reward": 60
+    },
+    {
+      "id": "m10",
+      "title": "A Gentler Remedy",
+      "event": "craft:medicine",
+      "count": 1,
+      "day": 22,
+      "description": "Prepare herbal medicine at home.",
+      "requires": "m09",
+      "kind": "main",
+      "reward": 60
+    },
+    {
+      "id": "m11",
+      "title": "Her Answer",
+      "event": "activity:research",
+      "count": 1,
+      "day": 22,
+      "description": "Review the final formula with Rin.",
+      "requires": "m10",
+      "kind": "main",
+      "reward": 60
+    },
+    {
+      "id": "m12",
+      "title": "Spring, At Last",
+      "event": "craft:cure",
+      "count": 1,
+      "day": 22,
+      "description": "Combine the three records and gathered ingredients into the Elixir of Spring.",
+      "requires": "m11",
+      "kind": "main",
+      "reward": 60
+    },
+    {
+      "id": "s01",
+      "title": "A Pantry for Two",
+      "event": "gather:herb",
+      "count": 3,
+      "day": 1,
+      "description": "Bring home herbs for the village pantry.",
+      "requires": "",
+      "kind": "side",
+      "reward": 45
+    },
+    {
+      "id": "s02",
+      "title": "The Broken Fence",
+      "event": "kill",
+      "count": 5,
+      "day": 1,
+      "description": "Clear five creatures from the forest road.",
+      "requires": "",
+      "kind": "side",
+      "reward": 45
+    },
+    {
+      "id": "s03",
+      "title": "Something Warm",
+      "event": "meal",
+      "count": 3,
+      "day": 1,
+      "description": "Share three meals.",
+      "requires": "",
+      "kind": "side",
+      "reward": 45
+    },
+    {
+      "id": "s04",
+      "title": "An Evening Atlas",
+      "event": "activity:read",
+      "count": 2,
+      "day": 8,
+      "description": "Read together twice.",
+      "requires": "",
+      "kind": "side",
+      "reward": 45
+    },
+    {
+      "id": "s05",
+      "title": "A Useful Find",
+      "event": "chest",
+      "count": 3,
+      "day": 8,
+      "description": "Open three expedition chests.",
+      "requires": "",
+      "kind": "side",
+      "reward": 45
+    },
+    {
+      "id": "s06",
+      "title": "The Quiet Table",
+      "event": "activity:game",
+      "count": 2,
+      "day": 8,
+      "description": "Make time for two board games.",
+      "requires": "",
+      "kind": "side",
+      "reward": 45
+    },
+    {
+      "id": "s07",
+      "title": "A Place to Grow",
+      "event": "activity:garden",
+      "count": 3,
+      "day": 15,
+      "description": "Tend the windowsill on three occasions.",
+      "requires": "",
+      "kind": "side",
+      "reward": 45
+    },
+    {
+      "id": "s08",
+      "title": "Borrowed Courage",
+      "event": "activity:walk",
+      "count": 2,
+      "day": 15,
+      "description": "Take two village walks.",
+      "requires": "",
+      "kind": "side",
+      "reward": 45
+    },
+    {
+      "id": "s09",
+      "title": "Small Repairs",
+      "event": "activity:repair",
+      "count": 2,
+      "day": 15,
+      "description": "Repair two things together.",
+      "requires": "",
+      "kind": "side",
+      "reward": 45
+    },
+    {
+      "id": "s10",
+      "title": "Under One Sky",
+      "event": "activity:stargaze",
+      "count": 3,
+      "day": 22,
+      "description": "Share three evenings under the stars.",
+      "requires": "",
+      "kind": "side",
+      "reward": 45
+    },
+    {
+      "id": "s11",
+      "title": "The Long Road Home",
+      "event": "return",
+      "count": 5,
+      "day": 22,
+      "description": "Return safely from five expeditions.",
+      "requires": "",
+      "kind": "side",
+      "reward": 45
+    },
+    {
+      "id": "s12",
+      "title": "A Taste of Spring",
+      "event": "meal:feast",
+      "count": 1,
+      "day": 22,
+      "description": "Prepare a small celebration.",
+      "requires": "",
+      "kind": "side",
+      "reward": 45
+    }
+  ],
+  "events": [
+    {
+      "id": "e01",
+      "title": "The Chair by the Window",
+      "activity": "talk",
+      "day": 1,
+      "chain": "",
+      "critical": true,
+      "lines": [
+        "Rin|You moved the chair again.",
+        "You|The morning light reaches this corner.",
+        "Rin|So does the draft. I can choose where I sit, you know.",
+        "You|Then where would you like it?",
+        "Rin|Beside yours. Just for breakfast.",
+        "Narrator|It is a small answer, but you finally hear the question beneath it."
+      ],
+      "choices": [
+        {
+          "text": "Then beside mine it stays.",
+          "affection": 3,
+          "love": 4,
+          "flag": "respect"
+        },
+        {
+          "text": "I will fetch a blanket too.",
+          "affection": 2,
+          "love": 0,
+          "flag": "care"
+        }
+      ]
+    },
+    {
+      "id": "e02",
+      "title": "The Crisp Edges",
+      "activity": "cook",
+      "day": 2,
+      "chain": "",
+      "critical": true,
+      "lines": [
+        "Rin|You always leave the darkest piece of bread for yourself.",
+        "You|I thought you liked the soft middle.",
+        "Rin|I like the crisp edges. You never asked.",
+        "You|Then we have eight years of breakfasts to correct.",
+        "Rin|Start with this one.",
+        "Narrator|She breaks the toast in two and gives you the larger half."
+      ],
+      "choices": [
+        {
+          "text": "Remember her preference.",
+          "affection": 3,
+          "love": 4,
+          "flag": "preference_bread"
+        },
+        {
+          "text": "Ask her to teach you her recipe.",
+          "affection": 3,
+          "love": 3,
+          "flag": "cooking_memory"
+        }
+      ]
+    },
+    {
+      "id": "e03",
+      "title": "A Map Folded Twice",
+      "activity": "read",
+      "day": 3,
+      "chain": "travel1",
+      "critical": true,
+      "lines": [
+        "Rin|This atlas is older than we are.",
+        "You|Most of the roads are probably gone.",
+        "Rin|That does not mean the places are. Look: a town where the lanterns float on the river.",
+        "You|Would you like to see it?",
+        "Rin|I would like to be asked when we are not talking about medicine.",
+        "Narrator|You leave a ribbon between the pages."
+      ],
+      "choices": [
+        {
+          "text": "We can want something beyond a cure.",
+          "affection": 3,
+          "love": 5,
+          "flag": "travel1"
+        },
+        {
+          "text": "Tell me about another place.",
+          "affection": 2,
+          "love": 2,
+          "flag": "atlas"
+        }
+      ]
+    },
+    {
+      "id": "e04",
+      "title": "Rain on the Windowsill",
+      "activity": "garden",
+      "day": 4,
+      "chain": "personal1",
+      "critical": true,
+      "lines": [
+        "Rin|The rosemary is leaning toward the glass.",
+        "You|I could move it outside.",
+        "Rin|Not yet. It needs to learn the weather a little at a time.",
+        "You|You sound like the gardener your father used to call you.",
+        "Rin|I would rather be the gardener I might become.",
+        "Narrator|Together, you turn the pot toward the light."
+      ],
+      "choices": [
+        {
+          "text": "Then let us plan your garden.",
+          "affection": 3,
+          "love": 4,
+          "flag": "personal1"
+        },
+        {
+          "text": "You already know more than I do.",
+          "affection": 2,
+          "love": 2,
+          "flag": "encouragement"
+        }
+      ]
+    },
+    {
+      "id": "e05",
+      "title": "An Honest Return",
+      "activity": "talk",
+      "day": 5,
+      "chain": "",
+      "critical": true,
+      "lines": [
+        "Rin|Did you get hurt today?",
+        "You|Only a scratch.",
+        "Rin|You say that before you even look at the bandage.",
+        "You|I thought worrying you would make things harder.",
+        "Rin|Guessing is harder. Let me know the person who comes home.",
+        "Narrator|You set your pack down between you instead of hiding it by the door."
+      ],
+      "choices": [
+        {
+          "text": "Tell her what happened.",
+          "affection": 3,
+          "love": 5,
+          "flag": "honesty"
+        },
+        {
+          "text": "Promise to bring difficult news home too.",
+          "affection": 3,
+          "love": 4,
+          "flag": "honesty"
+        }
+      ]
+    },
+    {
+      "id": "e06",
+      "title": "A Game Without Winners",
+      "activity": "game",
+      "day": 6,
+      "chain": "",
+      "critical": true,
+      "lines": [
+        "Rin|You are letting me win.",
+        "You|I am considering my strategy.",
+        "Rin|Your strategy has lost four pieces in a row.",
+        "You|Perhaps I like your victorious expression.",
+        "Rin|Then earn it honestly.",
+        "Narrator|Her laugh interrupts the rain. For a while, neither of you listens for anything else."
+      ],
+      "choices": [
+        {
+          "text": "Play properly, and stay for another round.",
+          "affection": 3,
+          "love": 5,
+          "flag": "game_memory"
+        },
+        {
+          "text": "Ask for a lesson.",
+          "affection": 2,
+          "love": 3,
+          "flag": "patience"
+        }
+      ]
+    },
+    {
+      "id": "e07",
+      "title": "Letters in the Margin",
+      "activity": "research",
+      "day": 8,
+      "chain": "research1",
+      "critical": true,
+      "lines": [
+        "Rin|The forester wrote the symptoms in reverse order.",
+        "You|The healer said that page was useless.",
+        "Rin|He read the list. He did not read the dates.",
+        "You|You think the moss treats the fever, not the cause.",
+        "Rin|I think we should find out together.",
+        "Narrator|For the first time, her handwriting joins yours in the treatment book."
+      ],
+      "choices": [
+        {
+          "text": "Make Rin a partner in the research.",
+          "affection": 3,
+          "love": 5,
+          "flag": "research1"
+        },
+        {
+          "text": "Ask her to explain every step.",
+          "affection": 2,
+          "love": 3,
+          "flag": "research1"
+        }
+      ]
+    },
+    {
+      "id": "e08",
+      "title": "The Mended Sleeve",
+      "activity": "repair",
+      "day": 9,
+      "chain": "",
+      "critical": true,
+      "lines": [
+        "Rin|Hold still. The thread keeps catching.",
+        "You|You do not have to mend my coat.",
+        "Rin|And you do not have to carry every difficult thing yourself.",
+        "You|That is not quite the same.",
+        "Rin|No. But it is where I can start.",
+        "Narrator|The repaired seam is crooked and stronger than it was."
+      ],
+      "choices": [
+        {
+          "text": "Thank her without arguing.",
+          "affection": 3,
+          "love": 4,
+          "flag": "accept_help"
+        },
+        {
+          "text": "Offer to repair her old chair next.",
+          "affection": 2,
+          "love": 3,
+          "flag": "repair_memory"
+        }
+      ]
+    },
+    {
+      "id": "e09",
+      "title": "The Long Way to the Well",
+      "activity": "walk",
+      "day": 10,
+      "chain": "personal2",
+      "critical": true,
+      "lines": [
+        "Rin|Do not slow down before I ask.",
+        "You|I was watching the road.",
+        "Rin|You were watching me.",
+        "You|Is that so terrible?",
+        "Rin|Only if it means you miss the flowers.",
+        "Narrator|At the well she rests, and tells you which seeds she wants to plant."
+      ],
+      "choices": [
+        {
+          "text": "Ask her to choose the route next time.",
+          "affection": 3,
+          "love": 5,
+          "flag": "personal2"
+        },
+        {
+          "text": "Sit and watch the village together.",
+          "affection": 2,
+          "love": 3,
+          "flag": "village_memory"
+        }
+      ]
+    },
+    {
+      "id": "e10",
+      "title": "Two Cups Cooling",
+      "activity": "tea",
+      "day": 11,
+      "chain": "",
+      "critical": true,
+      "lines": [
+        "Rin|If they find the cure, will you still sit here?",
+        "You|Of course.",
+        "Rin|You answered very quickly.",
+        "You|I have had years to think about this chair.",
+        "Rin|I meant with me.",
+        "Narrator|The steam has faded. Neither of you reaches for the cups."
+      ],
+      "choices": [
+        {
+          "text": "I want the ordinary days with you.",
+          "affection": 3,
+          "love": 7,
+          "flag": "romance1"
+        },
+        {
+          "text": "You will never have to earn my company.",
+          "affection": 3,
+          "love": 2,
+          "flag": "companionship"
+        }
+      ]
+    },
+    {
+      "id": "e11",
+      "title": "A River of Paper Lanterns",
+      "activity": "read",
+      "day": 12,
+      "chain": "travel2",
+      "critical": true,
+      "lines": [
+        "Rin|I tried drawing that river town.",
+        "You|The lanterns look like stars.",
+        "Rin|They are supposed to. You write a wish on the paper first.",
+        "You|What would yours say?",
+        "Rin|Ask me when we get there.",
+        "Narrator|She folds the drawing small enough to fit in your coat pocket."
+      ],
+      "choices": [
+        {
+          "text": "Keep the drawing and promise a journey.",
+          "affection": 3,
+          "love": 6,
+          "flag": "travel2"
+        },
+        {
+          "text": "Tell her your own wish.",
+          "affection": 2,
+          "love": 4,
+          "flag": "wish_memory"
+        }
+      ]
+    },
+    {
+      "id": "e12",
+      "title": "A Seat at the Table",
+      "activity": "cook",
+      "day": 13,
+      "chain": "",
+      "critical": true,
+      "lines": [
+        "Rin|Let me stir.",
+        "You|The pot is heavy.",
+        "Rin|Then hold the handle. I can still stir.",
+        "You|We make a convincing kitchen team.",
+        "Rin|A team requires you to listen sometimes.",
+        "Narrator|You hold the handle. She seasons the soup. Dinner tastes like both of you."
+      ],
+      "choices": [
+        {
+          "text": "Let her lead the cooking.",
+          "affection": 3,
+          "love": 5,
+          "flag": "shared_work"
+        },
+        {
+          "text": "Write down the recipe together.",
+          "affection": 2,
+          "love": 4,
+          "flag": "recipe_memory"
+        }
+      ]
+    },
+    {
+      "id": "e13",
+      "title": "The Name of the Illness",
+      "activity": "research",
+      "day": 15,
+      "chain": "research2",
+      "critical": true,
+      "lines": [
+        "Rin|The physician called it a failure of the body.",
+        "You|There may have been no better name.",
+        "Rin|There should have been. I have spent years hearing that I am failing.",
+        "You|You have survived every one of those years.",
+        "Rin|Then write that down too.",
+        "Narrator|You turn the page and leave room for a better account."
+      ],
+      "choices": [
+        {
+          "text": "Ask Rin to name the research journal.",
+          "affection": 3,
+          "love": 6,
+          "flag": "research2"
+        },
+        {
+          "text": "Write: a person, never a diagnosis.",
+          "affection": 3,
+          "love": 5,
+          "flag": "research2"
+        }
+      ]
+    },
+    {
+      "id": "e14",
+      "title": "The Empty Place",
+      "activity": "talk",
+      "day": 16,
+      "chain": "",
+      "critical": true,
+      "lines": [
+        "Rin|I miss my father most when something good happens.",
+        "You|I still remember what I promised him.",
+        "Rin|I know. But I did not ask you to spend your life repaying a dead man.",
+        "You|I am not here only because of him.",
+        "Rin|Then someday, tell me why you stayed.",
+        "Narrator|Her hand rests near yours, close enough to choose."
+      ],
+      "choices": [
+        {
+          "text": "Take her hand and tell her you love her.",
+          "affection": 4,
+          "love": 10,
+          "flag": "romance2"
+        },
+        {
+          "text": "Tell her she is your closest friend.",
+          "affection": 3,
+          "love": 0,
+          "flag": "friendship"
+        }
+      ]
+    },
+    {
+      "id": "e15",
+      "title": "Seeds for Next Year",
+      "activity": "garden",
+      "day": 17,
+      "chain": "personal3",
+      "critical": true,
+      "lines": [
+        "Rin|I ordered seeds that will not flower until next year.",
+        "You|That sounds optimistic.",
+        "Rin|It sounds like a decision.",
+        "You|Where will you put them?",
+        "Rin|At the village greenhouse. I asked about helping there.",
+        "Narrator|The future arrives as a paper packet on the table."
+      ],
+      "choices": [
+        {
+          "text": "Support the greenhouse she chose.",
+          "affection": 3,
+          "love": 6,
+          "flag": "personal3"
+        },
+        {
+          "text": "Offer help when she asks for it.",
+          "affection": 3,
+          "love": 4,
+          "flag": "personal3"
+        }
+      ]
+    },
+    {
+      "id": "e16",
+      "title": "An Unfinished Constellation",
+      "activity": "stargaze",
+      "day": 18,
+      "chain": "travel3",
+      "critical": true,
+      "lines": [
+        "Rin|You connected the wrong stars.",
+        "You|I was making a new constellation.",
+        "Rin|What is it called?",
+        "You|The Road We Have Not Taken.",
+        "Rin|Then leave it unfinished. We might find more stars later.",
+        "Narrator|She leans against you, warm beneath the evening shawl."
+      ],
+      "choices": [
+        {
+          "text": "Ask her to travel with you after treatment.",
+          "affection": 3,
+          "love": 8,
+          "flag": "travel3"
+        },
+        {
+          "text": "Stay until she is ready to go inside.",
+          "affection": 3,
+          "love": 3,
+          "flag": "stars_memory"
+        }
+      ]
+    },
+    {
+      "id": "e17",
+      "title": "What Courage Looks Like",
+      "activity": "game",
+      "day": 19,
+      "chain": "",
+      "critical": true,
+      "lines": [
+        "Rin|The hero in this game never stops to eat.",
+        "You|Perhaps that is why he keeps losing.",
+        "Rin|Perhaps someone should tell him that coming home is an achievement.",
+        "You|Is that your professional advice?",
+        "Rin|Yes. From an expert in waiting.",
+        "Narrator|You set the pieces aside before the candles burn low."
+      ],
+      "choices": [
+        {
+          "text": "Promise time together even during the final search.",
+          "affection": 3,
+          "love": 6,
+          "flag": "home_promise"
+        },
+        {
+          "text": "Ask how waiting has felt for her.",
+          "affection": 3,
+          "love": 5,
+          "flag": "listening"
+        }
+      ]
+    },
+    {
+      "id": "e18",
+      "title": "No More Brave Faces",
+      "activity": "tea",
+      "day": 20,
+      "chain": "",
+      "critical": true,
+      "lines": [
+        "Rin|I am afraid the treatment will not work.",
+        "You|So am I.",
+        "Rin|You are allowed to say that?",
+        "You|I am learning.",
+        "Rin|Then I am afraid, and I am hopeful. Both can stay.",
+        "Narrator|You sit with the uncertainty until it becomes something you can carry together."
+      ],
+      "choices": [
+        {
+          "text": "Face the uncertainty together.",
+          "affection": 4,
+          "love": 7,
+          "flag": "shared_fear"
+        },
+        {
+          "text": "Ask what would make tomorrow easier.",
+          "affection": 3,
+          "love": 4,
+          "flag": "gentleness"
+        }
+      ]
+    },
+    {
+      "id": "e19",
+      "title": "Her Answer",
+      "activity": "research",
+      "day": 22,
+      "chain": "research3",
+      "critical": true,
+      "lines": [
+        "Rin|I have read every version of the formula.",
+        "You|And?",
+        "Rin|I want to try. Not because you promised. Because I want a life after this.",
+        "You|Tell me what you need.",
+        "Rin|The truth, someone beside me, and the right to change my mind.",
+        "Narrator|You place the final page in front of her. She signs her own name."
+      ],
+      "choices": [
+        {
+          "text": "Respect her treatment decision.",
+          "affection": 4,
+          "love": 8,
+          "flag": "research3"
+        },
+        {
+          "text": "Promise to listen at every step.",
+          "affection": 3,
+          "love": 6,
+          "flag": "research3"
+        }
+      ]
+    },
+    {
+      "id": "e20",
+      "title": "A Door Without a Debt",
+      "activity": "repair",
+      "day": 23,
+      "chain": "",
+      "critical": true,
+      "lines": [
+        "Rin|The latch finally opens without a fight.",
+        "You|It only took us eight years.",
+        "Rin|Some things take practice.",
+        "You|Is this still about the door?",
+        "Rin|I want to stay because I choose to. I want you to know that.",
+        "Narrator|The repaired door stands open to the spring air."
+      ],
+      "choices": [
+        {
+          "text": "Tell her you choose her too.",
+          "affection": 4,
+          "love": 9,
+          "flag": "romance3"
+        },
+        {
+          "text": "Tell her this will always be her home.",
+          "affection": 3,
+          "love": 2,
+          "flag": "home_memory"
+        }
+      ]
+    },
+    {
+      "id": "e21",
+      "title": "A Small Celebration",
+      "activity": "cook",
+      "day": 24,
+      "chain": "",
+      "critical": true,
+      "lines": [
+        "Rin|What are we celebrating?",
+        "You|We made it through another week.",
+        "Rin|That is enough?",
+        "You|It should have been enough sooner.",
+        "Rin|Then give me the crisp piece.",
+        "Narrator|There are no guests, no speeches, and more than enough reasons to set two places."
+      ],
+      "choices": [
+        {
+          "text": "Celebrate the life you already share.",
+          "affection": 3,
+          "love": 6,
+          "flag": "celebration"
+        },
+        {
+          "text": "Ask her to name the next occasion.",
+          "affection": 3,
+          "love": 4,
+          "flag": "next_occasion"
+        }
+      ]
+    },
+    {
+      "id": "e22",
+      "title": "The Shape of Tomorrow",
+      "activity": "walk",
+      "day": 25,
+      "chain": "",
+      "critical": true,
+      "lines": [
+        "Rin|When I can walk farther, I will still want to stop here.",
+        "You|At the old well?",
+        "Rin|At a place we reached slowly.",
+        "You|We can come back as often as you like.",
+        "Rin|And leave as often as I like.",
+        "Narrator|You realize that both promises matter."
+      ],
+      "choices": [
+        {
+          "text": "Make room for both staying and leaving.",
+          "affection": 4,
+          "love": 7,
+          "flag": "freedom"
+        },
+        {
+          "text": "Ask where she wants to go first.",
+          "affection": 3,
+          "love": 5,
+          "flag": "future_memory"
+        }
+      ]
+    },
+    {
+      "id": "e23",
+      "title": "Not an Obligation",
+      "activity": "talk",
+      "day": 26,
+      "chain": "",
+      "critical": true,
+      "lines": [
+        "Rin|If we call this love, it must be ours.",
+        "You|It is.",
+        "Rin|Not an illness. Not your promise. Not gratitude for being looked after.",
+        "You|I love your impossible questions and your terrible board-game victories.",
+        "Rin|Good. Those will survive a cure.",
+        "Narrator|She takes your hand before asking the question."
+      ],
+      "choices": [
+        {
+          "text": "Ask to build a life together, as equals.",
+          "affection": 4,
+          "love": 12,
+          "flag": "commitment"
+        },
+        {
+          "text": "Keep the closeness you have as friends.",
+          "affection": 3,
+          "love": 0,
+          "flag": "friendship"
+        }
+      ]
+    },
+    {
+      "id": "e24",
+      "title": "Before the Morning",
+      "activity": "stargaze",
+      "day": 27,
+      "chain": "",
+      "critical": true,
+      "lines": [
+        "Rin|Tomorrow feels very close.",
+        "You|We do not have to solve it tonight.",
+        "Rin|I know. Tonight, tell me something ordinary.",
+        "You|The rosemary needs a larger pot.",
+        "Rin|Then that is our first plan.",
+        "Narrator|Beyond the window, the road waits. Inside, there is still time for one more cup of tea."
+      ],
+      "choices": [
+        {
+          "text": "Stay, and make one ordinary plan.",
+          "affection": 4,
+          "love": 8,
+          "flag": "last_evening"
+        },
+        {
+          "text": "Share the wish you have been carrying.",
+          "affection": 3,
+          "love": 7,
+          "flag": "last_wish"
+        }
+      ]
+    }
+  ],
+  "regions": [
+    {
+      "id": 0,
+      "name": "Willowmere Woods",
+      "day": 1,
+      "material": "moss",
+      "boss": "Bramble Warden",
+      "seal": "forest_seal",
+      "palette": [
+        "#59624c",
+        "#75755a",
+        "#383e35"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "The Hollow Mine",
+      "day": 8,
+      "material": "moonstone",
+      "boss": "Hollow Keeper",
+      "seal": "mine_seal",
+      "palette": [
+        "#4c5359",
+        "#73736e",
+        "#2c3036"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Sanctuary of First Light",
+      "day": 15,
+      "material": "sunpetal",
+      "boss": "Pale Custodian",
+      "seal": "ruin_seal",
+      "palette": [
+        "#67625c",
+        "#9b907c",
+        "#3c4140"
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "id": "slug",
+      "name": "Moss Slug",
+      "region": 0,
+      "hp": 24,
+      "attack": 7,
+      "speed": 42,
+      "style": "melee"
+    },
+    {
+      "id": "thorn",
+      "name": "Thornling",
+      "region": 0,
+      "hp": 36,
+      "attack": 9,
+      "speed": 58,
+      "style": "melee"
+    },
+    {
+      "id": "moth",
+      "name": "Briar Moth",
+      "region": 0,
+      "hp": 22,
+      "attack": 8,
+      "speed": 70,
+      "style": "ranged"
+    },
+    {
+      "id": "crawler",
+      "name": "Stone Crawler",
+      "region": 1,
+      "hp": 48,
+      "attack": 11,
+      "speed": 55,
+      "style": "melee"
+    },
+    {
+      "id": "shade",
+      "name": "Mine Shade",
+      "region": 1,
+      "hp": 35,
+      "attack": 12,
+      "speed": 70,
+      "style": "ranged"
+    },
+    {
+      "id": "sentinel",
+      "name": "Hollow Sentinel",
+      "region": 1,
+      "hp": 65,
+      "attack": 14,
+      "speed": 42,
+      "style": "charge"
+    },
+    {
+      "id": "wisp",
+      "name": "Pale Wisp",
+      "region": 2,
+      "hp": 46,
+      "attack": 13,
+      "speed": 72,
+      "style": "ranged"
+    },
+    {
+      "id": "keeper",
+      "name": "Lost Acolyte",
+      "region": 2,
+      "hp": 70,
+      "attack": 16,
+      "speed": 60,
+      "style": "charge"
+    }
+  ]
+}

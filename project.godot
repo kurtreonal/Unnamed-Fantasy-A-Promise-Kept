@@ -10,19 +10,21 @@ config_version=5
 
 [application]
 
-config/name="Living Together with my Childhood Friend: Fantasy Monochrome"
-config/version="0.1.0"
-run/main_scene="res://Scenes/splash_screen.tscn"
+config/name="A Promise Kept"
+config/version="0.2.0"
+run/main_scene="res://Game/main.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="Living Together with my Childhood Friend- Fantasy Monochrome"
 config/features=PackedStringArray("4.6", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://Game/Art/app_icon.svg"
 
 [autoload]
 
 Dialogic="*uid://ds2q0uclmolvu"
+Campaign="*res://Game/state.gd"
 Affection_System="*res://Systems/affection_system.gd"
 Health_System="*res://Systems/health_system.gd"
 Meal_System="*res://Systems/meal_system.gd"
-LocationTitle_Card="*res://UI/LocationTitleCard/LocationTitleCard.tscn"
 DaySystem="*res://Systems/day_system.gd"
 SaveSystem="*res://Systems/save_system.gd"
 GameState="*res://Systems/game_state.gd"
@@ -36,6 +38,30 @@ directories/dch_directory={
 "Asami": "res://Characters/bckup/Asami.dch"
 }
 directories/dtl_directory={
+"e01": "res://Game/Timelines/e01.dtl",
+"e02": "res://Game/Timelines/e02.dtl",
+"e03": "res://Game/Timelines/e03.dtl",
+"e04": "res://Game/Timelines/e04.dtl",
+"e05": "res://Game/Timelines/e05.dtl",
+"e06": "res://Game/Timelines/e06.dtl",
+"e07": "res://Game/Timelines/e07.dtl",
+"e08": "res://Game/Timelines/e08.dtl",
+"e09": "res://Game/Timelines/e09.dtl",
+"e10": "res://Game/Timelines/e10.dtl",
+"e11": "res://Game/Timelines/e11.dtl",
+"e12": "res://Game/Timelines/e12.dtl",
+"e13": "res://Game/Timelines/e13.dtl",
+"e14": "res://Game/Timelines/e14.dtl",
+"e15": "res://Game/Timelines/e15.dtl",
+"e16": "res://Game/Timelines/e16.dtl",
+"e17": "res://Game/Timelines/e17.dtl",
+"e18": "res://Game/Timelines/e18.dtl",
+"e19": "res://Game/Timelines/e19.dtl",
+"e20": "res://Game/Timelines/e20.dtl",
+"e21": "res://Game/Timelines/e21.dtl",
+"e22": "res://Game/Timelines/e22.dtl",
+"e23": "res://Game/Timelines/e23.dtl",
+"e24": "res://Game/Timelines/e24.dtl",
 "prologue": "res://Timelines/prologue.dtl",
 "scene_01_morning_wakeup": "res://Timelines/scene_01_morning_wakeup.dtl",
 "scene_02_evening_return": "res://Timelines/scene_02_evening_return.dtl",
@@ -51,8 +77,8 @@ layout/style_list=["res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Te
 layout/default_style="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/text_box.tres"
 text/letter_speed=0.01
 text/initial_text_reveal_skippable=true
-text/text_reveal_skip_delay=0.5
-text/advance_delay=1.0
+text/text_reveal_skip_delay=0.06
+text/advance_delay=0.12
 text/autoadvance_per_character_delay=0.1
 text/autoadvance_ignored_characters_enabled=true
 animations/join_default_length=0.5

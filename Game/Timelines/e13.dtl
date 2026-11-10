@@ -1,0 +1,20 @@
+# The Name of the Illness
+# Dialogic source. Line signals drive the cinematic layout and save checkpoints.
+label line_0
+[signal arg="line:0:Rin:protected"]
+The physician called it a failure of the body.
+label line_1
+[signal arg="line:1:You:protected"]
+There may have been no better name.
+label line_2
+[signal arg="line:2:Rin:protected"]
+There should have been. I have spent years hearing that I am failing.
+label line_3
+[signal arg="line:3:You:protected"]
+You have survived every one of those years.
+label line_4
+[signal arg="line:4:Rin:protected"]
+Then write that down too.
+label line_5
+[signal arg="line:5:Narrator:protected"]
+You turn the page and leave room for a better account.

@@ -1,0 +1,20 @@
+# No More Brave Faces
+# Dialogic source. Line signals drive the cinematic layout and save checkpoints.
+label line_0
+[signal arg="line:0:Rin:protected"]
+I am afraid the treatment will not work.
+label line_1
+[signal arg="line:1:You:protected"]
+So am I.
+label line_2
+[signal arg="line:2:Rin:protected"]
+You are allowed to say that?
+label line_3
+[signal arg="line:3:You:protected"]
+I am learning.
+label line_4
+[signal arg="line:4:Rin:protected"]
+Then I am afraid, and I am hopeful. Both can stay.
+label line_5
+[signal arg="line:5:Narrator:protected"]
+You sit with the uncertainty until it becomes something you can carry together.

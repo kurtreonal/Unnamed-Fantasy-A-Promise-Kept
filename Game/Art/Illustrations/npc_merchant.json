@@ -1,0 +1,59 @@
+{
+  "file": "npc_merchant.png",
+  "provider": "Local AUTOMATIC1111",
+  "checkpoint": "AOM3A1B_orangemixs.safetensors",
+  "checkpoint_sha256": "5493a0ec491f5961dbdc1c861404088a6ae9bd4007f6a3a7c5dee8789cdc1361",
+  "prompt": "an adult village merchant man, 40 years old, weathered linen clothes, gentle smile, waist-up portrait, isolated on pure white background, beautiful anime visual novel illustration, delicate clean lineart, restrained painterly shading, muted earthy colors, soft rural melancholy, consistent character design, natural anatomy, soft diffuse light",
+  "negative_prompt": "child, teenager, loli, nude, nudity, underwear, cleavage, revealing clothes, erotic, sexual, suggestive, low quality, bad anatomy, extra limbs, extra fingers, watermark, text, signature, neon colors, oversaturated",
+  "seed": 240801,
+  "steps": 24,
+  "cfg_scale": 6.5,
+  "pose": null,
+  "reference": null,
+  "generation_info": {
+    "prompt": "an adult village merchant man, 40 years old, weathered linen clothes, gentle smile, waist-up portrait, isolated on pure white background, beautiful anime visual novel illustration, delicate clean lineart, restrained painterly shading, muted earthy colors, soft rural melancholy, consistent character design, natural anatomy, soft diffuse light",
+    "all_prompts": [
+      "an adult village merchant man, 40 years old, weathered linen clothes, gentle smile, waist-up portrait, isolated on pure white background, beautiful anime visual novel illustration, delicate clean lineart, restrained painterly shading, muted earthy colors, soft rural melancholy, consistent character design, natural anatomy, soft diffuse light"
+    ],
+    "negative_prompt": "child, teenager, loli, nude, nudity, underwear, cleavage, revealing clothes, erotic, sexual, suggestive, low quality, bad anatomy, extra limbs, extra fingers, watermark, text, signature, neon colors, oversaturated",
+    "all_negative_prompts": [
+      "child, teenager, loli, nude, nudity, underwear, cleavage, revealing clothes, erotic, sexual, suggestive, low quality, bad anatomy, extra limbs, extra fingers, watermark, text, signature, neon colors, oversaturated"
+    ],
+    "seed": 240801,
+    "all_seeds": [
+      240801
+    ],
+    "subseed": 2177482207,
+    "all_subseeds": [
+      2177482207
+    ],
+    "subseed_strength": 0,
+    "width": 512,
+    "height": 640,
+    "sampler_name": "DPM++ 2M",
+    "cfg_scale": 6.5,
+    "steps": 24,
+    "batch_size": 1,
+    "restore_faces": false,
+    "face_restoration_model": null,
+    "sd_model_name": "AOM3A1B_orangemixs",
+    "sd_model_hash": "5493a0ec49",
+    "sd_vae_name": null,
+    "sd_vae_hash": null,
+    "seed_resize_from_w": -1,
+    "seed_resize_from_h": -1,
+    "denoising_strength": null,
+    "extra_generation_params": {
+      "Schedule type": "Karras"
+    },
+    "index_of_first_image": 0,
+    "infotexts": [
+      "an adult village merchant man, 40 years old, weathered linen clothes, gentle smile, waist-up portrait, isolated on pure white background, beautiful anime visual novel illustration, delicate clean lineart, restrained painterly shading, muted earthy colors, soft rural melancholy, consistent character design, natural anatomy, soft diffuse light\nNegative prompt: child, teenager, loli, nude, nudity, underwear, cleavage, revealing clothes, erotic, sexual, suggestive, low quality, bad anatomy, extra limbs, extra fingers, watermark, text, signature, neon colors, oversaturated\nSteps: 24, Sampler: DPM++ 2M, Schedule type: Karras, CFG scale: 6.5, Seed: 240801, Size: 512x640, Model hash: 5493a0ec49, Model: AOM3A1B_orangemixs, Version: v1.10.1"
+    ],
+    "styles": [],
+    "job_timestamp": "20261109021656",
+    "clip_skip": 1,
+    "is_using_inpainting_conditioning": false,
+    "version": "v1.10.1"
+  }
+}

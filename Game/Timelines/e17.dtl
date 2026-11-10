@@ -1,0 +1,20 @@
+# What Courage Looks Like
+# Dialogic source. Line signals drive the cinematic layout and save checkpoints.
+label line_0
+[signal arg="line:0:Rin:protected"]
+The hero in this game never stops to eat.
+label line_1
+[signal arg="line:1:You:protected"]
+Perhaps that is why he keeps losing.
+label line_2
+[signal arg="line:2:Rin:protected"]
+Perhaps someone should tell him that coming home is an achievement.
+label line_3
+[signal arg="line:3:You:protected"]
+Is that your professional advice?
+label line_4
+[signal arg="line:4:Rin:protected"]
+Yes. From an expert in waiting.
+label line_5
+[signal arg="line:5:Narrator:protected"]
+You set the pieces aside before the candles burn low.

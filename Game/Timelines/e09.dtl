@@ -1,0 +1,20 @@
+# The Long Way to the Well
+# Dialogic source. Line signals drive the cinematic layout and save checkpoints.
+label line_0
+[signal arg="line:0:Rin:protected"]
+Do not slow down before I ask.
+label line_1
+[signal arg="line:1:You:protected"]
+I was watching the road.
+label line_2
+[signal arg="line:2:Rin:protected"]
+You were watching me.
+label line_3
+[signal arg="line:3:You:protected"]
+Is that so terrible?
+label line_4
+[signal arg="line:4:Rin:protected"]
+Only if it means you miss the flowers.
+label line_5
+[signal arg="line:5:Narrator:protected"]
+At the well she rests, and tells you which seeds she wants to plant.

@@ -1,0 +1,20 @@
+# A Seat at the Table
+# Dialogic source. Line signals drive the cinematic layout and save checkpoints.
+label line_0
+[signal arg="line:0:Rin:protected"]
+Let me stir.
+label line_1
+[signal arg="line:1:You:protected"]
+The pot is heavy.
+label line_2
+[signal arg="line:2:Rin:protected"]
+Then hold the handle. I can still stir.
+label line_3
+[signal arg="line:3:You:protected"]
+We make a convincing kitchen team.
+label line_4
+[signal arg="line:4:Rin:protected"]
+A team requires you to listen sometimes.
+label line_5
+[signal arg="line:5:Narrator:protected"]
+You hold the handle. She seasons the soup. Dinner tastes like both of you.

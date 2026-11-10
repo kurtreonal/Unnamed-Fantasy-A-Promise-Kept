@@ -1,0 +1,20 @@
+# Her Answer
+# Dialogic source. Line signals drive the cinematic layout and save checkpoints.
+label line_0
+[signal arg="line:0:Rin:protected"]
+I have read every version of the formula.
+label line_1
+[signal arg="line:1:You:protected"]
+And?
+label line_2
+[signal arg="line:2:Rin:protected"]
+I want to try. Not because you promised. Because I want a life after this.
+label line_3
+[signal arg="line:3:You:protected"]
+Tell me what you need.
+label line_4
+[signal arg="line:4:Rin:protected"]
+The truth, someone beside me, and the right to change my mind.
+label line_5
+[signal arg="line:5:Narrator:protected"]
+You place the final page in front of her. She signs her own name.

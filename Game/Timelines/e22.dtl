@@ -1,0 +1,20 @@
+# The Shape of Tomorrow
+# Dialogic source. Line signals drive the cinematic layout and save checkpoints.
+label line_0
+[signal arg="line:0:Rin:protected"]
+When I can walk farther, I will still want to stop here.
+label line_1
+[signal arg="line:1:You:protected"]
+At the old well?
+label line_2
+[signal arg="line:2:Rin:protected"]
+At a place we reached slowly.
+label line_3
+[signal arg="line:3:You:protected"]
+We can come back as often as you like.
+label line_4
+[signal arg="line:4:Rin:protected"]
+And leave as often as I like.
+label line_5
+[signal arg="line:5:Narrator:protected"]
+You realize that both promises matter.
